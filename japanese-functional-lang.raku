@@ -3,7 +3,36 @@ use v6;
 =begin pod
 A toy functional programming language based on Japanese
 
-I call it 'haku', so it can be a pun on Haskell + Raku, or it can be the Haku from Spirited Away, or Dr. or any other kanji with that reading. 
+I call it 'haku', so it can be a pun on Haskell + Raku, or it can be the Haku from Spirited Away, or Dr. or any other kanji with that reading. The kanji I like best is 魄 (soul, spirit).
+
+
+Ideally I would like to allow people to write romaji and even a kind of English. 
+
+But I don't fancy having to deal with whitespace, as that makes the grammar a bit too different. 
+
+So we have identifiers in uppercase, keywords in lowercase. I'll include some space in the keywords for readability. 
+
+How do I keep the grammar and have sensible English?
+
+C baaiha
+X desukedo,
+soudenai baai ha
+Y desu
+
+maybe
+C entails Y but otherwise X
+
+Function
+
+a to b wo kakeru
+A,B's SUM 
+a no nagasa
+A's LENGTH
+
+
+
+
+
 =end pod
 
 # variables must start with katakana then katakana, number kanji and 達 
@@ -14,11 +43,11 @@ role Characters {
         '或' |
         '和' | '差' | '積' | '除' |
         '足' | '引' | '掛' | '割' |
-        '後' | '為' | '等' | '若' |
+        '後' | '為' | '等' | '若' | '不'
         '本' | 
         '見' | '合' | '割' | '書' | '読'
     }
-
+   
     token kanji {  
         <:Block('CJK Unified Ideographs') - reserved_kanji >
         }    
@@ -31,17 +60,21 @@ role Characters {
     token romaji {
         <[A..Z]>
     }
-    #     > "１".uniprop('Block');
+    # "１".uniprop('Block');
     # Halfwidth and Fullwidth Forms
     # 算用数字
     token sanyousuji {
         '０' | '１' | '２' | '３' | '４' | '５' | '６' | '７' | '８' | '９'
     }
+    
+    token digits {
+        '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' 
+    }    
 
     token hiragana {
         <:Block('Hiragana')>
         # <[あ..を]>
-        }    
+    }    
 }
 
 role Numbers {
@@ -467,12 +500,16 @@ grammar Haku is Function {
 Comment line: 注 or 註 or even just 言
 
  = : は…です。
-→：が or maybe better で
+ 
+Lambda:  
+→： で
 
-I might purely for easy of parsing do
+For ease of parsing:
 
 \ : 或（ある）but we don't need this if we use で
-, : と
+
+
+, : と or 、
 ““ : 『』
 ‘’ : 「」
 () : （）
@@ -502,17 +539,28 @@ xs no kaku-x de nani-nani shite
 
 Strings and numbers are easy. 
 
+Logic:
+
+A も B も : A && B (and allow A mo B)
+A また B : A || B
+不A : not A
+
 What about lists? I must have some kind of syntax for the start and end of a list.［］is fine I guess
 
 head, tail is of course just that: 頭、尾
-length is 丈
-For tuples just parens （）
+length is 長さ
+For tuples just parens （）? No, we don't need tuples.
+
+## IO
 
 For files we need open, close and some way to iterate over a handle, which I guess we could so with map 
 開ける akete
 閉める shimete
 assuming that the file is a list of strings.
 
+## Strings
+
+Strings will be lists I guess. 
 Quickly we might need some way to manipulate strings
 割る to split a string 
 str wo pattern de warite (kudasai)
@@ -532,16 +580,14 @@ head, tail and ++
 lst1とlst2を合わせて
 
 
-
-
-
 Lambda
 
 \x -> 2*x
-xが expr in x です。
-アがア掛ける二です。
+x ga expr in x desu。
+アでア掛ける二です。
 
 Map
+
 x2s = map (\x -> 2*x) xs
 ニア達はア達から皆んな或アがア二倍です。
 x2s ha 
