@@ -1,8 +1,13 @@
 use v6;
 use Haku;
 
-my $hon_str = "注なに何か　test テスト。本とは四十ニを見せるのことです。";#
-my $hon_parse = Haku.parse($hon_str);
+my $hon_str = "注なに何か　test テスト。
+本とは
+カズ達は六と七で、
+カズ達を聴こえる、
+カズ達を見せる
+のことです。";#
+my $hon_parse = Haku.subparse($hon_str);
 say $hon_parse;
 # die;
 # say "Try parsing 六"と七の積";
