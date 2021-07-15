@@ -1,12 +1,19 @@
 use v6;
 use Haku;
 
-my $hon_str = "注なに何か　test テスト。
+my $hon_str = "注
+
+なに何か　test テスト。
+
 本とは
+
 カズ達は六と七で、
 カズ達を聴こえる、
-カズ達を見せる
-のことです。";#
+イ・ロ・空はカズ達、
+シンカズはイとロの和で、
+シンカズを見せる
+のことです。";
+
 my $hon_parse = Haku.subparse($hon_str);
 say $hon_parse;
 # die;
@@ -17,17 +24,19 @@ say $hon_parse;
 # my $m2 = Expression.parse("六に七を掛ける");
 # say $m2;
  
-# my $let_kuromaru = Let.parse("●エクスは三です
-# ●ワイは四千です
-# では
-# エクスとワイの積。");
-# say $let_kuromaru;
-# my $let_moshi = Let.parse("もし
-# エクスが三だったら
-# ワイが四千だったら
-# エッフが或アでアにアを掛けたら
-# エクスとワイの積をエッフする。");#
-# say $let_moshi;
+my $let_kuromaru = Expression.subparse("●エクスは三。
+●ワイは四千。
+では
+エクスとワイの積。");#,:rule('let-expression'));
+# ");
+say $let_kuromaru;
+# をエッフする
+# 
+my $kono_let = Expression.subparse("この【エクスとワイの積】を試すに
+エクスが三、",:rule('kono-let'));
+# ワイが四千、
+# エッフが或アでアにアを掛ける。");#
+say $kono_let;
 
 # my $haku = Haku.parse("本とは
 #     四十ニを見せる
