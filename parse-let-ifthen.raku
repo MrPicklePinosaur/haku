@@ -30,7 +30,7 @@ grammar Expression {
         <identifier> 
     }
     token arg_expression_list {
-        <arg_expression> [<list_operator> <arg_expression>]*
+        <arg_expression> [<.list_operator> <arg_expression>]*
     }
 
     token parens_expression { <.open_maru>  <operator_expression>  <.close_maru> }
@@ -91,28 +91,63 @@ grammar Expression {
 
 class ExpressionActions {
     method expression ($/) {
-        make "EXPR: $/";
+        if $<atomic_expression> {
+            make 'E:AE>'~$<atomic_expression>.made
+        } elsif  $<operator_expression> {
+            make 'E:OP>'~$<operator_expression>.made
+        } else {
+
+            make "E:EXPR>>$/";
+        }
+    }
+    method number($/) {
+        make "$/"*1;
+    }
+    method atomic_expression($/) {
+        # say 'HERE:'~$/;
+        if $<number>  {
+            
+            make "ATE:NR(" ~ $<number>~')';
+            # say 'HERE NUMBER:'~$/.made;
+        }
+         $<identifier> &&
+            make "ATE:ID(" ~ $<identifier>~')';
+        
+    }
+    method arg_expression($/) {
+        if $<parens_expression> {
+            make 'ARE:PAE>'~$<parens_expression>.made;
+        }
+        if $<apply_expression> {
+            make 'ARE:APE>'~$<apply_expression>.made;
+        }
+        if $<atomic_expression> {
+            make 'ARE:ATE>'~$<atomic_expression>.made;
+        }
+        
+    }
+    method operator_expression($/) {
+        make 'OPE:'~$<binop>~'('~$<arg_expression>[0].made~','~$<arg_expression>[1].made~')';
     }
     method condition_expression($/) {
          
         
-        if not $<operator_expression> ~~ Nil  {
-            make "COND EXPR: OP " ~ $<operator_expression>
+        if $<operator_expression>   {
+            make "CE:OPE>" ~ $<operator_expression>
         } 
-        elsif 
-        not $<apply_expression> ~~  Nil {
-            make "COND EXPR: APPLY " ~ $<apply_expression>
+        elsif $<apply_expression> {
+            make "CE:APE>" ~ $<apply_expression>
         }
-        elsif
-        not $<parens_expression> ~~ Nil {
-            make "COND EXPR: PARENS " ~ $<parens_expression>
-        } elsif 
-        not $<atomic_expression> ~~ Nil {
-            make "COND EXPR: ATOMIC " ~ $<atomic_expression>
+        elsif $<parens_expression>  {
+            make "CE:PAE>" ~ $<parens_expression>
+        } elsif $<atomic_expression>  {
+            make "CE:ATE>" ~ $<atomic_expression>.made
         }
 
     }
     method ifthen_expression($/) {
+        # say $/.raku;
+        # say 'HASH:'~$<expression>[0].raku;
         say 'IF '~$<condition_expression>.made ~ ' THEN '~ $<expression>[0].made ~  ' ELSE ' ~ $<expression>[1].made ~ 'END IF';
         # say 'DONE';
     }
