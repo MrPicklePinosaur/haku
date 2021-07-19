@@ -1,7 +1,17 @@
 use v6;
 use Haku;
+use HakuActions;
+# use HakuAST;
 
-my $hon_str = "注
+my $hon_str = "本とは
+シは四十弐、
+シを見せる
+のことです。";
+
+my $hon_parse = Haku.subparse($hon_str);#, :actions(HakuActions));
+say $hon_parse;
+die;
+my $hon_str_2 = "注
 
 なに何か　test テスト。
 
@@ -14,9 +24,10 @@ my $hon_str = "注
 シンカズを見せる
 のことです。";
 
-my $hon_parse = Haku.subparse($hon_str);
-say $hon_parse;
-# die;
+my $hon_parse_2 = Haku.subparse($hon_str_2);#, :actions(HakuActions));
+say $hon_parse_2;
+die;
+
 # say "Try parsing 六"と七の積";
 # my $m = Haku.parse("六と七の積");
 # say $m;

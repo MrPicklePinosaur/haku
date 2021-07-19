@@ -2,7 +2,7 @@ use v6;
 
 role HakuExpr {...}
 
-# data Identifier = Variable | Verb | Noun   
+# data Identifier = Variable | Verb | Noun 
 role Identifier {}
 role Variable[Str $var] does Identifier {
     has $.var=$var;
@@ -55,6 +55,7 @@ role HakuExpr {}
 # data BinOpExpr = mkBinOpExpr BinOp HakuExpr HakuExpr
 role BinOpExpr[BinOp $op, HakuExpr $lhs-expr, HakuExpr $rhs-expr] does HakuExpr {
     has BinOp $.op=$op;
+    has HakuExpr @.args = $lhs-expr, $rhs-expr;
 }
 
 # data LetExpr = mkLetExpr [BindExpr] ResultExpr
@@ -90,12 +91,14 @@ role ParensExpr[HakuExpr $parens-expr] does HakuExpr {
 }
 
 # data AtomicExpr = Number | Identifier | String
-role AtomicExpr does HakuExpr {}
-role Number[Numeric $num] does AtomicExpr {
-    has Numeric $.num = $num;
+role AtomicExpr[\_] does HakuExpr {
+    has $._ = _;
 }
-role String[Str $str] does AtomicExpr {
-    has Str $.str = $str;
+role Number[ Num \num_] does AtomicExpr {
+    has Num $.num = num_;
+}
+role String[Str @chars] does AtomicExpr {
+    has Str @.chars = @chars;
 }
 role Null does AtomicExpr {}
 role Identifier[Str $id] does AtomicExpr {

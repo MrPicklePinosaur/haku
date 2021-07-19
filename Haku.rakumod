@@ -72,18 +72,6 @@ role Characters {
     }
 }
 
-role Numbers does  Characters {
-    token zero { '〇' | '零' | 'ゼロ' | 'マル'  }
-    token minus {'マイナス'}
-    token plus {'プラス'}
-    token integer { [<number-kanji> | <zero>]+ }
-    token signed-integer { (<minus> | <plus>) <integer> }
-    token ten { '点' }
-    token rational { <signed-integer>+ <.ten> <integer>+ }
-    token number { 
-        <rational> | <signed-integer> | <integer> 
-    }
-}
 
 
 # I think I will use the full stop and semicolon as equivalent for newline.
@@ -143,7 +131,7 @@ role Particles {
     token de { 'で' }
     token ni { 'に' }
     token kara { 'から' }
-    token made {  '迄' | 'まで' }
+    token made_ {  '迄' | 'まで' }
     token deha { 'では' }
     token node { 'ので' }
     token noha { 'のは' }
@@ -178,7 +166,7 @@ role Variables does Characters {
     token tachi { '達' }    
 }
 
-role Identifiers does Verbs does Nouns {
+role Identifiers does Verbs does Nouns does Variables {
     
     # Identifiers are variables noun-style and verb-style function names
     token identifier { <variable> | <verb> | <noun> }
@@ -335,22 +323,51 @@ role Comments does Punctuation does Blanks {
     token comment { <.comment-start> <comment-chars>+ <.full-stop> <.ws>? }
 }
 
-role Strings does Blanks does Characters {
+role Numbers does  Characters {
+# role Constants does Characters {    
+    token zero { '〇' | '零' | 'ゼロ' | 'マル'  }
+    token minus {'マイナス'}
+    token plus {'プラス'}
+    token integer { [<number-kanji> | <zero>]+ }
+    token signed-integer { (<minus> | <plus>) <integer> }
+    token ten { '点' }
+    token rational { <signed-integer>+ <.ten> <integer>+ }
+    token number { 
+        <rational> | <signed-integer> | <integer> 
+    }
+}
+
+role Strings does Characters {
     token string-chars { 
-         <hiragana> | <katakana> | <kanji> | <word> | <blank> 
+         <hiragana> 
+         | <katakana>
+          | <kanji> | <word> | ' ' | '　' | \n
+        #   | <blank> 
     }
     token string { 
         [ '「' <string-chars>* '」' ] |
         [ '『'  <string-chars>* '』' ] |
-        [ '《'  <string-chars>* '》' ]
+        [ '《'  <string_chars>* '》' ]
     }
 }
-grammar Expression does Identifiers does Keywords does Comments 
+
+# role Constants does Numbers does Strings {
+#     token constant {
+#         <number> | <string>
+#     }
+# }
+grammar Expression 
+does Identifiers 
+# does Variables
+does Keywords 
+does Numbers
+does Strings
+does Comments 
 {
 
     token TOP { <expression> }
  
-    token atomic-expression {  <number> | <mu> | <kuu> | <identifier> | <string>  }
+    token atomic-expression {  <number> | <string> | <mu> | <kuu> | <identifier>   }
     token parens-expression { 
         [ <.open-maru> <operator-expression> <.close-maru> ] |
         [ <.open-sumitsuki> <operator-expression> <.close-sumitsuki> ] |
@@ -421,11 +438,11 @@ grammar Expression does Identifiers does Keywords does Comments
     token comparison-expression {
         <arg-expression> <ga> <arg-expression> 
         [ <ni> <hitoshii> | <yori> [ <sukunai> | <ooi> ]  ]        
-    }    
+    }
 
-    token bind-ha { [<variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
-    token bind-ga { [<variable> | <cons-list-expression>] <.ga> <expression> <.comma> <.ws>? }
-    token bind-tara { [<variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
+    token bind-ha { [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
+    token bind-ga { [ <variable> | <cons-list-expression>] <.ga> <expression> <.comma> <.ws>? }
+    token bind-tara { [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
     # token moshi-let {
     #     <moshi> <bind-tara>+  <expression>  <delim>?
     # }
@@ -482,8 +499,8 @@ grammar Expression does Identifiers does Keywords does Comments
 
 } # End of Expression
 
-grammar Function is Expression does Keywords does Punctuation { 
-    # is Let {
+grammar Functions is Expression does Keywords does Punctuation { 
+    
     token TOP { <function> }
     token function {
         [ <verb> | <noun> ] <.toha>
@@ -495,7 +512,8 @@ grammar Function is Expression does Keywords does Punctuation {
     }
 }
 
-grammar Haku is Function does Comments {
+
+grammar Haku is Functions does Comments does Keywords {
 
     token TOP {
         # <comment>
