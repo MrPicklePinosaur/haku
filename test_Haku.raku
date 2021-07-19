@@ -4,8 +4,7 @@ use HakuActions;
 # use HakuAST;
 
 my $hon_str = "本とは
-シは四十弐、
-シを見せる
+四十弐
 のことです。";
 
 my $hon_parse = Haku.subparse($hon_str);#, :actions(HakuActions));
