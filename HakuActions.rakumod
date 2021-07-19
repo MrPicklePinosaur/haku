@@ -26,6 +26,12 @@ class HakuActions {
         }
 
     }
+    method string($/) {
+        if $<string-chars> {
+            make String[$<string-chars>.Str].new; 
+        }
+
+    }
     method number($/) {
             my $number = parseJapaneseNumbers($/.Str);
             make Number[$number].new;        
@@ -33,7 +39,7 @@ class HakuActions {
 
     method atomic-expression($/) {
         if $<number> { # Number
-            # make ''~$<number>;
+            make <number>.made
         }
         if $<mu> { # Null
             make Null.new;

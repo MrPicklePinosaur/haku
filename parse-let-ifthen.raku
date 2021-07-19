@@ -19,14 +19,20 @@ grammar Expression {
     token number {
         \d+
     }
-
+    token string_char {
+        \w | <[,;.!?\s]>
+    }
+    token string {
+        '"' <string_char>+ '"'
+        
+    }
     token identifier { \w+  }
     token list_operator { ',' }
     token reserved_words {
          'if' | 'then' | 'else' | 'let' | 'in' 
     }
     token atomic_expression {
-        <number> | 
+        <number> | <string> |
         <identifier> 
     }
     token arg_expression_list {
@@ -103,12 +109,17 @@ class ExpressionActions {
     method number($/) {
         make "$/"*1;
     }
+    method string($/) {
+        my @chars= map({$_.Str},$<string_char>);
+        make @chars;
+    }
     method atomic_expression($/) {
         # say 'HERE:'~$/;
-        if $<number>  {
-            
-            make "ATE:NR(" ~ $<number>~')';
-            # say 'HERE NUMBER:'~$/.made;
+        if $<number>  {            
+            make "ATE:NR(" ~ $<number>.made ~')';
+        }
+        if $<string>  {            
+            make "ATE:ST(" ~ $<string>.made ~')';
         }
          $<identifier> &&
             make "ATE:ID(" ~ $<identifier>~')';
@@ -160,12 +171,12 @@ class ExpressionActions {
 
 my $let1 = Expression.subparse("let
 x=6
-y=7
+y=\"zeven\"
 in
 x*y
-");
+",:actions(ExpressionActions));
 say $let1;
-
+# die;
 
 my $let2 = Expression.parse("let
 x=let
@@ -181,5 +192,5 @@ say $let2;
 # my $let3 = Expression.subparse("x=f(7)+g(11)",:rule('bind_expression'));
 # say $let3;
 my $ast={};
-my $if1 = Expression.parse('if{x<y}then{6*7}else{vv}',:actions(ExpressionActions));
+my $if1 = Expression.parse('if{x<y}then{6*"zeven"}else{vv}',:actions(ExpressionActions));
 say $if1;
