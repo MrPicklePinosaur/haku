@@ -72,11 +72,35 @@ class HakuActions {
         } elsif $<list-expression> {
             # say "LIST "~$<list-expression>.made.raku;
             make $<list-expression>.made
+        } elsif $<lambda-expression> {
+            my @args = map({$_.made},$<variable-list>);
+            my $expr = $<expression>.made;
+            make LambdaExpr[@args,$expr].new;
         } else {
             make "EXPR: "~$/;
         }
+=begin pod
+        | <let-expression>  
+        | <apply-expression> 
+        | <operator-expression>
+        | <comparison-expression>
+        | <function-comp-expression>
+        | <range-expression>
+        | <cons-list-expression>        
+        | [<comment>+ <expression>]   
+=end pod
     }
-    
+    method bind-ha($/) {
+#bind-ha { [ <variable> | <cons-list-expression>] <.ha> <expression>
+        my $lhs-expr;
+        if $<variable> {
+            $lhs-expr = $<variable>.made;
+        } elsif $<cons-list-expression> {
+            $lhs-expr = $<cons-list-expression>.made;
+        }
+        my $rhs-expr=$<expression>.made;
+        make BindExpr[$lhs-expr,$rhs-expr].new;
+    } 
     method hon($/) {
         # say 'HON action';
         my @comments = ();
