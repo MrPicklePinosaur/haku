@@ -7,8 +7,8 @@ my $hon_str = "本とは
 四十弐
 のことです。";
 
-my $hon_parse = Haku.subparse($hon_str);#, :actions(HakuActions));
-say $hon_parse;
+my $hon_parse = Haku.parse($hon_str, :actions(HakuActions));
+say $hon_parse.made.hon.exprs[0].num;
 die;
 my $hon_str_2 = "注
 

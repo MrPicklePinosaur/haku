@@ -49,7 +49,7 @@ role BindExpr[ RhsExpr $rhs-expr, HakuExpr $expr]  does HakuExpr {
     has $.lhsExpr = $expr;
 } 
 
-# data HakuExpr = LetExpr | IfExpr | AtomicExpr | LambdaExpr | FunctionApplyExpr | LambdaApplyExpr | ParensExpr | BinOpExpr
+# data HakuExpr = LetExpr | IfExpr | ListExpr | AtomicExpr | LambdaExpr | FunctionApplyExpr | LambdaApplyExpr | ParensExpr | BinOpExpr
 role HakuExpr {}
 
 # data BinOpExpr = mkBinOpExpr BinOp HakuExpr HakuExpr
@@ -70,7 +70,9 @@ role IfExpr[HakuExpr $cond,HakuExpr $true-expr, HakuExpr $false-expr] does HakuE
     has HakuExpr $.true-expr=$true-expr;
     has HakuExpr $.false-expr=$false-expr;
 }
-
+role ListExpr[ @exprs] does HakuExpr {
+    has  @.elts = @exprs;
+}
 role AtomicExpr does HakuExpr {} 
 # data LambdaExpr = mkLambdaExpr [Variable] HakuExpr
 role LambdaExpr[Variable @lambda-args,HakuExpr $expr] {
@@ -112,7 +114,14 @@ role Function[Variable @args, HakuExpr $body] {
 }
 
 # data Hon = mkHon [HakuExpr]
-role Hon[HakuExpr @main] {
-    has HakuExpr @.hon-exprs = @main;
+role Hon[ @main,  @comments] {
+    has  @.exprs = @main;
+    has @.comments = @comments;
 }
 
+role HakuProgram[@functions,$hon,@comments] {
+    has  @.funcs = @functions;
+    has $.hon = $hon;
+    has @.comments = @comments;
+
+}

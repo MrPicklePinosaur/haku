@@ -514,13 +514,14 @@ grammar Functions is Expression does Keywords does Punctuation {
 
 
 grammar Haku is Functions does Comments does Keywords {
-
-    token TOP {
+    token TOP { <haku-program> }
+    token haku-program {
         # <comment>
         [<function>| <comment>]*? 
         <hon> 
         # [<function>| <comment>]*?
     }
+
     # Behaves like an 'do' but without the monads
     token hon { 
         　<.hontoha> 
