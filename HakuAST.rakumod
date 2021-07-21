@@ -15,7 +15,7 @@ role Noun[Str $noun] does Identifier {
 }
 
 # I could enumerate them here instead
-role BinOp[Str $op] {
+role BinOp[ $op] {
     has $.op=$op;
 }
 

@@ -4,11 +4,11 @@ use HakuActions;
 # use HakuAST;
 
 my $hon_str = "本とは
-四十弐
+四十弐足す壱
 のことです。";
 
-my $hon_parse = Haku.parse($hon_str, :actions(HakuActions));
-say $hon_parse.made.hon.exprs[0].num;
+my $hon_parse = Haku.subparse($hon_str, :actions(HakuActions));
+say $hon_parse.made.hon.raku;
 die;
 my $hon_str_2 = "注
 

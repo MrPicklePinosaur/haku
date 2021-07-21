@@ -65,6 +65,67 @@ class HakuActions {
             make ListExpr[@exprs].new;
         }
     }
+
+    # token kaku-parens-expression { <list-expression> | <range-expression> }
+
+    # it should be possible to put parens around function applications and lambdas as well!
+    method parens-expression($/) {
+        make $<operator-expression>.made;
+    }
+    method arg-expression($/) {
+        if $<parens-expression> {
+            make $<parens-expression>.made;
+        }
+        if $<atomic-expression> {
+            make $<atomic-expression>.made;
+        }
+    }
+
+    method operator-noun($/) {
+        my $op-kanji= $/.Str;
+        my %nbinops = < '和' '+' '差' '-' '積' '*' '除' '/'>;
+        make BinOp[%nbinops{$op-kanji}].new;    
+    }
+
+    method operator-verb($/) {
+        my $op-kanji= $<operator-verb-kanji>.Str;
+        my %vbinops = < '足' '+' '引' '-' '掛' '*' '割' '/'>;
+        make BinOp[%vbinops{$op-kanji}].new;
+    }
+
+    method noun-operator-expression ($/) {
+        my $op=$<operator-noun>.made;
+        my $lhs-expr = $<arg-expression>[0].made;
+        my $rhs-expr = $<arg-expression>[1].made;
+        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
+    }
+    # token verb-operator-expression { <arg-expression> <ni>　<arg-expression> <wo> <operator-verb> }
+    method verb-operator-expression ($/) {
+        my $op=$<operator-verb>.made;
+        my $lhs-expr = $<arg-expression>[0].made;
+        my $rhs-expr = $<arg-expression>[1].made;
+        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
+    }
+    # token verb-operator-expression-infix { <arg-expression> <operator-verb> <arg-expression> }
+    method verb-operator-expression-infix ($/) { 
+        my $op=$<operator-verb>.made;
+        my $lhs-expr = $<arg-expression>[0].made;
+        my $rhs-expr = $<arg-expression>[1].made;
+                    # say 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
+        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new;
+    }
+
+    method operator-expression($/) {
+        if $<noun-operator-expression> {
+            make $<noun-operator-expression>.made;
+        }
+        elsif $<verb-operator-expression> {
+            make $<verb-operator-expression>.made;
+        }
+        elsif $<verb-operator-expression-infix> {
+            make $<verb-operator-expression-infix>.made;
+        }
+    }
     method expression($/) {
         if ($<atomic-expression>) {
             # say $<atomic-expression>.made; 
@@ -76,6 +137,14 @@ class HakuActions {
             my @args = map({$_.made},$<variable-list>);
             my $expr = $<expression>.made;
             make LambdaExpr[@args,$expr].new;
+        } elsif $<cons-list-expression> {
+            my @cons = map({$_.made},$<variable>);
+            if $<kuu> or $<empty> {
+                @cons.push(ConsNil.new);
+            }
+            make Cons[@cons].new    
+        } elsif $<operator-expression> {
+            make $<operator-expression>.made;
         } else {
             make "EXPR: "~$/;
         }
@@ -86,7 +155,6 @@ class HakuActions {
         | <comparison-expression>
         | <function-comp-expression>
         | <range-expression>
-        | <cons-list-expression>        
         | [<comment>+ <expression>]   
 =end pod
     }
@@ -136,7 +204,7 @@ class HakuActions {
             make HakuProgram[@functions,$<hon>.made,@comments].new;
         } else {
             die 'A Haku program must have a 本 main routine';
-            make 'HAKU: '~$/
+            # make 'Haku error: '~$/
         }
     }
 

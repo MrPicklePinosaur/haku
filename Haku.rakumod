@@ -375,9 +375,9 @@ does Comments
     }
     token kaku-parens-expression { <.open-kaku> [<list-expression> | <range-expression>] <.close-kaku> }
 
-    token verb-operator-expression { <arg-expression> <ni>　<arg-expression> <wo> <operator-verb> }
+    token verb-operator-expression { <arg-expression> <.ni>　<arg-expression> <.wo> <operator-verb> }
     token verb-operator-expression-infix { <arg-expression> <operator-verb> <arg-expression> }
-    token noun-operator-expression { <arg-expression> <to-particle>　<arg-expression> <no> <operator-noun> }
+    token noun-operator-expression { <arg-expression> <.to-particle>　<arg-expression> <.no> <operator-noun> }
 
     token operator-expression { 
         <noun-operator-expression> | 
@@ -398,8 +398,10 @@ does Comments
         # <range-expression> |        
         <atomic-expression>         
     }
-
-    token cons-list-expression { <variable> [ <cons> [<variable>|<kuu>|[<open-kaku><close-kaku>]] ]+ }
+    token empty {
+        <open-kaku><close-kaku>
+    }
+    token cons-list-expression { <variable> [ <.cons> <variable>]*? [<.cons> [<kuu>|<empty>] ]? }
     
     token variable-list { <variable> [ <.list-operator> <variable> ]* }
 
