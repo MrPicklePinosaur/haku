@@ -4,7 +4,9 @@ use HakuActions;
 # use HakuAST;
 
 my $hon_str = "本とは
-四十弐足す壱
+注　算数　。
+六足す七、
+四十弐
 のことです。";
 
 my $hon_parse = Haku.subparse($hon_str, :actions(HakuActions));

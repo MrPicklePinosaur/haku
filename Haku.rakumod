@@ -415,6 +415,9 @@ does Comments
     [ <identifier> | <lambda-expression> ] 
         [<.shite-kudasai>|<.sura>]? }
 
+    token comment-then-expression {
+        <comment>+ <expression>
+    }
     token expression {                     
           <lambda-expression> 
         | <let-expression>  
@@ -426,7 +429,7 @@ does Comments
         | <list-expression>
         | <cons-list-expression>        
         | <atomic-expression>              
-        | [<comment>+ <expression>]        
+        | <comment-then-expression>
         
     }
 

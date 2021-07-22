@@ -126,6 +126,23 @@ class HakuActions {
             make $<verb-operator-expression-infix>.made;
         }
     }
+    method apply-expression($/) {
+        my @args = $<arg-expression-list>.made;
+        my $partial = $<dake> ?? True !! False;
+        
+        if $<identifier> {
+            my $function-name=$<identifier>.made;
+            make FunctionApplyExpr[@args, $function-name,  $partial].new;
+        } 
+        elsif $<lambda-expression> {
+            my $lambda-expr=$<lambda-expression>.made;
+            make LambdaApplyExpr[@args, $lambda-expr, $partial].new;
+        }
+        
+    }
+    method comment-then-expression($/) {
+        make $<expression>.made;
+    }
     method expression($/) {
         if ($<atomic-expression>) {
             # say $<atomic-expression>.made; 
@@ -145,17 +162,19 @@ class HakuActions {
             make Cons[@cons].new    
         } elsif $<operator-expression> {
             make $<operator-expression>.made;
+        } elsif $<comment-then-expression> {
+            make $<comment-then-expression>.made;
+        } elsif $<apply-expression> {
+            make $<apply-expression>.made;
         } else {
             make "EXPR: "~$/;
         }
 =begin pod
         | <let-expression>  
         | <apply-expression> 
-        | <operator-expression>
         | <comparison-expression>
         | <function-comp-expression>
         | <range-expression>
-        | [<comment>+ <expression>]   
 =end pod
     }
     method bind-ha($/) {

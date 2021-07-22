@@ -80,13 +80,15 @@ role LambdaExpr[Variable @lambda-args,HakuExpr $expr] {
     has $.expr = $expr;
 } 
 
-role FunctionApplyExpr[HakuExpr $args-expr, Identifier $function-name] does HakuExpr {
-    has HakuExpr $.args-expr=$args-expr; 
+role FunctionApplyExpr[HakuExpr @args-exprs, Identifier $function-name, Bool $partial] does HakuExpr {
+    has HakuExpr @.args-exprs=@args-exprs; 
     has Identifier $.function-name=$function-name;
+    has Bool $.partial = $partial;
 }
-role LambdaApplyExpr[HakuExpr $args-expr, LambdaExpr $lambda-name] does HakuExpr {
-    has HakuExpr $.args-expr=$args-expr;
-    has LambdaExpr $.lambda-name=$lambda-name;
+role LambdaApplyExpr[HakuExpr @args-exprs, LambdaExpr $lambda-expr, Bool $partial] does HakuExpr {
+    has HakuExpr @.args-exprs=@args-exprs;
+    has LambdaExpr $.lambda-expr=$lambda-expr;
+    has Bool $.partial = $partial;
 }
 role ParensExpr[HakuExpr $parens-expr] does HakuExpr {
     has $.parens-expr=$parens-expr;
