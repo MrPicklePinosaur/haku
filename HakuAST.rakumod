@@ -27,7 +27,7 @@ role ConsNil does ConsExpr {
 }
 
 role RhsExpr {}
-role Variable[Str $var] does RhsExpr {
+role Variable[$var] does RhsExpr {
     has Str $.var = $var;
 }
 role Tuple[RhsExpr @tuple] does RhsExpr {
@@ -44,7 +44,7 @@ role Hon[] does HakuStmt {}
 
 # data BindExpr = mkBindExpr LhsExpr RhsExpr 
 #  does HakuExpr because of Hon, not very nice. Could be we need a separate bind expr for this.
-role BindExpr[ RhsExpr $rhs-expr, HakuExpr $expr]  does HakuExpr {
+role BindExpr[  $rhs-expr,  $expr]  does HakuExpr {
     has $.rhsExpr = $rhs-expr;
     has $.lhsExpr = $expr;
 } 

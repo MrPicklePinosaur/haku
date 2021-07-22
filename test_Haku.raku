@@ -5,6 +5,7 @@ use HakuActions;
 
 my $hon_str = "本とは
 注　算数　。
+カズ達は六と七で、
 六足す七、
 四十弐
 のことです。";
