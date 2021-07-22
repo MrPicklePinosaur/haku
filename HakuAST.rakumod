@@ -1,10 +1,10 @@
 use v6;
 
 role HakuExpr {...}
-
+role LhsExpr {...}
 # data Identifier = Variable | Verb | Noun 
 role Identifier {}
-role Variable[ $var] does Identifier {
+role Variable[ $var] does Identifier does LhsExpr {
     has Str $.var=$var;
 }
 role Verb[ $verb] does Identifier {    
@@ -27,9 +27,9 @@ role ConsNil does ConsExpr {
 }
 
 role LhsExpr {}
-role Variable[$var] does LhsExpr {
-    has Str $.var = $var;
-}
+# role Variable[$var] does LhsExpr {
+#     has Str $.var = $var;
+# }
 role Tuple[ @tuple] does LhsExpr {
     has LhsExpr @.tuple = @tuple;
 }

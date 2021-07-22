@@ -130,6 +130,7 @@ role Particles {
     token wo { 'を' }
     token de { 'で' }
     token ni { 'に' }
+    token ka { 'か' }
     token kara { 'から' }
     token made_ {  '迄' | 'まで' }
     token deha { 'では' }
@@ -147,8 +148,8 @@ role Nouns does Characters {
 role Verbs does Characters {
     token verb-ending {
         'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ'|
-        'た'| 'いだ'| 'んだ'|
-        'て'| 'いで' | 'んで'
+        'った'| 'た'| 'いだ'| 'んだ'|
+        'って'| 'て'| 'いで' | 'んで'
     }
     # token noun { <kanji>+ <sa>? }
     token verb { <kanji> <hiragana>*? <verb-ending> }
@@ -230,7 +231,7 @@ does Nouns
     token yori { 'より' }
     token ooi { '多い' }    
     token sukunai { '少ない' }
-
+    
 
     # For Let
     token kono {
@@ -271,9 +272,11 @@ does Nouns
     token hontoha { '本とは' <.ws>? }
 
     # Built-in verbs
-
+    token u-endings {
+        'う' | 'って' <kudasai>? | 'い' <masu>
+    }
     token mu-endings {
-        'む' | 'んで'  <kudasai>? | 'み' <masu>
+        'む' | 'んで' <kudasai>? | 'み' <masu>
     }
 
     token ru-endings {
@@ -288,7 +291,8 @@ does Nouns
          'つ' | 'って' <kudasai>? | 'ち' <masu>
     }
 
-    token miseru { '見せ' }
+    # Say
+    token miseru { '見せ' <ru-endings> }
 
     # Built-in nouns
 
@@ -307,7 +311,8 @@ does Nouns
     token kaku { '書' <ku-endings> }
     token yomu { '読' <mu-endings> }
 
- 
+    # For comparisons
+    token chigau { '違' <u-endings> }
 } # End of Keywords
 
 # Comment line: 註 or 注 or even just 言, must end with 。
@@ -440,9 +445,17 @@ does Comments
         <atomic-expression> <nyoro> <atomic-expression>
     }
 
+
     token comparison-expression {
-        <arg-expression> <ga> <arg-expression> 
-        [ <ni> <hitoshii> | <yori> [ <sukunai> | <ooi> ]  ]        
+        <arg-expression> <.ga> <arg-expression> 
+        [
+          [
+            [ <.ni> <hitoshii> [ <.ka> <.yori> [ <sukunai> | <ooi> ] ]? ]        
+            | [ <.yori> [ <sukunai> | <ooi> ]  ]  
+            <.desu>?
+          ]
+        | [ <.ni> <chigau> ]
+        ]
     }
 
     token bind-ha { [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }

@@ -596,3 +596,7 @@ Terminology: http://www.scripts-lab.co.jp/mind/ver8/doc/02-Program-Hyoki.html
 
 
 
+-----
+
+A practical question is if it makes sense to parse built-in functions such as 見せて different from other verbs. I guess it would if we have dedicated nodes in the AST for them. But why would we? Basically, if a function is not defined, we can look if it occurs in the list of built-in functions, and if not we throw an error. 
+So there is no reason to have them different.

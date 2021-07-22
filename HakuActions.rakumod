@@ -15,15 +15,16 @@ class HakuActions {
     }
 
     method identifier($/) {
-        if $<variable> {
-            $<variable>.made;
-        }
-        elsif $<noun> {
-            $<noun>.made;
-        }
-        elsif $<verb> {
-            $<verb>.made;
-        }
+        make $/.values[0].made;
+        # if $<variable> {
+        #     $<variable>.made;
+        # }
+        # elsif $<noun> {
+        #     $<noun>.made;
+        # }
+        # elsif $<verb> {
+        #     $<verb>.made;
+        # }
 
     }
     method string($/) {
@@ -39,21 +40,23 @@ class HakuActions {
     }
 
     method atomic-expression($/) {
-        if $<number> { # Number
-            make $<number>.made
-        }
+        # if $<number> { # Number
+        #     make $<number>.made
+        # }
         if $<mu> { # Null
             make Null.new;
         }
-        if $<kuu> { # ConsNil
+        elsif $<kuu> { # ConsNil
             make ConsNil.new;
+        } else {
+            make $/.values[0].made;
         }
-        if $<identifier> { # Variable, Noun or Verb
-            make $<identifier>.made;
-        }
-        if $<string> { # String        
-            make $<string>.made;            
-        } 
+        # if $<identifier> { # Variable, Noun or Verb
+        #     make $<identifier>.made;
+        # }
+        # if $<string> { # String        
+        #     make $<string>.made;            
+        # } 
     }
     method list-expression($/) {
         # say $/.raku;
@@ -73,12 +76,13 @@ class HakuActions {
         make $<operator-expression>.made;
     }
     method arg-expression($/) {
-        if $<parens-expression> {
-            make $<parens-expression>.made;
-        }
-        if $<atomic-expression> {
-            make $<atomic-expression>.made;
-        }
+        make $/.values[0].made
+        # if $<parens-expression> {
+        #     make $<parens-expression>.made;
+        # }
+        # if $<atomic-expression> {
+        #     make $<atomic-expression>.made;
+        # }
     }
 
     method operator-noun($/) {
@@ -116,16 +120,40 @@ class HakuActions {
     }
 
     method operator-expression($/) {
-        if $<noun-operator-expression> {
-            make $<noun-operator-expression>.made;
-        }
-        elsif $<verb-operator-expression> {
-            make $<verb-operator-expression>.made;
-        }
-        elsif $<verb-operator-expression-infix> {
-            make $<verb-operator-expression-infix>.made;
-        }
+        make $/.values[0].made
+        # if $<noun-operator-expression> {
+        #     make $<noun-operator-expression>.made;
+        # }
+        # elsif $<verb-operator-expression> {
+        #     make $<verb-operator-expression>.made;
+        # }
+        # elsif $<verb-operator-expression-infix> {
+        #     make $<verb-operator-expression-infix>.made;
+        # }
     }
+
+    method comparison-expression($/) {
+        #   my $op=$<operator-verb>.made;
+        my $lhs-expr = $<arg-expression>[0].made;
+        my $rhs-expr = $<arg-expression>[1].made;
+        my $op ='';
+        if $<hitoshii> {
+            $op = '=';
+        }
+        if $<sukunai> {
+            $op = '<'.$op;
+        } elsif $<ooi> {
+            $op = '>'.$op;
+        } else {
+            if $op eq '=' {
+                $op = '==';
+            } else {
+                $op = '!=';
+            }            
+        }
+        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
+    }
+
     method apply-expression($/) {
         my @args = $<arg-expression-list>.made;
         my $partial = $<dake> ?? True !! False;
@@ -143,14 +171,9 @@ class HakuActions {
     method comment-then-expression($/) {
         make $<expression>.made;
     }
-    method expression($/) {
-        if ($<atomic-expression>) {
-            # say $<atomic-expression>.made; 
-            make $<atomic-expression>.made
-        } elsif $<list-expression> {
-            # say "LIST "~$<list-expression>.made.raku;
-            make $<list-expression>.made
-        } elsif $<lambda-expression> {
+    method expression($/) { 
+        # say $/.keys;die;
+        if $<lambda-expression> {
             my @args = map({$_.made},$<variable-list>);
             my $expr = $<expression>.made;
             make LambdaExpr[@args,$expr].new;
@@ -160,18 +183,26 @@ class HakuActions {
                 @cons.push(ConsNil.new);
             }
             make Cons[@cons].new    
-        } elsif $<operator-expression> {
-            make $<operator-expression>.made;
-        } elsif $<comment-then-expression> {
-            make $<comment-then-expression>.made;
-        } elsif $<apply-expression> {
-            make $<apply-expression>.made;
-        } else {
-            make "EXPR: "~$/;
-        }
+        } else { make $/.values[0].made }
+        # } elsif ($<atomic-expression>) {
+        #     # say $<atomic-expression>.made; 
+        #     make $<atomic-expression>.made
+        # } elsif $<list-expression> {
+        #     # say "LIST "~$<list-expression>.made.raku;
+        #     make $<list-expression>.made
+        # } elsif $<operator-expression> {
+        #     make $<operator-expression>.made;
+        # } elsif $<comparison-expression> {
+        #     make $<comparison-expression>.made;
+        # } elsif $<comment-then-expression> {
+        #     make $<comment-then-expression>.made;
+        # } elsif $<apply-expression> {
+        #     make $<apply-expression>.made;
+        # } else {
+        #     make "EXPR: "~$/;
+        # }
 =begin pod
         | <let-expression>  
-        | <apply-expression> 
         | <comparison-expression>
         | <function-comp-expression>
         | <range-expression>
