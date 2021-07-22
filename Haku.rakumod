@@ -442,7 +442,7 @@ does Comments
         <identifier> [<nochi> <identifier>]+
     }
     token range-expression {
-        <atomic-expression> <nyoro> <atomic-expression>
+        <atomic-expression> <.nyoro> <atomic-expression>
     }
 
 
@@ -522,7 +522,8 @@ grammar Functions is Expression does Keywords does Punctuation {
     token TOP { <function> }
     token function {
         [ <verb> | <noun> ] <.toha>
-        <variable-list> <.de> <.ws>? [<let-expression> | <expression>]　<.function-end>
+        <variable-list> <.de> <.ws>? <expression> <.function-end>
+        # [<let-expression> | <expression>]
     }
 
     token function-end {

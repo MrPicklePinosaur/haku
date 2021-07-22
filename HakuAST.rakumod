@@ -73,6 +73,13 @@ role IfExpr[ $cond, $true-expr,  $false-expr] does HakuExpr  {
 role ListExpr[ @exprs] does HakuExpr {
     has  @.elts = @exprs;
 }
+
+role RangeExpr[ $from-expr,$to-expr] does HakuExpr {
+    has $.from = $from-expr;
+    has $.to = $to-expr;
+}
+
+
 role AtomicExpr does HakuExpr {} 
 # data LambdaExpr = mkLambdaExpr [Variable] HakuExpr
 role LambdaExpr[ @lambda-args, $expr] {

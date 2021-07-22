@@ -58,6 +58,7 @@ class HakuActions {
         #     make $<string>.made;            
         # } 
     }
+
     method list-expression($/) {
         # say $/.raku;
         my @exprs= map({$_.made},$<atomic-expression>);
@@ -75,6 +76,7 @@ class HakuActions {
     method parens-expression($/) {
         make $<operator-expression>.made;
     }
+
     method arg-expression($/) {
         make $/.values[0].made
         # if $<parens-expression> {
@@ -165,12 +167,23 @@ class HakuActions {
         elsif $<lambda-expression> {
             my $lambda-expr=$<lambda-expression>.made;
             make LambdaApplyExpr[@args, $lambda-expr, $partial].new;
-        }
-        
+        }        
     }
+
     method comment-then-expression($/) {
         make $<expression>.made;
     }
+
+    method range-expression($/) {
+        my $from = $<atomic-expression>[0].made;
+        my $to = $<atomic-expression>[1].made;
+        make RangeExpr[$from,$to].new;
+    }
+=begin pod
+        | <let-expression>  
+        | <function-comp-expression>
+=end pod
+
     method expression($/) { 
         # say $/.keys;die;
         if $<lambda-expression> {
@@ -201,15 +214,9 @@ class HakuActions {
         # } else {
         #     make "EXPR: "~$/;
         # }
-=begin pod
-        | <let-expression>  
-        | <comparison-expression>
-        | <function-comp-expression>
-        | <range-expression>
-=end pod
+
     }
     method bind-ha($/) {
-#bind-ha { [ <variable> | <cons-list-expression>] <.ha> <expression>
         my $lhs-expr;
         if $<variable> {
             $lhs-expr = $<variable>.made;
@@ -244,11 +251,26 @@ class HakuActions {
         make Hon[@haku-exprs,@comments].new;
         # make should return a tuple of a list of  HakuExpr and a list of Comment
     }
+    method function($/) {
+        my $name=
+         $<verb> ?? $<verb>.made
+        !! $<noun> ?? $<noun>.made
+        !! '_';
 
+        my @args = map({$_.made},$<variable-list>);        
+        my $body = $<expression>.made;
+        make Function[ $name, @args,  $body].new;        
+    }
     method haku-program($/) {
         # TODO: handle functions
         my @functions=();
         my @comments=();
+        if $<function> {
+            say 'functions';
+        }
+        if $<comment> {
+            say 'comments';
+        }
         if $<hon> {
             # say 'HAKU PROGRAM';
             make HakuProgram[@functions,$<hon>.made,@comments].new;
@@ -263,16 +285,6 @@ class HakuActions {
             make $<haku-program>.made;
         }
     }
-    # method apply-expression($/) {
-        
-    #     my $apply 
-    # }
 
-    # method function-call($/) {
-                     
-
-    #     say %var{$<variable-name>}
-    #         if $<function-name> eq 'say';
-    # }   
 }
 
