@@ -245,7 +245,7 @@ class HakuActions {
         # say 'EXPRS: '~@haku-exprs.raku;
         if $<comment> {
             # In general an array, iterate
-            @comments = map({$_.made}, $<comments>);
+            @comments = map({$_.made}, $<comment>);
         }
          
         make Hon[@haku-exprs,@comments].new;
@@ -266,10 +266,10 @@ class HakuActions {
         my @functions=();
         my @comments=();
         if $<function> {
-            say 'functions';
+            @functions = map({$_.made},$<function>);
         }
         if $<comment> {
-            say 'comments';
+            @comments = map({$_.made}, $<comment>);
         }
         if $<hon> {
             # say 'HAKU PROGRAM';
