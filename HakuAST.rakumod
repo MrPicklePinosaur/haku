@@ -124,8 +124,9 @@ role Function[ $name, @args,  $body] {
 }
 
 # data Hon = mkHon [HakuExpr]
-role Hon[ @main,  @comments] {
-    has HakuExpr @.body = @main;
+role Hon[ @bindings, @exprs,  @comments] {
+    has HakuExpr @.bindings = @bindings;
+    has HakuExpr @.exprs= @exprs;
     has Str @.comments = @comments;
 }
 

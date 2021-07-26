@@ -2,6 +2,7 @@ use v6;
 use Haku;
 use HakuActions;
 # use HakuAST;
+use EmitScheme;
 
 my $hon_str = "本とは
 注　算数　。
@@ -10,8 +11,9 @@ my $hon_str = "本とは
 四十弐
 のことです。";
 
-my $hon_parse = Haku.subparse($hon_str, :actions(HakuActions));
+my $hon_parse = Haku.parse($hon_str, :actions(HakuActions));
 say $hon_parse.made.hon.raku;
+say ppHakuProgram($hon_parse.made);
 die;
 
 my $hon_str_2 = "注

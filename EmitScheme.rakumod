@@ -1,9 +1,9 @@
 use v6;
 use HakuAST;
-sub ppHakuProgram(HakuProgram $p) {
+sub ppHakuProgram(HakuProgram $p) is export {
      my @comments = $p.comments;
      my $comment_str = @comments.map({';' ~ $_}).join("\n");
-     my @functions = $p.functions;
+     my @functions = $p.funcs;
          for @functions -> $function {
             ppFunction($function)
          }     
@@ -25,14 +25,16 @@ sub ppHon($hon) {
     my @comments = $hon.comments;
     my $comment_str = @comments.map({';' ~ $_}).join("\n");
 
-    my HakuExpr $body = $hon.body;
-    my $body_str = ppHakuExpr($body);
-    '(define (本) (let' ~ $body_str ~ '))';
+    my HakuExpr @bind_exprs = $hon.bindings;
+    my HakuExpr @body_exprs = $hon.exprs;
+    my $bindings_str = join("\n",map(&ppHakuExpr,@bind_exprs));
+    my $body_str = join("\n",map(&ppHakuExpr,@body_exprs));
+    "(define (本)\n(let\n(\n$bindings_str\n)\n$body_str\n))";
 }
 
 sub ppHakuExpr(\h) {
     given h {
-        when BindExpr {}
+        when BindExpr { '('~ppHakuExpr(h.lhs)~''~ppHakuExpr(h.rhs)~')' }
         when FunctionApplyExpr {
             if h.partial {
                     # Tricky! We need to know the correck number of args
@@ -41,6 +43,9 @@ sub ppHakuExpr(\h) {
             } else {
                 '(' ~ h.function-name ~ join( ' ' , h.args) ~ ')'
             }            
+        }
+        when ListExpr {
+            '('~ join(' ',map(&ppHakuExpr,h.elts)) ~')'
         }
         when LambdaExpr {
             # h.args 
@@ -62,7 +67,8 @@ sub ppHakuExpr(\h) {
         when Verb { h.verb }
         when Noun { h.noun }
         when BinOpExpr {
-            '(' ~ h.op.op ~ ' ' ~ ppHakuExpr() ~ ' ' ~ ppHakuExpr() ~ ' )' 
+           
+            '(' ~ h.op.op ~ ' ' ~ ppHakuExpr(h.args[0]) ~ ' ' ~ ppHakuExpr(h.args[1]) ~ ' )' 
         }
     }
 }

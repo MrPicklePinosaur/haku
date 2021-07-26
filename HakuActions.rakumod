@@ -89,13 +89,15 @@ class HakuActions {
 
     method operator-noun($/) {
         my $op-kanji= $/.Str;
-        my %nbinops = < '和' '+' '差' '-' '積' '*' '除' '/'>;
+        my %nbinops is Map = < 和 + 差 - 積 * 除 />;
         make BinOp[%nbinops{$op-kanji}].new;    
     }
 
     method operator-verb($/) {
         my $op-kanji= $<operator-verb-kanji>.Str;
-        my %vbinops = < '足' '+' '引' '-' '掛' '*' '割' '/'>;
+
+        my %vbinops is Map = < 足 + 引 - 掛 * 割 />;
+        say "<$op-kanji>" ~ ' =>  ' ~ %vbinops{$op-kanji};
         make BinOp[%vbinops{$op-kanji}].new;
     }
 
@@ -251,7 +253,7 @@ class HakuActions {
             @comments = map({$_.made}, $<comment>);
         }
          
-        make Hon[@haku-exprs,@comments].new;
+        make Hon[@bindings,@exprs,@comments].new;
         # make should return a tuple of a list of  HakuExpr and a list of Comment
     }
     method function($/) {
