@@ -600,3 +600,52 @@ Terminology: http://www.scripts-lab.co.jp/mind/ver8/doc/02-Program-Hyoki.html
 
 A practical question is if it makes sense to parse built-in functions such as 見せて different from other verbs. I guess it would if we have dedicated nodes in the AST for them. But why would we? Basically, if a function is not defined, we can look if it occurs in the list of built-in functions, and if not we throw an error. 
 So there is no reason to have them different.
+
+----
+* In first instance, I'll just emit Scheme. That means when I walk the AST, it is just a one-to-one conversion with the expection of the `cons` pattern matching.
+* So, question 1 is, how to walk the AST. 
+
+Something like this:
+
+sub ppHakuProgram(HakuProgram $p) {
+     my @functions = $p.functions
+         for @functions -> $function {
+            ppFunction($function)
+         }
+     my @comments = ...
+     my $hon = $p.hon;
+     ppHon($hon);
+
+}
+
+sub ppFunction($f) {
+}
+
+sub ppHon($hon) {
+
+}
+
+sub ppHakuExpr($expr) {
+    given $expr {
+        when ...
+    }
+}
+sub ppTerm(Term \p) {         
+        given p {
+            when Var { t.var }
+            when Par { t.par }
+            when Const { "{t.const}" }
+            when Pow { ppTerm(t.term)  ~ '^' ~ "{t.exp}" }
+            when Add {
+                my @pts = map {ppTerm($_)}, |t.terms;
+                "("~join( " + ", @pts)~")"
+            }
+            when Mult {
+                my @pts = map {ppTerm($_)}, |t.terms;
+            }
+        }
+}
+
+
+
+

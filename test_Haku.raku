@@ -13,6 +13,7 @@ my $hon_str = "本とは
 my $hon_parse = Haku.subparse($hon_str, :actions(HakuActions));
 say $hon_parse.made.hon.raku;
 die;
+
 my $hon_str_2 = "注
 
 なに何か　test テスト。

@@ -162,12 +162,15 @@ class HakuActions {
         
         if $<identifier> {
             my $function-name=$<identifier>.made;
-            make FunctionApplyExpr[@args, $function-name,  $partial].new;
+            make FunctionApplyExpr[$function-name, @args, $partial].new;
         } 
         elsif $<lambda-expression> {
             my $lambda-expr=$<lambda-expression>.made;
-            make LambdaApplyExpr[@args, $lambda-expr, $partial].new;
+            make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
         }        
+    }
+    method comment($/) {
+        make $/.Str;
     }
 
     method comment-then-expression($/) {

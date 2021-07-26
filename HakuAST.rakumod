@@ -16,7 +16,7 @@ role Noun[ $noun] does Identifier {
 
 # I could enumerate them here instead
 role BinOp[ $op] {
-    has $.op=$op;
+    has Str $.op=$op;
 }
 
 role ConsExpr {}
@@ -82,17 +82,17 @@ role RangeExpr[ $from-expr,$to-expr] does HakuExpr {
 
 role AtomicExpr does HakuExpr {} 
 # data LambdaExpr = mkLambdaExpr [Variable] HakuExpr
-role LambdaExpr[ @lambda-args, $expr] {
+role LambdaExpr[ @lambda-args, $expr] does HakuExpr {
     has Variable @.args = @lambda-args;
     has HakuExpr $.expr = $expr;
 } 
 
-role FunctionApplyExpr[ @args-exprs, $function-name, $partial] does HakuExpr {
-    has HakuExpr @.args=@args-exprs; 
+role FunctionApplyExpr[ $function-name, @args-exprs, $partial] does HakuExpr {
     has Identifier $.function-name=$function-name;
+    has HakuExpr @.args=@args-exprs; 
     has Bool $.partial = $partial;
 }
-role LambdaApplyExpr[@args-exprs, $lambda-expr, $partial] does HakuExpr {
+role LambdaApplyExpr[$lambda-expr,  @args-exprs, $partial] does HakuExpr {
     has HakuExpr @.args=@args-exprs;
     has LambdaExpr $.lambda=$lambda-expr;
     has Bool $.partial = $partial;
@@ -125,12 +125,12 @@ role Function[ $name, @args,  $body] {
 
 # data Hon = mkHon [HakuExpr]
 role Hon[ @main,  @comments] {
-    has  @.exprs = @main;
-    has @.comments = @comments;
+    has HakuExpr @.body = @main;
+    has Str @.comments = @comments;
 }
 
 role HakuProgram[ @functions, $hon, @comments] {
-    has @.funcs = @functions;
-    has $.hon = $hon;
-    has @.comments = @comments;
+    has Function @.funcs = @functions;
+    has Hon $.hon = $hon;
+    has Str @.comments = @comments;
 }
