@@ -31,48 +31,61 @@ if $horiz_str ~~ /本とは/ {
 
 sub tategakiReader ( Str $file --> Str) {
 
-my $input_file = IO::Path.new( $file ) ;
+    my $input_file = IO::Path.new( $file ) ;
 
 #- Read all lines
-my @lines=();
-my $split_on_spaces=False;
-my $first=True;
-for $input_file.IO.lines -> $line {
+    my @lines=();
+    my $split_on_spaces=False;
+    my $first=True;
+    for $input_file.IO.lines -> $line {
 #- Split each line on the spacers
-    next if $line eq '';
-    if $first and $line ~~/[ ' ' | ' ' | ' ' | '|' ]/ {
-        $split_on_spaces=True;
-        $first=False;
-    }
-    my @chars = $split_on_spaces 
+        next if $line eq '';
+        if $first and $line ~~/[ ' ' | ' ' | ' ' | '|' ]/ {
+            $split_on_spaces=True;
+            $first=False;
+        }
+        my @chars = $split_on_spaces 
             ??  $line.split(/[ ' ' | ' ' | ' ' | '|' ]/)
             !! $line.comb();
-    @lines.push(@chars);
-}
+        @lines.push(@chars);
+    }
 
 #- Find the length of the longest split line
-my $max_length=0;
-for @lines -> @chars {
-    if @chars.elems > $max_length {
-        $max_length = @chars.elems;
-    }
-}   
+    my $max_length=0;
+    for @lines -> @chars {
+        if @chars.elems > $max_length {
+            $max_length = @chars.elems;
+        }
+    }   
 #- Transpose
-my $horiz_str='';
-for 0 .. $max_length - 1 -> $idx {
-for @lines -> @chars {
-    if @chars[$max_length - 1 - $idx]  and  @chars[$max_length - 1 - $idx] ne '　' {
-        $horiz_str~=@chars[$max_length - 1 - $idx];
+    my @horiz_chars=();
+    for 0 .. $max_length - 1 -> $idx {
+        for @lines -> @chars {
+            if @chars[$max_length - 1 - $idx]  {
+                @horiz_chars.push(@chars[$max_length - 1 - $idx]);
+            } else {
+                @horiz_chars.push('　');
+            }
+        }
     }
-}
-}
-
-#$horiz_str ~~ s/　//; 
-if $horiz_str ~~ /本とは/ {
-    return $horiz_str;
-} else {
-    return Nil;
-}
+    my $horiz_str='';
+    my $begin_comment=/<[註注言]>/;
+    my $in_comment=False;
+    for @horiz_chars -> $c {
+        if $c ~~ $begin_comment {
+            $in_comment=True;
+        } elsif $c eq '。' {
+            $in_comment = False;
+        }
+        if (($c eq '　' and $in_comment) or $c ne '　') {
+            $horiz_str~=$c;
+        }
+    }
+    if $horiz_str ~~ /本とは/ {
+        return $horiz_str;
+    } else {
+        return Nil;
+    }
 }
 
 
