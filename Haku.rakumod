@@ -265,7 +265,7 @@ does Nouns
 
     token toha { 'とは' }
 
-    token koto { 'こと' }
+    token koto { 'こと' | '事' }
 
     # For Haku
 
