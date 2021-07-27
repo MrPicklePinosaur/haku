@@ -61,12 +61,13 @@ for @lines -> @chars {
 my $horiz_str='';
 for 0 .. $max_length - 1 -> $idx {
 for @lines -> @chars {
-    if @chars[$idx]  {
-        $horiz_str~=@chars[$idx];
+    if @chars[$max_length - 1 - $idx]  and  @chars[$max_length - 1 - $idx] ne '　' {
+        $horiz_str~=@chars[$max_length - 1 - $idx];
     }
 }
 }
 
+#$horiz_str ~~ s/　//; 
 if $horiz_str ~~ /本とは/ {
     return $horiz_str;
 } else {
