@@ -323,7 +323,6 @@ role Comments does Punctuation does Blanks {
     token comment-start { '註' | '注' | '言' }
     token comment-chars { 
          <hiragana> | <katakana> | <kanji> | <word> | <blank>
-    # < -[註注言。] > 
     }
     token comment { <.comment-start> <comment-chars>+ <.full-stop> <.ws>? }
 }

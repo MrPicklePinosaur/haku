@@ -69,12 +69,14 @@ sub tategakiReader ( Str $file --> Str) {
         }
     }
     my $horiz_str='';
-    my $begin_comment=/<[註注言]>/;
+    my $begin_comment=/<[註注言「『《]>/;   
+    my $end_comment=/<[。」』》]>/;
+
     my $in_comment=False;
     for @horiz_chars -> $c {
         if $c ~~ $begin_comment {
             $in_comment=True;
-        } elsif $c eq '。' {
+        } elsif $c ~~ $end_comment {
             $in_comment = False;
         }
         if (($c eq '　' and $in_comment) or $c ne '　') {
