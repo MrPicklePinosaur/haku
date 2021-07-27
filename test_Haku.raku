@@ -2,7 +2,7 @@ use v6;
 use Haku;
 use HakuActions;
 # use HakuAST;
-use EmitScheme;
+use Scheme;
 
 my $hon_str = "本とは
 注　算数　。
