@@ -483,13 +483,13 @@ does Comments
     }
 
     token baai-ifthen {
-        <condition-expression> <baaiha>   <expression> [<desu> [<ga> | <kedo> ]]? <comma>? <ws>?
-        <soudenai> <baaiha> <comma>? <ws>? <expression>
+        <condition-expression> <.baaiha>   <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
+        <.soudenai> <.baaiha> <.comma>? <.ws>? <expression>
     }
     token moshi-ifthen {
         <.moshi>
-        <condition-expression>  <nara> <expression> [<desu> [<ga> | <kedo> ]]? <comma>? <ws>?
-        <soudenai> <comma>? <ws>?　<expression> <desu>?
+        <condition-expression>  <.nara> <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
+        <.soudenai> <.comma>? <.ws>?　<expression> <.desu>?
     }
 
     token ifthen {
@@ -500,19 +500,19 @@ does Comments
     # Map
     token map-expression {
         [ <variable> | <list-expression> | <range-expression> ] 
-        [ <nokaku> <lambda-expression> 
+        [ <.nokaku> <lambda-expression> 
         |
-        <nominnaga>　[ <identifier> | <comp-expression> ] 
+        <.nominnaga>　[ <identifier> | <comp-expression> ] 
         ]
-        <wo> <shazou> 
+        <.wo> <.shazou> 
     }
 
     # Fold
     token fold-expression {
         [ <variable> | <list-expression> | <range-expression> ] 
-        <nominnaga>
-        [ <operator-noun> | <identifier> | <verb> <no> ] <wo> <expression> <to-particle> <tatamu> 
-    } 
+        <.nominnaga>
+        [ <operator-noun> | <identifier> | <verb> <.no> ] <.wo> <expression> <.to-particle> <.tatamu> 
+    }
 
 } # End of Expression
 

@@ -83,6 +83,24 @@ There is no operator precedence handling, so combined expressions need parenthes
     concatenation 
     nesting
 
+### Maps
+
+- maps with the following functions:
+    length 長さ 
+    has　マップにカギあったら
+    insert　マップにカギとバリューを入れる
+    lookup　マップにカギを正引きする・探索する
+    delete　マップからカギを消す
+    keys    マップの鍵
+    values  マップの対応値
+
+### System call
+
+    機関で「ls」する
+
+For interpolation: 《バリュー》    
+Returns a string.
+
 ### I/O
 - minimal I/O: open/close files, read from/write to files, print to stdout
 
@@ -602,7 +620,9 @@ A practical question is if it makes sense to parse built-in functions such as �
 So there is no reason to have them different.
 
 ----
-* In first instance, I'll just emit Scheme. That means when I walk the AST, it is just a one-to-one conversion with the expection of the `cons` pattern matching.
+* In first instance, I'll just emit Scheme. That means when I walk the AST, it is just a one-to-one conversion with the expection of the `cons` pattern matching. 
+On second thought, would it not be better to emit Raku? Then I can either eval() it or call raku via a system call.
+
 * So, question 1 is, how to walk the AST. 
 
 Something like this:
