@@ -22,6 +22,7 @@ sub yokogakiReader(Str $file) {
 my $input_file = IO::Path.new( $file ) ;
 my $horiz_str = $input_file.IO.slurp;
 if $horiz_str ~~ /本とは/ {
+    $horiz_str = $horiz_str.split(/\n/).join('');
     return $horiz_str;
 } else {
     return Nil;
