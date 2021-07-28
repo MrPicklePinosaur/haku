@@ -405,7 +405,7 @@ does Comments
     token empty {
         <open-kaku><close-kaku>
     }
-    token cons-list-expression { <variable> [ <.cons> <variable>]*? [<.cons> [<kuu>|<empty>] ]? }
+    token cons-list-expression { <variable> [ <.cons> [<variable>|<kuu>|<empty>]]* } #? [<.cons> [<kuu>|<empty>] ]? }
     
     token variable-list { <variable> [ <.list-operator> <variable> ]* }
 

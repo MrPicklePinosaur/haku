@@ -14,23 +14,21 @@ my $hon_str = "本とは
 my $hon_parse = Haku.parse($hon_str, :actions(HakuActions));
 say $hon_parse.made.hon.raku;
 say ppHakuProgram($hon_parse.made);
-die;
+#die;
 
-my $hon_str_2 = "注
-
-なに何か　test テスト。
+my $hon_str_2 = "注 なに何か　test テスト。
 
 本とは
-
 カズ達は六と七で、
 カズ達を聴こえる、
-イ・ロ・空はカズ達、
+イ・ロ・空はカズで、
 シンカズはイとロの和で、
 シンカズを見せる
 のことです。";
 
-my $hon_parse_2 = Haku.subparse($hon_str_2);#, :actions(HakuActions));
-say $hon_parse_2;
+my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
+say $hon_parse_2.made.hon.raku;
+say ppHakuProgram($hon_parse_2.made);
 die;
 
 # say "Try parsing 六"と七の積";

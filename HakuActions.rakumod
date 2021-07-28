@@ -158,6 +158,12 @@ class HakuActions {
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
 
+    method arg-expression-list($/) {
+        say '<'~$/.Str~'>';
+        my @args = map({$_.made},$<arg-expression>);
+        say @args.raku;
+        make @args;
+    }
     method apply-expression($/) {
         my @args = $<arg-expression-list>.made;
         my $partial = $<dake> ?? True !! False;
@@ -189,19 +195,33 @@ class HakuActions {
         | <function-comp-expression>
 =end pod
 
-    method expression($/) { 
-        # say $/.keys;die;
-        if $<lambda-expression> {
-            my @args = map({$_.made},$<variable-list>);
-            my $expr = $<expression>.made;
-            make LambdaExpr[@args,$expr].new;
-        } elsif $<cons-list-expression> {
-            my @cons = map({$_.made},$<variable>);
+    method cons-list-expression($/) {
+            my @cons = map({ConsVar[$_.Str].new},$<variable>);
             if $<kuu> or $<empty> {
                 @cons.push(ConsNil.new);
             }
             make Cons[@cons].new    
-        } else { make $/.values[0].made }
+    }
+    method lambda-expression($/) {
+            my @args = map({$_.made},$<variable-list>);
+            my $expr = $<expression>.made;
+            make LambdaExpr[@args,$expr].new;
+    }
+    method expression($/) { 
+        # say $/.keys;die;
+#        if $<lambda-expression> {
+#            my @args = map({$_.made},$<variable-list>);
+#            my $expr = $<expression>.made;
+#            make LambdaExpr[@args,$expr].new;
+#        } elsif $<cons-list-expression> {
+#            my @cons = map({$_.made},$<variable>);
+#            if $<kuu> or $<empty> {
+#                @cons.push(ConsNil.new);
+#            }
+#            make Cons[@cons].new    
+#        } else { 
+            make $/.values[0].made;
+#}
         # } elsif ($<atomic-expression>) {
         #     # say $<atomic-expression>.made; 
         #     make $<atomic-expression>.made
