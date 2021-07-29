@@ -1,5 +1,7 @@
 use v6;
-my %katakana is Map = < ア A
+
+my %katakana is Map = < 
+ア A
 ィ _I
 イ I
 ゥ _U
@@ -88,6 +90,7 @@ my %katakana is Map = < ア A
 ヸ VI
 ヹ VE
 ヺ VO 
+達 TACHI
 >;
 
 my %hiragana is Map = <
@@ -256,7 +259,7 @@ The 1,945 常用漢字 (general use kanji) have been standardized by the Japanes
 In addition to standardizing the set of kanji, a restricted set of ON and KUN readings have been specified for those kanji. That restricted set of readings has been included in the following table.
 
 KANJI	READING(S)
-=end pod
+#end pod
 my %joyo_readings is Map = <
 亜	ア
 哀	アイ_あわれ_あわれむ
@@ -2204,6 +2207,7 @@ my %joyo_readings is Map = <
 湾	ワン
 腕	ワン_うで
 >; #  Joyo readings
+=end pod
 
 my %joyo_on_readings is Map = 
 '骨' ,<コツ>,
@@ -5523,14 +5527,26 @@ sub hiraganaToRomaji (Str $kstr --> Str) is export  {
     return $r_str.lc;
 }
 
+# This is not so good:
+# When there is hiragana, I assume it's a single kanji and it's a verb
+# When there are only kanji, I use the ON readings
+# What I should do is see if there are 2 kanji in a row
 sub kanjiToRomaji (Str $kstr --> Str) is export  {
-    # my %test_joyo_kun_verb_readings is Map = '食',<たべる くう>
-    # ,'AA',<BOO>;
-    if ($kstr ~~ /<[あ..ん]>/ ) {
+# There are 1 or 2 kanji and then some hiragana
+    if $kstr.chars > 1 and not $kstr.substr(0,2) ~~/<[あ..ん]>/ and $kstr ~~ /<[あ..ん]>/  {
+        my $kanji=kanjiToRomaji($kstr.substr(0,2));
+        my $kana = hiraganaToRomaji($kstr.substr(2));
+        my $str = $kanji ~ $kana;
+        $str ~~ s/aa/awa/;
+        return $str;
+
+    } elsif $kstr.chars > 1 and $kstr ~~ /<[あ..ん]>/  {
+    
         my ($kanji,@rest) = $kstr.comb;
         if %joyo_kun_verb_readings{$kanji}:exists {
             my @kana = %joyo_kun_verb_readings{$kanji};
             # say $kanji,':',@kana.raku;
+                # say 'HERE0';
             if @rest {
                 my $r = join('',@rest);
                 for @kana -> $ks {
@@ -5539,7 +5555,10 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                         return hiraganaToRomaji($ks);
                     }
                 }
+                return hiraganaToRomaji(@kana[0]);
+                # return kanjiToRomaji($kanji);
             } else {
+                # say 'HERE1';
                 return hiraganaToRomaji(@kana[0]);
             }
         } elsif %joyo_kun_non_verb_readings{$kanji}:exists {        
@@ -5557,21 +5576,22 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                 return hiraganaToRomaji(@kana[0]);
             } 
         } else {
-            $kanji.uniname.substr(*-6);
+            'v' ~ $kstr.uniname.substr(*-4).lc;        
         }
 
     } else {
         my ($kanji,@rest) = $kstr.comb;
         if %joyo_on_readings{$kanji}:exists {
             my @kana = %joyo_on_readings{$kanji};
-            say "KANA: "~ @kana[0];
+#say "KANA: "~ @kana[0];
             my $kstr = katakanaToRomaji(@kana[0]); # Just take the first one
             if @rest {
                 $kstr ~= kanjiToRomaji(@rest.join(''));
             }
+            $kstr ~~ s/tsuh/pp/;
             return $kstr
         } else {
-            $kstr.uniname.substr(*-6);        
+            'v' ~ $kstr.uniname.substr(*-4).lc;        
         }
     }
 }
@@ -5598,7 +5618,10 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
 # }
 
 #  say %joyo_kun_verb_readings.raku;
-say kanjiToRomaji('食べる');
-say kanjiToRomaji('発音');
+#say kanjiToRomaji('食べる');
+#say kanjiToRomaji('発音');
 
-say kanjiToRomaji('出発');
+#say kanjiToRomaji('出発');
+#say kanjiToRomaji('泊');
+#say kanjiToRomaji('可愛い');
+# say kanjiToRomaji('聴こえる');

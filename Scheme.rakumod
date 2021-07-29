@@ -1,5 +1,7 @@
 use v6;
 use HakuAST;
+use Romaji;
+
 sub ppHakuProgram(HakuProgram $p) is export {
      my @comments = $p.comments;
      my $comment_str = @comments.map({';' ~ $_}).join("\n");
@@ -29,19 +31,20 @@ sub ppHon($hon) {
     my HakuExpr @body_exprs = $hon.exprs;
     my $bindings_str = join("\n",map(&ppHakuExpr,@bind_exprs));
     my $body_str = join("\n",map(&ppHakuExpr,@body_exprs));
-    "(define (本)\n(let\n(\n$bindings_str\n)\n$body_str\n))";
+    "(define (hon)\n(let\n(\n$bindings_str\n)\n$body_str\n))";
 }
 
 sub ppHakuExpr(\h) {
     given h {
-        when BindExpr { '('~ppHakuExpr(h.lhs)~''~ppHakuExpr(h.rhs)~')' }
+        when BindExpr { '(' ~ ppHakuExpr(h.lhs) ~ ' ' ~ ppHakuExpr(h.rhs) ~ ')' }
         when FunctionApplyExpr {
+            # die h.raku;
             if h.partial {
                     # Tricky! We need to know the correck number of args
                     # So we need the definition 
                     # So we need state
             } else {
-                '(' ~ h.function-name ~ join( ' ' , h.args) ~ ')'
+                '(' ~ ppFunctionName(h.function-name) ~ ' ' ~ join( ' ' , h.args.map({ppHakuExpr($_)}) ) ~ ')'
             }            
         }
         when ListExpr {
@@ -63,12 +66,20 @@ sub ppHakuExpr(\h) {
         }
         when Number { h.num }
         when String { join('',h.chars) }
-        when Variable { h.var}
+        when Variable { katakanaToRomaji(h.var)}
         when Verb { h.verb }
         when Noun { h.noun }
         when BinOpExpr {
            
             '(' ~ h.op.op ~ ' ' ~ ppHakuExpr(h.args[0]) ~ ' ' ~ ppHakuExpr(h.args[1]) ~ ' )' 
         }
+    }
+}
+
+sub ppFunctionName(\fn) {
+    given fn {
+        when Verb { kanjiToRomaji(fn.verb) }
+        when Noun { kanjiToRomaji(fn.noun) }
+        when Variable { katakanaToRomaji(fn.var)}
     }
 }
