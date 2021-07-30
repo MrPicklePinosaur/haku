@@ -5588,7 +5588,14 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
             if @rest {
                 $kstr ~= kanjiToRomaji(@rest.join(''));
             }
-            $kstr ~~ s/tsuh/pp/;
+            # e.g. shutsupatsu -> shuppatsu
+            if $kstr ~~/^\w+?tsuh/ {
+                $kstr ~~ s/tsuh/pp/;
+            }
+            # e.g. senhai -> senpai
+            if $kstr ~~/^\w+?nh/ {
+                $kstr ~~ s/nh/np/;
+            }
             return $kstr
         } else {
             'v' ~ $kstr.uniname.substr(*-4).lc;        

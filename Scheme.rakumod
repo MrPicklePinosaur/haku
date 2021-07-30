@@ -23,6 +23,15 @@ sub ppFunction($f) {
     '(define (' ~ $name ~ $args_str ~ ') ' ~ $body_str ~ ')';
 }
 
+sub ppFunctionName(\fn) {
+    given fn {
+        when Verb { kanjiToRomaji(fn.verb) }
+        when Noun { kanjiToRomaji(fn.noun) }
+        when Variable { katakanaToRomaji(fn.var)}
+    }
+}
+
+
 sub ppHon($hon) {
     my @comments = $hon.comments;
     my $comment_str = @comments.map({';' ~ $_}).join("\n");
@@ -31,12 +40,42 @@ sub ppHon($hon) {
     my HakuExpr @body_exprs = $hon.exprs;
     my $bindings_str = join("\n",map(&ppHakuExpr,@bind_exprs));
     my $body_str = join("\n",map(&ppHakuExpr,@body_exprs));
-    "(define (hon)\n(let\n(\n$bindings_str\n)\n$body_str\n))";
+    "(define (hon)\n(letrec\n(\n$bindings_str\n)\n$body_str\n))";
+}
+
+sub ppConsLhsBindExpr(\h) {
+    my @elts = h.lhs.cons;
+    die 'Only 4 consecutive cons operations are supported' if @elts.elems>5;
+    my $rhs = ppHakuExpr(h.rhs);
+    my @crs =<car cadr caddr cadddr cadddr>;
+    my @cons_bindings=();
+    for @elts -> $elt {
+        given $elt {
+            when ConsVar {
+                @cons_bindings.push( '(' ~ katakanaToRomaji($elt.var) ~ ' (' ~ @crs.shift ~ ' ' ~ $rhs ~ ')' )
+            }
+            # when ConsNil {
+
+            # }
+        }            
+    }
+    return @cons_bindings.join("\n");
 }
 
 sub ppHakuExpr(\h) {
     given h {
-        when BindExpr { '(' ~ ppHakuExpr(h.lhs) ~ ' ' ~ ppHakuExpr(h.rhs) ~ ')' }
+        when BindExpr { 
+            given h.lhs {
+                when Cons {
+                    ppConsLhsBindExpr(h);
+                }
+                default {
+                    '(' ~ ppHakuExpr(h.lhs) ~ ' ' ~ ppHakuExpr(h.rhs) ~ ')' 
+                }
+
+            }
+            
+            }
         when FunctionApplyExpr {
             # die h.raku;
             if h.partial {
@@ -51,17 +90,19 @@ sub ppHakuExpr(\h) {
             '('~ join(' ',map(&ppHakuExpr,h.elts)) ~')'
         }
         when LambdaExpr {
+            die 'TODO LambdaExpr';
             # h.args 
             # h.expr 
 
         }
+
         when LambdaApplyExpr {
             if h.partial {
                     # Tricky! We need to know the correck number of args
                     # So we need the definition 
                     # So we need state
             } else {
-                '(lambda ' ~ ppHakuExpr(h.lambda) ~  join( ' ' , h.args) ~ ')'
+                '(lambda ' ~ ppHakuExpr(h.lambda) ~  ' ' ~ join( ' ' , h.args.map({ppHakuExpr($_)}) ) ~ ')'
             }            
         }
         when Number { h.num }
@@ -76,10 +117,3 @@ sub ppHakuExpr(\h) {
     }
 }
 
-sub ppFunctionName(\fn) {
-    given fn {
-        when Verb { kanjiToRomaji(fn.verb) }
-        when Noun { kanjiToRomaji(fn.noun) }
-        when Variable { katakanaToRomaji(fn.var)}
-    }
-}
