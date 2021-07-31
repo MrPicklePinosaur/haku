@@ -5504,13 +5504,17 @@ sub katakanaToRomaji(Str $kstr --> Str) is export {
     my @ks = $kstr.comb;
     my @rs = @ks.map({%katakana{$_}});
     my $r_str = @rs.join('');
+    while $r_str ~~/_TU(.)/ {
+        my $c=$0;
+        $r_str ~~ s/_TU$c/$c$c/;
+    }
     while $r_str ~~/_/ {
         for %combined_chars.keys -> $c {
             my $cc = %combined_chars{$c};
             $r_str ~~ s/$c/$cc/;  
         }
     }
-    return $r_str.lc;
+    return $r_str;
 }
 
 sub hiraganaToRomaji (Str $kstr --> Str) is export  {
@@ -5518,6 +5522,10 @@ sub hiraganaToRomaji (Str $kstr --> Str) is export  {
     my @ks = $kstr.comb;
     my @rs = @ks.map({%hiragana{$_}});
     my $r_str = @rs.join('');
+    while $r_str ~~/_TU(.)/ {
+        my $c=$0;
+        $r_str ~~ s/_TU$c/$c$c/;
+    }
     while $r_str ~~/_/ {
         for %combined_chars.keys -> $c {
             my $cc = %combined_chars{$c};
@@ -5632,3 +5640,5 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
 #say kanjiToRomaji('泊');
 #say kanjiToRomaji('可愛い');
 # say kanjiToRomaji('聴こえる');
+
+#say katakanaToRomaji('ケッカ');

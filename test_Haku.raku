@@ -3,34 +3,58 @@ use Haku;
 use HakuActions;
 # use HakuAST;
 use Scheme;
+#(五足す三）
+#四足す弐、
+# アクセラは（三足す五）を出るで、
+# （三足す五）を出るで、
+my $hon_str = "【四足す（五を着る）】を出る";
+# "本とは
+# アクセラは【四足す（五足す三）】、
+# （三足す五）を出る、
+# アクセラ
+# のことです。";
 
-my $hon_str = "本とは
+my $hon_parse =  Expression.subparse($hon_str);#:actions(HakuActions));
+say $hon_parse;
+die;
+
+
+#（四をラムダする）を見せる
+
+my $hon_str_1 = "本とは
 注　算数　。
 カズ達は六と七で、
 六足す七、
 四十弐
 のことです。";
 
-my $hon_parse = Haku.parse($hon_str, :actions(HakuActions));
-say $hon_parse.made.hon.raku;
-say ppHakuProgram($hon_parse.made);
+#my $hon_parse_1 = Haku.parse($hon_str_1, :actions(HakuActions));
+#say $hon_parse_1.made.hon.raku;
+#say ppHakuProgram($hon_parse_1.made);
 #die;
 
 my $hon_str_2 = "注 なに何か　test テスト。
 
 本とは
-カズ達は六と七で、
-カズ達を聴こえる、
-イ・ロ・空はカズ達で、
+ラムダは或エクスでエクス掛けるエクスです、
+カズ達は八十八と七千百と五十五で、
+言　カズ達を聴こえる。
+イ・ロ・ハ・空はカズ達で、
 シンカズはイとロの和で、
-カズ達を聞く、
-シンカズを見せる
+注　カズ達を聞く。
+シンカズを見せる、
+ケッカは三十弐をラムダする、
+ケッカを見せる
 のことです。";
 
+#言　ケッカは四をラムダする。
 my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
-say $hon_parse_2.made.hon.raku;
+#my $hon_parse_2 = Haku.subparse($hon_str_2, :actions(HakuActions));
+#say $hon_parse_2;die;
+
+#say $hon_parse_2.made.hon.raku;
 say ppHakuProgram($hon_parse_2.made);
-die;
+exit;
 
 # say "Try parsing 六"と七の積";
 # my $m = Haku.parse("六と七の積");

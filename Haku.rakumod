@@ -42,7 +42,7 @@ role Characters {
     token katakana { 
         # Using Block hangs
         # <:Block('Katakana')> 
-        <[ア..ヺ]>
+        <[ア..ヺー]>
     }
 
     # I might allow A-Z as well for identifiers
@@ -81,7 +81,7 @@ role Punctuation {
     token comma { '、' }
     token semicolon { '；' }    
     token colon { '：' }
-    token interpunct { '・' } # nakaguro
+    token interpunct { '・' } # nakaguro 
     token punctuation { <full-stop> | <comma> | <semicolon> | <colon> }
     token delim { [<full-stop> | <comma> | <semicolon>] <ws>? }
 
@@ -199,9 +199,10 @@ role Auxiliaries {
 
 role Operators does Characters does Punctuation 
 {
+#                         +       -      *      /
     token operator-noun { '和' | '差' | '積' | '除' }
     token operator-verb-kanji { '足' | '引' | '掛' | '割' }
-    token operator-verb { <operator-verb-kanji> <hiragana>+? }    
+    token operator-verb { <operator-verb-kanji> <hiragana>*? <verb-ending> }    
     token list-operator { <to-particle> | <comma>}
     token nochi { '後' | 'のち' } # g . f
     token aru { '或' } # the \ operator
@@ -261,9 +262,11 @@ does Nouns
     token nominnaga { 'の皆が' }
     token shazou { '写像' <sura> }     
     token tatamu { '畳' <mu-endings> }
-    # For Function
+    # For Function and Hon
 
     token toha { 'とは' }
+
+    token toiu { 'という' | 'と言う' }
 
     token koto { 'こと' | '事' }
 
@@ -373,9 +376,9 @@ does Comments
  
     token atomic-expression {  <number> | <string> | <mu> | <kuu> | <identifier>   }
     token parens-expression { 
-        [ <.open-maru> <operator-expression> <.close-maru> ] |
-        [ <.open-sumitsuki> <operator-expression> <.close-sumitsuki> ] |
-        [ <.open-sen> <operator-expression> <.close-sen> ] 
+        [ <.open-maru> <expression> <.close-maru> ] |
+        [ <.open-sumitsuki> <expression> <.close-sumitsuki> ] |
+        [ <.open-sen> <expression> <.close-sen> ] 
     }
     token kaku-parens-expression { <.open-kaku> [<list-expression> | <range-expression>] <.close-kaku> }
 
@@ -423,18 +426,20 @@ does Comments
         <comment>+ <expression>
     }
     token expression {                     
-          <lambda-expression> 
+        [  <lambda-expression>         
         | <let-expression>  
         | <apply-expression> 
         | <operator-expression>
         | <comparison-expression>
         | <function-comp-expression>
+        ] || 
+        [ <parens-expression>  
         | <range-expression>
         | <list-expression>
         | <cons-list-expression>        
         | <atomic-expression>              
         | <comment-then-expression>
-        
+        ]
     }
 
     token function-comp-expression {
@@ -526,7 +531,7 @@ grammar Functions is Expression does Keywords does Punctuation {
     }
 
     token function-end {
-         <.ws>? <no>? <koto> <desu> <full-stop>
+         <.ws>? [<no>|<toiu>]? <koto> <desu> <full-stop>
     }
 }
 

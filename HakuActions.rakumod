@@ -97,7 +97,7 @@ class HakuActions {
         my $op-kanji= $<operator-verb-kanji>.Str;
 
         my %vbinops is Map = < 足 + 引 - 掛 * 割 />;
-        say "<$op-kanji>" ~ ' =>  ' ~ %vbinops{$op-kanji};
+#say "<$op-kanji>" ~ ' =>  ' ~ %vbinops{$op-kanji};
         make BinOp[%vbinops{$op-kanji}].new;
     }
 
@@ -112,6 +112,7 @@ class HakuActions {
         my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
+#say "Action:VERB-BINOP:" ~ $op.raku ~ ' ' ~ $lhs-expr.raku ~ ', ' ~ $rhs-expr.raku;
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
     # token verb-operator-expression-infix { <arg-expression> <operator-verb> <arg-expression> }
@@ -120,20 +121,11 @@ class HakuActions {
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
                     # say 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
-        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new;
+        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
 
     method operator-expression($/) {
         make $/.values[0].made
-        # if $<noun-operator-expression> {
-        #     make $<noun-operator-expression>.made;
-        # }
-        # elsif $<verb-operator-expression> {
-        #     make $<verb-operator-expression>.made;
-        # }
-        # elsif $<verb-operator-expression-infix> {
-        #     make $<verb-operator-expression-infix>.made;
-        # }
     }
 
     method comparison-expression($/) {
@@ -159,9 +151,9 @@ class HakuActions {
     }
 
     method arg-expression-list($/) {
-        say '<'~$/.Str~'>';
+#say '<'~$/.Str~'>';
         my @args = map({$_.made},$<arg-expression>);
-        say @args.raku;
+#       say @args.raku;
         make @args;
     }
     method apply-expression($/) {
@@ -202,8 +194,13 @@ class HakuActions {
             }
             make Cons[@cons].new    
     }
+    method variable-list($/) {
+        my @args = map({$_.made},$<variable>);
+        make @args;
+    } 
     method lambda-expression($/) {
-            my @args = map({$_.made},$<variable-list>);
+#say "VARLIST: "~$<variable-list>.made.raku;
+            my @args = $<variable-list>.made;
             my $expr = $<expression>.made;
             make LambdaExpr[@args,$expr].new;
     }

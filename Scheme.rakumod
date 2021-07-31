@@ -25,7 +25,14 @@ sub ppFunction($f) {
 
 sub ppFunctionName(\fn) {
     given fn {
-        when Verb { kanjiToRomaji(fn.verb) }
+        when Verb { 
+        my $f_name = kanjiToRomaji(fn.verb);
+        if $f_name ~~ / ^ mise / {
+         return 'displayln'
+        } else {
+        $f_name
+        }
+        }
         when Noun { kanjiToRomaji(fn.noun) }
         when Variable { katakanaToRomaji(fn.var)}
     }
@@ -40,7 +47,7 @@ sub ppHon($hon) {
     my HakuExpr @body_exprs = $hon.exprs;
     my $bindings_str = join("\n",map(&ppHakuExpr,@bind_exprs));
     my $body_str = join("\n",map(&ppHakuExpr,@body_exprs));
-    "(define (hon)\n(letrec\n(\n$bindings_str\n)\n$body_str\n))";
+    "(define (hon)\n(letrec\n(\n$bindings_str\n)\n$body_str\n))\n\n(hon)\n";
 }
 
 sub ppConsLhsBindExpr(\h) {
@@ -49,10 +56,12 @@ sub ppConsLhsBindExpr(\h) {
     my $rhs = ppHakuExpr(h.rhs);
     my @crs =<car cadr caddr cadddr cadddr>;
     my @cons_bindings=();
+# FIXME: if the last elt is Nil, this is OK, but otherwise the final var is the cdr or equivalent.
+# So we should remove the last elt and check it. Then we decide on cdr etc  based on the number of elts
     for @elts -> $elt {
         given $elt {
             when ConsVar {
-                @cons_bindings.push( '(' ~ katakanaToRomaji($elt.var) ~ ' (' ~ @crs.shift ~ ' ' ~ $rhs ~ ')' )
+                @cons_bindings.push( '(' ~ katakanaToRomaji($elt.var) ~ ' (' ~ @crs.shift ~ ' ' ~ $rhs ~ '))' )
             }
             # when ConsNil {
 
@@ -77,7 +86,6 @@ sub ppHakuExpr(\h) {
             
             }
         when FunctionApplyExpr {
-            # die h.raku;
             if h.partial {
                     # Tricky! We need to know the correck number of args
                     # So we need the definition 
@@ -87,12 +95,11 @@ sub ppHakuExpr(\h) {
             }            
         }
         when ListExpr {
-            '('~ join(' ',map(&ppHakuExpr,h.elts)) ~')'
+            '(list '~ join(' ',map(&ppHakuExpr,h.elts)) ~')'
         }
         when LambdaExpr {
-            die 'TODO LambdaExpr';
-            # h.args 
-            # h.expr 
+                '(lambda ('  ~ join( ' ' , h.args.map({ppHakuExpr($_)}) ) ~ ') '
+             ~ ppHakuExpr(h.expr) ~ ')'; 
 
         }
 
@@ -111,8 +118,7 @@ sub ppHakuExpr(\h) {
         when Verb { h.verb }
         when Noun { h.noun }
         when BinOpExpr {
-           
-            '(' ~ h.op.op ~ ' ' ~ ppHakuExpr(h.args[0]) ~ ' ' ~ ppHakuExpr(h.args[1]) ~ ' )' 
+ '(' ~ h.op.op ~ ' ' ~ ppHakuExpr(h.args[0]) ~ ' ' ~ ppHakuExpr(h.args[1]) ~ ' )' 
         }
     }
 }
