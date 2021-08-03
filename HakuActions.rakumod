@@ -170,7 +170,7 @@ class HakuActions {
         }        
     }
     method comment($/) {
-        make $/.Str;
+        make $<comment-chars>.map({$_.Str}).join('');
     }
 
     method comment-then-expression($/) {

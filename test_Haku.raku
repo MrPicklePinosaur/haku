@@ -38,7 +38,7 @@ my $hon_str_2 = "注 なに何か　test テスト。
 本とは
 ラムダは或エクスでエクス掛けるエクスです、
 カズ達は八十八と七千百と五十五で、
-言　カズ達を聴こえる。
+注意　カズ達を聴こえる。
 イ・ロ・ハ・空はカズ達で、
 シンカズはイとロの和で、
 注　カズ達を聞く。
@@ -77,7 +77,9 @@ my $hon_str_2 = "注 なに何か　test テスト。
 # ワイがサイ割る弐
 # の返値
 # FIXME: 事 instead of こと gives a parse fail!
-my $kono_let_func_str="試すとはサイとワイでサイのことです。
+my $kono_let_func_str="註 Function　。
+試すとはサイとワイでサイのことです。
+註 Main　。
 本とは 四十弐を試すの事です。";
 my $kono_let_func = Haku.parse($kono_let_func_str, :actions(HakuActions));
 # say $kono_let_func ;die;

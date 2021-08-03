@@ -4,7 +4,7 @@ use Romaji;
 
 sub ppHakuProgram(HakuProgram $p) is export {
      my @comments = $p.comments;
-     my $comment_str = @comments.map({';' ~ $_}).join("\n");
+     my $comment_str = @comments.map({';' ~ $_}).join("\n") ~ "\n";
      my $function_strs = '';
      my @functions = $p.funcs;
          for @functions -> $function {
