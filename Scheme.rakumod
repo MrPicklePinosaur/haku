@@ -5,22 +5,26 @@ use Romaji;
 sub ppHakuProgram(HakuProgram $p) is export {
      my @comments = $p.comments;
      my $comment_str = @comments.map({';' ~ $_}).join("\n");
+     my $function_strs = '';
      my @functions = $p.funcs;
          for @functions -> $function {
-            ppFunction($function)
+            $function_strs ~= ppFunction($function) ~ "\n";
          }     
      my $hon = $p.hon;
-     ppHon($hon);
+     my $hon_str= ppHon($hon);
+     return $comment_str ~ $function_strs ~ $hon_str;
 
 }
 
 sub ppFunction($f) {
-    my Str $name = $f.name ;
-    my Variable @args = $f.args;
-    my $args_str = @args.join( ' ' );
+    # die $f.name;
+    my Identifier $name = $f.name ;
+    my @args = $f.args;
+    # die $f.args.raku;
+    my $args_str = @args.map(&ppHakuExpr).join( ' ' );
     my HakuExpr $body = $f.body;
     my $body_str = ppHakuExpr($body);
-    '(define (' ~ $name ~ $args_str ~ ') ' ~ $body_str ~ ')';
+    '(define (' ~ ppFunctionName($name) ~ ' ' ~  $args_str ~ ') ' ~ $body_str ~ ')';
 }
 
 sub ppFunctionName(\fn) {

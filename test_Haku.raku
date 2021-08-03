@@ -47,14 +47,9 @@ my $hon_str_2 = "注 なに何か　test テスト。
 【ケッカとシンカズの和】を見せる
 のことです。";
 
-#言　ケッカは四をラムダする。
-my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
-#my $hon_parse_2 = Haku.subparse($hon_str_2, :actions(HakuActions));
-#say $hon_parse_2;die;
-
-#say $hon_parse_2.made.hon.raku;
-say ppHakuProgram($hon_parse_2.made);
-exit;
+#my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
+#say ppHakuProgram($hon_parse_2.made);
+#exit;
 
 # say "Try parsing 六"と七の積";
 # my $m = Haku.parse("六と七の積");
@@ -63,19 +58,32 @@ exit;
 # my $m2 = Expression.parse("六に七を掛ける");
 # say $m2;
  
-my $let_kuromaru = Expression.subparse("●エクスは三。
-●ワイは四千。
-では
-エクスとワイの積。");#,:rule('let-expression'));
+#my $let_kuromaru = Expression.subparse("●エクスは三。
+#●ワイは四千。
+#では
+#エクスとワイの積。");#,:rule('let-expression'));
 # ");
-say $let_kuromaru;
+#say $let_kuromaru;
 # をエッフする
 # 
-my $kono_let = Expression.subparse("この【エクスとワイの積】を試すに
-エクスが三、",:rule('kono-let'));
+#my $kono_let = Expression.subparse("この【エクスとワイの積】を試すに
+#エクスが三、",:rule('kono-let'));
 # ワイが四千、
 # エッフが或アでアにアを掛ける。");#
-say $kono_let;
+#say $kono_let;
+
+# この【エクスとワイの積】を試すに
+# エクスが三掛けるサイン、
+# ワイがサイ割る弐
+# の返値
+# FIXME: 事 instead of こと gives a parse fail!
+my $kono_let_func_str="試すとはサイとワイでサイのことです。
+本とは 四十弐を試すの事です。";
+my $kono_let_func = Haku.parse($kono_let_func_str, :actions(HakuActions));
+# say $kono_let_func ;die;
+say ppHakuProgram($kono_let_func.made);
+exit;
+
 
 # my $haku = Haku.parse("本とは
 #     四十ニを見せる

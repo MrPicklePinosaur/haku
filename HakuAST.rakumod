@@ -35,9 +35,9 @@ role Cons[ @cons] does LhsExpr {
 }
 
 # data HakuStmt = Function | Hon
-role HakuStmt[] {}
-role Function[] does HakuStmt {}
-role Hon[] does HakuStmt {}
+# role HakuStmt[] {}
+# role Function[] does HakuStmt {}
+# role Hon[] does HakuStmt {}
 
 # data BindExpr = mkBindExpr LhsExpr RhsExpr 
 #  does HakuExpr because of Hon, not very nice. Could be we need a separate bind expr for this.
@@ -115,7 +115,7 @@ role Identifier[ $id] does AtomicExpr {
 
 # data Function = mkFunction [FunctionArg] FunctionBody
 role Function[ $name, @args,  $body] {
-    has Str $.name = $name;
+    has Identifier $.name = $name;
     has Variable @.args = @args;
     has HakuExpr $.body = $body;
 }

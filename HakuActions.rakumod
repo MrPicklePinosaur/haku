@@ -279,7 +279,8 @@ class HakuActions {
         !! $<noun> ?? $<noun>.made
         !! '_';
 
-        my @args = map({$_.made},$<variable-list>);        
+        my @args = $<variable-list>.made;
+        # die @args.raku;
         my $body = $<expression>.made;
         make Function[ $name, @args,  $body].new;        
     }

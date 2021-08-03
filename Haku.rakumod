@@ -24,7 +24,7 @@ role Characters {
         }  
 
     token number-kanji { 
-        | '一' | 'ニ' | '三' | '四' | '五' | '六' | '七' | '八' | '九' | '十' 
+        | '一' | '二' | '三' | '四' | '五' | '六' | '七' | '八' | '九' | '十' 
         | '壱' | '弐' | '参' |                                          '拾'                  
         | '百' | '千' | '万' | '億' 
         |               '萬' 
@@ -531,7 +531,7 @@ grammar Functions is Expression does Keywords does Punctuation {
     }
 
     token function-end {
-         <.ws>? [<no>|<toiu>]? <koto> <desu> <full-stop>
+         <.ws>? [<no>|<toiu>]? <koto> <desu> <full-stop> <.ws>?
     }
 }
 
@@ -541,7 +541,7 @@ grammar Haku is Functions does Comments does Keywords {
     token haku-program {
         # <comment>
         [<function>| <comment>]*? 
-        <hon> 
+        <hon>
         # [<function>| <comment>]*?
     }
 
