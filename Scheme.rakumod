@@ -28,7 +28,7 @@ sub ppFunctionName(\fn) {
         when Verb { 
         my $f_name = kanjiToRomaji(fn.verb);
         if $f_name ~~ / ^ mise / {
-         return 'displayln'
+        return 'displayln'
         } else {
         $f_name
         }
@@ -47,7 +47,8 @@ sub ppHon($hon) {
     my HakuExpr @body_exprs = $hon.exprs;
     my $bindings_str = join("\n",map(&ppHakuExpr,@bind_exprs));
     my $body_str = join("\n",map(&ppHakuExpr,@body_exprs));
-    "(define (hon)\n(letrec\n(\n$bindings_str\n)\n$body_str\n))\n\n(hon)\n";
+    '(define (displayln str) (display str) (newline))' ~
+    "(define (hon)\n(let*\n(\n$bindings_str\n)\n$body_str\n))\n\n(hon)\n";
 }
 
 sub ppConsLhsBindExpr(\h) {

@@ -14,9 +14,9 @@ my $hon_str = "【四足す（五を着る）】を出る";
 # アクセラ
 # のことです。";
 
-my $hon_parse =  Expression.subparse($hon_str);#:actions(HakuActions));
-say $hon_parse;
-die;
+#my $hon_parse =  Expression.subparse($hon_str);#:actions(HakuActions));
+#say $hon_parse;
+#die;
 
 
 #（四をラムダする）を見せる
@@ -43,8 +43,8 @@ my $hon_str_2 = "注 なに何か　test テスト。
 シンカズはイとロの和で、
 注　カズ達を聞く。
 シンカズを見せる、
-ケッカは三十弐をラムダする、
-ケッカを見せる
+ケッカは〈七百四十壱をラムダする〉足す九百十九、
+【ケッカとシンカズの和】を見せる
 のことです。";
 
 #言　ケッカは四をラムダする。

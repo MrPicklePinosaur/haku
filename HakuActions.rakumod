@@ -74,7 +74,7 @@ class HakuActions {
 
     # it should be possible to put parens around function applications and lambdas as well!
     method parens-expression($/) {
-        make $<operator-expression>.made;
+        make $<expression>.made;
     }
 
     method arg-expression($/) {
