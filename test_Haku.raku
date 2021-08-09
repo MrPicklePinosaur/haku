@@ -33,7 +33,7 @@ my $hon_str_1 = "本とは
 #say ppHakuProgram($hon_parse_1.made);
 #die;
 
-my $hon_str_2 = "注 なに何か　test テスト。
+my $hon_str_2 = "註 例のはくのプログラム。
 
 本とは
 ラムダは或エクスでエクス掛けるエクスです、
@@ -47,9 +47,18 @@ my $hon_str_2 = "注 なに何か　test テスト。
 【ケッカとシンカズの和】を見せる
 のことです。";
 
-#my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
-#say ppHakuProgram($hon_parse_2.made);
-#exit;
+
+# my $hon_str_2 = "本とは四十二の事です。";
+
+my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
+if $hon_parse_2 ~~ Match {
+    say ppHakuProgram($hon_parse_2.made);
+} else {
+    my $hon_subparse_2 = Haku.subparse($hon_str_2);
+    say $hon_subparse_2.chunks;
+    say $hon_subparse_2.raku;
+}
+exit;
 
 # say "Try parsing 六"と七の積";
 # my $m = Haku.parse("六と七の積");

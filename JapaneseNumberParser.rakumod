@@ -7,7 +7,7 @@ use v6;
 # contains only 0 .. 9
 #  / <[一ニ三四五六七八九壱弐参〇零]>+　['点'　<[一ニ三四五六七八九壱弐参〇零]>+　]?/
 
-my %digits is Map = < 一  1 壱 1 ニ 2 弐 2 三 3 参 3 弎 3 四 4 五 5 六 6 七 7 八 8 九 9 零 0 〇 0>;
+my %digits is Map = < 一  1 壱 1 二 2 弐 2 三 3 参 3 弎 3 四 4 五 5 六 6 七 7 八 8 九 9 零 0 〇 0>;
 my %magnitudes is Map = < 十 10 拾 10 百 100 千 1000 >;
 my @myriad_kanji = < 万 億 兆 京 垓 𥝱 穣 溝 澗 正 載 極 >;
 my %myriads is Map = @myriad_kanji.map( {state $i=0; $_ => 10**(++$i*4)});
@@ -75,7 +75,7 @@ sub kanjiToNumbersPos(Str $mag  ) {
 }
 
 sub parseJapaneseNumbers(Str $kazu_str --> Num ) is export {
-    if $kazu_str ~~ /^ <[一ニ三四五六七八九壱弐参〇零]>+　['点'　<[一ニ三四五六七八九壱弐参〇零]>+　]? $/
+    if $kazu_str ~~ /^ <[一二三四五六七八九壱弐参〇零]>+　['点'　<[一二三四五六七八九壱弐参〇零]>+　]? $/
     {        
         return kanjiToNumbersPosDec( $kazu_str ) ;
     } else {

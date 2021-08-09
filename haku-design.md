@@ -2,6 +2,142 @@
 
 A toy functional programming language based on Japanese 
 
+## Introduction by example
+
+I can now write the following Haku program:
+
+    註 例のはくのプログラム。
+
+    本とは
+    ラムダは或エクスでエクス掛けるエクスです、
+    カズ達は八十八と七千百と五十五で、
+    イ・ロ・ハ・空はカズ達で、
+    シンカズはイとロの和で、
+    シンカズを見せる、
+    ケッカは〈七百四十壱をラムダする〉足す九百十九、
+    【ケッカとシンカズの和】を見せる
+    のことです。
+
+    and it compiles to the following Scheme code:
+
+(define (displayln str) (display str) (newline))(define (hon)
+
+; 例のはくのプログラム    
+(define (hon)
+    (let* (
+            (RAMUDA (lambda (EKUSU) (* EKUSU EKUSU )))
+            (KAZUTACHI (list 88 7100 55))
+            (I (car KAZUTACHI))
+            (RO (cadr KAZUTACHI))
+            (HA (caddr KAZUTACHI))
+            (SHINKAZU (+ I RO ))
+            (KEKKA (+ (RAMUDA 741) 919 ))
+        )
+        (displayln SHINKAZU)
+        (displayln (+ KEKKA SHINKAZU ))
+    )
+)
+
+(hon)
+
+Let's take it apart:
+
+註 ... 。is a comment.
+
+The main program (called 本, _hon_) has a fixed begin and end string:
+
+    本とは
+    ...
+    のことです。
+
+In Romaji this reads "Hon to wa ... no koto desu.", roughly "Main is the following thing(s): ...".
+
+In Scheme I emit a function as body of Hon a let*-binding (i.e. binding is sequential):
+
+    (define (hon)
+        (let* (
+            ...
+            )
+            ...
+        )
+    )    
+
+In the example we have an number of different types of assignments:
+
+    ラムダは或エクスでエクス掛けるエクスです、
+
+    "RAMUDA wa aru EKSU de EKSU kakeru EKSU desu"    
+
+Katakana is for variables, kanji for functions and keywords, hiragana for keywords and verb endings (e.g. in 掛ける and 見せる).
+
+This roughly reads as "as for RAMUDA, with a given X it is X times X", so RAMUDA binds to a lambda function. In Scheme this becomes:
+
+    (RAMUDA (lambda (EKUSU) (* EKUSU EKUSU )))
+
+Next we have an assignment to a list of number constants:     
+
+    カズ達は八十八と七千百と五十五で、
+
+    "KAZUTachi wa 88 to 7100 to 55 de,"
+
+Numbers are written in kanji. The particle _to_ is the list separator. You can use 達 _tachi_ to show that a variable name is plural. In Scheme this becomes:
+
+    (KAZUTACHI (list 88 7100 55))
+
+Next we have a bit of syntactic sugar borrowed from Haskell (cons):
+
+    イ・ロ・ハ・空はカズ達で、
+
+    "I:RO:HA:Kuu wa KAZUTachi de,"
+
+空 _kuu_ means "empty". This means that the list is deconstructed into elements I, RO, HA and and empty list. Scheme does not have this kind of pattern matching so each assignment is generated separately.
+
+The next assignment,
+
+    シンカズはイとロの和で、
+
+    "SHINKAZU wa I to RO no Wa de"
+
+is simply    
+
+    "SHINKAZU is the sum of I and RO"
+
+    (SHINKAZU (+ I RO ))
+
+Then we have a print statement:
+
+    シンカズを見せる、
+
+    "SHINKAZU wo Miseru"
+
+    "To show SHINKAZU"
+    
+In Scheme:
+    
+    (displayln SHINKAZU)
+
+Then follows another assignment:    
+
+    ケッカは〈七百四十壱をラムダする〉足す九百十九、
+
+    "KEKKA wa (741 wo RAMUDA suru) Tasu 919"
+
+    "KEKKA is (RAMUDA of 741) plus 919
+
+    (KEKKA (+ (RAMUDA 741) 919 ))
+
+And finally we show the result of an expression:    
+
+    【ケッカとシンカズの和】を見せる
+
+    "(KEKKA to SHINKAZU no Wa) wo Miseru"
+    
+    "To show the sum of KEKKA and SHINKAZU"
+
+    (displayln (+ KEKKA SHINKAZU ))
+
+
+
 ## About the name
 
 I call it 'haku' because that can be written many ways and mean many things in Japanese. I was definitely thinking about Haku from Spirited Away. Also, I like the resemblance with [Raku](https://rakulang.org), the implementation language. 
@@ -21,7 +157,7 @@ In Japanese, the imperative (命令形, "command form") is rarely used. Therefor
 
 ## Core language
 
-Haku is a simple pure, untyped, strict functional language. The core constructs are 
+Haku is a simple pure, untyped, strict functional language. The core constructs are :
 
 ### Identifiers 
     - variables: first character must be _katakana_; further characters katakana or number kanji. Last character can be 達. Also, variables can be any _kanji_ with "haku" as _on_-reading.

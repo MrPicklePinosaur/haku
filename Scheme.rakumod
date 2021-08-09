@@ -12,7 +12,8 @@ sub ppHakuProgram(HakuProgram $p) is export {
          }     
      my $hon = $p.hon;
      my $hon_str= ppHon($hon);
-     return $comment_str ~ $function_strs ~ $hon_str;
+     my $prelude_str = '(define (displayln str) (display str) (newline))' ~ "\n\n";
+     return $prelude_str ~ $comment_str ~ $function_strs ~ $hon_str;
 
 }
 
@@ -50,8 +51,7 @@ sub ppHon($hon) {
     my HakuExpr @bind_exprs = $hon.bindings;
     my HakuExpr @body_exprs = $hon.exprs;
     my $bindings_str = join("\n",map(&ppHakuExpr,@bind_exprs));
-    my $body_str = join("\n",map(&ppHakuExpr,@body_exprs));
-    '(define (displayln str) (display str) (newline))' ~
+    my $body_str = join("\n",map(&ppHakuExpr,@body_exprs));    
     "(define (hon)\n(let*\n(\n$bindings_str\n)\n$body_str\n))\n\n(hon)\n";
 }
 
