@@ -186,6 +186,25 @@ class HakuActions {
         | <let-expression>  
         | <function-comp-expression>
 =end pod
+    method bind-ga($/) {
+        my $lhs-expr;
+        if $<variable> {
+            $lhs-expr = $<variable>.made;
+        } elsif $<cons-list-expression> {
+            $lhs-expr = $<cons-list-expression>.made;
+        }
+        my $rhs-expr=$<expression>.made;
+        make BindExpr[$lhs-expr,$rhs-expr].new;
+    } 
+    method kono-let($/) {
+        my $result = $<expression>.made;         
+        my @bindings = map({$_.made},$<bind-ga>);
+        make LetExpr[ @bindings, $result].new;
+    }
+    method let-expression($/) {
+        say $/.values[0].made;
+        make $/.values[0].made;
+    }
 
     method cons-list-expression($/) {
             my @cons = map({ConsVar[$_.Str].new},$<variable>);
@@ -248,6 +267,7 @@ class HakuActions {
         my $rhs-expr=$<expression>.made;
         make BindExpr[$lhs-expr,$rhs-expr].new;
     } 
+
     method hon($/) {
         # say 'HON action';
         my @comments = ();

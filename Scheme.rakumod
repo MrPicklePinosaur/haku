@@ -100,7 +100,11 @@ sub ppHakuExpr(\h) {
             }            
         }
         when ListExpr {
-            '(list '~ join(' ',map(&ppHakuExpr,h.elts)) ~')'
+            '(list '~ join( ' ' , map(&ppHakuExpr,h.elts)) ~ ')'
+        }
+
+        when LetExpr {
+            '(let* (' ~  join( ' ' , map(&ppHakuExpr,h.bindings)) ~  ') ' ~  ppHakuExpr(h.result)  ~ ')'
         }
         when LambdaExpr {
                 '(lambda ('  ~ join( ' ' , h.args.map({ppHakuExpr($_)}) ) ~ ') '
@@ -123,7 +127,10 @@ sub ppHakuExpr(\h) {
         when Verb { h.verb }
         when Noun { h.noun }
         when BinOpExpr {
- '(' ~ h.op.op ~ ' ' ~ ppHakuExpr(h.args[0]) ~ ' ' ~ ppHakuExpr(h.args[1]) ~ ' )' 
+            '(' ~ h.op.op ~ ' ' ~ ppHakuExpr(h.args[0]) ~ ' ' ~ ppHakuExpr(h.args[1]) ~ ' )' 
+        }
+        default {
+            die "TODO:" ~ h;
         }
     }
 }

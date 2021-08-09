@@ -463,14 +463,14 @@ does Comments
     }
 
     token bind-ha { [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
-    token bind-ga { [ <variable> | <cons-list-expression>] <.ga> <expression> <.comma> <.ws>? }
+    token bind-ga { [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
     token bind-tara { [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
     # token moshi-let {
     #     <moshi> <bind-tara>+  <expression>  <delim>?
     # }
     
     token kono-let {
-        <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga>+ <.delim>?
+        <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga> [<.delim> <.ws>? <bind-ga>]* <.delim>?
     }
     token kuromaru-let {
          [ <kuromaru> <bind-ha> ]+ <.deha> <.ws>? <expression> <delim>?

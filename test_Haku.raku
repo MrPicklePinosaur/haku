@@ -50,15 +50,15 @@ my $hon_str_2 = "註 例のはくのプログラム。
 
 # my $hon_str_2 = "本とは四十二の事です。";
 
-my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
-if $hon_parse_2 ~~ Match {
-    say ppHakuProgram($hon_parse_2.made);
-} else {
-    my $hon_subparse_2 = Haku.subparse($hon_str_2);
-    say $hon_subparse_2.chunks;
-    say $hon_subparse_2.raku;
-}
-exit;
+# my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
+# if $hon_parse_2 ~~ Match {
+#     say ppHakuProgram($hon_parse_2.made);
+# } else {
+#     my $hon_subparse_2 = Haku.subparse($hon_str_2);
+#     say $hon_subparse_2.chunks;
+#     say $hon_subparse_2.raku;
+# }
+# exit;
 
 # say "Try parsing 六"と七の積";
 # my $m = Haku.parse("六と七の積");
@@ -86,16 +86,33 @@ exit;
 # ワイがサイ割る弐
 # の返値
 # FIXME: 事 instead of こと gives a parse fail!
-my $kono_let_func_str="註 Function　。
+my $basic_func_str="註 Function　。
 試すとはサイとワイでサイのことです。
 註 Main　。
 本とは 四十弐を試すの事です。";
+# my $basic_func = Haku.parse($basic_func_str, :actions(HakuActions));
+# say $basic_func ;die;
+# say ppHakuProgram($basic_func.made);
+# exit;
+
+# この【エクスとワイの積】を試すに。
+# 註 Function　。
+# 　　　このワイ割る四にワイが三十、サイが
+my $kono_let_func_str="試すとはサイとワイで
+このワイ割るサイに
+ワが四十二
+のことです。
+註 Main　。
+本とは四十弐を試すのことです。
+";
+# 
+# 註 Main　。
+# 本とは四十弐を試すのことです。
+# :rule('kono-let')
 my $kono_let_func = Haku.parse($kono_let_func_str, :actions(HakuActions));
-# say $kono_let_func ;die;
+# say $kono_let_func ;
 say ppHakuProgram($kono_let_func.made);
 exit;
-
-
 # my $haku = Haku.parse("本とは
 #     四十ニを見せる
 #     のことです。");#");#四十ニ"); # 
