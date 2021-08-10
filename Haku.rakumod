@@ -25,7 +25,10 @@ role Characters {
 
     token number-kanji { 
         | '一' | '二' | '三' | '四' | '五' | '六' | '七' | '八' | '九' | '十' 
-        | '壱' | '弐' | '参' |                                          '拾'                  
+        | '壱' | '弐' | '参' | '肆' | '伍' | '陸' | '漆' | '捌' | '玖' | '拾'                  
+        | '弌' | '弍' | '弎'                      | '柒'       
+        | '壹' | '貳' 
+               | '貮' 
         | '百' | '千' | '万' | '億' 
         |               '萬' 
         | '兆' | '京' | '垓' | '𥝱' | '穣' | '溝' | '澗' | '正' | '載' | '極' 
@@ -301,6 +304,27 @@ does Nouns
 
     # List operations; strings are lists.
     token nagasa { '長さ' }
+    
+    # Map operations
+    
+    # length 長さ 
+    # has　マップにカギあったら
+    token attara { 'あったら' | '有ったら' }
+    #insert　マップにカギとバリューを入れる
+    token ireru { '入れ' <ru-endings> }
+    #lookup　マップにカギを正引きする・探索する
+    token seibiki { '正引き' <suru> }
+    token tansaku { '探索' <suru> }
+    #delete　マップからカギを消す
+    token kiesu { '消' <su-endings> }
+    #keys    マップの鍵
+    token kagi { '鍵' }
+    #values  マップの対応値
+    token taiouchi { '対応値' }
+
+    # empty map 空 
+    # から図を作る
+    token zuwotsukuru { '図' 'を' '作' <ru-endings> }
 
     token atama { '頭' }
     token shippo  { '尻尾' }
@@ -316,6 +340,12 @@ does Nouns
 
     # For comparisons
     token chigau { '違' <u-endings> }
+    
+    # System call
+    
+
+    token kikan { '機関' } #で「ls」する
+
 } # End of Keywords
 
 # Comment line: 註 or 注 or even just 言, must end with 。
@@ -352,10 +382,17 @@ role Strings does Characters {
         #   | <blank> 
     }
     token string { 
-        [ '「' <string-chars>* '」' ] |
-        [ '『'  <string-chars>* '』' ] |
-        [ '《'  <string_chars>* '》' ]
+         '「」' |
+         '『』' |    
+        [ '「'  [ <string-chars>* <string-interpol>* ]* <string-chars>* '」' ] |
+        [ '『'  <string-chars>+ '』' ] 
     }
+
+    token string-interpol { 
+        # TODO: I'd like to us this for string interpolation of variables and maybe even expressions
+         '《'  <expression> '》' 
+    }
+
 }
 
 # role Constants does Numbers does Strings {

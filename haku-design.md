@@ -232,14 +232,15 @@ There is no operator precedence handling, so combined expressions need parenthes
 
 - we create them as an empty map, which I suppose could be the same as an empty list, 空    
 - I want a closer binding than と. Maybe I could say k to v no pair 双 which would make it identical to a function call
-- But then it means a list of these needs parens: (a to be no sou) to (...) to (...)
-- 〈キーとバリューの双〉と〈キーとバリューの双〉の図
+- But then it means a list of these needs parens: (a to be no sou) to (...) to (...)  〈キーとバリューの双〉と〈キーとバリューの双〉の図
+- Instead, I will automatically construct a map from a list: k1 to v1 to k2 to v2 kara zu wo tsukuru
+  ケイ壱とヴィー壱とケイ弐とヴィー弐から図を作る
 
 ### System call
 
     機関で「ls」する
 
-For interpolation: 《バリュー》    
+For interpolation: 《バリュー》
 Returns a string.
 
 ### I/O
