@@ -230,6 +230,11 @@ There is no operator precedence handling, so combined expressions need parenthes
     keys    マップの鍵
     values  マップの対応値
 
+- we create them as an empty map, which I suppose could be the same as an empty list, 空    
+- I want a closer binding than と. Maybe I could say k to v no pair 双 which would make it identical to a function call
+- But then it means a list of these needs parens: (a to be no sou) to (...) to (...)
+- 〈キーとバリューの双〉と〈キーとバリューの双〉の図
+
 ### System call
 
     機関で「ls」する
