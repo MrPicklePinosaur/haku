@@ -66,13 +66,16 @@ my $hon_str_2 = "註 例のはくのプログラム。
 # say "Try parsing 六に七を掛ける";
 # my $m2 = Expression.parse("六に七を掛ける");
 # say $m2;
- 
-#my $let_kuromaru = Expression.subparse("●エクスは三。
-#●ワイは四千。
-#では
-#エクスとワイの積。");#,:rule('let-expression'));
-# ");
-#say $let_kuromaru;
+my $let_kuromaru_str =  "本とは
+●エクスは三。
+●ワイは四千。
+では
+エクスとワイの積
+のことです。";
+my $let_kuromaru = Haku.parse($let_kuromaru_str, :actions(HakuActions));#,:rule('let-expression')
+say $let_kuromaru;
+say ppHakuProgram($let_kuromaru.made);
+exit;
 # をエッフする
 # 
 #my $kono_let = Expression.subparse("この【エクスとワイの積】を試すに

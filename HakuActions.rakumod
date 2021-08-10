@@ -201,6 +201,24 @@ class HakuActions {
         my @bindings = map({$_.made},$<bind-ga>);
         make LetExpr[ @bindings, $result].new;
     }
+
+    method bind-ha($/) {
+        my $lhs-expr;
+        if $<variable> {
+            $lhs-expr = $<variable>.made;
+        } elsif $<cons-list-expression> {
+            $lhs-expr = $<cons-list-expression>.made;
+        }
+        my $rhs-expr=$<expression>.made;
+        make BindExpr[$lhs-expr,$rhs-expr].new;
+    } 
+
+    method kuromaru-let($/) {
+        my $result = $<expression>.made;         
+        my @bindings = map({$_.made},$<bind-ha>);
+        make LetExpr[ @bindings, $result].new;
+    }
+
     method let-expression($/) {
         say $/.values[0].made;
         make $/.values[0].made;
@@ -257,16 +275,6 @@ class HakuActions {
         # }
 
     }
-    method bind-ha($/) {
-        my $lhs-expr;
-        if $<variable> {
-            $lhs-expr = $<variable>.made;
-        } elsif $<cons-list-expression> {
-            $lhs-expr = $<cons-list-expression>.made;
-        }
-        my $rhs-expr=$<expression>.made;
-        make BindExpr[$lhs-expr,$rhs-expr].new;
-    } 
 
     method hon($/) {
         # say 'HON action';
