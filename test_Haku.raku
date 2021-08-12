@@ -146,10 +146,10 @@ my $kono_let_func_str="試すとはサイとワイで
 # say $let_moshi;
 
 my $moshi_if_str = "もし四十二なら七そうでない六";
-my $moshi_if = Expression.parse($moshi_if_str, :actions('HakuActions'));
-say $moshi_if;
+#my $moshi_if = Expression.parse($moshi_if_str, :actions('HakuActions'));
+#say $moshi_if;
 
-my $baai_if_str = "四十二場合は七そうでない場合は六";
-my $baai_if = Expression.parse($baai_if_str, :actions('HakuActions'));
-say $baai_if;
+my $baai_if_str = "本とは四十二場合は七そうでない場合は六のことです。";
+my $baai_if = Haku.parse($baai_if_str, :actions(HakuActions));
+say ppHakuProgram($baai_if.made);
 

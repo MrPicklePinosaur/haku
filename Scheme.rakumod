@@ -102,7 +102,13 @@ sub ppHakuExpr(\h) {
         when ListExpr {
             '(list '~ join( ' ' , map(&ppHakuExpr,h.elts)) ~ ')'
         }
-
+        when  IfExpr { 
+            '(if ' ~ 
+                ppHakuExpr(h.cond) ~ ' ' ~
+                ppHakuExpr(h.if-true) ~ ' ' ~
+                ppHakuExpr(h.if-false) ~ ' ' ~
+                ')';
+        }   
         when LetExpr {
             '(let* (' ~  join( ' ' , map(&ppHakuExpr,h.bindings)) ~  ') ' ~  ppHakuExpr(h.result)  ~ ')'
         }
