@@ -308,22 +308,30 @@ does Nouns
     # Map operations
     
     # length 長さ 
+    
     # has　マップにカギあったら
     token attara { 'あったら' | '有ったら' }
+    
     #insert　マップにカギとバリューを入れる
     token ireru { '入れ' <ru-endings> }
+
     #lookup　マップにカギを正引きする・探索する
     token seibiki { '正引き' <suru> }
     token tansaku { '探索' <suru> }
+    
     #delete　マップからカギを消す
     token kiesu { '消' <su-endings> }
+    
     #keys    マップの鍵
     token kagi { '鍵' }
-    #values  マップの対応値
-    token taiouchi { '対応値' }
+    
+    #values  マップの対応値:w
+    token chi { '値' }
 
     # empty map 空 
-    # から図を作る
+
+    # map creation から図を作る
+    # I could use 連想配列 rensouhairetsu but that is really long.
     token zuwotsukuru { '図' 'を' '作' <ru-endings> }
 
     token atama { '頭' }
@@ -430,6 +438,7 @@ does Comments
     }
     
     token list-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* }
+    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]+ <kara> <zuwotsukuru> }
     token arg-expression-list {
         <arg-expression> [<.list-operator> <arg-expression>]*
     }
@@ -469,6 +478,8 @@ does Comments
         | <operator-expression>
         | <comparison-expression>
         | <function-comp-expression>
+        | <map-expression>
+        | <ifthen>
         ] || 
         [ <parens-expression>  
         | <range-expression>
@@ -540,7 +551,7 @@ does Comments
     }
 
     # Map
-    token map-expression {
+    token map-application {
         [ <variable> | <list-expression> | <range-expression> ] 
         [ <.nokaku> <lambda-expression> 
         |
@@ -550,7 +561,7 @@ does Comments
     }
 
     # Fold
-    token fold-expression {
+    token fold-application {
         [ <variable> | <list-expression> | <range-expression> ] 
         <.nominnaga>
         [ <operator-noun> | <identifier> | <verb> <.no> ] <.wo> <expression> <.to-particle> <.tatamu> 

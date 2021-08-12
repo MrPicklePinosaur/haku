@@ -808,6 +808,28 @@ sub ppTerm(Term \p) {
         }
 }
 
+==== 
+Some vocabulary
 
+fold: 畳み込む 
+
+map:　写像。shazou, more common than chizu. 
+
+連想配列（れんそうはいれつ rensouhairetsu: associative array, I could use this, and keep shazou for the function
+
+array: 配列
+value: 値
+
+key: キー
+pair: ペア 
+
+じょうけんつきひょうげんしき
+条件付き表現式
+￼ Conditional expression (programming, programing).
+
+かえりち
+返値
+n
+￼ Return value (from a function, in programming).
 
 

@@ -11,10 +11,9 @@ my %digits is Map = < 一  1 壱 1 二 2 弐 2 三 3 参 3 弎 3 四 4 五 5 六
                        弌 1 壹 1 弍 2 貳 2 貮 2 弎 3 肆 4 伍 5 陸 6 漆 7 柒 7 捌 8 玖 9
                     >;
 my %magnitudes is Map = < 十 10 拾 10 百 100 千 1000 >;
-%magnitudes<拾> = %magnitudes<十>;
-my @myriad_kanji = < 万 億 兆 京 垓 𥝱 穣 溝 澗 正 載 極 >;
-my %myriads is Map = @myriad_kanji.map( {state $i=0; $_ => 10**(++$i*4)});
-%myriads<萬> = %myriads<万>;
+my @myriad_kanji = < 万 億 兆 京 垓 𥝱 穣 溝 澗 正 載 極 一 萬>;　# last 2 are a hack to have the 2 kanji for man
+my %myriads is Map = @myriad_kanji.map( {state $i=0; $_ => 10**((++$i % 13) *4)});
+
 my %precisions is Map = < 
     分 0.1 厘 0.01 毛 0.001 糸 0.0001 忽 0.00001 
     微 1e-6 繊 1e-7 沙 1e-8 塵 1e-9 埃 1e-10 渺 1e-11 漠 1e-12 

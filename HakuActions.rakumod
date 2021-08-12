@@ -149,6 +149,26 @@ class HakuActions {
         }
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
+    method condition-expression($/) {
+        make $/.values[0].made; 
+    } 
+    
+    method baai-ifthen ($/) {
+        my $cond = $<condition-expression>.made;
+        my $true-expr = $<expression>[0].made;  
+        my $false-expr = $<expression>[1].made;
+        make IfExpr[ $cond, $true-expr,  $false-expr].new;
+    }
+    method moshi-ifthen {
+        my $cond = $<condition-expression>.made;
+        my $true-expr = $<expression>[0].made;  
+        my $false-expr = $<expression>[1].made;
+        make IfExpr[ $cond, $true-expr,  $false-expr].new;
+    }
+
+    method ifthen($/) {
+        make $/.values[0].made;        
+    }    
 
     method arg-expression-list($/) {
 #say '<'~$/.Str~'>';
@@ -220,7 +240,7 @@ class HakuActions {
     }
 
     method let-expression($/) {
-        say $/.values[0].made;
+#        say $/.values[0].made;
         make $/.values[0].made;
     }
 
