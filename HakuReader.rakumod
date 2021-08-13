@@ -63,14 +63,15 @@ sub tategakiReader ( Str $file --> Str) {
     for 0 .. $max_length - 1 -> $idx {
         for @lines -> @chars {
             if @chars[$max_length - 1 - $idx]  {
+                die "ADD v2h here!";
                 @horiz_chars.push(@chars[$max_length - 1 - $idx]);
             } else {
-                @horiz_chars.push('　');
+                @horiz_chars.push( '　' );
             }
         }
     }
-    my $horiz_str='';
-    my $begin_comment=/<[註注言「『《]>/;   
+    my $horiz_str = '';
+    my $begin_comment=/<[註注言「『《]>/;   # comment or string
     my $end_comment=/<[。」』》]>/;
 
     my $in_comment=False;
@@ -81,7 +82,7 @@ sub tategakiReader ( Str $file --> Str) {
             $in_comment = False;
         }
         if (($c eq '　' and $in_comment) or $c ne '　') {
-            $horiz_str~=$c;
+            $horiz_str ~= $c;
         }
     }
     if $horiz_str ~~ /本とは/ {
