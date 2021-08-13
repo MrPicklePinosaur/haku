@@ -27,7 +27,12 @@ enum Spacer (NONE => '', THIN_SPACE=>' ', NARROW_NOBREAK_SPACE=>' ', SPACE=>
 #   Spacer :$spacer = THIN_SPACE,
 #   Bool :$verbose = False
 # );  
-
+my %h2v is Map = < 
+「  ﹁  」  ﹂  『  ﹃	 』  ﹄ 
+【  ︻  】  ︼  《  ︽  》  ︾   （  ︵  ） ︶ 
+｛  ︷  ｝  ︸  〈  ︿  〉  ﹀ 
+〖  ︗  〗  ︘  〔  ︹  〕  ︺   ［  ﹇  ］ ﹈ 
+>;
 
 our $spacer-cols = 0;
 our $spacer-rows = 0;
@@ -73,7 +78,11 @@ for 0 .. $max_line_length - 1 -> $idx {
     for @lines -> $line {
         my @chars = $line.comb();
 		if @chars[$idx] {
-			@row_chars.push(@chars[$idx]);
+			my $c=@chars[$idx];
+			if %h2v{$c}:exists {
+				$c = %h2v{$c};
+			}
+			@row_chars.push($c);
 		} else {
 			@row_chars.push($pad_ws);
 		}

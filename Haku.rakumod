@@ -258,6 +258,7 @@ does Nouns
     token kedo { 'けど' | 'けれど' <mo>? }
     token baaiha { '場合は' }
     token soudenai { 'そうでない' }
+    token soudenakereba { 'そうでなければ' }
 
     # For Maps and Folds
 
