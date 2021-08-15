@@ -30,6 +30,16 @@ if $horiz_str ~~ /本とは/ {
 
 }
 
+my %v2h is Map = < 
+ ︽	《     ﹄	』 ︷	｛ ︾	》 
+ ︹	〔 ﹂	」 ︸	｝ 
+ ︵	（ ︶	） ︿	〈 
+ ︗	〖 ︻	【 ︺	〕 
+ ﹁	「 ︼	】 ﹃	『 
+ ﹇	［ ﹀	〉 ︘	〗 ﹈	］
+>;
+
+
 sub tategakiReader ( Str $file --> Str) {
 
     my $input_file = IO::Path.new( $file ) ;
@@ -63,8 +73,11 @@ sub tategakiReader ( Str $file --> Str) {
     for 0 .. $max_length - 1 -> $idx {
         for @lines -> @chars {
             if @chars[$max_length - 1 - $idx]  {
-                die "ADD v2h here!";
-                @horiz_chars.push(@chars[$max_length - 1 - $idx]);
+                my $c = @chars[$max_length - 1 - $idx];
+                if %v2h{$c}:exists {
+                    $c = %v2h{$c};
+                }
+                @horiz_chars.push($c);
             } else {
                 @horiz_chars.push( '　' );
             }

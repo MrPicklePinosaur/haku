@@ -34,6 +34,8 @@ my %h2v is Map = <
 〖  ︗  〗  ︘  〔  ︹  〕  ︺   ［  ﹇  ］ ﹈ 
 >;
 
+die %h2v.antipairs;
+
 our $spacer-cols = 0;
 our $spacer-rows = 0;
 our $spacer = THIN_SPACE;
