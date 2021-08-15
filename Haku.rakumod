@@ -393,13 +393,26 @@ role Strings does Characters {
     token string { 
          '「」' |
          '『』' |    
-        [ '「'  [ <string-chars>* <string-interpol>* ]* <string-chars>* '」' ] |
-        [ '『'  <string-chars>+ '』' ] 
+        [ '「'  <string-chars>+ '」' ] |
+        [ '『'  <string-chars>+ '』' ]         
     }
+    
+    token string-interpol-left {
+         ['『' | '「' ] <string-chars>* '《'
 
+    }
+    token string-interpol-right {
+            '》' <string-chars>* ['』' | '」' ]
+    }
+    token string-interpol-middle {
+            '》' <string-chars>* '《'
+    }
     token string-interpol { 
-        # TODO: I'd like to us this for string interpolation of variables and maybe even expressions
-         '《'  <expression> '》' 
+        <string-interpol-left>
+          <expression>  
+        [ <string-interpol-middle>
+        <expression> ]*
+        <string-interpol-right>
     }
 
 }
@@ -481,6 +494,7 @@ does Comments
         | <function-comp-expression>
         | <map-expression>
         | <ifthen>
+        | <string-interpol>
         ] || 
         [ <parens-expression>  
         | <range-expression>

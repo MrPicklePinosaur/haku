@@ -366,7 +366,8 @@ str を pattern で 割りて (kudasai)
 
 But I would like it if an assigment would be
 
-chunksはstr を pattern で 割るのです。
+chunks は str を pattern で 割るのです。
+
 ( ~no because then I can always use dictionary form for any function.
 Basically, ~te form is for functions not returning a result, dict+no is when assigned)
 
@@ -374,7 +375,9 @@ But a string should be a list, so we need some list operations, at least
 head, tail and ++
 の頭
 の尾
-lst1とlst2を合わせて
+I don't have a join operator, inconvenient though it may be, instead it is
+
+    lst1 と lst2 を 合わせて 
 
 
 Lambda
