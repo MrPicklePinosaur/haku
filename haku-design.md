@@ -379,6 +379,8 @@ I don't have a join operator, inconvenient though it may be, instead it is
 
     lst1 と lst2 を 合わせて 
 
+arg1 to arg2 wo arg3 to arg4 de verb
+arg1 to arg2 no arg3 to arg4 de noun
 
 Lambda
 
@@ -388,11 +390,13 @@ x ga expr in x desu。
 
 Map
 
+map:　写像。shazou, more common than chizu. 
+
 x2s = map (\x -> 2*x) xs
-ニア達はア達から皆んな或アがア二倍です。
+ニア達はア達から皆んな或アでア弐倍です。
 x2s ha 
     xs kara minna 
-        x de x nibai desu.
+        aru x de x nibai desu.
         
 Or
 x2s ha 
@@ -440,6 +444,9 @@ A fun one is the equivalent of $s x $n in Perl: we use the counter tsu
 xsはx nつです。
 
 Fold
+
+fold: 畳み込む 
+
 
 fold function accumulator list 
 
@@ -834,5 +841,13 @@ pair: ペア
 返値
 n
 ￼ Return value (from a function, in programming).
+ 
 
+====
+It might be nice to always have the option of separating function arguments with 
 
+x to y to ... wo a to b to ... de <verb>
+
+But what about a noun?
+
+x to y to ... no, a to b to ... deno <noun> desu
