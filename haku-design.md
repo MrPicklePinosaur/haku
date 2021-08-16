@@ -869,3 +869,14 @@ We can keep the no minna as semantic sugar:
 
 xs no minna to acc wo f de tatamikomu
 xs no minna wo f de shazou suru
+
+The exceptions are the operator verbs, because they are 
+
+a ni b wo tasu 
+a tasu b
+
+Although of course 
+
+a to b wo tasu
+
+is just fine.

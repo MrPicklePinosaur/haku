@@ -174,7 +174,7 @@ role Variables does Characters {
 role Identifiers does Verbs does Nouns does Variables {
     
     # Identifiers are variables noun-style and verb-style function names
-    token identifier { <variable> | <verb> | <noun> }
+    token identifier { <variable> | <verb> <.no>? | <noun> }
 
 }
 
@@ -464,7 +464,7 @@ does Comments
         # <apply-expression> | # LOOP, needs parens
         # <lambda-expression> | 
         # <range-expression> |        
-        <atomic-expression>         
+        <atomic-expression> |         
     }
     token empty {
         <open-kaku><close-kaku>
@@ -479,7 +479,7 @@ does Comments
     
     token lambda-expression { <.aru> <variable-list> <.de> <expression> }
     # token lambda-application { <expression> 'を'　 [ <shite-kudasai> | <te-kudasai> | <sura> ]? }
-    token apply-expression {<arg-expression-list> <dake>? [ <.wo> | <.no> ]　
+    token apply-expression {<arg-expression-list> <.nominna>? <dake>? [ <.wo> | <.no> <.comma>?]　[ <arg-expression-list> <.de> <.no>? ]?
     [ <identifier> | <lambda-expression> ] 
         [<.shite-kudasai>|<.sura>]? }
 
