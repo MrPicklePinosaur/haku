@@ -460,6 +460,14 @@ or again
 
 res ha acc to xs no kaku-x de wo 
 
+I finally settled on
+
+RES ha XS no minna ga f wo ACC to tatamikomu 
+
+If f is a lambda it would be 
+
+RES ha XS no minna ga aru ACC to X de ACC + X suru no wo ACC0 to tatamikomu
+
 〇をフィボるのは一です。一をフィボるのは一です。
 エンをフィボるのはエンと一の差をフィボてとエンと二の差をフィボてです。
 十三をフィボるのを見せて下さい。
@@ -851,3 +859,13 @@ x to y to ... wo a to b to ... de <verb>
 But what about a noun?
 
 x to y to ... no, a to b to ... deno <noun> desu
+
+If we do that, then *any* function call follows this pattern. For the map and fold calls, essentially we would have
+
+xs to acc wo f de tatamikomu
+xs wo f de shazou suru
+
+We can keep the no minna as semantic sugar:
+
+xs no minna to acc wo f de tatamikomu
+xs no minna wo f de shazou suru

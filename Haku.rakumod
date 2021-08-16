@@ -9,7 +9,8 @@ role Characters {
         # '和' | '差' | '積' | '除' |
         # '足' | '引' | '掛' | '割' |
         '後' | '為' | '等' | '若' | '不' |
-        '本' | '事' 
+        '本' | '事' | 
+        '皆'
         # '見' | '合' | '割' | '書' | '読' 
     }
 
@@ -263,7 +264,7 @@ does Nouns
     # For Maps and Folds
 
     token nokaku { 'の各' }
-    token nominnaga { 'の皆が' }
+    token nominna { 'の皆' }
     token shazou { '写像' <sura> }     
     token tatamikomu { '畳み込む' <mu-endings> }
     # For Function and Hon
@@ -494,6 +495,8 @@ does Comments
         | <function-comp-expression>
         | <map-expression>
         | <ifthen>
+        | <fold-application>
+        | <map-application>
         | <string-interpol>
         ] || 
         [ <parens-expression>  
@@ -571,17 +574,19 @@ does Comments
         # [ 
         #     <.nokaku> <lambda-expression> 
         # |
-        <.nominnaga>　[ <operator-noun> | <identifier> | [ <verb> <.no>] | [ <lambda-expression> <.no>] | <comp-expression>  ] 
+        <.nominna>? <.wo>　
+        [ <operator-noun> | <identifier> | [ <verb> <.no>] | [ <lambda-expression> <.no>] | <comp-expression>  ] 
         # ]
-        <.wo> <.shazou> <.sura>
+        <.de> <.shazou> <.sura>
     }
 
     # Fold
     # 
     token fold-application {
         [ <variable> | <list-expression> | <range-expression> ] 
-        <.nominnaga>
-        [ <operator-noun> | <identifier> | [ <verb> <.no>] | [ <lambda-expression> <.no>] ] <.wo> <expression> <.to-particle> <.tatamikomu> 
+        <.nominna>?  <.to-particle> <expression> <.wo>
+        [ <operator-noun> | <identifier> | [ <verb> <.no>] | [ <lambda-expression> <.no>] ] 
+        <.de>  <.tatamikomu> 
     }
 
 } # End of Expression

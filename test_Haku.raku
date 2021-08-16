@@ -150,6 +150,9 @@ my $moshi_if_str = "もし四十二なら七そうでない六";
 #say $moshi_if;
 
 my $baai_if_str = "本とは四十二場合は七そうでない場合は六のことです。";
-my $baai_if = Haku.parse($baai_if_str, :actions(HakuActions));
-say ppHakuProgram($baai_if.made);
+# my $baai_if = Haku.parse($baai_if_str, :actions(HakuActions));
+# say ppHakuProgram($baai_if.made);
 
+my $fold_str = "カズの皆足すのをアクと畳み込む";
+my $fold_parse = Expression.subparse($fold_str);
+say $fold_parse;
