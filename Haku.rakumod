@@ -265,7 +265,7 @@ does Nouns
     token nokaku { 'の各' }
     token nominnaga { 'の皆が' }
     token shazou { '写像' <sura> }     
-    token tatamu { '畳' <mu-endings> }
+    token tatamikomu { '畳み込む' <mu-endings> }
     # For Function and Hon
 
     token toha { 'とは' }
@@ -568,18 +568,20 @@ does Comments
     # Map
     token map-application {
         [ <variable> | <list-expression> | <range-expression> ] 
-        [ <.nokaku> <lambda-expression> 
-        |
-        <.nominnaga>　[ <identifier> | <comp-expression> ] 
-        ]
-        <.wo> <.shazou> 
+        # [ 
+        #     <.nokaku> <lambda-expression> 
+        # |
+        <.nominnaga>　[ <operator-noun> | <identifier> | [ <verb> <.no>] | [ <lambda-expression> <.no>] | <comp-expression>  ] 
+        # ]
+        <.wo> <.shazou> <.sura>
     }
 
     # Fold
+    # 
     token fold-application {
         [ <variable> | <list-expression> | <range-expression> ] 
         <.nominnaga>
-        [ <operator-noun> | <identifier> | <verb> <.no> ] <.wo> <expression> <.to-particle> <.tatamu> 
+        [ <operator-noun> | <identifier> | [ <verb> <.no>] | [ <lambda-expression> <.no>] ] <.wo> <expression> <.to-particle> <.tatamikomu> 
     }
 
 } # End of Expression
