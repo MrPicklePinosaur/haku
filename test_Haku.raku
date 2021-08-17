@@ -152,7 +152,22 @@ my $moshi_if_str = "もし四十二なら七そうでない六";
 my $baai_if_str = "本とは四十二場合は七そうでない場合は六のことです。";
 # my $baai_if = Haku.parse($baai_if_str, :actions(HakuActions));
 # say ppHakuProgram($baai_if.made);
-
-my $fold_str = "カズの皆とアクを足すので畳み込む";
-my $fold_parse = Expression.subparse($fold_str);
+# カズとアクを
+my $fold_str = "本とはカズとアクを足すので畳み込むのことです。";
+my $fold_parse = Haku.parse($fold_str);
 say $fold_parse;
+# my $verb_str1 = "畳み込む";
+# my $verb_parse1 = Expression.subparse($verb_str1, :rule('verb'));
+# say $verb_parse1;
+# my $verb_str2 = "聴こえる";
+# my $verb_parse2 = Expression.subparse($verb_str2, :rule('verb'));
+# say $verb_parse2;
+# my $verb_str3 = "食べる";
+# my $verb_parse3 = Expression.subparse($verb_str3, :rule('verb'));
+# say $verb_parse3;
+# my $verb_str4 = "引く";
+# my $verb_parse4 = Expression.subparse($verb_str4, :rule('verb'));
+# say $verb_parse4;
+# my $verb_str5 = "間違う";
+# my $verb_parse5 = Expression.subparse($verb_str5, :rule('verb'));
+# say $verb_parse5;

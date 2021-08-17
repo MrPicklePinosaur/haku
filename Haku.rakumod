@@ -151,12 +151,12 @@ role Nouns does Characters {
 
 role Verbs does Characters {
     token verb-ending {
-        'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ'|
-        'った'| 'た'| 'いだ'| 'んだ'|
+        'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' |
+        'った'| 'た'| 'いだ'| 'んだ' |  
         'って'| 'て'| 'いで' | 'んで'
     }
     # token noun { <kanji>+ <sa>? }
-    token verb { <kanji> <hiragana>*? <verb-ending> }
+    token verb { <kanji> <hiragana>?? <kanji>? <hiragana>*? <verb-ending> }
 
 }
 
@@ -174,7 +174,7 @@ role Variables does Characters {
 role Identifiers does Verbs does Nouns does Variables {
     
     # Identifiers are variables noun-style and verb-style function names
-    token identifier { <variable> | <verb> <.no>? | <noun> }
+    token identifier { <variable> || <verb> <.no>? || <noun> }
 
 }
 
@@ -207,7 +207,7 @@ role Operators does Characters does Punctuation
     token operator-noun { '和' | '差' | '積' | '除' }
     token operator-verb-kanji { '足' | '引' | '掛' | '割' }
     token operator-verb { <operator-verb-kanji> <hiragana>*? <verb-ending> }    
-    token list-operator { <to-particle> | <comma>}
+    token list-operator { <ni> | <to-particle> | <comma>}
     token nochi { '後' | 'のち' } # g . f
     token aru { '或' } # the \ operator
     token cons { <interpunct> | <colon> }
@@ -464,7 +464,7 @@ does Comments
         # <apply-expression> | # LOOP, needs parens
         # <lambda-expression> | 
         # <range-expression> |        
-        <atomic-expression> |         
+        <atomic-expression>         
     }
     token empty {
         <open-kaku><close-kaku>
@@ -479,9 +479,11 @@ does Comments
     
     token lambda-expression { <.aru> <variable-list> <.de> <expression> }
     # token lambda-application { <expression> 'を'　 [ <shite-kudasai> | <te-kudasai> | <sura> ]? }
-    token apply-expression {<arg-expression-list> <.nominna>? <dake>? [ <.wo> | <.no> <.comma>?]　[ <arg-expression-list> <.de> <.no>? ]?
+    token apply-expression {
+        <arg-expression-list> <.nominna>? <dake>? [ <.wo> | <.no> <.comma>?]　[ <arg-expression-list> <.de> <.no>? ]?
     [ <identifier> | <lambda-expression> ] 
-        [<.shite-kudasai>|<.sura>]? }
+        [<.shite-kudasai> | <.sura> ]? 
+    }
 
     token comment-then-expression {
         <comment>+ <expression>
@@ -495,8 +497,8 @@ does Comments
         | <function-comp-expression>
         | <map-expression>
         | <ifthen>
-        | <fold-application>
-        | <map-application>
+        # | <fold-application>
+        # | <map-application>
         | <string-interpol>
         ] || 
         [ <parens-expression>  
@@ -515,14 +517,12 @@ does Comments
         <atomic-expression> <.nyoro> <atomic-expression>
     }
 
-
     token comparison-expression {
         <arg-expression> <.ga> <arg-expression> 
         [
           [
             [ <.ni> <hitoshii> [ <.ka> <.yori> [ <sukunai> | <ooi> ] ]? ]        
-            | [ <.yori> [ <sukunai> | <ooi> ]  ]  
-            <.desu>?
+            | [ <.yori> [ <sukunai> | <ooi> ]  ]  <.desu>?
           ]
         | [ <.ni> <chigau> ]
         ]
@@ -585,7 +585,7 @@ does Comments
     token fold-application {
         [ <variable> | <list-expression> | <range-expression> ] 
         <.nominna>?  <.to-particle> <expression> <.wo>
-        [ <operator-noun> | <identifier> | [ <verb> <.no>] | [ <lambda-expression> <.no>] ] 
+        [ <operator-noun> | <identifier> |  <verb> <.no> |  <lambda-expression> <.no> ] 
         <.de>  <.tatamikomu> 
     }
 

@@ -880,3 +880,5 @@ Although of course
 a to b wo tasu
 
 is just fine.
+
+I added ni as acceptable instead of to.

@@ -31,12 +31,12 @@ sub ppFunction($f) {
 sub ppFunctionName(\fn) {
     given fn {
         when Verb { 
-        my $f_name = kanjiToRomaji(fn.verb);
-        if $f_name ~~ / ^ mise / {
-        return 'displayln'
-        } else {
-        $f_name
-        }
+            my $f_name = kanjiToRomaji(fn.verb);
+            if $f_name ~~ / ^ mise / {
+                return 'displayln'
+            } else {
+                $f_name
+            }
         }
         when Noun { kanjiToRomaji(fn.noun) }
         when Variable { katakanaToRomaji(fn.var)}

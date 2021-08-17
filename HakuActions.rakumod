@@ -96,8 +96,7 @@ class HakuActions {
     method operator-verb($/) {
         my $op-kanji= $<operator-verb-kanji>.Str;
 
-        my %vbinops is Map = < 足 + 引 - 掛 * 割 />;
-#say "<$op-kanji>" ~ ' =>  ' ~ %vbinops{$op-kanji};
+        my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
         make BinOp[%vbinops{$op-kanji}].new;
     }
 
