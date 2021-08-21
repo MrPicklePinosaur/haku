@@ -1,7 +1,7 @@
 use v6;
 use HakuAST;
 use Romaji;
-
+our $toRomaji=False;
 sub ppHakuProgram(HakuProgram $p) is export {
      my @comments = $p.comments;
      my $comment_str = @comments.map({';' ~ $_}).join("\n") ~ "\n";
@@ -31,15 +31,15 @@ sub ppFunction($f) {
 sub ppFunctionName(\fn) {
     given fn {
         when Verb { 
-            my $f_name = kanjiToRomaji(fn.verb);
+            my $f_name = $toRomaji ?? kanjiToRomaji(fn.verb) !! fn.verb;
             if $f_name ~~ / ^ mise / {
                 return 'displayln'
             } else {
                 $f_name
             }
         }
-        when Noun { kanjiToRomaji(fn.noun) }
-        when Variable { katakanaToRomaji(fn.var)}
+        when Noun {  $toRomaji ?? kanjiToRomaji(fn.noun)  !! fn.noun }
+        when Variable { $toRomaji ?? katakanaToRomaji(fn.var) !! fn.var}
     }
 }
 
@@ -52,7 +52,11 @@ sub ppHon($hon) {
     my HakuExpr @body_exprs = $hon.exprs;
     my $bindings_str = join("\n",map(&ppHakuExpr,@bind_exprs));
     my $body_str = join("\n",map(&ppHakuExpr,@body_exprs));    
+    if $toRomaji {
     "(define (hon)\n(let*\n(\n$bindings_str\n)\n$body_str\n))\n\n(hon)\n";
+    } else {
+    "(define (本)\n(let*\n(\n$bindings_str\n)\n$body_str\n))\n\n(本)\n";
+    }
 }
 
 sub ppConsLhsBindExpr(\h) {
@@ -66,7 +70,7 @@ sub ppConsLhsBindExpr(\h) {
     for @elts -> $elt {
         given $elt {
             when ConsVar {
-                @cons_bindings.push( '(' ~ katakanaToRomaji($elt.var) ~ ' (' ~ @crs.shift ~ ' ' ~ $rhs ~ '))' )
+                @cons_bindings.push( '(' ~ ( $toRomaji ?? katakanaToRomaji($elt.var) !! $elt.var)~ ' (' ~ @crs.shift ~ ' ' ~ $rhs ~ '))' )
             }
             # when ConsNil {
 
@@ -129,9 +133,9 @@ sub ppHakuExpr(\h) {
         }
         when Number { h.num }
         when String { join('',h.chars) }
-        when Variable { katakanaToRomaji(h.var)}
-        when Verb { h.verb }
-        when Noun { h.noun }
+        when Variable { $toRomaji ?? katakanaToRomaji(h.var) !! h.var }
+        when Verb {  $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb }
+        when Noun {  $toRomaji ?? kanjiToRomaji(h.noun) !! h.noun }
         when BinOpExpr {
             '(' ~ h.op.op ~ ' ' ~ ppHakuExpr(h.args[0]) ~ ' ' ~ ppHakuExpr(h.args[1]) ~ ' )' 
         }

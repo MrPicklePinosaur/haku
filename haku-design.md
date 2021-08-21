@@ -146,14 +146,24 @@ I call it 'haku' because that can be written many ways and mean many things in J
 
 [The Wikipedia page on Non-English-based programming languages](https://en.wikipedia.org/wiki/Non-English-based_programming_languages#Based_on_non-English_languages) lists eight different languages based on Japanese. So why make a ninth one? The short answer is, to see what I would end up with. The slightly longer answer is that these other eight languages serve a practical purpose: they want to make programming easier for Japanese native speakers, and most of them target education. 
 
-My motivation to create Haku is very different. I don't want to create a practical language. I want to explore what the result is of creating a programming language based on a non-English language, in terms of syntax, grammar and vocabulary. In particular, I want to give the programmer to control the register of the language to some extent (informal/polite/formal).
+My motivation to create Haku is very different. I don't want to create a practical language. I want to explore what the result is of creating a programming language based on a non-English language, in terms of syntax, grammar and vocabulary. In particular, I want to allow the programmer to control the register of the language to some extent (informal/polite/formal).
 I also want the language to be closer, at lease visually, to literary Japanese. Therefore Haku does not use Roman letters, Arabic digits or common arithmetic, logical and comparison operators. 
+
+### Grammar
 
 The main motivation for Haku is the difference in grammar between Japanese and most Indo-European languages. This makes the familiar constructs quite different.
 
-A few weeks ago I ran a poll about how coders perceive function calls, and 3/4 of respondents answered "imperative" (other options were infinitive, noun, -ing form). 
+Some time ago I ran a poll about how coders perceive function calls, and 3/4 of respondents answered "imperative" (other options were infinitive, noun, -ing form). 
 
 In Japanese, the imperative (命令形, "command form") is rarely used. Therefore in Haku you can't use this form. Instead, you can use the plain form, -masu form or -te form, including -te kudasai. Whether a function is perceived as a verb or a noun is up to you, and the difference is clear from the syntax. If it is a noun, you can turn it into a verb by adding suru, and if it is a verb, you can add the 'no' or 'koto' nominalisers. 
+
+### Naming and giving meaning
+
+In principle, programming language does not need to be based on natural language at all. The notorious example is APL, which uses symbols for everything. Agda programmers also tends to use lots of mathematical symbols. It works because they are very familiar with those symbols. An interesting question is if an experienced programmer who does not know Japanese could understand a Haku program; or if not, what the minimal changes would be to make it understandable. 
+
+To allow to investigate that question, the Scheme emitter for Haku supports (limited) transliteration to Romaji. 
+
+
 
 ## Core language
 
@@ -218,6 +228,7 @@ There is no operator precedence handling, so combined expressions need parenthes
     cons
     concatenation 
     nesting
+    reverse
 
 ### Maps
 

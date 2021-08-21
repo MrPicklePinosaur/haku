@@ -171,13 +171,11 @@ class HakuActions {
     }    
 
     method arg-expression-list($/) {
-#say '<'~$/.Str~'>';
         my @args = map({$_.made},$<arg-expression>);
-#       say @args.raku;
         make @args;
     }
     method apply-expression($/) {
-        my @args = $<arg-expression-list>.made;
+        my @args =  map({$_.made},$<arg-expression-list>).flat;#.made;
         my $partial = $<dake> ?? True !! False;
         
         if $<identifier> {

@@ -309,6 +309,9 @@ does Nouns
 
     # List operations; strings are lists.
     token nagasa { '長さ' }
+    # reverse:  
+    #配列を反転する
+    #リストの逆引き
     
     # Map operations
     
