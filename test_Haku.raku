@@ -3,6 +3,7 @@ use Haku;
 use HakuActions;
 # use HakuAST;
 use Scheme;
+
 #(五足す三）
 #四足す弐、
 # アクセラは（三足す五）を出るで、
@@ -154,12 +155,14 @@ my $baai_if_str = "本とは四十二場合は七そうでない場合は六の�
 # say ppHakuProgram($baai_if.made);
 # カズとアクを
 my $fold_str = "本とはカズとアクを足すので畳み込むのことです。";
-my $fold_parse = Haku.parse($fold_str);
-say $fold_parse;
-my $map_str = "本とはカズを試すので写像するのことです。";
+#my $fold_parse = Haku.parse($fold_str);
+#say $fold_parse;
+
+my $map_str = "本とはカズの皆を試すので写像iするのことです。";
 #my $map_str = "写像する";
-my $map_parse = Haku.parse($map_str);
-say $map_parse;
+my \map_parse  = Haku.parse($map_str);
+say map_parse;
+exit;
  my $verb_str1 = "畳み込む";
  my $verb_parse1 = Expression.subparse($verb_str1, :rule('verb'));
  say $verb_parse1;

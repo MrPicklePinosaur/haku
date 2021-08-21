@@ -5,6 +5,7 @@ use JapaneseNumberParser;
 class HakuActions {
     # has %var;
     method variable($/) {
+        say "VAR $/";
         make Variable[$/.Str].new;
     }
     method verb($/) {
@@ -332,6 +333,7 @@ class HakuActions {
         make Function[ $name, @args,  $body].new;        
     }
     method haku-program($/) {
+        say "PROGRAM $/";
         # TODO: handle functions
         my @functions=();
         my @comments=();
