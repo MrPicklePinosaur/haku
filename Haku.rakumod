@@ -496,10 +496,17 @@ does Comments
         [ <arg-expression-list> 
          <.de> <.no> 
         ]??
-        [ <operator-noun> | <noun> | <variable> ] 
+        [ <operator-noun> | <noun> | <variable> ]  [<.shite-kudasai> | <.sura> ]?
+    }
+    token verb-apply-expression {
+          <arg-expression-list> <.nominna>? <dake>? 
+          [ <.wo> ]　
+        [ <arg-expression-list> 
+         [<.de> | <.no> <.tame> <.ni>] 
+        ]??
+        [ <verb> | <lambda-expression> [<.shite-kudasai> | <.sura> ]?]
     }
     token apply-expression {
-            
         [
           <arg-expression-list> <.nominna>? <dake>? 
           [ <.wo> | <.no> <.comma>?]　
@@ -509,6 +516,10 @@ does Comments
         [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
         ]
         || [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expressions>  [<.shite-kudasai> | <.sura> ]? ]]
+    }
+    token apply-expression-TODO {
+         [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expressions>  [<.shite-kudasai> | <.sura> ]? ]]
+         || [<verb-apply-expression> | <non-verb-apply-expression> ]  
     }
 
     token comment-then-expression {
