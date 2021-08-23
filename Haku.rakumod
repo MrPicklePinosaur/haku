@@ -1,12 +1,12 @@
 use v6;
-#use Grammar::Tracer;
+# use Grammar::Tracer;
 # Haku, a toy functional programming language based on Japanese
 
 role Characters {
     token reserved-kanji {
         #'開' | '閉' | '長' | '頭' | '尻' | '尾' |
         '或' |
-        # '和' | '差' | '積' | '除' |
+        '和' | '差' | '積' | '除' |
         # '足' | '引' | '掛' | '割' |
         '後' | '為' | '等' | '若' | '不' |
         '本' | '事' | 
@@ -491,8 +491,12 @@ does Comments
     token lambda-expression { <.aru> <variable-list> <.de> <expression> }
     # token lambda-application { <expression> 'を'　 [ <shite-kudasai> | <te-kudasai> | <sura> ]? }
     token apply-expression {
-        <arg-expression-list> <.nominna>? <dake>? [ <.wo> | <.no> <.comma>?]　[ <arg-expression-list> [<.de> <.no>? | <.no> <.tame> <.ni>] ]?
-      [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?? 
+          <arg-expression-list> <.nominna>? <dake>? 
+          [ <.wo> | <.no> <.comma>?]　
+        [ <arg-expression-list> 
+         [<.de> <.no>? | <.no> <.tame> <.ni>] 
+        ]??
+        [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
     }
 
     token comment-then-expression {

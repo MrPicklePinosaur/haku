@@ -5,7 +5,7 @@ use JapaneseNumberParser;
 class HakuActions {
     # has %var;
     method variable($/) {
-        say "VAR $/";
+        # say "VAR $/";
         make Variable[$/.Str].new;
     }
     method verb($/) {
@@ -104,7 +104,7 @@ class HakuActions {
     method noun-operator-expression ($/) {
         my $op=$<operator-noun>.made;
         my $lhs-expr = $<arg-expression>[0].made;
-        my $rhs-expr = $<arg-expression>[1].made;
+        my $rhs-expr = $<arg-expression>[1].made;        
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
     # token verb-operator-expression { <arg-expression> <ni>　<arg-expression> <wo> <operator-verb> }
@@ -179,11 +179,13 @@ class HakuActions {
         my $partial = $<dake> ?? True !! False;
         
         if $<identifier> {
-            my $function-name=$<identifier>.made;
+            my $function-name=$<identifier>.made;   
+            # die ($function-name, @args, $partial).raku;
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         } 
         elsif $<lambda-expression> {
             my $lambda-expr=$<lambda-expression>.made;
+            
             make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
         }        
     }
@@ -331,7 +333,7 @@ class HakuActions {
         make Function[ $name, @args,  $body].new;        
     }
     method haku-program($/) {
-        say "PROGRAM $/";
+        # say "PROGRAM $/";
         # TODO: handle functions
         my @functions=();
         my @comments=();

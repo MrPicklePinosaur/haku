@@ -2,7 +2,8 @@ use v6;
 use Haku;
 use HakuActions;
 # use HakuAST;
-use Scheme;
+# use Scheme;
+use Raku;
 
 #(五足す三）
 #四足す弐、
@@ -48,18 +49,22 @@ my $hon_str_2 = "註 例のはくのプログラム。
 【ケッカとシンカズの和】を見せる
 のことです。";
 
+my $hon_str_2_OFF = "本とは
+ケッカは〈七百四十壱をラムダする〉足す九百十九、
+【ケッカとシンカズの和】を見せる
+のことです。";
 
 # my $hon_str_2 = "本とは四十二の事です。";
 
-# my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
-# if $hon_parse_2 ~~ Match {
-#     say ppHakuProgram($hon_parse_2.made);
-# } else {
-#     my $hon_subparse_2 = Haku.subparse($hon_str_2);
-#     say $hon_subparse_2.chunks;
-#     say $hon_subparse_2.raku;
-# }
-# exit;
+my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
+if $hon_parse_2 ~~ Match {
+    say ppHakuProgram($hon_parse_2.made);
+} else {
+    my $hon_subparse_2 = Haku.subparse($hon_str_2);
+    say $hon_subparse_2.chunks;
+    say $hon_subparse_2.raku;
+}
+exit;
 
 # say "Try parsing 六"と七の積";
 # my $m = Haku.parse("六と七の積");
