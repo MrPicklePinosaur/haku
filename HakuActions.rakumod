@@ -174,20 +174,50 @@ class HakuActions {
         my @args = map({$_.made},$<arg-expression>);
         make @args;
     }
-    method apply-expression($/) {
-        my @args =  map({$_.made},$<arg-expression-list>).flat;#.made;
+    method non-verb-apply-expression($/) {
+        
+        my @args =  map({$_.made},$<arg-expression-list>).flat;
         my $partial = $<dake> ?? True !! False;
+        
+        if $<operator-noun> {
+            my $op=$<operator-noun>.made;   
+            make BinOpExpr[$op, @args[0],@args[1]].new;
+        } 
+        elsif $<noun> {
+            my $function-name=$<noun>.made;   
+            make FunctionApplyExpr[$function-name, @args, $partial].new;
+        } 
+        elsif $<variable> {
+            my $function-name=$<variable>.made;   
+            make FunctionApplyExpr[$function-name, @args, $partial].new;
+        }        
+    }
+    method apply-expression($/) {
+        my $partial = $<dake> ?? True !! False;
+        if $<non-verb-apply-expression> {
+            my @args= [ $<non-verb-apply-expression>.made ];
+            if $<verb> {
+                my $function-name=$<verb>.made;   
+                make FunctionApplyExpr[$function-name, @args, $partial].new;
+            } 
+            elsif $<lambda-expression> {
+                my $lambda-expr=$<lambda-expression>.made;
+                make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
+            }   
+
+        } else {
+
+        my @args =  map({$_.made},$<arg-expression-list>).flat;
         
         if $<identifier> {
             my $function-name=$<identifier>.made;   
-            # die ($function-name, @args, $partial).raku;
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         } 
         elsif $<lambda-expression> {
             my $lambda-expr=$<lambda-expression>.made;
-            
             make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
-        }        
+        }   
+        }     
     }
     method comment($/) {
         make $<comment-chars>.map({$_.Str}).join('');

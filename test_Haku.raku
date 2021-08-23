@@ -64,7 +64,7 @@ if $hon_parse_2 ~~ Match {
     say $hon_subparse_2.chunks;
     say $hon_subparse_2.raku;
 }
-exit;
+# exit;
 
 # say "Try parsing 六"と七の積";
 # my $m = Haku.parse("六と七の積");
@@ -76,12 +76,12 @@ my $let_kuromaru_str =  "本とは
 ●エクスは三。
 ●ワイは四千。
 では
-エクスとワイの積
+エクスとワイの積を見せる
 のことです。";
-#my $let_kuromaru = Haku.parse($let_kuromaru_str, :actions(HakuActions));#,:rule('let-expression')
-#say $let_kuromaru;
-#say ppHakuProgram($let_kuromaru.made);
-#exit;
+my $let_kuromaru = Haku.parse($let_kuromaru_str, :actions(HakuActions));#,:rule('let-expression')
+say $let_kuromaru;
+say ppHakuProgram($let_kuromaru.made);
+exit;
 # をエッフする
 # 
 #my $kono_let = Expression.subparse("この【エクスとワイの積】を試すに

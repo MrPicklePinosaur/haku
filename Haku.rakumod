@@ -1,5 +1,5 @@
 use v6;
-# use Grammar::Tracer;
+#use Grammar::Tracer;
 # Haku, a toy functional programming language based on Japanese
 
 role Characters {
@@ -490,13 +490,25 @@ does Comments
     
     token lambda-expression { <.aru> <variable-list> <.de> <expression> }
     # token lambda-application { <expression> 'を'　 [ <shite-kudasai> | <te-kudasai> | <sura> ]? }
+    token non-verb-apply-expression {
+          <arg-expression-list> <.nominna>? <dake>? 
+          <.no> <.comma>?
+        [ <arg-expression-list> 
+         <.de> <.no> 
+        ]??
+        [ <operator-noun> | <noun> | <variable> ] 
+    }
     token apply-expression {
+            
+        [
           <arg-expression-list> <.nominna>? <dake>? 
           [ <.wo> | <.no> <.comma>?]　
         [ <arg-expression-list> 
          [<.de> <.no>? | <.no> <.tame> <.ni>] 
         ]??
         [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
+        ]
+        || [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expressions>  [<.shite-kudasai> | <.sura> ]? ]]
     }
 
     token comment-then-expression {
