@@ -1,7 +1,8 @@
 use v6;
 use HakuAST;
 use Romaji;
-our $toRomaji=False;
+our $toRomaji=True;
+
 sub ppHakuProgram(HakuProgram $p) is export {
      my @comments = $p.comments;
      my $comment_str = @comments.map({';' ~ $_}).join("\n") ~ "\n";
@@ -12,7 +13,14 @@ sub ppHakuProgram(HakuProgram $p) is export {
          }     
      my $hon = $p.hon;
      my $hon_str= ppHon($hon);
-     my $prelude_str = '(define (displayln str) (display str) (newline))' ~ "\n\n";
+     my $prelude_str = q:to/ENDPREL/;
+(define (displayln str) (display str) (newline))
+(define (foldl func accum lst)
+  (if (null? lst)
+      accum
+      (foldl func (func accum (car lst)) (cdr lst))))
+ENDPREL
+
      return $prelude_str ~ $comment_str ~ $function_strs ~ $hon_str;
 
 }

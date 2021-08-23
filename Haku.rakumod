@@ -268,8 +268,13 @@ does Nouns
     token nominna { 'の皆' }
     token shazou { '写像' <sura> }     
     token tatamikomu { '畳み込む' <mu-endings> }
-    # For Function and Hon
 
+    # For IO
+    # ファイルを{読む|書く}のために開く
+    # ハンドル を  開く | 閉じる
+    token tame { 'ため' | '為' | '爲' }
+    # For Function and Hon
+    
     token toha { 'とは' }
 
     token toiu { 'という' | 'と言う' }
@@ -486,7 +491,7 @@ does Comments
     token lambda-expression { <.aru> <variable-list> <.de> <expression> }
     # token lambda-application { <expression> 'を'　 [ <shite-kudasai> | <te-kudasai> | <sura> ]? }
     token apply-expression {
-        <arg-expression-list> <.nominna>? <dake>? [ <.wo> | <.no> <.comma>?]　[ <arg-expression-list> <.de> <.no>? ]?
+        <arg-expression-list> <.nominna>? <dake>? [ <.wo> | <.no> <.comma>?]　[ <arg-expression-list> [<.de> <.no>? | <.no> <.tame> <.ni>] ]?
       [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?? 
     }
 
