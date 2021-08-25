@@ -325,8 +325,10 @@ class HakuActions {
         # }
 
     }
-
-    method hon($/) {
+    method  hontoha($/) {
+        make $<hon>.Str ~ ( $<ma> ?? $<ma>.Str !! '');
+    }
+    method hon-definition($/) {
         # say 'HON action';
         my @comments = ();
         my @bindings = ();
@@ -347,11 +349,16 @@ class HakuActions {
             # In general an array, iterate
             @comments = map({$_.made}, $<comment>);
         }
-         
-        make Hon[@bindings,@exprs,@comments].new;
+        my $name = $<hontoha>.made; 
+        make Hon[$name, @bindings,@exprs,@comments].new;
         # make should return a tuple of a list of  HakuExpr and a list of Comment
     }
     method function($/) {
+        my @comments = ();
+        if $<comment> {
+            # In general an array, iterate
+            @comments = map({$_.made}, $<comment>);
+        }
         my $name=
          $<verb> ?? $<verb>.made
         !! $<noun> ?? $<noun>.made
@@ -360,7 +367,7 @@ class HakuActions {
         my @args = $<variable-list>.made;
         # die @args.raku;
         my $body = $<expression>.made;
-        make Function[ $name, @args,  $body].new;        
+        make Function[ $name, @args,  $body,@comments].new;        
     }
     method haku-program($/) {
         # say "PROGRAM $/";
@@ -373,9 +380,9 @@ class HakuActions {
         if $<comment> {
             @comments = map({$_.made}, $<comment>);
         }
-        if $<hon> {
+        if $<hon-definition> {
             # say 'HAKU PROGRAM';
-            make HakuProgram[@functions,$<hon>.made,@comments].new;
+            make HakuProgram[@functions,$<hon-definition>.made,@comments].new;
         } else {
             die 'A Haku program must have a 本 main routine';
             # make 'Haku error: '~$/

@@ -173,7 +173,7 @@ role Variables does Characters {
 role Identifiers does Verbs does Nouns does Variables {
     
     # Identifiers are variables noun-style and verb-style function names
-    token identifier { <variable> | <verb> <.no>? | <noun> }
+    token identifier { <variable> | <verb> <.no>?? | <noun> }
 
 }
 
@@ -282,9 +282,10 @@ does Nouns
     token koto { 'こと' | '事' }
 
     # For Haku
-
+    token hon {'本'} 
+    token ma {'真'} 
     token hontoha {
-        '本とは' <.ws>? 
+        <hon> <ma>? <.toha> <.ws>? 
     }
 
     # Built-in verbs
@@ -632,6 +633,7 @@ grammar Functions is Expression does Keywords does Punctuation {
     
     token TOP { <function> }
     token function {
+        <comment>*
         [ <verb> | <noun> ] <.toha>
         <variable-list> <.de> <.ws>? <expression> <.function-end>
         # [<let-expression> | <expression>]
@@ -647,14 +649,14 @@ grammar Haku is Functions does Comments does Keywords {
     token TOP { <haku-program> }
     token haku-program {
         # <comment>
-        [<function>| <comment>]*? 
-        <hon>
+        [<function> | <comment>]*? 
+        <hon-definition>
         # [<function>| <comment>]*?
     }
 
     # Behaves like an 'do' but without the monads
-    token hon { 
-        　<.hontoha> 
+    token hon-definition { 
+        　<hontoha> 
           [ 
               <bind-ha> |
               [<expression> <.delim>] |     

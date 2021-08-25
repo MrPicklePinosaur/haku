@@ -79,9 +79,9 @@ my $let_kuromaru_str =  "本とは
 エクスとワイの積を見せる
 のことです。";
 my $let_kuromaru = Haku.parse($let_kuromaru_str, :actions(HakuActions));#,:rule('let-expression')
-say $let_kuromaru;
-say ppHakuProgram($let_kuromaru.made);
-exit;
+#say $let_kuromaru;
+#say ppHakuProgram($let_kuromaru.made);
+#exit;
 # をエッフする
 # 
 #my $kono_let = Expression.subparse("この【エクスとワイの積】を試すに
@@ -107,21 +107,23 @@ my $basic_func_str="註 Function　。
 # この【エクスとワイの積】を試すに。
 # 註 Function　。
 # 　　　このワイ割る四にワイが三十、サイが
-my $kono_let_func_str="試すとはサイとワイで
-このワイ割るサイに
-ワが四十二
+my $kono_let_func_str="註 Function　。
+試すとはサイとワイで
+【このエクス割るサイに
+ワが四十二、
+エクスがワ足すワイ】掛ける弐
 のことです。
 註 Main　。
-本とは四十弐を試すのことです。
+本真とは〈四十弐と百を試す〉を見せるのことです。
 ";
 # 
 # 註 Main　。
 # 本とは四十弐を試すのことです。
 # :rule('kono-let')
-#my $kono_let_func = Haku.parse($kono_let_func_str, :actions(HakuActions));
-# say $kono_let_func ;
-#say ppHakuProgram($kono_let_func.made);
-#exit;
+my $kono_let_func = Haku.parse($kono_let_func_str, :actions(HakuActions));
+ say $kono_let_func ;
+say ppHakuProgram($kono_let_func.made);
+exit;
 # my $haku = Haku.parse("本とは
 #     四十ニを見せる
 #     のことです。");#");#四十ニ"); # 

@@ -114,14 +114,16 @@ role Identifier[ $id] does AtomicExpr {
 }
 
 # data Function = mkFunction [FunctionArg] FunctionBody
-role Function[ $name, @args,  $body] {
+role Function[ $name, @args,  $body, @comments] {
     has Identifier $.name = $name;
     has Variable @.args = @args;
     has HakuExpr $.body = $body;
+    has Str @.comments = @comments;
 }
 
 # data Hon = mkHon [HakuExpr]
-role Hon[ @bindings, @exprs,  @comments] {
+role Hon[ $name, @bindings, @exprs,  @comments] {
+    has Str $.name = $name;
     has HakuExpr @.bindings = @bindings;
     has HakuExpr @.exprs= @exprs;
     has Str @.comments = @comments;
