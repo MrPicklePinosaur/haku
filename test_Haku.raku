@@ -165,9 +165,9 @@ my $baai_if_str = "本とは四十二場合は七そうでない場合は六の�
 my $fold_str = "本とは
 カズとアクを試すので畳み込む
 の事です。";
-# my $fold_parse = Haku.parse($fold_str, :actions(HakuActions));
-# say $fold_parse;
-# say ppHakuProgram($fold_parse.made);
+my $fold_parse = Haku.parse($fold_str, :actions(HakuActions));
+say $fold_parse;
+say ppHakuProgram($fold_parse.made);
 # exit;
 my $map_str = "本とはカズの皆を試すので写像するのことです。";
 my $map_parse  = Haku.parse($map_str, :actions(HakuActions));

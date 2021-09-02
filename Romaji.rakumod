@@ -5513,7 +5513,6 @@ sub katakanaToRomaji(Str $kstr --> Str) is export {
     while $r_str ~~/_/ {
         for %combined_chars.keys -> $c {
             my $cc = %combined_chars{$c};
-            say "$c $cc";
             $r_str ~~ s/$c/$cc/;  
         }
     }
