@@ -18,27 +18,27 @@ I can now write the following Haku program:
     【ケッカとシンカズの和】を見せる
     のことです。
 
-    and it compiles to the following Scheme code:
+and it compiles to the following Scheme code:
 
-(define (displayln str) (display str) (newline))(define (hon)
+    (define (displayln str) (display str) (newline))(define (hon)
 
-; 例のはくのプログラム    
-(define (hon)
-    (let* (
-            (RAMUDA (lambda (EKUSU) (* EKUSU EKUSU )))
-            (KAZUTACHI (list 88 7100 55))
-            (I (car KAZUTACHI))
-            (RO (cadr KAZUTACHI))
-            (HA (caddr KAZUTACHI))
-            (SHINKAZU (+ I RO ))
-            (KEKKA (+ (RAMUDA 741) 919 ))
+    ; 例のはくのプログラム    
+    (define (hon)
+        (let* (
+                (RAMUDA (lambda (EKUSU) (* EKUSU EKUSU )))
+                (KAZUTACHI (list 88 7100 55))
+                (I (car KAZUTACHI))
+                (RO (cadr KAZUTACHI))
+                (HA (caddr KAZUTACHI))
+                (SHINKAZU (+ I RO ))
+                (KEKKA (+ (RAMUDA 741) 919 ))
+            )
+            (displayln SHINKAZU)
+            (displayln (+ KEKKA SHINKAZU ))
         )
-        (displayln SHINKAZU)
-        (displayln (+ KEKKA SHINKAZU ))
     )
-)
 
-(hon)
+    (hon)
 
 Let's take it apart:
 
@@ -140,7 +140,7 @@ And finally we show the result of an expression:
 
 ## About the name
 
-I call it 'haku' because that can be written many ways and mean many things in Japanese. I was definitely thinking about Haku from Spirited Away. Also, I like the resemblance with [Raku](https://rakulang.org), the implementation language. 
+I call it 'haku' because that can be written many ways and mean many things in Japanese. I was definitely thinking about Haku from Spirited Away. Also, I like the resemblance with [Raku](https://rakulang.org), the implementation language. I would write it 珀 or 魄.
 
 ## Motivation
 

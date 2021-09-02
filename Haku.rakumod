@@ -173,12 +173,12 @@ role Variables does Characters {
 role Identifiers does Verbs does Nouns does Variables {
     
     # Identifiers are variables noun-style and verb-style function names
-    token identifier { <variable> | <verb> <.no>?? | <noun> }
+    token identifier { <variable> | <verb> <.no>? | <noun> }
 
 }
 
 role Auxiliaries {
-    token kudasai { ['下' | 'くだ' ] 'さい' }
+    token kudasai { [　'下' | 'くだ' ] 'さい' }
     token masu { 'ます' }
 
     token shite-kudasai { 'して' [ '下' | 'くだ' ] 'さい' }
@@ -187,7 +187,7 @@ role Auxiliaries {
     token sura {
         <suru> | <shimasu> | <shite-kudasai> 
     }
-    token desu { 'です' | 'だ'  | 'である' |　'で或る' |　'でございます' }
+    token desu { 'です' | 'だ'  | 'である' |　'で或る' |　'でございます' |　'で御座います'　 }
 }
 
 # +: Tasu (足す)
@@ -513,7 +513,7 @@ does Comments
           [ <.wo> | <.no> <.comma>?]　
         [ <arg-expression-list> 
          [<.de> <.no>? | <.no> <.tame> <.ni>] 
-        ]??
+        ]?
         [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
         ]
         || [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expressions>  [<.shite-kudasai> | <.sura> ]? ]]

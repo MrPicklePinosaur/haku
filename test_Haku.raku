@@ -120,10 +120,11 @@ my $kono_let_func_str="註 Function　。
 # 註 Main　。
 # 本とは四十弐を試すのことです。
 # :rule('kono-let')
-my $kono_let_func = Haku.parse($kono_let_func_str, :actions(HakuActions));
- say $kono_let_func ;
-say ppHakuProgram($kono_let_func.made);
-exit;
+# my $kono_let_func = Haku.parse($kono_let_func_str, :actions(HakuActions));
+#  say $kono_let_func ;
+# say ppHakuProgram($kono_let_func.made);
+# exit;
+
 # my $haku = Haku.parse("本とは
 #     四十ニを見せる
 #     のことです。");#");#四十ニ"); # 
@@ -161,13 +162,34 @@ my $baai_if_str = "本とは四十二場合は七そうでない場合は六の�
 # my $baai_if = Haku.parse($baai_if_str, :actions(HakuActions));
 # say ppHakuProgram($baai_if.made);
 # カズとアクを
-my $fold_str = "本とはカズとアクを足すので畳み込むのことです。";
-my $fold_parse = Haku.parse($fold_str, :actions(HakuActions));
-say $fold_parse;
-say ppHakuProgram($fold_parse.made);
+my $fold_str = "本とは
+カズとアクを試すので畳み込む
+の事です。";
+# my $fold_parse = Haku.parse($fold_str, :actions(HakuActions));
+# say $fold_parse;
+# say ppHakuProgram($fold_parse.made);
+# exit;
 my $map_str = "本とはカズの皆を試すので写像するのことです。";
-#my \map_parse  = Haku.parse($map_str);
-#say map_parse;
+my $map_parse  = Haku.parse($map_str, :actions(HakuActions));
+say $map_parse;
+say ppHakuProgram($map_parse.made);
+exit;
+my $test_teinei_str="註 Function　。
+試すとはサイとワイで
+【このエクス割るサイに
+ワが四十二で御座います、
+エクスがワ足すワイで御座います】
+と弐を掛けて下さい
+と言うの事で御座います。
+註 Main　。
+本真とは〈四十弐と百を試して下さい〉
+を見せて下さい
+と言うの事で御座います。";
+
+my $test_teinei = Haku.parse($test_teinei_str, :actions(HakuActions));
+say $test_teinei;
+say ppHakuProgram($test_teinei.made);
+
 exit;
  my $verb_str1 = "畳み込む";
  my $verb_parse1 = Expression.subparse($verb_str1, :rule('verb'));

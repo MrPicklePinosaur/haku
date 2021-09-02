@@ -22,7 +22,7 @@ my %katakana is Map = <
 ゴ GO
 サ SA
 ザ ZA
-シ SHI
+シ SI
 ジ JI
 ス SU
 ズ ZU
@@ -32,11 +32,11 @@ my %katakana is Map = <
 ゾ ZO
 タ TA
 ダ DA
-チ CHI
+チ TI
 ヂ JI
 ッ _TU
-ツ TSU
-ヅ DZU
+ツ TU
+ヅ DU
 テ TE
 デ DE
 ト TO
@@ -188,18 +188,18 @@ KI_YO KYO
 GI_YA GYA
 GI_YU GYU
 GI_YO GYO
-SI_YA SYA
-SI_YU SYU
-SI_YO SYO
-ZI_YA ZYA
-ZI_YU ZYU
-ZI_YO ZYO
-TI_YA TYA
-TI_YU TYU
-TI_YO TYO
-DI_YA DYA
-DI_YU DYU
-DI_YO DYO
+SI_YA SHA
+SI_YU SHU
+SI_YO SHO
+ZI_YA ZHA
+ZI_YU ZHU
+ZI_YO ZHO
+TI_YA CHA
+TI_YU CHU
+TI_YO CHO
+DI_YA JA
+DI_YU JU
+DI_YO JO
 NI_YA NYA
 NI_YU NYU
 NI_YO NYO
@@ -5503,17 +5503,21 @@ sub katakanaToRomaji(Str $kstr --> Str) is export {
 
     my @ks = $kstr.comb;
     my @rs = @ks.map({%katakana{$_}});
+    
     my $r_str = @rs.join('');
     while $r_str ~~/_TU(.)/ {
         my $c=$0;
         $r_str ~~ s/_TU$c/$c$c/;
     }
+    
     while $r_str ~~/_/ {
         for %combined_chars.keys -> $c {
             my $cc = %combined_chars{$c};
+            say "$c $cc";
             $r_str ~~ s/$c/$cc/;  
         }
     }
+    
     return $r_str;
 }
 
