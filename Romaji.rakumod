@@ -5543,42 +5543,54 @@ sub hiraganaToRomaji (Str $kstr --> Str) is export  {
 # When there are only kanji, I use the ON readings
 # What I should do is see if there are 2 kanji in a row
 sub kanjiToRomaji (Str $kstr --> Str) is export  {
-# There are 1 or 2 kanji and then some hiragana
+    # There are 1 or 2 kanji and then some hiragana
     if $kstr.chars > 1 and not $kstr.substr(0,2) ~~/<[あ..ん]>/ and $kstr ~~ /<[あ..ん]>/  {
+        # We transliterate the kanji, using ON readings
         my $kanji=kanjiToRomaji($kstr.substr(0,2));
         my $kana = hiraganaToRomaji($kstr.substr(2));
         my $str = $kanji ~ $kana;
-        $str ~~ s/aa/awa/;
+        $str ~~ s/aa/awa/; # ad hoc!
         return $str;
 
-    } elsif $kstr.chars > 1 and $kstr ~~ /<[あ..ん]>/  {
-    
+    } 
+    # There is more than one character and some of them are hiragana
+    elsif $kstr.chars > 1 and $kstr ~~ /<[あ..ん]>/ {        
         my ($kanji,@rest) = $kstr.comb;
+        
         if %joyo_kun_verb_readings{$kanji}:exists {
+        # a kanji with kun verb readings, one or more reasings            
             my @kana = %joyo_kun_verb_readings{$kanji};
-            # say $kanji,':',@kana.raku;
-                # say 'HERE0';
             if @rest {
                 my $r = join('',@rest);
-                for @kana -> $ks {
-                    # say $ks.raku;
+                # For every reading 
+                for @kana -> $ks {                                        
                     if $ks ~~ /$r/ {
+                        # say "1. $ks matched $r";
+                        return hiraganaToRomaji($ks);
+                    }
+                    elsif $r.chars   > 1 and $ks.substr(*-2)  eq $r.substr(*-2) {
+                        # say "2. $ks matched " ~ $r.substr(*-2);
+                        return hiraganaToRomaji($ks);
+                    }
+                    elsif $r.chars   > 1 and $ks.substr(*-2,1)  eq $r.substr(*-2,1) {
+                        # say "3. $ks matched " ~ $r.substr(*-2,1);
+                        return hiraganaToRomaji($ks);
+                    }
+                    elsif $ks.substr(*-1)  eq $r.substr(*-1) {
+                        # say "4. $ks matched " ~$r.substr(*-1);
                         return hiraganaToRomaji($ks);
                     }
                 }
+                # say @rest ~ " did not match ";
                 return hiraganaToRomaji(@kana[0]);
-                # return kanjiToRomaji($kanji);
             } else {
-                # say 'HERE1';
                 return hiraganaToRomaji(@kana[0]);
             }
         } elsif %joyo_kun_non_verb_readings{$kanji}:exists {        
             my @kana = %joyo_kun_non_verb_readings{$kanji};
-            # say $kanji,':',@kana.raku;
             if @rest {
                 my $r = join('',@rest);
                 for @kana -> $ks {
-                    # say $ks.raku;
                     if $ks ~~ /$r/ {
                         return hiraganaToRomaji($ks);
                     }
@@ -5594,7 +5606,7 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
         my ($kanji,@rest) = $kstr.comb;
         if %joyo_on_readings{$kanji}:exists {
             my @kana = %joyo_on_readings{$kanji};
-#say "KANA: "~ @kana[0];
+            #say "KANA: "~ @kana[0];
             my $kstr = katakanaToRomaji(@kana[0]); # Just take the first one
             if @rest {
                 $kstr ~= kanjiToRomaji(@rest.join(''));
@@ -5612,6 +5624,48 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
             'v' ~ $kstr.uniname.substr(*-4).lc;        
         }
     }
+}
+
+my %te-form-for is Map = {
+    'いて' =>　<く>,
+    'って' =>　<う　つ　る>,
+    'して' =>　<す>,
+    'んで' =>　<む　ぬ　ぶ>,
+    'いで' =>　<ぐ>
+};
+
+sub te-form-to-dict-form (Str $kstr --> Str) {
+# We need some more transformations for the te form
+# if the final character is te or de
+# We can only do this for verbs with a single kanji because 
+# the others are not in the lookup table
+if $kstr.chars == 3 and $kstr.substr(*-1) eq ('て'|’で’) {
+    my @endings = %te-form-for{$kstr.substr(*-2,2)};
+    for @endings -> $ending {
+        my $dict-form =  $kstr.substr(0,1) ~ $ending; 
+        if %joyo_kun_verb_readings{$kstr.substr(0,1)}:exists {
+
+        }
+
+    }
+# ku su t(s)u nu bu mu [yu] ru [wu]
+# shite -> su
+# tte -> u but unfortunately also tsu and ru
+# ite -> ku
+# nde -> mu, but unfortunately also nu and bu
+# ide -> gu
+# otherwise -> ru
+# so what we need to do in case of plural forms is test, and hope there is no clash
+# When we have found the correct stem, we can append the ending. 
+# For our purpose it must be the stem though.
+} elsif $kstr.chars == 2 and $kstr.substr(*-1) eq 'て' {
+    my $dict-form = $kstr.substr(0,1) ~ 'る';
+    if %joyo_kun_verb_readings{$kstr.substr(0,1)}:exists {
+
+    }
+} else {
+    return $kstr;
+}
 }
 
 #say katakanaToRomaji('ウィムデス');

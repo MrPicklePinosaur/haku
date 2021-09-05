@@ -9,6 +9,7 @@ class HakuActions {
         make Variable[$/.Str].new;
     }
     method verb($/) {
+        say "VERB: "~$/.Str;
         make Verb[$/.Str].new;
     }
     method noun($/) {
@@ -17,17 +18,8 @@ class HakuActions {
 
     method identifier($/) {
         make $/.values[0].made;
-        # if $<variable> {
-        #     $<variable>.made;
-        # }
-        # elsif $<noun> {
-        #     $<noun>.made;
-        # }
-        # elsif $<verb> {
-        #     $<verb>.made;
-        # }
-
     }
+    
     method string($/) {
         if $<string-chars> {
             my @chars= map({$_.Str},$<string-chars>);             
@@ -211,6 +203,7 @@ class HakuActions {
         
         if $<identifier> {
             my $function-name=$<identifier>.made;   
+           
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         } 
         elsif $<lambda-expression> {

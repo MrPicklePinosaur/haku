@@ -8,7 +8,7 @@ role Characters {
         '或' |
         '和' | '差' | '積' | '除' |
         # '足' | '引' | '掛' | '割' |
-        '後' | '為' | '等' | '若' | '不' |
+        '後' | '為' | '等' | '若' | '不' | '下' |
         '本' | '事' | 
         '皆' | '空' | '若' 
         # '見' | '合' | '割' | '読' 
@@ -155,7 +155,7 @@ role Verbs does Characters {
         'った'| 'た'| 'いだ'| 'んだ' |  
         'って'| 'て'| 'いで' | 'んで'
     }
-    token verb { <kanji> <hiragana>?? <kanji>? <hiragana>*? <verb-ending> }
+    token verb { <kanji> <hiragana>?? <kanji>? <hiragana>*? <verb-ending> <.kudasai>? }
 
 }
 
@@ -448,9 +448,9 @@ does Comments
  
     token atomic-expression {  <number> | <string> | <mu> | <kuu> | <identifier>   }
     token parens-expression { 
-        [ <.open-maru> <expression> <.close-maru> ] |
+       [ [ <.open-maru> <expression> <.close-maru> ] |
         [ <.open-sumitsuki> <expression> <.close-sumitsuki> ] |
-        [ <.open-sen> <expression> <.close-sen> ] 
+        [ <.open-sen> <expression> <.close-sen> ] ] <.ws>
     }
     token kaku-parens-expression { <.open-kaku> [<list-expression> | <range-expression>] <.close-kaku> }
 
@@ -569,9 +569,6 @@ does Comments
     token bind-ha { [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
     token bind-ga { [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
     token bind-tara { [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
-    # token moshi-let {
-    #     <moshi> <bind-tara>+  <expression>  <delim>?
-    # }
     
     token kono-let {
         <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga> [<.delim> <.ws>? <bind-ga>]* <.delim>?
@@ -605,28 +602,7 @@ does Comments
         <moshi-ifthen> |
         <baai-ifthen> 
     }
-=begin unused
-    # Map
-    token map-application {
-        [ <variable> | <list-expression> | <range-expression> ] 
-        # [ 
-        #     <.nokaku> <lambda-expression> 
-        # |
-        <.nominna>? <.wo>　
-        [ <operator-noun> | <identifier> | [ <verb> <.no>] | [ <lambda-expression> <.no>] | <comp-expression>  ] 
-        # ]
-        <.de> <.shazou> <.sura>
-    }
 
-    # Fold
-    # 
-    token fold-application {
-        [ <variable> | <list-expression> | <range-expression> ] 
-        <.nominna>?  <.to-particle> <expression> <.wo>
-        [ <operator-noun> | <identifier> |  <verb> <.no> |  <lambda-expression> <.no> ] 
-        <.de>  <.tatamikomu> 
-    }
-=end unused
 } # End of Expression
 
 grammar Functions is Expression does Keywords does Punctuation { 
@@ -651,7 +627,7 @@ grammar Haku is Functions does Comments does Keywords {
         # <comment>
         [<function> | <comment>]*? 
         <hon-definition>
-        # [<function>| <comment>]*?
+        [<function>| <comment>]*?
     }
 
     # Behaves like an 'do' but without the monads

@@ -60,13 +60,13 @@ In Scheme I emit a function as body of Hon a let*-binding (i.e. binding is seque
             )
             ...
         )
-    )    
+    )
 
 In the example we have an number of different types of assignments:
 
     ラムダは或エクスでエクス掛けるエクスです、
 
-    "RAMUDA wa aru EKSU de EKSU kakeru EKSU desu"    
+    "RAMUDA wa aru EKSU de EKSU kakeru EKSU desu"
 
 Katakana is for variables, kanji for functions and keywords, hiragana for keywords and verb endings (e.g. in 掛ける and 見せる).
 
@@ -74,7 +74,7 @@ This roughly reads as "as for RAMUDA, with a given X it is X times X", so RAMUDA
 
     (RAMUDA (lambda (EKUSU) (* EKUSU EKUSU )))
 
-Next we have an assignment to a list of number constants:     
+Next we have an assignment to a list of number constants:
 
     カズ達は八十八と七千百と五十五で、
 
@@ -98,7 +98,7 @@ The next assignment,
 
     "SHINKAZU wa I to RO no Wa de"
 
-is simply    
+is simply
 
     "SHINKAZU is the sum of I and RO"
 
@@ -116,7 +116,7 @@ In Scheme:
     
     (displayln SHINKAZU)
 
-Then follows another assignment:    
+Then follows another assignment:
 
     ケッカは〈七百四十壱をラムダする〉足す九百十九、
 
@@ -126,7 +126,7 @@ Then follows another assignment:
 
     (KEKKA (+ (RAMUDA 741) 919 ))
 
-And finally we show the result of an expression:    
+And finally we show the result of an expression:
 
     【ケッカとシンカズの和】を見せる
 
@@ -140,7 +140,7 @@ And finally we show the result of an expression:
 
 ## About the name
 
-I call it 'haku' because that can be written many ways and mean many things in Japanese. I was definitely thinking about Haku from Spirited Away. Also, I like the resemblance with [Raku](https://rakulang.org), the implementation language. I would write it 珀 or 魄.
+I call it 'haku' because that can be written many ways and mean many things in Japanese. I was definitely thinking about Haku from Spirited Away. Also, I like the resemblance with [Raku](https://rakulang.org), the implementation language. I would write it 珀 (amber) or 魄 (soul, spirit).
 
 ## Motivation
 
@@ -163,7 +163,34 @@ In principle, programming language does not need to be based on natural language
 
 To allow to investigate that question, the Scheme emitter for Haku supports (limited) transliteration to Romaji. 
 
+## Parsing
 
+Japanese does not use spaces. So how do we tokenise a string of Japanese? 
+- There are three writing systems: katakana (angular), hiragana (squigly) and kanji (complicated). 
+- Katakan is used in a similar way as italics
+- Nouns, verb, adjectives and adverbs normally start with a kanji
+- Hiragana is used for verb/adjective/adverb endings and "particles", small words or suffixes that help identify the words in a sentence. 
+- A verb/adjective/adverb can't end with a hiragana character that represents a particle. 
+
+So we have some simple tokenisation rules:
+- a sequence of katakana
+- a kanji followed by more kanji or hiragana that do not represent particles
+- hiragana that represent particles
+
+Where that fails, we can introduce parentheses.
+In practice, only specific adverbs and adjectives are used in Haku. For example:
+
+ラムダ|は|或|エクス|で|エクス|掛ける|エクス|です
+
+ラムダ: katakana word
+は: particle
+或: pre-noun adjective
+エクス: katakana word
+で: particle
+エクス: katakana word
+掛ける: verb
+エクス: katakana word　
+です: verb (copula)
 
 ## Core language
 
@@ -172,6 +199,7 @@ Haku is a simple pure, untyped, strict functional language. The core constructs 
 ### Identifiers 
     - variables: first character must be _katakana_; further characters katakana or number kanji. Last character can be 達. Also, variables can be any _kanji_ with "haku" as _on_-reading.
     - function names: must start with a kanji. If they are nouns, further characters are also kanji; if they are verbs, further characters are hiragana verb endings
+    
 ### Constants
     - integer: written using number kanji. For zero, either 零, ゼロ or ◯. Negative number prefix is マイナス, optional positive number prefix is プラス
     - rational: two integers separated by 点
@@ -191,6 +219,12 @@ In Haku, named function definitions are statements. The structure is
 ### Let binding
 
 この <expression> に <variable> が <expression> 、... 。
+
+or
+
+●<variable>は <expression>
+●...
+では<expression>
 
 ### Partial application
 
@@ -241,7 +275,7 @@ There is no operator precedence handling, so combined expressions need parenthes
     keys    マップの鍵
     values  マップの対応値
 
-- we create them as an empty map, which I suppose could be the same as an empty list, 空    
+- we create them as an empty map, which I suppose could be the same as an empty list, 空 
 - I want a closer binding than と. Maybe I could say k to v no pair 双 which would make it identical to a function call
 - But then it means a list of these needs parens: (a to be no sou) to (...) to (...)  〈キーとバリューの双〉と〈キーとバリューの双〉の図
 - Instead, I will automatically construct a map from a list: k1 to v1 to k2 to v2 kara zu wo tsukuru
@@ -255,6 +289,7 @@ For interpolation: 《バリュー》
 Returns a string.
 
 ### I/O
+
 - minimal I/O: open/close files, read from/write to files, print to stdout
 
 In addition:
@@ -308,7 +343,7 @@ Comment line: 註 or 注 or even just 言, must end with 。
 
  = : は…です。
  
-Lambda:  
+Lambda:
 →： で
 
 For ease of parsing:
@@ -392,12 +427,6 @@ I don't have a join operator, inconvenient though it may be, instead it is
 
 arg1 to arg2 wo arg3 to arg4 de verb
 arg1 to arg2 no arg3 to arg4 de noun
-
-Lambda
-
-\x -> 2*x
-x ga expr in x desu。
-アでア掛ける二です。
 
 Map
 
