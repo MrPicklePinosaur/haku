@@ -9,8 +9,14 @@ class HakuActions {
         make Variable[$/.Str].new;
     }
     method verb($/) {
-        say "VERB: "~$/.Str;
-        make Verb[$/.Str].new;
+        my $verb-kanji = $/.Str.substr(0,1);
+        my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
+
+        if %vbinops{$verb-kanji}:exists {
+            make BinOp[%vbinops{$verb-kanji}].new;
+        } else {
+            make Verb[$/.Str].new;
+        }
     }
     method noun($/) {
         make Noun[$/.Str].new;
@@ -83,7 +89,7 @@ class HakuActions {
     method operator-noun($/) {
         my $op-kanji= $/.Str;
         my %nbinops is Map = < 和 + 差 - 積 * 除 />;
-        make BinOp[%nbinops{$op-kanji}].new;    
+        make BinOp[%nbinops{$op-kanji}].new;
     }
 
     method operator-verb($/) {
@@ -199,17 +205,20 @@ class HakuActions {
 
         } else {
 
-        my @args =  map({$_.made},$<arg-expression-list>).flat;
-        
-        if $<identifier> {
-            my $function-name=$<identifier>.made;   
-           
-            make FunctionApplyExpr[$function-name, @args, $partial].new;
-        } 
-        elsif $<lambda-expression> {
-            my $lambda-expr=$<lambda-expression>.made;
-            make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
-        }   
+            my @args =  map({$_.made},$<arg-expression-list>).flat;
+            
+            if $<identifier> {                
+                my $function-name=$<identifier>.made;   
+                if $function-name ~~ BinOp {
+                    make BinOpExpr[$function-name, @args[0],@args[1]].new
+                } else {
+                    make FunctionApplyExpr[$function-name, @args, $partial].new;
+                }
+            } 
+            elsif $<lambda-expression> {
+                my $lambda-expr=$<lambda-expression>.made;
+                make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
+            }   
         }     
     }
     method comment($/) {
