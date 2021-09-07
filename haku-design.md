@@ -926,9 +926,11 @@ I added ni as acceptable particle instead of to.
 ====
 
 Two more features that would allow a more poetic expressions:
-1/ Allow adjectives: -I, -na and -no
--no "adjectives" can of course be nouns and that syntax could actually be an alternative, neat way to access a hash:
 
+1/ Allow adjectives: -i, -na and -no
+
+
+-no "adjectives" can of course be nouns and that syntax could actually be an alternative, neat way to access a hash:
 
 マップにカギを正引きする・探索する would simply be マップのカギ 
 
@@ -946,25 +948,34 @@ e.g. more likely with a colour:
 
 	kami ha ORENJI no iro
 
-But the problem here is that this is mutable. Immutable would be
+But the problem here is that this is mutable. 
 
-	kami' = iro kami ORENJI
+Immutable would be
+
+	kami' = irodoru kami ORENJI
 
 Which should be
 
-	kami' ha kami wo ORENJI no iro
+	kami' ha kami wo ORENJI ni irodoru
 
-or even
+or maybe
 
-	kami' ha kami wo ORENJI no iro ni naru	
+	kami' ha kami wo ORENJI no iro ni suru	
 
 The other thing I consider is prefix verbs:
+
+    忘れかけてた遠い記憶
 
 	wasurekaketeta tooi kioku
 
 	"The distant memory that I had started to forget"
 
 tooi is an -i adj so the question is mainly how we bind them together
+
+We can either treat the adj as part of the noun, but that is not so nice; or we treat it as separate but then the problem is that the Grammar will create a list of all adjectives in a token. If of course we would have a token "qualified-noun" which is 
+
+[kute-adjective | de-adjective ] [i-adjective | na-adjective ] noun
+
 A pragmatic way is to say there can only be one adjective per noun; or we can say two if we support -kute and -de
 
 In any case the above would be equivalent to
