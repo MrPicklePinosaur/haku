@@ -1,19 +1,15 @@
 use v6;
-#use Grammar::Tracer;
+# use Grammar::Tracer;
 # Haku, a toy functional programming language based on Japanese
 
 role Characters {
     token reserved-kanji {
-        #'開' | '閉' | '長' | '頭' | '尻' | '尾' |
         '或' |
         '和' | '差' | '積' | '除' |
-        # '足' | '引' | '掛' | '割' |
         '後' | '為' | '等' | '若' | '不' | '下' |
         '本' | '事' | 
         '皆' | '空' | '若' 
-        # '見' | '合' | '割' | '読' 
     }
-
    
     token kanji {  
         # Using Block hangs
@@ -314,14 +310,25 @@ does Nouns
     # Built-in nouns
 
     # List operations; strings are lists.
+    # length
     token nagasa { '長さ' }
     # reverse:  
     #配列を反転する
-    #リストの逆引き
+    #リストの逆引き　
+    
+    # head, 
+    token atama { '頭' }
+    # tail, 
+    token shippo  { '尻尾' }
+    # concatenation     
+    token awaseru { '合わせ' <ru-endings> }
+    # split
+    token waru { '割' <ru-endings> }
+ 
     
     # Map operations
     
-    # length 長さ 
+    # length 長さ , see abive
     
     # has　マップにカギあったら
     token attara { 'あったら' | '有ったら' }
@@ -344,15 +351,10 @@ does Nouns
 
     # empty map 空 
 
-    # map creation から図を作る
+    # map creation (from a list) から図を作る 
     # I could use 連想配列 rensouhairetsu but that is really long.
     token zuwotsukuru { '図' 'を' '作' <ru-endings> }
 
-    token atama { '頭' }
-    token shippo  { '尻尾' }
-    
-    token awaseru { '合わせ' <ru-endings> }
-    token waru { '割' <ru-endings> }
 
     # File operations
     token akeru { '開け' <ru-endings> }
@@ -507,6 +509,7 @@ does Comments
         ]??
         [ <verb> | <lambda-expression> [<.shite-kudasai> | <.sura> ]?]
     }
+    
     token apply-expression {
         [
           <arg-expression-list> <.nominna>? <dake>? 
@@ -660,6 +663,16 @@ method parse($target, |c) {
     self.error($target) unless $match;
     return $match;
 }
+
+method subparse($target, |c) {
+    my $*HIGHWATER = 0;
+    my $*PARTICLE= '';
+    my $*LASTRULE;
+    my $match = callsame;
+    self.error($target) unless $match;
+    return $match;
+}
+
 # for error messages, later.
     method token-error($msg) {
         my $parsed = self.target.substr(0, self.pos).trim-trailing;

@@ -55,26 +55,9 @@ sub ppFunctionName(\fn) {
         my $verb-kanji = $f_name_maybe_teinei.substr(0,1);
         if %defined-functions{$verb-kanji}:exists {
             $f_name_maybe_teinei = %defined-functions{$verb-kanji};            
-        } else {        
-        # say "FUNCTION: $f_name_maybe_teinei ";
-            $f_name_maybe_teinei ~~ s/ [ 'くだ' | '下' ] 'さい' //;
-        }
-        # We need some more transformations for the te form
-        # if the final character is te or de
-        # ku su t(s)u nu bu mu [yu] ru [wu]
-        # shite -> su
-        # tte -> u but unfortunately also tsu and ru
-        # ite -> ku
-        # nde -> mu, but unfortunately also nu and bu
-        # ide -> gu
-        # otherwise -> ru
-        # so what we need to do in case of plural forms is test, and hope there is no clash
-        # When we have found the correct stem, we can append the ending. 
-        # For our purpose it must be the stem though.
-
-
-
-                 
+        } #else {        
+          #  $f_name_maybe_teinei ~~ s/ [ 'くだ' | '下' ] 'さい' //;
+        #}
          
             my $f_name = $toRomaji ?? kanjiToRomaji($f_name_maybe_teinei) !! $f_name_maybe_teinei;
             given $f_name {

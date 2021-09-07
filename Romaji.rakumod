@@ -5567,28 +5567,62 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                     # say "TE-FORM: $kstr => $kstr2";
                     return hiraganaToRomaji($kstr2);
                 } else {
-                my $r = join('',@rest);
-                # For every reading 
-                for @kana -> $ks {                                        
-                    if $ks.substr(*-$r.chars)  eq $r {
-                        # say "1. $ks matched $r";
-                        return hiraganaToRomaji($ks);
+                    my $r = join('',@rest);
+                    # For every reading 
+                    my $sel=6;
+                    my $sel-ks='';
+                    my $prev-sel=6;
+                    for @kana -> $ks { 
+                        # if it is the dictionary form                            
+                        if $ks.substr(*-$r.chars)  eq $r {
+                            say "1. $ks matched $r";
+                            $sel=1;
+                            
+                            #return hiraganaToRomaji($ks);
+                        }
+                        elsif $r.chars > 1 and $ks.substr(*-2)  eq $r.substr(*-2) {
+                            # If the last 2 chars match, so also dict form
+                            say "2. $ks matched " ~ $r.substr(*-2);
+                            $sel=2;
+                            #return hiraganaToRomaji($ks);
+                        }
+                        elsif $r.chars > 1 and $ks.substr(*-2,1)  eq $r.substr(*-2,1) {
+                            # If only the last but one char matches the last but one
+                            # would be the case for e.g. り form
+
+                            say "3. $ks matched " ~ $r.substr(*-2,1);
+                            $sel=3;
+                            #return hiraganaToRomaji($ks);
+                        }
+                        elsif  $ks.substr(*-2,1)  eq @rest[0] {
+                            # If only the last but one char matches the first char of the rest
+                            # would be the case for e.g. 
+                            # 忘れかける　わすれる
+
+                            say "4. $ks matched " ~ $r.substr(*-2,1);
+                            $sel=4;
+                            #return hiraganaToRomaji($ks);
+                        }                        
+                        elsif $ks.substr(*-1)  eq $r.substr(*-1) {
+                            # If only the last character matches, this is weak.
+                            say "5. $ks matched " ~$r.substr(*-1);
+                            $sel=5;
+                            #return hiraganaToRomaji($ks);
+                        }
+                        if $sel < $prev-sel {
+                            $prev-sel = $sel;
+                            $sel-ks=$ks;
+                            $sel=0;
+                        }
                     }
-                    elsif $r.chars > 1 and $ks.substr(*-2)  eq $r.substr(*-2) {
-                        # say "2. $ks matched " ~ $r.substr(*-2);
-                        return hiraganaToRomaji($ks);
+                    
+                    if $prev-sel > 0 {
+                        say "$prev-sel $sel-ks";
+                        return hiraganaToRomaji($sel-ks);
+                    } else {
+                        say @rest ~ " did not match ";
+                        return hiraganaToRomaji(@kana[0]);
                     }
-                    elsif $r.chars > 1 and $ks.substr(*-2,1)  eq $r.substr(*-2,1) {
-                        # say "3. $ks matched " ~ $r.substr(*-2,1);
-                        return hiraganaToRomaji($ks);
-                    }
-                    elsif $ks.substr(*-1)  eq $r.substr(*-1) {
-                        # say "4. $ks matched " ~$r.substr(*-1);
-                        return hiraganaToRomaji($ks);
-                    }
-                }
-                # say @rest ~ " did not match ";
-                return hiraganaToRomaji(@kana[0]);
                 }
             } else {
                 return hiraganaToRomaji(@kana[0]);

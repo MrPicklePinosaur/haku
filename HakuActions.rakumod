@@ -3,19 +3,36 @@ use HakuAST;
 use JapaneseNumberParser;
 
 class HakuActions {
-    # has %var;
+    
+    has %!defined-functions;
+    
     method variable($/) {
         # say "VAR $/";
         make Variable[$/.Str].new;
     }
     method verb($/) {
-        my $verb-kanji = $/.Str.substr(0,1);
+        my $verb-str = $/.Str ;
+        my $verb-kanji = $verb-str.substr(0,1);
+        #if %!defined-functions{$verb-kanji}:exists {
+        #    $verb-str = %!defined-functions{$verb-kanji};
+        #}
+        say "VERB: $verb-str";
+        $verb-str~='';
+        if $verb-str.chars > 2 { # and $verb-str.substr(2,1) eq ('て'|'で') {    
+        if ($verb-str.substr(2) ~~ / ['て' | 'で'] .+$ /) {
+            $verb-str ~~ s/ [ 'くだ' | '下' ] 'さい' //;
+            $verb-str ~~ s/ ['しま'|'仕舞'|'終'|'了'|'蔵'] ['っ'|'いまし'] 'た' //;            
+            $verb-str ~~ s/ [ 'く'| '呉'] 'れ'　.+? //;
+            $verb-str ~~ s/ [ '貰'|'もら'] .+? //; 
+        }
+        }
+        say "VERB: $verb-str";
         my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
 
         if %vbinops{$verb-kanji}:exists {
             make BinOp[%vbinops{$verb-kanji}].new;
         } else {
-            make Verb[$/.Str].new;
+            make Verb[$verb-str].new;
         }
     }
     method noun($/) {
@@ -110,7 +127,7 @@ class HakuActions {
         my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
-#say "Action:VERB-BINOP:" ~ $op.raku ~ ' ' ~ $lhs-expr.raku ~ ', ' ~ $rhs-expr.raku;
+        #say "Action:VERB-BINOP:" ~ $op.raku ~ ' ' ~ $lhs-expr.raku ~ ', ' ~ $rhs-expr.raku;
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
     # token verb-operator-expression-infix { <arg-expression> <operator-verb> <arg-expression> }
@@ -365,6 +382,7 @@ class HakuActions {
          $<verb> ?? $<verb>.made
         !! $<noun> ?? $<noun>.made
         !! '_';
+        %!defined-functions{$name.substr(0,1)}=$name;
 
         my @args = $<variable-list>.made;
         # die @args.raku;
