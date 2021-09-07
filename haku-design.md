@@ -883,12 +883,12 @@ pair: ペア
 
 じょうけんつきひょうげんしき
 条件付き表現式
-￼ Conditional expression (programming, programing).
+ Conditional expression (programming, programing).
 
 かえりち
 返値
 n
-￼ Return value (from a function, in programming).
+ Return value (from a function, in programming).
  
 
 ====
@@ -921,4 +921,87 @@ a to b wo tasu
 
 is just fine.
 
-I added ni as acceptable instead of to.
+I added ni as acceptable particle instead of to.
+
+====
+
+Two more features that would allow a more poetic expressions:
+1/ Allow adjectives: -I, -na and -no
+-no "adjectives" can of course be nouns and that syntax could actually be an alternative, neat way to access a hash:
+
+
+マップにカギを正引きする・探索する would simply be マップのカギ 
+
+Although I need to consider this carefully: what I want is something like
+
+	ORENJI no densha 
+
+And it is not clear at all how this would map to a hash access
+
+	ICHIGO no nioi
+
+Again, not a hash. What it could be is that the thing bound to it has a nioi and that is set to ICHIGO
+
+e.g. more likely with a colour:
+
+	kami ha ORENJI no iro
+
+But the problem here is that this is mutable. Immutable would be
+
+	kami' = iro kami ORENJI
+
+Which should be
+
+	kami' ha kami wo ORENJI no iro
+
+or even
+
+	kami' ha kami wo ORENJI no iro ni naru	
+
+The other thing I consider is prefix verbs:
+
+	wasurekaketeta tooi kioku
+
+	"The distant memory that I had started to forget"
+
+tooi is an -i adj so the question is mainly how we bind them together
+A pragmatic way is to say there can only be one adjective per noun; or we can say two if we support -kute and -de
+
+In any case the above would be equivalent to
+
+	(wasureru tooi-kioku)
+
+	(forget distant-memory)
+
+and thus equivalent to
+
+	tooi kioku wo wasurekaketeta
+
+So what about
+
+	ORENJI no densha to ICHIGO no nioi wo wasurete shimatta
+
+	"I had totally forgotten the orange train and the smell of strawberries"	 
+
+That would be
+
+	(wasureru (list ORENJI-densha ICHIGO-nioi))
+
+
+	(forget (list orange-train strawberry-scent))
+
+
+Finally
+
+	会えるものならば
+	moshi aeru mono naraba
+
+	"If only I could meet you"
+	
+	(naru au)
+	(become meet)
+
+All I need for that is to support 'mono' in addition to no	
+	
+
+
