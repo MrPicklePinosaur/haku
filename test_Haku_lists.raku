@@ -4,19 +4,23 @@ use HakuActions;
 # use Scheme;
 use Raku;
 
-#リストは壱〜十、
 
-say Haku.parse("見せてくれて下さい",:rule('verb'));
-say Haku.parse("見せる",:rule('verb'));
-say Haku.parse("見せませんか",:rule('verb'));
-say Haku.parse("触れる",:rule('verb'));
-say Haku.parse("捨てる",:rule('verb'));
-say Haku.parse("捨てて",:rule('verb'));
-say Haku.parse("忘れかけて",:rule('verb'));
-exit;
+
+# say Haku.parse("見せてくれて下さい",:rule('verb'));
+# say Haku.parse("見せる",:rule('verb'));
+# say Haku.parse("見せませんか",:rule('verb'));
+# say Haku.parse("触れる",:rule('verb'));
+# say Haku.parse("捨てる",:rule('verb'));
+# say Haku.parse("捨てて",:rule('verb'));
+# say Haku.parse("忘れかけて",:rule('verb'));
+
+# てくれて下さい
+#リストは壱〜十、
 my $hon_str_2 = "本とは
-ナガサはリストの長さ、
-ナガサを見せてくれて下さい
+ナガサイはリストの長さ、
+ナガサロはリストの頭、
+ナガサハはリストの尻尾、
+ナガサを見せる
 の事です。";
 
 

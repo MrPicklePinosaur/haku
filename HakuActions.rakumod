@@ -2,6 +2,8 @@ use v6;
 use HakuAST;
 use JapaneseNumberParser;
 
+our $V=True;
+
 class HakuActions {
     
     has %*defined-functions;
@@ -21,19 +23,31 @@ class HakuActions {
 
     method variable($/) {
         # say "VAR $/";
-        make Variable[$/.Str].new;
+        make Variable[$/.Str].new;        
     }
+    #     token verb { 
+    #     <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
+    #    || [
+    #      <verb-dict> 
+    #    | <verb-masu> 
+    #    | <verb-ta> 
+    #    ]
     method verb($/) {
-        my $verb-str = $<verb-stem> ; #/.Str ;
+        # say "VERB: $/.Str ";
+       
+        # if $<verb-ending> {
+        #     $verb-str ~=  $<verb-ending>
+        # } elsif $<verb-ending-te> {
+        #     $verb-str ~=  $<verb-ending-te>
+        # }
+
+        # So wonderful
+        my $verb-str = ($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
         my $verb-kanji = substr($verb-str,0,1);
-        if $<verb-ending> {
-            $verb-str ~=  $<verb-ending>
-        } elsif $<verb-ending-te> {
-            $verb-str ~=  $<verb-ending-te>
-        }
-        if %*defined-functions{$verb-kanji}:exists {
+        if not $<verb-dict>  and %*defined-functions{$verb-kanji}:exists {
             $verb-str = %*defined-functions{$verb-kanji};
         }
+        # say "VERB after: $verb-str ";
         #if $verb-str.chars > 2 { # and $verb-str.substr(2,1) eq ('て'|'で') {    
         #    $verb-str = shorten($verb-str);
         #}

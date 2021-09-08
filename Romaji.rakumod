@@ -1,5 +1,7 @@
 use v6;
 
+our $V=True;
+
 my %katakana is Map = < 
 ア A
 ィ _I
@@ -2316,6 +2318,7 @@ my %joyo_on_readings is Map =
 '平' ,<ビョウ ヘイ>,
 '群' ,<グン>,
 '尾' ,<ビ>,
+'尻',<コウ>,
 '詩' ,<シ>,
 '怠' ,<タイ>,
 '旧' ,<キュウ>,
@@ -4942,7 +4945,7 @@ my %joyo_kun_non_verb_readings is Map =
 '人' ,<ひと>,
 '色' ,<いろ>,
 '羊' ,<ひつじ>,
-'本' ,<もと>,
+'本' ,<ほん　もと>,
 '代' ,<しろ よ>,
 '正' ,<ただしい まさ>,
 '稲' ,<いな いね>,
@@ -5121,6 +5124,7 @@ my %joyo_kun_non_verb_readings is Map =
 '東' ,<ひがし>,
 '度' ,<たび>,
 '尾' ,<お>,
+'尻' ,<しり>,
 '塩' ,<しお>,
 '雄' ,<お>,
 '華' ,<はな>,
@@ -5543,8 +5547,10 @@ sub hiraganaToRomaji (Str $kstr --> Str) is export  {
 # When there are only kanji, I use the ON readings
 # What I should do is see if there are 2 kanji in a row
 sub kanjiToRomaji (Str $kstr --> Str) is export  {
+    say "KANJI: " ~ $kstr if $V;
     # There are 2 kanji and then some hiragana
     if $kstr.chars > 1 and not $kstr.substr(0,2) ~~/<[あ..ん]>/ and $kstr ~~ /<[あ..ん]>/  {
+        say "MULTI-KANJI with HIRAGANA: " ~ $kstr if $V;
         # We transliterate the kanji, using ON readings
         my $kanji=kanjiToRomaji($kstr.substr(0,2));
         my $kana = hiraganaToRomaji($kstr.substr(2));
@@ -5555,7 +5561,8 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
     } 
     # There is more than one character and some of them are hiragana
     # This is a bit not good because if there are no kanji I should just call hiraganaToRomaji
-    elsif $kstr.chars > 1 and $kstr ~~ /<[あ..ん]>/ {        
+    elsif $kstr.chars > 1 and $kstr ~~ /<[あ..ん]>/ {       
+        say "SINGLE KANJI with HIRAGANA: " ~ $kstr if $V; 
         my ($kanji,@rest) = $kstr.comb;
         
         if %joyo_kun_verb_readings{$kanji}:exists {
@@ -5564,11 +5571,11 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
             if @rest {
                 my ($kstr2,$te-form) = te-form-to-dict-form ($kstr);
                 if $te-form {
-                     say "TE-FORM: $kstr => $kstr2";
+                     say "TE-FORM: $kstr => $kstr2" if $V;
                     return hiraganaToRomaji($kstr2);
                 } else {
                     my $r = join('',@rest);
-                     say "OTHER FORM: $kstr => $kanji|$r";
+                     say "OTHER FORM: $kstr => $kanji|$r" if $V;
                     # For every reading 
                     my $sel=6;
                     my $sel-ks='';
@@ -5576,14 +5583,14 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                     for @kana -> $ks { 
                         # if it is the dictionary form                            
                         if $ks.substr(*-$r.chars)  eq $r {
-                            say "1. $ks matched $r";
+                            say "1. $ks matched $r" if $V;
                             $sel=1;
                             
                             #return hiraganaToRomaji($ks);
                         }
                         elsif $r.chars > 1 and $ks.substr(*-2)  eq $r.substr(*-2) {
                             # If the last 2 chars match, so also dict form
-                            say "2. $ks matched " ~ $r.substr(*-2);
+                            say "2. $ks matched " ~ $r.substr(*-2) if $V;
                             $sel=2;
                             #return hiraganaToRomaji($ks);
                         }
@@ -5591,7 +5598,7 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                             # If only the last but one char matches the last but one
                             # would be the case for e.g. り form
 
-                            say "3. $ks matched " ~ $r.substr(*-2,1);
+                            say "3. $ks matched " ~ $r.substr(*-2,1) if $V;
                             $sel=3;
                             #return hiraganaToRomaji($ks);
                         }
@@ -5600,13 +5607,13 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                             # would be the case for e.g. 
                             # 忘れかける　わすれる
 
-                            say "4. $ks matched " ~ $r.substr(*-2,1);
+                            say "4. $ks matched " ~ $r.substr(*-2,1) if $V;
                             $sel=4;
                             #return hiraganaToRomaji($ks);
                         }                        
                         elsif $ks.substr(*-1)  eq $r.substr(*-1) {
                             # If only the last character matches, this is weak.
-                            say "5. $ks matched " ~$r.substr(*-1);
+                            say "5. $ks matched " ~$r.substr(*-1) if $V;
                             $sel=5;
                             #return hiraganaToRomaji($ks);
                         }
@@ -5618,22 +5625,26 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                     }
                     
                     if $prev-sel > 0 {
-                        say "$prev-sel $sel-ks";
+                        say "$prev-sel $sel-ks" if $V;
                         return hiraganaToRomaji($sel-ks);
                     } else {
-                        say @rest ~ " did not match ";
+                        say @rest ~ " did not match " if $V;
                         return hiraganaToRomaji(@kana[0]);
                     }
                 }
             } else {
                 return hiraganaToRomaji(@kana[0]);
             }
-        } elsif %joyo_kun_non_verb_readings{$kanji}:exists {        
+        } elsif %joyo_kun_non_verb_readings{$kanji}:exists {      
+            say "NON-VERB: " ~ $kstr if $V;
             my @kana = %joyo_kun_non_verb_readings{$kanji};
+            say "NON-VERB: " ~ @kana ~ ':' ~ @rest if $V;
             if @rest {
                 my $r = join('',@rest);
                 for @kana -> $ks {
-                    if $ks ~~ /$r/ {
+                if ($r eq 'さ' and $ks.substr(*-1) eq 'い') {
+                    return hiraganaToRomaji($ks.substr(0,$ks.chars-1) ) ~ 'sa';
+                } elsif $ks ~~ /$r/ {
                         return hiraganaToRomaji($ks);
                     }
                 }
@@ -5641,30 +5652,61 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                 return hiraganaToRomaji(@kana[0]);
             } 
         } else {
+            say "FALLBACK: " ~ $kstr if $V;
             'v' ~ $kstr.uniname.substr(*-4).lc;        
         }
 
     } else {
+        say "KANJI-ONLY: " ~ $kstr if $V;
         my ($kanji,@rest) = $kstr.comb;
-        if %joyo_on_readings{$kanji}:exists {
-            my @kana = %joyo_on_readings{$kanji};
-            #say "KANA: "~ @kana[0];
-            my $kstr = katakanaToRomaji(@kana[0]); # Just take the first one
+        # if @rest {
+            # say "MULTI-KANJI: " ~ $kstr if $V;
+            my $kstr_=$kstr;
+            if %joyo_kun_non_verb_readings{$kanji}:exists {
+                my @kana = %joyo_kun_non_verb_readings{$kanji};
+                #say "KANA: "~ @kana[0];
+                $kstr_ = hiraganaToRomaji(@kana[0]);
+            } elsif %joyo_on_readings{$kanji}:exists {
+                my @kana = %joyo_on_readings{$kanji};
+                #say "KANA: "~ @kana[0];
+                $kstr_ = katakanaToRomaji(@kana[0]); # Just take the first one                
+            } else {
+                return 'v' ~ $kstr.uniname.substr(*-4).lc; 
+            }
             if @rest {
-                $kstr ~= kanjiToRomaji(@rest.join(''));
+                    $kstr_ ~= kanjiToRomaji(@rest.join('') );
             }
-            # e.g. shutsupatsu -> shuppatsu
-            if $kstr ~~/^\w+?tsuh/ {
-                $kstr ~~ s/tsuh/pp/;
-            }
-            # e.g. senhai -> senpai
-            if $kstr ~~/^\w+?nh/ {
-                $kstr ~~ s/nh/np/;
-            }
-            return $kstr
-        } else {
-            'v' ~ $kstr.uniname.substr(*-4).lc;        
-        }
+                # e.g. shutsupatsu -> shuppatsu
+                if $kstr_ ~~/^\w+?tsuh/ {
+                    $kstr_ ~~ s/tsuh/pp/;
+                }
+                # e.g. senhai -> senpai
+                if $kstr_ ~~/^\w+?nh/ {
+                    $kstr_ ~~ s/nh/np/;
+                }
+                return $kstr_
+        #     } elsif $kanji eq ' ' {
+        #         return '';    
+        #     } else {
+        #         'v' ~ $kstr.uniname.substr(*-4).lc;        
+        #     }
+        # } else {
+        #     say "SINGLE KANJI: " ~ $kstr if $V;
+        #     if %joyo_kun_non_verb_readings{$kanji}:exists {
+        #         my @kana = %joyo_kun_non_verb_readings{$kanji};
+        #         #say "KANA: "~ @kana[0];
+        #         my $kstr = hiraganaToRomaji(@kana[0]);
+        #         return $kstr
+        #     }
+        #     elsif %joyo_on_readings{$kanji}:exists {
+        #     my @kana = %joyo_on_readings{$kanji};
+        #     #say "KANA: "~ @kana[0];
+        #     my $kstr = katakanaToRomaji(@kana[0]); # Just take the first one
+        #     return $kstr
+        #     } else {
+        #         'v' ~ $kstr.uniname.substr(*-4).lc;
+        #     }
+        # }
     }
 }
 

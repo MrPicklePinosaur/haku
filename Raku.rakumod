@@ -2,7 +2,7 @@ use v6;
 use HakuAST;
 use Romaji;
 our $toRomaji=True;
-
+$V=True;
 our %defined-functions;
 
 sub ppHakuProgram(HakuProgram $p) is export {
@@ -48,6 +48,7 @@ sub ppFunction($f) {
 
 
 sub ppFunctionName(\fn) {
+    say "ppFunctionName: " ~ fn.raku if $V;
     given fn {
         when Verb { 
         my $f_name_maybe_teinei =  fn.verb;
@@ -67,7 +68,19 @@ sub ppFunctionName(\fn) {
                 default { $f_name }      
             }            
         }
-        when Noun {  $toRomaji ?? kanjiToRomaji(fn.noun)  !! fn.noun }
+        when Noun {  
+            say "NOUN: " ~ fn.noun ~ "=>" ~  kanjiToRomaji(fn.noun) if $V;
+            my $f_name = $toRomaji ?? kanjiToRomaji(fn.noun)  !! fn.noun ;
+            given $f_name {
+                when / 頭 | atama/ { 'head' } 
+                when / 尻尾 | sirio / { 'tail' }            
+                when / 長さ| nagasa / { 'elems' } 
+                default { $f_name }      
+            }            
+
+            
+            
+            }
         when Variable { $toRomaji ?? katakanaToRomaji(fn.var).lc !! fn.var}
     }
 }
@@ -128,7 +141,9 @@ sub ppHakuExpr(\h) {
                     # So we need state
             } else {
                 my $maybeDot = h.function-name ~~ Variable ?? '.' !! '';
-                 ppFunctionName(h.function-name) ~$maybeDot ~'('~ join( ', ' , h.args.map({ppHakuExpr($_)}) )~ ')';
+                say "FNAME: " ~ h.function-name.raku if $V;
+                say "FARGS: " ~ h.args.raku if $V;
+                ppFunctionName(h.function-name) ~ $maybeDot ~'('~ join( ', ' , h.args.map({ppHakuExpr($_)}) )~ ')';
             }            
         }
         when ListExpr {
