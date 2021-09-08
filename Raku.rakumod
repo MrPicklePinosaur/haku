@@ -53,9 +53,9 @@ sub ppFunctionName(\fn) {
         my $f_name_maybe_teinei =  fn.verb;
 
         my $verb-kanji = $f_name_maybe_teinei.substr(0,1);
-        if %defined-functions{$verb-kanji}:exists {
-            $f_name_maybe_teinei = %defined-functions{$verb-kanji};            
-        } #else {        
+#        if %defined-functions{$verb-kanji}:exists {
+#            $f_name_maybe_teinei = %defined-functions{$verb-kanji};            
+#        } #else {        
           #  $f_name_maybe_teinei ~~ s/ [ 'くだ' | '下' ] 'さい' //;
         #}
          

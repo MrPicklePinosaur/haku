@@ -5564,10 +5564,11 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
             if @rest {
                 my ($kstr2,$te-form) = te-form-to-dict-form ($kstr);
                 if $te-form {
-                    # say "TE-FORM: $kstr => $kstr2";
+                     say "TE-FORM: $kstr => $kstr2";
                     return hiraganaToRomaji($kstr2);
                 } else {
                     my $r = join('',@rest);
+                     say "OTHER FORM: $kstr => $kanji|$r";
                     # For every reading 
                     my $sel=6;
                     my $sel-ks='';

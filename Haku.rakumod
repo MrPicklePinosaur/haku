@@ -1,5 +1,5 @@
 use v6;
-# use Grammar::Tracer;
+#use Grammar::Tracer;
 # Haku, a toy functional programming language based on Japanese
 
 role Characters {
@@ -146,12 +146,56 @@ role Nouns does Characters {
 
 role Verbs does Characters {
     token verb-ending {
-        'する' |
+        <sura> | <verb-ending-masu> |
         'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' |
         'った'| 'た'| 'いだ'| 'んだ' |  
-        'って'| 'て'| 'いで' | 'んで'
+         'って'| 'て'| 'いで' | 'んで' 
+
     }
-    token verb { <kanji> <hiragana>?? <kanji>? <hiragana>*? <verb-ending> <.kudasai>? }
+    token verb-ending-dict {
+        'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' 
+    }
+    token verb-ending-masu {
+        'ま' [ 'す'| 'し' ['た'| 'ょう'] | 'せん'] 'か'?
+    }
+    token verb-ending-ta {
+        'った'| 'た'| 'いだ'| 'んだ'
+    }
+    token verb-ending-te {
+        'って'| 'て'| 'いで' | 'んで'
+    }    
+
+    token verb-stem {
+        <kanji> <hiragana>?? <kanji>? #<hiragana>*?
+    }
+
+    token verb-stem-hiragana {
+         <hiragana>+? <?before <verb-ending> >
+    }
+
+    token verb-dict { <verb-stem> <verb-stem-hiragana>? <verb-ending-dict> }
+    token verb-masu { <verb-stem> <hiragana>*? <verb-ending-masu> }
+    token verb-ta { <verb-stem> <hiragana>*? <verb-ending-ta> }
+    token verb-te { <verb-stem> <verb-stem-hiragana>? <verb-ending-te> }
+
+# This fails on e.g. su.teru because the te is seen as -te form
+# We should have a rule for a -te after a kanji and before te/ru/masu/ta 
+# su.tete, su.teru <>  ki.te
+# but to complicate it : wasu.rekakete(i)ta
+    token verb { 
+        <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
+       || [
+         <verb-dict> 
+       | <verb-masu> 
+       | <verb-ta> 
+       ]
+#| <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
+#        <verb-stem>
+#        [
+#            <verb-ending> | 
+#            <verb-ending-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]Y?
+#        ] 
+    }
 
 }
 
@@ -169,21 +213,26 @@ role Variables does Characters {
 role Identifiers does Verbs does Nouns does Variables {
     
     # Identifiers are variables noun-style and verb-style function names
-    token identifier { <variable> | <verb> <.no>? | <noun> }
+    token identifier { <variable> | [<verb> <.no>? || <noun>] }
 
 }
 
 role Auxiliaries {
-    token kudasai { [　'下' | 'くだ' ] 'さい' }
-    token masu { 'ます' }
+    token kudasai { [　'下' | 'くだ' ] 'さい' }    
+    token masu { 'ま' [ 'す' | 'した' ] }
 
     token shite-kudasai { 'して' [ '下' | 'くだ' ] 'さい' }
-    token suru { 'する' | '為る' }
-    token shimasu { 'します' }
+    token suru { 'する' | '為る' | 'した' }
+    token shimasu { 'しま' | [ 'す' | 'した' ] }
     token sura {
         <suru> | <shimasu> | <shite-kudasai> 
     }
     token desu { 'です' | 'だ'  | 'である' |　'で或る' |　'でございます' |　'で御座います'　 }
+
+    token shimau { ['しま'|'仕舞'|'終'|'了'|'蔵'] ['う' | ['っ'|'いまし'] 'た'] };            
+    token kureru { [ 'く'| '呉'] 'れ'　[ 'て' | 'た' | <masu> ]};
+    token morau { [ '貰'|'もら'] }; 
+    
 }
 
 # +: Tasu (足す)

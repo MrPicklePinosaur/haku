@@ -4,29 +4,40 @@ use JapaneseNumberParser;
 
 class HakuActions {
     
-    has %!defined-functions;
-    
+    has %*defined-functions;
+
+    # This is a workaround: the same code inside the method 'verb' gives an error
+    # 'Cannot assign to a readonly variable or a value'
+    # But I have moved this to the parser
+    sub shorten(Str \str_ --> Str) {
+        if substr(str_,2) ~~ / ['て' | 'で'] .+$ / {
+            str_ ~~ s/ [ 'くだ' | '下' ] 'さい' //;
+            str_ ~~ s/ ['しま'|'仕舞'|'終'|'了'|'蔵'] ['っ'|'いまし'] 'た' //;            
+            str_ ~~ s/ [ 'く'| '呉'] 'れ'　.+? //;
+            str_ ~~ s/ [ '貰'|'もら'] .+? //; 
+        }
+        return str_;
+    }
+
     method variable($/) {
         # say "VAR $/";
         make Variable[$/.Str].new;
     }
     method verb($/) {
-        my $verb-str = $/.Str ;
-        my $verb-kanji = $verb-str.substr(0,1);
-        #if %!defined-functions{$verb-kanji}:exists {
-        #    $verb-str = %!defined-functions{$verb-kanji};
+        my $verb-str = $<verb-stem> ; #/.Str ;
+        my $verb-kanji = substr($verb-str,0,1);
+        if $<verb-ending> {
+            $verb-str ~=  $<verb-ending>
+        } elsif $<verb-ending-te> {
+            $verb-str ~=  $<verb-ending-te>
+        }
+        if %*defined-functions{$verb-kanji}:exists {
+            $verb-str = %*defined-functions{$verb-kanji};
+        }
+        #if $verb-str.chars > 2 { # and $verb-str.substr(2,1) eq ('て'|'で') {    
+        #    $verb-str = shorten($verb-str);
         #}
-        say "VERB: $verb-str";
-        $verb-str~='';
-        if $verb-str.chars > 2 { # and $verb-str.substr(2,1) eq ('て'|'で') {    
-        if ($verb-str.substr(2) ~~ / ['て' | 'で'] .+$ /) {
-            $verb-str ~~ s/ [ 'くだ' | '下' ] 'さい' //;
-            $verb-str ~~ s/ ['しま'|'仕舞'|'終'|'了'|'蔵'] ['っ'|'いまし'] 'た' //;            
-            $verb-str ~~ s/ [ 'く'| '呉'] 'れ'　.+? //;
-            $verb-str ~~ s/ [ '貰'|'もら'] .+? //; 
-        }
-        }
-        say "VERB: $verb-str";
+        
         my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
 
         if %vbinops{$verb-kanji}:exists {
@@ -35,6 +46,7 @@ class HakuActions {
             make Verb[$verb-str].new;
         }
     }
+    
     method noun($/) {
         make Noun[$/.Str].new;
     }
@@ -382,7 +394,7 @@ class HakuActions {
          $<verb> ?? $<verb>.made
         !! $<noun> ?? $<noun>.made
         !! '_';
-        %!defined-functions{$name.substr(0,1)}=$name;
+        %*defined-functions{$name.substr(0,1)}=$name;
 
         my @args = $<variable-list>.made;
         # die @args.raku;
