@@ -18,6 +18,14 @@ sub ppHakuProgram(HakuProgram $p) is export {
      my $prelude_str = q:to/ENDPREL/;
 use v6;
 
+sub head(\lst) {
+    lst.head;
+}
+
+sub tail(\lst) {
+    lst.tail(lst.elems-1);
+}
+
 sub foldl (&f, \acc, \lst) {
     my $res = acc;
     for  lst -> \elt {
@@ -184,6 +192,9 @@ sub ppHakuExpr(\h) {
         when Noun {  $toRomaji ?? kanjiToRomaji(h.noun) !! h.noun }
         when BinOpExpr {
              '(' ~ ppHakuExpr(h.args[0]) ~ ' ' ~h.op.op~' '~ ppHakuExpr(h.args[1]) ~ ')'
+        }
+        when RangeExpr {
+            '[' ~ ppHakuExpr(h.from) ~ ' .. '~ ppHakuExpr(h.to) ~ ']'
         }
         default {
             die "TODO:" ~ h.raku;
