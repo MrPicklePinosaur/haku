@@ -1,5 +1,5 @@
 use v6;
-#use Grammar::Tracer;
+# use Grammar::Tracer;
 # Haku, a toy functional programming language based on Japanese
 
 role Characters {
@@ -141,15 +141,17 @@ role Particles {
 
 role Nouns does Characters {
     token sa { 'さ' }
-    token noun { <kanji>+ <sa>? }
+    token ki { 'き' }
+    token noun { <kanji>+ [<sa>|<ki>]? }
 }
 
 role Verbs does Characters {
     token verb-ending {
-        <sura> | <verb-ending-masu> |
+        <sura> || <verb-ending-masu> || [
         'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' |
         'った'| 'た'| 'いだ'| 'んだ' |  
          'って'| 'て'| 'いで' | 'んで' 
+        ]
 
     }
     token verb-ending-dict {
@@ -164,7 +166,7 @@ role Verbs does Characters {
     token verb-ending-te {
         'って'| 'て'| 'いで' | 'んで'
     }    
-
+    
     token verb-stem {
         <kanji> <hiragana>?? <kanji>? #<hiragana>*?
     }
@@ -177,6 +179,7 @@ role Verbs does Characters {
     token verb-masu { <verb-stem> <hiragana>*? <verb-ending-masu> }
     token verb-ta { <verb-stem> <hiragana>*? <verb-ending-ta> }
     token verb-te { <verb-stem> <verb-stem-hiragana>? <verb-ending-te> }
+    token verb-sura { <verb-stem> <verb-stem-hiragana>? <sura> }
 
 # This fails on e.g. su.teru because the te is seen as -te form
 # We should have a rule for a -te after a kanji and before te/ru/masu/ta 
@@ -184,10 +187,11 @@ role Verbs does Characters {
 # but to complicate it : wasu.rekakete(i)ta
     token verb { 
         <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
+        || <verb-sura>
        || [
          <verb-dict> 
        | <verb-masu> 
-       | <verb-ta> 
+       | <verb-ta>        
        ]
 #| <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
 #        <verb-stem>
@@ -213,7 +217,7 @@ role Variables does Characters {
 role Identifiers does Verbs does Nouns does Variables {
     
     # Identifiers are variables noun-style and verb-style function names
-    token identifier { <variable> | [<verb> <.no>? || <noun>] }
+    token identifier { <variable> | <verb> [<.no>|<.koto>]? | <noun> <.sura>?  }
 
 }
 
@@ -379,8 +383,9 @@ does Nouns
     
     # length 長さ , see abive
     
-    # has　マップにカギあったら
+    # has　マップにカギがあったら
     token attara { 'あったら' | '有ったら' }
+    token ga-aru { 'がある' | 'が有る' }
     
     #insert　マップにカギとバリューを入れる
     token ireru { '入れ' <ru-endings> }
@@ -516,7 +521,7 @@ does Comments
     }
     
     token list-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* }
-    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]+ <kara> <zuwotsukuru> }
+    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.kara> <.zuwotsukuru> | <atomic-expression> '図' }
     token arg-expression-list {
         <arg-expression> [<.list-operator> <arg-expression>]*
     }
@@ -617,6 +622,10 @@ does Comments
         | [ <.ni> <chigau> ]
         ]
     }
+    # I wanted to use attara but aru nara|baai fits better in the existing conditions
+    token has-expression {
+        <identifier> <.ni> <identifier> <.ga-aru>
+    }
 
     token bind-ha { [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
     token bind-ga { [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
@@ -633,12 +642,14 @@ does Comments
 
     # IfThen 
     token condition-expression {
+        <has-expression> |
         <operator-expression> |
         <comparison-expression> |
         <apply-expression> |   
         <parens-expression> |
         <atomic-expression>
     }
+
 
     token baai-ifthen {
         <condition-expression> <.baaiha>   <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?

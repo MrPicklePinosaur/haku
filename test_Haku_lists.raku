@@ -4,8 +4,6 @@ use HakuActions;
 # use Scheme;
 use Raku;
 
-
-
 # say Haku.parse("見せてくれて下さい",:rule('verb'));
 # say Haku.parse("見せる",:rule('verb'));
 # say Haku.parse("見せませんか",:rule('verb'));
@@ -13,17 +11,18 @@ use Raku;
 # say Haku.parse("捨てる",:rule('verb'));
 # say Haku.parse("捨てて",:rule('verb'));
 # say Haku.parse("忘れかけて",:rule('verb'));
-
-# てくれて下さい
-#リストは壱〜十、
+# リストとリストモを合わせる
 my $hon_str_2 = "本とは
 リストは壱〜十、
-ナガサイはリストの長さ、
-ナガサロはリストの頭、
-ナガサハはリストの尻尾、
-ナガサイを見せる、
-ナガサロを見せる、
-ナガサハを見せる
+リストモは十壱〜二十、
+ナガサはリストの長さ、
+アタマはリストの頭、
+シッポはリストの尻尾、
+リストモモはリストとリストモを合わせる、
+ナガサを見せる、
+アタマを見せる、
+シッポを見せる、
+リストモモを見せる
 の事です。";
 
 

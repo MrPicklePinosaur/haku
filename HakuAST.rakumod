@@ -23,7 +23,7 @@ role ConsExpr {}
 role ConsVar[Str $var] does ConsExpr {
     has Str $.var = $var;
 }
-role ConsNil does ConsExpr {
+role ConsNil does ConsExpr does HakuExpr {
 }
 
 role LhsExpr {}
@@ -46,7 +46,7 @@ role BindExpr[ $lhs-expr,  $rhs-expr]  does HakuExpr {
     has HakuExpr $.rhs = $rhs-expr;
 } 
 
-# data HakuExpr = LetExpr | IfExpr | ListExpr | AtomicExpr | LambdaExpr | FunctionApplyExpr | LambdaApplyExpr | ParensExpr | BinOpExpr
+# data HakuExpr = LetExpr | IfExpr | ListExpr | MapExpr | AtomicExpr | LambdaExpr | FunctionApplyExpr | LambdaApplyExpr | ParensExpr | BinOpExpr
 role HakuExpr {}
 
 # data BinOpExpr = mkBinOpExpr BinOp HakuExpr HakuExpr
@@ -68,6 +68,9 @@ role IfExpr[ $cond, $true-expr,  $false-expr] does HakuExpr  {
     has HakuExpr $.if-false=$false-expr;
 }
 role ListExpr[ @exprs] does HakuExpr {
+    has  @.elts = @exprs;
+}
+role MapExpr[ @exprs] does HakuExpr {
     has  @.elts = @exprs;
 }
 

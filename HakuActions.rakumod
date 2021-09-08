@@ -111,7 +111,17 @@ class HakuActions {
             make ListExpr[@exprs].new;
         }
     }
-
+    method map-expression($/) {
+              
+        my @exprs= map({$_.made},$<atomic-expression>);
+        # say "MAP EXPR: "~@exprs.raku;  
+        if @exprs.elems==1 and @exprs[0] ~~ ConsNil {
+            make MapExpr[()].new;
+        } else {
+            make MapExpr[@exprs].new;
+        }
+                
+    }
     # token kaku-parens-expression { <list-expression> | <range-expression> }
 
     # it should be possible to put parens around function applications and lambdas as well!
@@ -168,7 +178,11 @@ class HakuActions {
     method operator-expression($/) {
         make $/.values[0].made
     }
-
+    method has-expression($/) {
+        my $map-expr = $<identifier>[0].made;
+        my $key-expr = $<identifier>[1].made;
+        make FunctionApplyExpr[Verb['has'].new, [$map-expr,$key-expr],False].new
+    }
     method comparison-expression($/) {
         #   my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
@@ -200,10 +214,13 @@ class HakuActions {
         my $false-expr = $<expression>[1].made;
         make IfExpr[ $cond, $true-expr,  $false-expr].new;
     }
-    method moshi-ifthen {
+
+    method moshi-ifthen ($/) {
+        # die $<condition-expression>.raku,$<expression>.raku;
         my $cond = $<condition-expression>.made;
         my $true-expr = $<expression>[0].made;  
         my $false-expr = $<expression>[1].made;
+
         make IfExpr[ $cond, $true-expr,  $false-expr].new;
     }
 

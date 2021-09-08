@@ -5504,11 +5504,19 @@ my @y_col = <YA YU YO>;
 #}
 
 sub katakanaToRomaji(Str $kstr --> Str) is export {
-
+    # say "KATAKANA: "~ $kstr;
     my @ks = $kstr.comb;
-    my @rs = @ks.map({%katakana{$_}});
+    my @rs = @ks.map({ %katakana{$_} // 'ー' });
+    my @nrs = ();
+    for 0 .. @rs.elems - 1 -> $idx {        
+        if @rs[$idx] eq 'ー' { 
+            @nrs.push(@rs[$idx-1].substr(*-1)) 
+        } else {
+            @nrs.push(@rs[$idx]) 
+        }
+    }
     
-    my $r_str = @rs.join('');
+    my $r_str = @nrs.join('');
     while $r_str ~~/_TU(.)/ {
         my $c=$0;
         $r_str ~~ s/_TU$c/$c$c/;
@@ -5581,8 +5589,9 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                     my $sel-ks='';
                     my $prev-sel=6;
                     for @kana -> $ks { 
+                        
                         # if it is the dictionary form                            
-                        if $ks.substr(*-$r.chars)  eq $r {
+                        if $ks.chars>=$r.chars and $ks.substr(*-$r.chars)  eq $r {
                             say "1. $ks matched $r" if $V;
                             $sel=1;
                             

@@ -1015,4 +1015,18 @@ Finally
 All I need for that is to support 'mono' in addition to no	
 	
 
+I would like to support a much more expressive grammar,  for example, you should be able to write
 
+忘れかけてた遠い記憶
+
+So this requires a lot of extra features:
+- more general identifiers as variables
+- adjectival use of verbs
+- extended grammar for verb endings
+- and finally, adjectives
+
+And with all those changes I will almost be able to write
+
+歩く事を忘れてしまった
+
+Just some more grammar support and an extra nominaliser. 
