@@ -123,18 +123,18 @@ role Particles {
     token ni { 'に' }
     token ka { 'か' }
     token kara { 'から' }
-    token made_ { '迄' | 'まで' }
+    token made-particle { '迄' | 'まで' }
     token deha { 'では' }
     token node { 'ので' }
     token noha { 'のは' }
     token dake { '丈' | 'だけ' } 
         
     method highwater($p) {
-    if self.pos > $*HIGHWATER {
-        $*HIGHWATER = self.pos;
-        $*PARTICLE = $p;
-        $*LASTRULE = callframe(1).code.name;
-    }
+        if self.pos > $*HIGHWATER {
+            $*HIGHWATER = self.pos;
+            $*PARTICLE = $p;
+            $*LASTRULE = callframe(1).code.name;
+        }
     }
    
 }
@@ -257,7 +257,7 @@ role Operators does Characters does Punctuation
     token operator-noun { '和' | '差' | '積' | '除' }
     token operator-verb-kanji { '足' | '引' | '掛' | '割' }
     token operator-verb { <operator-verb-kanji> <hiragana>*? <verb-ending> }    
-    token list-operator { <ni> | <to-particle> | <comma>}
+    token list-operator { <ni> | <to-particle> | <kara> | <made-particle> | <comma>}
     token nochi { '後' | 'のち' } # g . f
     token aru { '或' } # the \ operator
     token cons { <interpunct> | <colon> }
@@ -521,7 +521,7 @@ does Comments
     }
     
     token list-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* }
-    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.kara> <.zuwotsukuru> | <atomic-expression> '図' }
+    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> '図' }
     token arg-expression-list {
         <arg-expression> [<.list-operator> <arg-expression>]*
     }
@@ -704,34 +704,50 @@ grammar Haku is Functions does Comments does Keywords {
           <expression> <.delim>?
         <.function-end>                 
     }
+
+
     method error($target) {
-    my $parsed = $target.substr(0, $*HIGHWATER).trim-trailing;
-    my $context = $target.substr($*HIGHWATER+1, 4 max 0);
-            
-    my $pos = $parsed.chars;
-    my $msg = "Cannot parse Haku expression";
-    $msg ~= "; error in rule $*LASTRULE" if $*LASTRULE;
-#die "$msg after particle $*PARTICLE at position $pos: " ~ $parsed ~ $*PARTICLE ~ "⏏" ~$context.raku~'...';    
-    die "$msg after particle $*PARTICLE: " ~ $parsed ~ $*PARTICLE ~ "⏏" ~$context~"...\n";    
-}
+        my $parsed = $target.substr(0, $*HIGHWATER).trim-trailing;
+        my $context = $target.substr($*HIGHWATER+1, 4 max 0);
+                
+        my $pos = $parsed.chars;
+        my $msg = "Error: Cannot parse Haku expression";
+        $msg ~= "; error in rule $*LASTRULE" if $*LASTRULE;
+        my @parsed_lines = $parsed.lines;
+        my $char_counter =0;
+        my $line_counter=0;
+        my @ann_parsed_lines=();
+        for @parsed_lines -> $parsed_line {
+            ++$line_counter;
+            last if $char_counter > $pos;
+            $char_counter += $parsed_line.chars;
+            @ann_parsed_lines.push($line_counter ~ "\t" ~ $parsed_line);
+        } 
+        my $parsed_annotated_context = @ann_parsed_lines[*-3 .. *].join("\n") ;
 
-method parse($target, |c) {
-    my $*HIGHWATER = 0;
-    my $*PARTICLE= '';
-    my $*LASTRULE;
-    my $match = callsame;
-    self.error($target) unless $match;
-    return $match;
-}
+        say "$msg after particle $*PARTICLE on line $line_counter:\n\n" ~ $parsed_annotated_context ~ $*PARTICLE ~ "⏏" ~$context~"...\n";    
+        exit;
+    }
 
-method subparse($target, |c) {
-    my $*HIGHWATER = 0;
-    my $*PARTICLE= '';
-    my $*LASTRULE;
-    my $match = callsame;
-    self.error($target) unless $match;
-    return $match;
-}
+    method parse($target, |c) {
+        my $*HIGHWATER = 0;
+        my $*PARTICLE= '';
+        my $*LASTRULE;
+
+        my $match = callsame;
+        self.error($target) unless $match;
+        return $match;
+    }
+
+    method subparse($target, |c) {
+        my $*HIGHWATER = 0;
+        my $*PARTICLE= '';
+        my $*LASTRULE;
+
+        my $match = callsame;
+        self.error($target) unless $match;
+        return $match;
+    }
 
 # for error messages, later.
     method token-error($msg) {

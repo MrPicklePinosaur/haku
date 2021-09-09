@@ -10,7 +10,7 @@ role Variable[ $var] does Identifier does LhsExpr does HakuExpr {
 role Verb[ $verb] does Identifier does HakuExpr {    
     has Str $.verb=$verb;
 }
-role Noun[ $noun] does Identifier {
+role Noun[ $noun] does Identifier does HakuExpr　{
     has Str $.noun=$noun;
 }
 
