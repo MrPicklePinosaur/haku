@@ -405,7 +405,7 @@ does Nouns
 
     # empty map 空 
 
-    # map creation (from a list) から図を作る 
+    # map creation (from a list) で図を作る 
     # I could use 連想配列 rensouhairetsu but that is really long.
     token zuwotsukuru { '図' 'を' '作' <ru-endings> }
 
@@ -708,7 +708,18 @@ grammar Haku is Functions does Comments does Keywords {
 
     method error($target) {
         my $parsed = $target.substr(0, $*HIGHWATER).trim-trailing;
-        my $context = $target.substr($*HIGHWATER+1, 4 max 0);
+        # What I should do is split this substring on newlines, and only use the limitation if there are none
+        my $context = $target.substr($*HIGHWATER+1);#, 4 max 0);
+        my @context_lines = $context.lines;
+        if @context_lines.elems == 1  {
+            $context = $target.substr($*HIGHWATER+1, 4 max 0);
+        } else {
+            if @context_lines[0].nchars < 30 {
+                $context = @context_lines[0] ~ "\n\t";
+            } else {
+                $context = @context_lines[0].substr($*HIGHWATER+1, 4 max 0) ~ "...\n\t";
+            }
+        }
                 
         my $pos = $parsed.chars;
         my $msg = "Error: Cannot parse Haku expression";
