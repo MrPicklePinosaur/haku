@@ -76,15 +76,15 @@ sub ppFunctionName(\fn) {
             given $f_name {
                 when / 頭 | atama/ { 'head' } 
                 when / 尻尾 | sirio / { 'tail' }            
-                when / 長さ| nagasa / { 'elems' } 
+                when / 長さ | nagasa / { 'elems' } 
+                when / 鍵 | kagi / {'keys'}
+                when / 値 | atai / {'values'}
                 default { $f_name }      
             }            
         }
         when Variable { 
-            my $var = fn.var;            
-            $var = substituteKanjiToDigits($var);
-            $toRomaji ?? katakanaToRomaji(fn.var).lc !! fn.var
-            }
+            ppVariable(fn.var)
+        }
     }
 }
 
@@ -120,11 +120,20 @@ sub ppConsLhsBindExpr(\h) {
         'my (' ~ 
         @elts
             .grep( {$_ ~~ ConsVar})
-            .map({ '\\' ~ ($toRomaji ?? katakanaToRomaji($_.var).lc !! $_.var) })
+            .map({ '\\' ~ ppVariable($_.var) })
             .join(',') 
             ~ ') ';
     my $rhs = ppHakuExpr(h.rhs);
     return $elts_str ~ ' = ' ~ $rhs ~ ';' ;
+}
+
+
+sub ppVariable($var) {
+            my $tvar = $var;
+            $tvar ~~ s/達/tachi/;
+
+            my $ttvar = substituteKanjiToDigits($tvar); 
+            $toRomaji ?? katakanaToRomaji($ttvar).lc !! $ttvar; 
 }
 
 sub ppHakuExpr(\h) {
@@ -198,10 +207,8 @@ sub ppHakuExpr(\h) {
         when Number { h.num }
         when String { "'" ~ join('',h.chars) ~ "'" }
         when Variable {
-            my $var = h.var;                        
-            $var = substituteKanjiToDigits($var); 
-            $toRomaji ?? katakanaToRomaji($var).lc !! $var 
-            }
+            ppVariable(h.var)
+        }
         when Verb {  $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb }
         when Noun {  $toRomaji ?? kanjiToRomaji(h.noun) !! h.noun }
         when BinOpExpr {

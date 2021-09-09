@@ -7,9 +7,10 @@ use v6;
 # contains only 0 .. 9
 #  / <[一ニ三四五六七八九壱弐参〇零]>+　['点'　<[一ニ三四五六七八九壱弐参〇零]>+　]?/
 
-my %digits is Map = < 一  1 壱 1 二 2 弐 2 三 3 参 3 弎 3 四 4 五 5 六 6 七 7 八 8 九 9 零 0 〇 0
+my %digits is Map = < 一 1 壱 1 二 2 弐 2 三 3 参 3 弎 3 四 4 五 5 六 6 七 7 八 8 九 9 零 0 〇 0
                        弌 1 壹 1 弍 2 貳 2 貮 2 弎 3 肆 4 伍 5 陸 6 漆 7 柒 7 捌 8 玖 9
                     >;
+my %unique-digits is Map = < 一 1 二 2 三 3 四 4 五 5 六 6 七 7 八 8 九 9 〇 0 >;                    
 my %magnitudes is Map = < 十 10 拾 10 百 100 千 1000 >;
 my @myriad_kanji = < 万 億 兆 京 垓 𥝱 穣 溝 澗 正 載 極 一 萬>;　# last 2 are a hack to have the 2 kanji for man
 my %myriads is Map = @myriad_kanji.map( {state $i=0; $_ => 10**((++$i % 13) *4)});
@@ -92,7 +93,12 @@ sub parseJapaneseNumbers(Str $kazu_str --> Num ) is export {
 sub substituteKanjiToDigits(Str $kstr --> Str) is export {
             my @chars = $kstr.comb;
             my @rchars = @chars.map({
-                %digits{$_} // $_           
+                if %digits{$_}:exists and not %unique-digits{$_}:exists {
+                    say "Error: In variable $kstr: in variable names, only 一 二 三 四 五 六 七 八 九 〇 are supported";
+                    exit;
+                } else {
+                    %digits{$_} // $_           
+                }
             });
             @rchars.join('');
 

@@ -11,15 +11,15 @@ class HakuActions {
     # This is a workaround: the same code inside the method 'verb' gives an error
     # 'Cannot assign to a readonly variable or a value'
     # But I have moved this to the parser
-    sub shorten(Str \str_ --> Str) {
-        if substr(str_,2) ~~ / ['て' | 'で'] .+$ / {
-            str_ ~~ s/ [ 'くだ' | '下' ] 'さい' //;
-            str_ ~~ s/ ['しま'|'仕舞'|'終'|'了'|'蔵'] ['っ'|'いまし'] 'た' //;            
-            str_ ~~ s/ [ 'く'| '呉'] 'れ'　.+? //;
-            str_ ~~ s/ [ '貰'|'もら'] .+? //; 
-        }
-        return str_;
-    }
+    # sub shorten(Str \str_ --> Str) {
+    #     if substr(str_,2) ~~ / ['て' | 'で'] .+$ / {
+    #         str_ ~~ s/ [ 'くだ' | '下' ] 'さい' //;
+    #         str_ ~~ s/ ['しま'|'仕舞'|'終'|'了'|'蔵'] ['っ'|'いまし'] 'た' //;            
+    #         str_ ~~ s/ [ 'く'| '呉'] 'れ'　.+? //;
+    #         str_ ~~ s/ [ '貰'|'もら'] .+? //; 
+    #     }
+    #     return str_;
+    # }
 
     method variable($/) {
         # say "VAR $/";
