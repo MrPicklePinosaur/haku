@@ -5,8 +5,8 @@ use JapaneseNumberParser;
 our $toRomaji=True;
 $V=False;
 
-
-
+our $nspaces = 4;
+my $indent = ' ' x $nspaces;
 our %defined-functions;
 
 sub ppHakuProgram(HakuProgram $p) is export {
@@ -170,9 +170,9 @@ sub ppHakuExpr(\h) {
         }        
         when  IfExpr { 
             ('do if ' ~ ppHakuExpr(h.cond) ~ ' {' ,
-                ppHakuExpr(h.if-true) ,
+                $indent ~ ppHakuExpr(h.if-true) ,
                 '} else {' ,
-                ppHakuExpr(h.if-false),
+                $indent ~ppHakuExpr(h.if-false),
                 '}'
             ).join("\n");
         }   

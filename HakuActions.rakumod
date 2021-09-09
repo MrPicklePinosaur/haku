@@ -6,7 +6,7 @@ our $V=True;
 
 class HakuActions {
     
-    has %*defined-functions;
+    my %defined-functions;
 
     # This is a workaround: the same code inside the method 'verb' gives an error
     # 'Cannot assign to a readonly variable or a value'
@@ -44,8 +44,8 @@ class HakuActions {
         # So wonderful
         my $verb-str = ($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
         my $verb-kanji = substr($verb-str,0,1);
-        if not $<verb-dict>  and %*defined-functions{$verb-kanji}:exists {
-            $verb-str = %*defined-functions{$verb-kanji};
+        if not $<verb-dict>  and %defined-functions{$verb-kanji}:exists {
+            $verb-str = %defined-functions{$verb-kanji};
         }
         # say "VERB after: $verb-str ";
         #if $verb-str.chars > 2 { # and $verb-str.substr(2,1) eq ('て'|'で') {    
@@ -425,7 +425,7 @@ class HakuActions {
          $<verb> ?? $<verb>.made
         !! $<noun> ?? $<noun>.made
         !! '_';
-        %*defined-functions{$name.substr(0,1)}=$name;
+        %defined-functions{$name.substr(0,1)}=$name;
 
         my @args = $<variable-list>.made;
         # die @args.raku;
