@@ -89,6 +89,7 @@ sub ppFunctionName(\fn) {
 }
 
 sub ppHon($hon) {
+    
     my @comments = $hon.comments;
     my $comment_str = @comments.map({';' ~ $_}).join("\n") ;
 
@@ -137,6 +138,10 @@ sub ppVariable($var) {
 }
 
 sub ppHakuExpr(\h) {
+    # say h.raku;
+            
+    #             say 'COMMENT: ' ~ h.comment;
+            
     given h {
         when BindExpr {  
             given h.lhs {
@@ -207,6 +212,7 @@ sub ppHakuExpr(\h) {
         when Number { h.num }
         when String { "'" ~ join('',h.chars) ~ "'" }
         when Variable {
+
             ppVariable(h.var)
         }
         when Verb {  $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb }

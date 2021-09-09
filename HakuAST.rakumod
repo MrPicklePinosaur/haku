@@ -1,6 +1,9 @@
 use v6;
 
-role HakuExpr {...}
+# role HakuExpr {...}
+role HakuExpr {
+    # has $.comment is rw;
+}
 role LhsExpr {...}
 # data Identifier = Variable | Verb | Noun 
 role Identifier {}
@@ -47,7 +50,7 @@ role BindExpr[ $lhs-expr,  $rhs-expr]  does HakuExpr {
 } 
 
 # data HakuExpr = LetExpr | IfExpr | ListExpr | MapExpr | AtomicExpr | LambdaExpr | FunctionApplyExpr | LambdaApplyExpr | ParensExpr | BinOpExpr
-role HakuExpr {}
+# role HakuExpr {}
 
 # data BinOpExpr = mkBinOpExpr BinOp HakuExpr HakuExpr
 role BinOpExpr[ $op, $lhs-expr,  $rhs-expr] does HakuExpr {

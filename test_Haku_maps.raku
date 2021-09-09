@@ -37,9 +37,11 @@ use Raku;
 # 註Create an empty map。
 # 註Create a map with a single pair '42' => 42。
 my $hon_str_21 = "本とは
+註 an empty map。
 マップは空で図を作る、
 マップ二は「四十二」と四十二で図を作る、
 マップ三は空図、
+註 var for key。
 カギは「四十二」、
 バリューは四十二、
 テストはもしマップにカギが有るなら一そうでない零、
