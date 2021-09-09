@@ -88,3 +88,12 @@ sub parseJapaneseNumbers(Str $kazu_str --> Num ) is export {
         return kanjiToNumbersMag( $kazu_str ) ;
     }
 }
+
+sub substituteKanjiToDigits(Str $kstr --> Str) is export {
+            my @chars = $kstr.comb;
+            my @rchars = @chars.map({
+                %digits{$_} // $_           
+            });
+            @rchars.join('');
+
+}

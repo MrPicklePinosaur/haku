@@ -5506,7 +5506,7 @@ my @y_col = <YA YU YO>;
 sub katakanaToRomaji(Str $kstr --> Str) is export {
     # say "KATAKANA: "~ $kstr;
     my @ks = $kstr.comb;
-    my @rs = @ks.map({ %katakana{$_} // 'ー' });
+    my @rs = @ks.map({ %katakana{$_} // $_ });
     my @nrs = ();
     for 0 .. @rs.elems - 1 -> $idx {        
         if @rs[$idx] eq 'ー' { 

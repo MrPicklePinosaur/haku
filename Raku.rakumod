@@ -1,8 +1,12 @@
 use v6;
 use HakuAST;
 use Romaji;
+use JapaneseNumberParser;
 our $toRomaji=True;
 $V=False;
+
+
+
 our %defined-functions;
 
 sub ppHakuProgram(HakuProgram $p) is export {
@@ -62,7 +66,7 @@ sub ppFunctionName(\fn) {
                 when / ^ [合わせ|awaseru] / { 'concat' } 
                 when / ^ [入れ|ireru] / { 'insert' } 
                 when / ^ [消|kesu] / { 'delete' } 
-                when / ^ [正引] / { 'lookup' }                 
+                when / ^ [ 正引 | tadasiiINkisuru] / { 'lookup' }                 
                 default { $f_name }      
             }            
         }
@@ -76,7 +80,11 @@ sub ppFunctionName(\fn) {
                 default { $f_name }      
             }            
         }
-        when Variable { $toRomaji ?? katakanaToRomaji(fn.var).lc !! fn.var}
+        when Variable { 
+            my $var = fn.var;            
+            $var = substituteKanjiToDigits($var);
+            $toRomaji ?? katakanaToRomaji(fn.var).lc !! fn.var
+            }
     }
 }
 
@@ -189,7 +197,11 @@ sub ppHakuExpr(\h) {
         }
         when Number { h.num }
         when String { "'" ~ join('',h.chars) ~ "'" }
-        when Variable { $toRomaji ?? katakanaToRomaji(h.var).lc !! h.var }
+        when Variable {
+            my $var = h.var;                        
+            $var = substituteKanjiToDigits($var); 
+            $toRomaji ?? katakanaToRomaji($var).lc !! $var 
+            }
         when Verb {  $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb }
         when Noun {  $toRomaji ?? kanjiToRomaji(h.noun) !! h.noun }
         when BinOpExpr {
