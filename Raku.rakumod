@@ -138,19 +138,20 @@ sub ppVariable($var) {
 }
 
 sub ppHakuExpr(\h) {
-    # say h.raku;
+    
             
     #             say 'COMMENT: ' ~ h.comment;
             
     given h {
         when BindExpr {  
+            my $comment = h.comment // '';            
             given h.lhs {
                 when Cons {
-                    ppConsLhsBindExpr(h);
+                    $comment ~ ppConsLhsBindExpr(h);
                 }
                 default {
-                    'my \\' ~ ppHakuExpr(h.lhs)~' = '~ppHakuExpr(h.rhs)~';'
-                }
+                    $comment ~ 'my \\' ~ ppHakuExpr(h.lhs)~' = '~ppHakuExpr(h.rhs)~';'
+                } 
 
             }        
         

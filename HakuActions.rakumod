@@ -286,14 +286,14 @@ class HakuActions {
     }
 
     # This is not practical. I need comments to be part of expressions. 
-    method comment-then-expression($/) {
-         my $comment_str = $<comment>.map({ '#' ~ $_.made}).join("\n");
-        #  say $comment_str;
-        my $expr = $<expression>.made;
-        # $expr.comment = $comment_str;
-        # say $expr.raku;
-        make $expr;# $<expression>.made;
-    }
+    # method comment-then-expression($/) { 
+    #      my $comment_str = $<comment>.map({ '#' ~ $_.made}).join("\n");
+    #     #  say $comment_str;
+    #     my $expr = $<expression>.made;
+    #     # $expr.comment = $comment_str;
+    #     # say $expr.raku;
+    #     make Comment[$expr,$comment_str].new;
+    # }
 
     method range-expression($/) {
         my $from = $<atomic-expression>[0].made;
@@ -321,6 +321,7 @@ class HakuActions {
     }
 
     method bind-ha($/) {
+        my $comment = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
         my $lhs-expr;
         if $<variable> {            
             $lhs-expr = $<variable>.made;
@@ -328,7 +329,7 @@ class HakuActions {
             $lhs-expr = $<cons-list-expression>.made;
         }
         my $rhs-expr=$<expression>.made;
-        make BindExpr[$lhs-expr,$rhs-expr].new;
+        make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
     } 
 
     method kuromaru-let($/) {

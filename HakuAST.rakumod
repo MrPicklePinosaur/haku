@@ -4,6 +4,10 @@ use v6;
 role HakuExpr {
     # has $.comment is rw;
 }
+role Comment[$e,$c] does HakuExpr {
+    has $.expr = $e;
+    has $.comment = $c;
+}
 role LhsExpr {...}
 # data Identifier = Variable | Verb | Noun 
 role Identifier {}
@@ -44,9 +48,10 @@ role Cons[ @cons] does LhsExpr {
 
 # data BindExpr = mkBindExpr LhsExpr RhsExpr 
 #  does HakuExpr because of Hon, not very nice. Could be we need a separate bind expr for this.
-role BindExpr[ $lhs-expr,  $rhs-expr]  does HakuExpr {
+role BindExpr[ $lhs-expr, $rhs-expr, $comment]  does HakuExpr {
     has LhsExpr $.lhs = $lhs-expr;
     has HakuExpr $.rhs = $rhs-expr;
+    has Str $.comment = $comment;
 } 
 
 # data HakuExpr = LetExpr | IfExpr | ListExpr | MapExpr | AtomicExpr | LambdaExpr | FunctionApplyExpr | LambdaApplyExpr | ParensExpr | BinOpExpr

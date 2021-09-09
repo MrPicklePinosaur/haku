@@ -581,7 +581,7 @@ does Comments
     }
 
     token comment-then-expression {
-        <comment>+ # <expression>
+        <comment>+ <expression>
     }
     token expression {                     
         [  <lambda-expression>         
@@ -601,7 +601,7 @@ does Comments
         | <list-expression>
         | <cons-list-expression>        
         | <atomic-expression>              
-        | <comment-then-expression>
+        # | <comment-then-expression>
         ]
     }
 
@@ -627,7 +627,7 @@ does Comments
         <identifier> <.ni> <identifier> <.ga-aru>
     }
 
-    token bind-ha { [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
+    token bind-ha { <comment>* [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
     token bind-ga { [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
     token bind-tara { [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
     
