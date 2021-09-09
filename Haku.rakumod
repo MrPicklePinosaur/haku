@@ -628,8 +628,8 @@ does Comments
     }
 
     token bind-ha { <comment>* [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
-    token bind-ga { [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
-    token bind-tara { [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
+    token bind-ga { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
+    # token bind-tara { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
     
     token kono-let {
         <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga> [<.delim> <.ws>? <bind-ga>]* <.delim>?
