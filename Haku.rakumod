@@ -500,7 +500,7 @@ does Strings
 does Comments 
 {
 
-    token TOP { <expression> }
+    token TOP { <comment-then-expression> }
  
     token atomic-expression {  <number> | <string> | <mu> | <kuu> | <identifier>   }
     token parens-expression { 
@@ -581,9 +581,10 @@ does Comments
     }
 
     token comment-then-expression {
-        <comment>+ <expression>
+        <comment>* <expression>
     }
-    token expression {                     
+
+    token expression {        
         [  <lambda-expression>         
         | <let-expression>  
         | <apply-expression> 
@@ -592,8 +593,6 @@ does Comments
         | <function-comp-expression>
         | <map-expression>
         | <ifthen>
-        # | <fold-application>
-        # | <map-application>
         | <string-interpol>
         ] || 
         [ <parens-expression>  
@@ -699,10 +698,10 @@ grammar Haku is Functions does Comments does Keywords {
         　<hontoha> 
           [ 
             | <bind-ha> 
-            | <expression> <.delim>
-            | <comment>
+            | <comment-then-expression> <.delim>
+            # | <comment>
           ]*?
-          <expression> <.delim>?
+          <comment-then-expression> <.delim>?
         <.function-end>                 
     }
 

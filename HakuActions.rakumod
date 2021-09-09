@@ -286,14 +286,14 @@ class HakuActions {
     }
 
     # This is not practical. I need comments to be part of expressions. 
-    # method comment-then-expression($/) { 
-    #      my $comment_str = $<comment>.map({ '#' ~ $_.made}).join("\n");
-    #     #  say $comment_str;
-    #     my $expr = $<expression>.made;
-    #     # $expr.comment = $comment_str;
-    #     # say $expr.raku;
-    #     make Comment[$expr,$comment_str].new;
-    # }
+    method comment-then-expression($/) { 
+         my $comment_str = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
+        #  say $comment_str;
+        my $expr = $<expression>.made;
+        # $expr.comment = $comment_str;
+        # say $expr.raku;
+        make CommentedExpr[$expr,$comment_str].new;
+    }
 
     method range-expression($/) {
         my $from = $<atomic-expression>[0].made;
@@ -305,6 +305,7 @@ class HakuActions {
         | <function-comp-expression>
 =end pod
     method bind-ga($/) {
+        my $comment = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
         my $lhs-expr;
         if $<variable> {
             $lhs-expr = $<variable>.made;
@@ -312,7 +313,7 @@ class HakuActions {
             $lhs-expr = $<cons-list-expression>.made;
         }
         my $rhs-expr=$<expression>.made;
-        make BindExpr[$lhs-expr,$rhs-expr].new;
+        make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
     } 
     method kono-let($/) {
         my $result = $<expression>.made;         
@@ -375,10 +376,10 @@ class HakuActions {
             @bindings = map({$_.made}, $<bind-ha>); 
         }
         my @exprs = ();
-        if $<expression> {
+        if $<comment-then-expression> {
             
             # In general an array, iterate
-            @exprs = map({$_.made}, $<expression>);
+            @exprs = map({$_.made}, $<comment-then-expression>);
             
         }
         my @haku-exprs = |@bindings,|@exprs;

@@ -4,9 +4,9 @@ use v6;
 role HakuExpr {
     # has $.comment is rw;
 }
-role Comment[$e,$c] does HakuExpr {
-    has $.expr = $e;
-    has $.comment = $c;
+role CommentedExpr[$e,$c] does HakuExpr {
+    has HakuExpr $.expr = $e;
+    has Str $.comment = $c;
 }
 role LhsExpr {...}
 # data Identifier = Variable | Verb | Noun 
