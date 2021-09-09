@@ -581,7 +581,7 @@ does Comments
     }
 
     token comment-then-expression {
-        <comment>+ <expression>
+        <comment>+ # <expression>
     }
     token expression {                     
         [  <lambda-expression>         
@@ -674,8 +674,9 @@ grammar Functions is Expression does Keywords does Punctuation {
     token function {
         <comment>*
         [ <verb> | <noun> ] <.toha>
-        <variable-list> <.de> <.ws>? <expression> <.function-end>
-        # [<let-expression> | <expression>]
+        <variable-list> <.de> <.ws>? 
+        <expression> 
+        <.function-end>
     }
 
     token function-end {
@@ -697,9 +698,9 @@ grammar Haku is Functions does Comments does Keywords {
     token hon-definition { 
         　<hontoha> 
           [ 
-              <bind-ha> |
-              [<expression> <.delim>] |     
-            <comment>
+            | <bind-ha> 
+            | <expression> <.delim>
+            | <comment>
           ]*?
           <expression> <.delim>?
         <.function-end>                 
