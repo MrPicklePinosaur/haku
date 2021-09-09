@@ -285,8 +285,14 @@ class HakuActions {
         make $<comment-chars>.map({$_.Str}).join('');
     }
 
+    # This is not practical. I need comments to be part of expressions. 
     method comment-then-expression($/) {
-        make $<expression>.made;
+         my $comment_str = $<comment>.map({ '#' ~ $_.made}).join("\n");
+        #  say $comment_str;
+        my $expr = $<expression>.made;
+        # $expr.comment = $comment_str;
+        # say $expr.raku;
+        make $expr;# $<expression>.made;
     }
 
     method range-expression($/) {
@@ -316,7 +322,7 @@ class HakuActions {
 
     method bind-ha($/) {
         my $lhs-expr;
-        if $<variable> {
+        if $<variable> {            
             $lhs-expr = $<variable>.made;
         } elsif $<cons-list-expression> {
             $lhs-expr = $<cons-list-expression>.made;
@@ -354,38 +360,7 @@ class HakuActions {
             make LambdaExpr[@args,$expr].new;
     }
     method expression($/) { 
-        # say $/.keys;die;
-#        if $<lambda-expression> {
-#            my @args = map({$_.made},$<variable-list>);
-#            my $expr = $<expression>.made;
-#            make LambdaExpr[@args,$expr].new;
-#        } elsif $<cons-list-expression> {
-#            my @cons = map({$_.made},$<variable>);
-#            if $<kuu> or $<empty> {
-#                @cons.push(ConsNil.new);
-#            }
-#            make Cons[@cons].new    
-#        } else { 
             make $/.values[0].made;
-#}
-        # } elsif ($<atomic-expression>) {
-        #     # say $<atomic-expression>.made; 
-        #     make $<atomic-expression>.made
-        # } elsif $<list-expression> {
-        #     # say "LIST "~$<list-expression>.made.raku;
-        #     make $<list-expression>.made
-        # } elsif $<operator-expression> {
-        #     make $<operator-expression>.made;
-        # } elsif $<comparison-expression> {
-        #     make $<comparison-expression>.made;
-        # } elsif $<comment-then-expression> {
-        #     make $<comment-then-expression>.made;
-        # } elsif $<apply-expression> {
-        #     make $<apply-expression>.made;
-        # } else {
-        #     make "EXPR: "~$/;
-        # }
-
     }
     method  hontoha($/) {
         make $<hon>.Str ~ ( $<ma> ?? $<ma>.Str !! '');

@@ -34,15 +34,19 @@ use Raku;
     token zuwotsukuru { '図' 'を' '作' <ru-endings> }
 
 =end pod
-
-my $hon_str_2 = "本とは
-マップは空から図を作る、
-マップ二は「四十二」と四十二から図を作る、
+# 註Create an empty map。
+# 註Create a map with a single pair '42' => 42。
+my $hon_str_21 = "本とは
+註 an empty map。
+マップは空で図を作る、
+マップ二は「四十二」と四十二で図を作る、
 マップ三は空図、
+註 var for key。
 カギは「四十二」、
 バリューは四十二、
 テストはもしマップにカギが有るなら一そうでない零、
 シンマップはマップにカギとバリューを入れる、
+シンマップ三はマップからカギを消す、
 タブンバリューはマップにカギを正引きする、
 カギ達はマップの鍵、
 アタイ達はマップの値、
@@ -51,6 +55,7 @@ my $hon_str_2 = "本とは
 の事です。";
 
 
+my $hon_str_2 = $hon_str_21.lines.grep({ not /^ '#' / }).join("\n");
 my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
 if $hon_parse_2 ~~ Match {
 
