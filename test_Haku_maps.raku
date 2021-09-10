@@ -34,6 +34,7 @@ use Raku;
     token zuwotsukuru { '図' 'を' '作' <ru-endings> }
 
 =end pod
+# 解答とは「四十二」、
 # 註Create an empty map。
 # 註Create a map with a single pair '42' => 42。
 my $hon_str_21 = "本とは
@@ -43,7 +44,8 @@ my $hon_str_21 = "本とは
 マップ三は空図、
 註 var for key。
 カギは「四十二」、
-バリューは四十二
+# 解答とは「四十二」、
+バリューは四十二、
 テストはもしマップにカギが有るなら一そうでない零、
 シンマップはマップにカギとバリューを入れる、
 シンマップ三はマップからカギを消す、

@@ -72,10 +72,18 @@ role Characters {
 # I think I will use the full stop and semicolon as equivalent for newline.
 role Punctuation {
 
-    token full-stop { '。' }
-    token comma { '、' }
-    token semicolon { '；' }    
-    token colon { '：' }
+    token full-stop { '。' 
+        { self.highwater('。'); }
+    }
+    token comma { '、'
+        { self.highwater('、'); }
+    }
+    token semicolon { '；' 
+        { self.highwater('；'); }
+    }    
+    token colon { '：' 
+        { self.highwater('：'); }
+    }
     token interpunct { '・' } # nakaguro 
     token punctuation { <full-stop> | <comma> | <semicolon> | <colon> }
     token delim { 
@@ -115,16 +123,22 @@ role Particles {
         { self.highwater('の'); }
     }
     token to-particle { 'と' }
+
     token mo { 'も' }
+
     token wo { 'を' 
         { self.highwater('を'); }
     }
     token de { 'で' 
         { self.highwater('で'); }
     }
-    token ni { 'に' }
+    token ni { 'に' 
+        { self.highwater('に'); }
+    }
     token ka { 'か' }
-    token kara { 'から' }
+    token kara { 'から' 
+        { self.highwater('から'); }
+    }
     token made-particle { '迄' | 'まで' }
     token deha { 'では' }
     token node { 'ので' }
@@ -687,6 +701,20 @@ grammar Functions is Expression does Keywords does Punctuation {
 
 
 grammar Haku is Functions does Comments does Keywords {
+    my %token-types is Map = <
+        。 delimiter
+        、 delimiter
+        ： delimiter
+        ； delimiter
+        は particle
+        が particle
+        と particle
+        の particle
+        に particle
+        で particle
+        を particle
+        から  particle
+        >;
     token TOP { <haku-program> }
     token haku-program {
         # <comment>
@@ -728,6 +756,7 @@ grammar Haku is Functions does Comments does Keywords {
         if $*MSG ~~ /delimiter/ {
             $context = @context_lines[0] ~ "⏏" ~ "\n\t";
         }
+
         my $msg = "Error: Cannot parse Haku expression" ~ $*MSG;
         $msg ~= "; error in rule $*LASTRULE" if $*LASTRULE;
         my @parsed_lines = $parsed.lines;
@@ -741,8 +770,14 @@ grammar Haku is Functions does Comments does Keywords {
             @ann_parsed_lines.push($line_counter ~ "\t" ~ $parsed_line);
         } 
         my $parsed_annotated_context = @ann_parsed_lines[*-3 .. *].join("\n") ;
-
-        say "$msg after particle $*PARTICLE on line $line_counter:\n\n" ~ $parsed_annotated_context ~ $*PARTICLE ~ "⏏" ~$context~"...\n";    
+        my $token-type = %token-types{$*PARTICLE};
+        # FIXME: This is weak, will break if there are two expressions on a single line
+        # There must be a check that the position is at the end of a line
+        if $token-type eq 'delimiter' {
+            ++$line_counter;
+            $context = @context_lines[0] ~ "\n$line_counter\t⏏" ~ @context_lines[1]  ~ "\n\t";
+        }        
+        say "$msg after $token-type $*PARTICLE on line $line_counter:\n\n" ~ $parsed_annotated_context ~ $*PARTICLE ~ "⏏" ~$context~"...\n";    
         exit;
     }
 
