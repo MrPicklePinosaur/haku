@@ -3607,7 +3607,7 @@ sub hiraganaToRomaji (Str $kstr --> Str) is export  {
 # When there is hiragana, I assume it's a single kanji and it's a verb
 # When there are only kanji, I use the ON readings
 # What I should do is see if there are 2 kanji in a row
-sub kanjiToRomaji (Str $kstr --> Str) is export  {
+sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
     say "KANJI: " ~ $kstr if $V;
     # There are 2 kanji and then some hiragana
     if $kstr.chars > 1 and not $kstr.substr(0,2) ~~/<[あ..ん]>/ and $kstr ~~ /<[あ..ん]>/  {
@@ -3724,11 +3724,13 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
         # if @rest {
             # say "MULTI-KANJI: " ~ $kstr if $V;
             my $kstr_=$kstr;
-            if %joyo_kun_non_verb_readings{$kanji}:exists {
+            my $kun_=True;
+            if $kun and %joyo_kun_non_verb_readings{$kanji}:exists {
                 my @kana = %joyo_kun_non_verb_readings{$kanji};
                 #say "KANA: "~ @kana[0];
                 $kstr_ = hiraganaToRomaji(@kana[0]);
             } elsif %joyo_on_readings{$kanji}:exists {
+                $kun_=False;
                 my @kana = %joyo_on_readings{$kanji};
                 #say "KANA: "~ @kana[0];
                 $kstr_ = katakanaToRomaji(@kana[0]); # Just take the first one                
@@ -3736,7 +3738,7 @@ sub kanjiToRomaji (Str $kstr --> Str) is export  {
                 return 'v' ~ $kstr.uniname.substr(*-4).lc; 
             }
             if @rest {
-                    $kstr_ ~= kanjiToRomaji(@rest.join('') );
+                    $kstr_ ~= kanjiToRomaji(@rest.join(''), $kun_ );
             }
                 # e.g. shutsupatsu -> shuppatsu
                 if $kstr_ ~~/^\w+?tsuh/ {

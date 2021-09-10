@@ -1030,7 +1030,17 @@ And with all those changes I will almost be able to write
 歩く事を忘れてしまった
 
 Just some more grammar support and an extra nominaliser. 
+
 ====
 The problem with comments is that the parser lumps everything together, so the location of a comment gets lost.
 Therefore the only way to make this work is to have comment-then-expression.
 But the current problem with that is that expression delegates to e.g. identifier which delegates to e.g. variable. 
+
+====
+I removed comma as a valid list separator as it conflicts with the comma as a delimiter
+I added nouns on the lhs but atm only for bind-ha
+
+
+
+
+

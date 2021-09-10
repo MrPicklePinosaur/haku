@@ -1,5 +1,5 @@
 use v6;
-# use Grammar::Tracer;
+#use Grammar::Tracer;
 # Haku, a toy functional programming language based on Japanese
 
 role Characters {
@@ -273,7 +273,7 @@ role Operators does Characters does Punctuation
     token operator-noun { '和' | '差' | '積' | '除' }
     token operator-verb-kanji { '足' | '引' | '掛' | '割' }
     token operator-verb { <operator-verb-kanji> <hiragana>*? <verb-ending> }    
-    token list-operator { <ni> | <to-particle> | <kara> | <made-particle> | <comma>}
+    token list-operator { <ni> | <to-particle> | <kara> | <made-particle> } # NOT comma, conflicts with delimiter! | <comma>}
     token nochi { '後' | 'のち' } # g . f
     token aru { '或' } # the \ operator
     token cons { <interpunct> | <colon> }
@@ -642,12 +642,17 @@ does Comments
         <identifier> <.ni> <identifier> <.ga-aru>
     }
 
-    token bind-ha { <comment>* [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? [<.delim> || {$*MSG = ', missing delimiter'}]}
+    token bind-ha { <comment>* [ <noun> | <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? 
+     [
+        <.delim> 
+         || {$*MSG = ', missing delimiter'}
+     ]
+        }
     token bind-ga { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
     # token bind-tara { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
     
     token kono-let {
-        <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga> [<.delim> <.ws>? <bind-ga>]* <.delim>?
+        <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga> [<.delim>  <bind-ga>]* <.delim>?
     }
     token kuromaru-let {
          [ <kuromaru> <bind-ha> ]+ <.deha> <.ws>? <expression> <.delim>?
@@ -726,7 +731,7 @@ grammar Haku is Functions does Comments does Keywords {
     # Behaves like an 'do' but without the monads
     token hon-definition { 
         　<hontoha> 
-          [ 
+[ 
             | <bind-ha> 
             | <comment-then-expression> <.delim>
             # | <comment>
@@ -743,10 +748,10 @@ grammar Haku is Functions does Comments does Keywords {
         my @context_lines = $context.lines;
         if @context_lines.elems == 1  {
             $context = $target.substr($*HIGHWATER+1, 4 max 0);
-        } else {
-            if @context_lines[0].chars < 30 {
+        } else { # if there are multiple lines after the highwater mark,
+            if @context_lines[0].chars < 30 { # take the whole line if it is < 30 chars
                 $context = @context_lines[0] ~ "\n\t";
-            } else {
+            } else { # otherwise truncate
                 $context = @context_lines[0].substr($*HIGHWATER+1, 4 max 0) ~ "...\n\t";
             }
         }
@@ -773,12 +778,12 @@ grammar Haku is Functions does Comments does Keywords {
         my $token-type = %token-types{$*PARTICLE};
         # FIXME: This is weak, will break if there are two expressions on a single line
         # There must be a check that the position is at the end of a line
-        if $token-type eq 'delimiter' {
-            ++$line_counter;
-            $context = @context_lines[0] ~ "\n$line_counter\t⏏" ~ @context_lines[1]  ~ "\n\t";
-        }        
+        # if $token-type eq 'delimiter' {
+        #     ++$line_counter;
+        #     $context = @context_lines[0] ~ "\n$line_counter\t⏏" ~ @context_lines[1]  ~ "\n\t";
+        # }        
         say "$msg after $token-type $*PARTICLE on line $line_counter:\n\n" ~ $parsed_annotated_context ~ $*PARTICLE ~ "⏏" ~$context~"...\n";    
-        exit;
+        # exit;
     }
 
     method parse($target, |c) {
@@ -797,7 +802,6 @@ grammar Haku is Functions does Comments does Keywords {
         my $*PARTICLE= '';
         my $*LASTRULE;
         my $*MSG='';
-
         my $match = callsame;
         self.error($target) unless $match;
         return $match;

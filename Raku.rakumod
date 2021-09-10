@@ -72,7 +72,7 @@ sub ppFunctionName(\fn) {
         }
         when Noun {  
             say "NOUN: " ~ fn.noun ~ "=>" ~  kanjiToRomaji(fn.noun) if $V;
-            my $f_name = $toRomaji ?? kanjiToRomaji(fn.noun)  !! fn.noun ;
+            my $f_name = $toRomaji ?? kanjiToRomaji(fn.noun).lc  !! fn.noun ;
             given $f_name {
                 when / 頭 | atama/ { 'head' } 
                 when / 尻尾 | sirio / { 'tail' }            
@@ -218,7 +218,7 @@ sub ppHakuExpr(\h) {
             ppVariable(h.var)
         }
         when Verb {  $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb }
-        when Noun {  $toRomaji ?? kanjiToRomaji(h.noun) !! h.noun }
+        when Noun {  $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun }
         when BinOpExpr {
              '(' ~ ppHakuExpr(h.args[0]) ~ ' ' ~h.op.op~' '~ ppHakuExpr(h.args[1]) ~ ')'
         }

@@ -43,9 +43,8 @@ my $hon_str_21 = "本とは
 マップ二は「四十二」と四十二で図を作る、
 マップ三は空図、
 註 var for key。
-カギは「四十二」、
-# 解答とは「四十二」、
-バリューは四十二、
+カギは「四十二」、バリューは四十二、
+解答は「四十二」、
 テストはもしマップにカギが有るなら一そうでない零、
 シンマップはマップにカギとバリューを入れる、
 シンマップ三はマップからカギを消す、
@@ -54,17 +53,16 @@ my $hon_str_21 = "本とは
 アタイ達はマップの値、
 シンマップを見せる、
 註 show map2。
-マップ二を見せる、
+マップ二を見せる
 の事です。";
 
 
-my $hon_str_2 = $hon_str_21.lines.grep({ not /^ '#' / }).join("\n");
+my $hon_str_2 = $hon_str_21.lines.grep({ not /^ '#' / }).join("");
+say $hon_str_2;
 my $hon_parse_2 = Haku.parse($hon_str_2, :actions(HakuActions));
 if $hon_parse_2 ~~ Match {
-
     say ppHakuProgram($hon_parse_2.made);
 } else {
-
     my $hon_subparse_2 = Haku.subparse($hon_str_2);
     say $hon_subparse_2.chunks;
     say $hon_subparse_2.raku;

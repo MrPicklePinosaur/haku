@@ -326,6 +326,8 @@ class HakuActions {
         my $lhs-expr;
         if $<variable> {            
             $lhs-expr = $<variable>.made;
+        } elsif $<noun> {
+            $lhs-expr = $<noun>.made;
         } elsif $<cons-list-expression> {
             $lhs-expr = $<cons-list-expression>.made;
         }
