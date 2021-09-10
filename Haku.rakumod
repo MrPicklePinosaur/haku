@@ -78,7 +78,9 @@ role Punctuation {
     token colon { '：' }
     token interpunct { '・' } # nakaguro 
     token punctuation { <full-stop> | <comma> | <semicolon> | <colon> }
-    token delim { [<full-stop> | <comma> | <semicolon>] <ws>? }
+    token delim { 
+            [<full-stop> | <comma> | <semicolon>] <ws>?
+    }
     
     # Marukakko (丸括弧) 
     token open-maru { '（' }
@@ -626,7 +628,7 @@ does Comments
         <identifier> <.ni> <identifier> <.ga-aru>
     }
 
-    token bind-ha { <comment>* [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? <.delim> }
+    token bind-ha { <comment>* [ <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? [<.delim> || {$*MSG = ', missing delimiter'}]}
     token bind-ga { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
     # token bind-tara { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
     
@@ -634,7 +636,7 @@ does Comments
         <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga> [<.delim> <.ws>? <bind-ga>]* <.delim>?
     }
     token kuromaru-let {
-         [ <kuromaru> <bind-ha> ]+ <.deha> <.ws>? <expression> <delim>?
+         [ <kuromaru> <bind-ha> ]+ <.deha> <.ws>? <expression> <.delim>?
     }
 
     token let-expression { <kuromaru-let> | <kono-let> }
@@ -714,7 +716,7 @@ grammar Haku is Functions does Comments does Keywords {
         if @context_lines.elems == 1  {
             $context = $target.substr($*HIGHWATER+1, 4 max 0);
         } else {
-            if @context_lines[0].nchars < 30 {
+            if @context_lines[0].chars < 30 {
                 $context = @context_lines[0] ~ "\n\t";
             } else {
                 $context = @context_lines[0].substr($*HIGHWATER+1, 4 max 0) ~ "...\n\t";
@@ -722,7 +724,11 @@ grammar Haku is Functions does Comments does Keywords {
         }
                 
         my $pos = $parsed.chars;
-        my $msg = "Error: Cannot parse Haku expression";
+        # TODO: make this more general
+        if $*MSG ~~ /delimiter/ {
+            $context = @context_lines[0] ~ "⏏" ~ "\n\t";
+        }
+        my $msg = "Error: Cannot parse Haku expression" ~ $*MSG;
         $msg ~= "; error in rule $*LASTRULE" if $*LASTRULE;
         my @parsed_lines = $parsed.lines;
         my $char_counter =0;
@@ -744,6 +750,7 @@ grammar Haku is Functions does Comments does Keywords {
         my $*HIGHWATER = 0;
         my $*PARTICLE= '';
         my $*LASTRULE;
+        my $*MSG='';
 
         my $match = callsame;
         self.error($target) unless $match;
@@ -754,6 +761,7 @@ grammar Haku is Functions does Comments does Keywords {
         my $*HIGHWATER = 0;
         my $*PARTICLE= '';
         my $*LASTRULE;
+        my $*MSG='';
 
         my $match = callsame;
         self.error($target) unless $match;
@@ -761,14 +769,15 @@ grammar Haku is Functions does Comments does Keywords {
     }
 
 # for error messages, later.
-    method token-error($msg) {
-        my $parsed = self.target.substr(0, self.pos).trim-trailing;
-        my $context = $parsed.substr($parsed.chars -  2 max 0)
-            ~ '⏏' ~ self.target.substr($parsed.chars, 2);
-        my $line-no = $parsed.lines.elems;
-        die "Cannot parse mathematical expression: $msg\n"
-            ~ "at line $line-no, around " ~ $context.perl
-            ~ "\n(error location indicated by ⏏)\n" ;
-    }
+    # method token-error($msg) {
+        # my $parsed = self.target.substr(0, self.pos).trim-trailing;
+        # my $context = $parsed.substr($parsed.chars -  2 max 0)
+        #     ~ '⏏' ~ self.target.substr($parsed.chars, 2);
+        # my $line-no = $parsed.lines.elems;
+        # say "Cannot parse expression: $msg\n"
+        #     ~ "at line $line-no, around " ~ $context
+        #     ~ "\n(error location indicated by ⏏)\n" ;
+        #     exit;
+    # }
 
 }

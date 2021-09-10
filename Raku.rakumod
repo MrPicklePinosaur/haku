@@ -76,7 +76,7 @@ sub ppFunctionName(\fn) {
             given $f_name {
                 when / 頭 | atama/ { 'head' } 
                 when / 尻尾 | sirio / { 'tail' }            
-                when / 長さ | nagasa / { 'elems' } 
+                when / 長さ | nagasa / { 'length' } 
                 when / 鍵 | kagi / {'keys'}
                 when / 値 | atai / {'values'}
                 default { $f_name }      
@@ -138,9 +138,6 @@ sub ppVariable($var) {
 }
 
 sub ppHakuExpr(\h) {
-    
-            
-    
             
     given h {
         when CommentedExpr {

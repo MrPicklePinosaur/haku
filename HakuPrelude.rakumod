@@ -1,14 +1,46 @@
 use v6;
 
-sub head(List \lst) is export {
-    lst.head;
+sub head( \lst) is export {
+    given lst {
+        when Str { 
+            lst.substr(0,1)
+        }
+        default {
+            lst.head;
+        }
+    }
 }
 
-sub tail(List \lst --> List) is export {
-    List.new(|lst.tail(lst.elems-1));
+sub tail(\lst) is export {
+    given lst {
+        when Str { lst.substr(1)}
+        default {
+            List.new(|lst.tail(lst.elems-1));
+        }
+    }
 }
 
-sub concat(List \l1, List \l2 --> List) is export { |l1,|l2 }
+sub length(\lst) {
+    given lst {
+        when Str {
+            lst.chars
+        }
+        default {
+            lst.elems
+        }
+    }
+}
+
+sub concat(\l1, \l2) is export { 
+    given l1 {
+        when Str {
+            l1 ~ l2
+        }
+        default {            
+            |l1,|l2 
+        }
+    }        
+}
 
 sub foldl (&f, \acc, List \lst) is export  {
     my $res = acc;
