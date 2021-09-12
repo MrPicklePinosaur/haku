@@ -225,6 +225,16 @@ sub ppHakuExpr(\h) {
         when RangeExpr {
             '[' ~ ppHakuExpr(h.from) ~ ' .. '~ ppHakuExpr(h.to) ~ ']'
         }
+        when ZoiExpr {
+            ('do {' ,
+            ppHakuExpr(h.zoi-expr) ~ ';' ,
+            ppHakuExpr(h.expr) , '}'    
+            ).join("\n");            
+        }
+        when ChinaminiExpr {
+            # TODO make this skippable with a flag!
+            ppHakuExpr(h.expr);
+        }
         when ConsNil {
             '[]'
         }

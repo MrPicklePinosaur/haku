@@ -87,8 +87,8 @@ role RangeExpr[ $from-expr,$to-expr] does HakuExpr {
     has $.to = $to-expr;
 }
 
-
-# role AtomicExpr does HakuExpr {} 
+# This *must* be here or else it goes horribly wrong
+role AtomicExpr does HakuExpr {} 
 # data LambdaExpr = mkLambdaExpr [Variable] HakuExpr
 role LambdaExpr[ @lambda-args, $expr] does HakuExpr {
     has Variable @.args = @lambda-args;
@@ -130,7 +130,7 @@ role ChinaminiExpr[\expr] does HakuExpr {
     has HakuExpr $.expr = expr;
 }
 
-role ZoiExpr[\expr,\zoi-epxr] does HakuExpr {
+role ZoiExpr[\expr,\zoi-expr] does HakuExpr {
     has HakuExpr $.expr = expr;
     has HakuExpr $.zoi-expr = zoi-expr;
 }

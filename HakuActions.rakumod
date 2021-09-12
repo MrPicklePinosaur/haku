@@ -232,8 +232,8 @@ class HakuActions {
         my @args = map({$_.made},$<arg-expression>);
         make @args;
     }
-    method non-verb-apply-expression($/) {
-        
+
+    method non-verb-apply-expression($/) {    
         my @args =  map({$_.made},$<arg-expression-list>).flat;
         my $partial = $<dake> ?? True !! False;
         
@@ -250,9 +250,21 @@ class HakuActions {
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         }        
     }
+
+    method adjectival-verb-apply-expression($/) {        
+        my $partial = $<dake> ?? True !! False;
+        my @args =  $<arg-expression-list> ?? 
+            [map({$_.made},$<arg-expression-list>).flat,$<arg-expression>.made]
+            !! [$<arg-expression>.made];
+        my $function-name=$<verb>.made;   
+        make FunctionApplyExpr[$function-name, @args, $partial].new;
+    }
+
     method apply-expression($/) {
         my $partial = $<dake> ?? True !! False;
-        if $<non-verb-apply-expression> {
+        if $<adjectival-verb-apply-expression> {
+            make $<adjectival-verb-apply-expression>.made;
+        } elsif $<non-verb-apply-expression> {        
             my @args= [ $<non-verb-apply-expression>.made ];
             if $<verb> {
                 my $function-name=$<verb>.made;   
@@ -262,11 +274,8 @@ class HakuActions {
                 my $lambda-expr=$<lambda-expression>.made;
                 make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
             }   
-
         } else {
-
-            my @args =  map({$_.made},$<arg-expression-list>).flat;
-            
+            my @args =  map({$_.made},$<arg-expression-list>).flat;            
             if $<identifier> {                
                 my $function-name=$<identifier>.made;   
                 if $function-name ~~ BinOp {
@@ -332,8 +341,14 @@ class HakuActions {
         } elsif $<cons-list-expression> {
             $lhs-expr = $<cons-list-expression>.made;
         }
-        my $rhs-expr=$<expression>.made;
-        make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
+        if $<zoi> {
+            my $expr = $<expression>[0].made;
+            my $zoi-expr = $<expression>[1].made;
+            make BindExpr[$lhs-expr, ZoiExpr[$expr,$zoi-expr].new, $comment].new;
+        } else {
+            my $rhs-expr=$<expression>.made;
+            make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
+        }
     } 
 
     method kuromaru-let($/) {
@@ -365,15 +380,10 @@ class HakuActions {
             make LambdaExpr[@args,$expr].new;
     }
 
-    method chinamini-expr($/) {
+    method chinamini-expression($/) {
         make ChinaminiExpr[$<expression>.made].new;
     }
 
-    method zoi-expr ($/) {
-        my $expr = $<expression>[0].made;
-        my $zoi-expr = $<expression>[1].made;
-            make ZoiExpr[$expr,$zoi-expr].new;
-    }
     method expression($/) { 
             make $/.values[0].made;
     }

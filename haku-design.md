@@ -1052,7 +1052,10 @@ Anyway, for the equivalent of Perl's comma operator, I could use 乍ら　なが
 
 答えは四十二乍らコタエを見せて
 
-Or I could use 沿い　ぞい "running alongside", it's shorter, and may be more correct?
+Or I could use 沿い　ぞい "running alongside", it's shorter, and may be more correct, but requires adjectial verbs
+
+答えは四十二沿い見せるコタエ
+
 
 I think I will also use 因に　ちなみに for any expression that can actually be omitted from the final program
 

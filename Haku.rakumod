@@ -584,6 +584,9 @@ does Comments
         [ <verb> | <lambda-expression> [<.shite-kudasai> | <.sura> ]?]
     }
     
+    token adjectival-verb-apply-expression {
+        [<arg-expression-list> <dake>? <.de> ]? <verb> <arg-expression>
+    }
     token apply-expression {
         [
           <arg-expression-list> <.nominna>? <dake>? 
@@ -593,10 +596,11 @@ does Comments
         ]?
         [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
         ]
-        || [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expressions>  [<.shite-kudasai> | <.sura> ]? ]]
+        || [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expression>  [<.shite-kudasai> | <.sura> ]? ]]
+        || <adjectival-verb-apply-expression>
     }
     token apply-expression-TODO {
-         [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expressions>  [<.shite-kudasai> | <.sura> ]? ]]
+         [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expression>  [<.shite-kudasai> | <.sura> ]? ]]
          || [<verb-apply-expression> | <non-verb-apply-expression> ]  
     }
 
@@ -607,7 +611,7 @@ does Comments
     token expression {        
         [  <lambda-expression>         
         | <let-expression>  
-        | <apply-expression> 
+        | <apply-expression>         
         | <operator-expression>
         | <comparison-expression>
         | <function-comp-expression>
@@ -619,9 +623,8 @@ does Comments
         | <range-expression>
         | <list-expression>
         | <cons-list-expression> 
-        | <chinamini-expression>
-        | <zoi-expression>       
-        | <atomic-expression>              
+        | <chinamini-expression>               
+        | <atomic-expression>
         # | <comment-then-expression>
         ]
     }
@@ -629,9 +632,9 @@ does Comments
     token chinamini-expression {
         <chinamini> <expression>
     }
-    token zoi-expression {
-            expression <zoi> <expression>
-    }
+    # token zoi-expression {
+    #     <expression> <zoi> <expression>
+    # }
 
 
     token function-comp-expression {
@@ -656,7 +659,9 @@ does Comments
         <identifier> <.ni> <identifier> <.ga-aru>
     }
 
-    token bind-ha { <comment>* [ <noun> | <variable> | <cons-list-expression>] [ <.ha> | <.mo> ] <expression> [<.desu> | <.de> ]? 
+    token bind-ha { <comment>* [ <noun> | <variable> | <cons-list-expression>] [ <.ha> | <.mo> ]
+     [<expression> <zoi>]? 
+     <expression>  [<.desu> | <.de> ]? 
      [
         <.delim> 
          || {$*MSG = ', missing delimiter'}
