@@ -1,5 +1,10 @@
 use v6;
 
+sub show(\x) is export {
+    say(x);
+    return x.gist;
+}
+
 sub head( \lst) is export {
     given lst {
         when Str { 

@@ -1040,6 +1040,28 @@ But the current problem with that is that expression delegates to e.g. identifie
 I removed comma as a valid list separator as it conflicts with the comma as a delimiter
 I added nouns on the lhs but atm only for bind-ha
 
+====
+
+kyou mo ame nochi hare => kyou = [ame, hare] because nochi means "and later"
+
+But the problem is that I wanted to use it for function composition.　I can still do that, but the order is reversed, i.e. f nochi g = g . f
+
+Anyway, for the equivalent of Perl's comma operator, I will use 乍ら　ながら
+
+答えは四十二乍らコタエを見せて
+
+Or I could use 沿い　ぞい "running alongside"
+
+I think I will also use 因に　ちなみに for any expression that can actually be omitted from the final program
+
+答えは四十二。
+因にコタエを見せて。
+
+
+- Also, for adjectival verbs we can have 'de' arguments:
+
+ramen wo supoon de taberu
+supoon de tabeta ramen
 
 
 

@@ -1,7 +1,6 @@
 use v6;
 
-# We can either be radical and always assume tategaki, but that would be quite restrictive for those wanting to test the language
-# Another approach is to assume first that it is not tategaki, and check for the pattern 本では. If that is not present, try tategaki.
+# We assume first that the source is not in tategaki, and check for the pattern 本では. If that is not present, try tategaki.
 # If the result of that does not contain 本では, give up.
 sub hakuReader (Str $file --> Str) is export {
     my $try_yoko = yokogakiReader($file);
@@ -21,9 +20,8 @@ sub yokogakiReader(Str $file) {
 
 my $input_file = IO::Path.new( $file ) ;
 my $horiz_str = $input_file.IO.slurp;
-if $horiz_str ~~ /本とは/ {
-    $horiz_str = $horiz_str.split(/\n/).join('');
-    return $horiz_str;
+if $horiz_str ~~ /本真?とは/ {
+    return $horiz_str.lines.grep({ not /^ '#' / }).join('');
 } else {
     return Nil;
 }

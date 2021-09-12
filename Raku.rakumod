@@ -60,7 +60,7 @@ sub ppFunctionName(\fn) {
          
             my $f_name = $toRomaji ?? kanjiToRomaji($f_name_) !! $f_name_;
             given $f_name {
-                when / ^ [見せ|mise] / { 'say' } 
+                when / ^ [見せ|mise] / { 'show' } 
                 when / ^ [畳|tata] / { 'foldl' }            
                 when / ^ [写像|shazou|SHAZOU] / { 'map' } 
                 when / ^ [合わせ|awaseru] / { 'concat' } 

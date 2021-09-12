@@ -642,13 +642,13 @@ does Comments
         <identifier> <.ni> <identifier> <.ga-aru>
     }
 
-    token bind-ha { <comment>* [ <noun> | <variable> | <cons-list-expression>] <.ha> <expression> [<.desu> | <.de> ]? 
+    token bind-ha { <comment>* [ <noun> | <variable> | <cons-list-expression>] [ <.ha> | <.mo> ] <expression> [<.desu> | <.de> ]? 
      [
         <.delim> 
          || {$*MSG = ', missing delimiter'}
      ]
         }
-    token bind-ga { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> [<.desu> | <.de> ]? <.ws>? }
+    token bind-ga { <comment>* [ <noun> | <variable> | <cons-list-expression>] [<.ga> | <.mo> ] <expression> [<.desu> | <.de> ]? <.ws>? }
     # token bind-tara { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
     
     token kono-let {
