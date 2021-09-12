@@ -7,8 +7,7 @@ use Raku;
 
 sub USAGE() {
     print Q:c:to/EOH/;
-    Usage: {$*PROGRAM-NAME}
-        <Japanese text, written horizontally or vertically, utf-8 text file>
+    Usage: haku <Haku program, written horizontally or vertically, utf-8 text file>
         [--tategaki = do not run the program but print it vertically]
  EOH
 }

@@ -8,7 +8,8 @@ role Characters {
         '和' | '差' | '積' | '除' |
         '後' | '為' | '等' | '若' | '不' | '下' |
         '本' | '事' | 
-        '皆' | '空' | '若' 
+        '皆' | '空' | '若' |
+        '因' |　'沿' 
     }
    
     token kanji {  
@@ -277,6 +278,9 @@ role Operators does Characters does Punctuation
     token nochi { '後' | 'のち' } # g . f
     token aru { '或' } # the \ operator
     token cons { <interpunct> | <colon> }
+    # Maybe technically this is not an operator?
+    token chinamini { 'ちなみに' | '因みに' | '因に' }
+    token zoi { 'ぞい' | '沿い' }
 }
 
 
@@ -614,11 +618,21 @@ does Comments
         [ <parens-expression>  
         | <range-expression>
         | <list-expression>
-        | <cons-list-expression>        
+        | <cons-list-expression> 
+        | <chinamini-expression>
+        | <zoi-expression>       
         | <atomic-expression>              
         # | <comment-then-expression>
         ]
     }
+
+    token chinamini-expression {
+        <chinamini> <expression>
+    }
+    token zoi-expression {
+            expression <zoi> <expression>
+    }
+
 
     token function-comp-expression {
         <identifier> [<nochi> <identifier>]+

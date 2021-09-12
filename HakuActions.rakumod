@@ -281,6 +281,7 @@ class HakuActions {
             }   
         }     
     }
+
     method comment($/) {
         make $<comment-chars>.map({$_.Str}).join('');
     }
@@ -362,6 +363,16 @@ class HakuActions {
             my @args = $<variable-list>.made;
             my $expr = $<expression>.made;
             make LambdaExpr[@args,$expr].new;
+    }
+
+    method chinamini-expr($/) {
+        make ChinaminiExpr[$<expression>.made].new;
+    }
+
+    method zoi-expr ($/) {
+        my $expr = $<expression>[0].made;
+        my $zoi-expr = $<expression>[1].made;
+            make ZoiExpr[$expr,$zoi-expr].new;
     }
     method expression($/) { 
             make $/.values[0].made;

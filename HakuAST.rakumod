@@ -88,7 +88,7 @@ role RangeExpr[ $from-expr,$to-expr] does HakuExpr {
 }
 
 
-role AtomicExpr does HakuExpr {} 
+# role AtomicExpr does HakuExpr {} 
 # data LambdaExpr = mkLambdaExpr [Variable] HakuExpr
 role LambdaExpr[ @lambda-args, $expr] does HakuExpr {
     has Variable @.args = @lambda-args;
@@ -119,9 +119,20 @@ role Number[ \num_] does AtomicExpr {
 role String[ @chars] does AtomicExpr {
     has Str @.chars = @chars;
 }
+
 role Null does AtomicExpr {}
+
 role Identifier[ $id] does AtomicExpr {
     has Str $.id = $id;
+}
+
+role ChinaminiExpr[\expr] does HakuExpr {
+    has HakuExpr $.expr = expr;
+}
+
+role ZoiExpr[\expr,\zoi-epxr] does HakuExpr {
+    has HakuExpr $.expr = expr;
+    has HakuExpr $.zoi-expr = zoi-expr;
 }
 
 # data Function = mkFunction [FunctionArg] FunctionBody
