@@ -1040,17 +1040,19 @@ But the current problem with that is that expression delegates to e.g. identifie
 I removed comma as a valid list separator as it conflicts with the comma as a delimiter
 I added nouns on the lhs but atm only for bind-ha
 
+Should I support でも?
+
 ====
 
 kyou mo ame nochi hare => kyou = [ame, hare] because nochi means "and later"
 
 But the problem is that I wanted to use it for function composition.　I can still do that, but the order is reversed, i.e. f nochi g = g . f
 
-Anyway, for the equivalent of Perl's comma operator, I will use 乍ら　ながら
+Anyway, for the equivalent of Perl's comma operator, I could use 乍ら　ながら, "while"
 
 答えは四十二乍らコタエを見せて
 
-Or I could use 沿い　ぞい "running alongside"
+Or I could use 沿い　ぞい "running alongside", it's shorter, and may be more correct?
 
 I think I will also use 因に　ちなみに for any expression that can actually be omitted from the final program
 

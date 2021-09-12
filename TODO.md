@@ -8,7 +8,6 @@
 - File I/O
 - System call
 - I think I need 'nochi' so I can do prints on the RHS of a binding, like tjhe comma operator in Perl but in reverse. But then the function composition should maybe become 連結 renketsu
-- I should support mo instead of ha/ga,maybe even demo
 
 # Haku TODOs DONE
 
@@ -18,3 +17,4 @@
 - Correct string handling: treat strings as lists, with at least head/tail/length/concat
 - Errors for missing delimiters
 - miseru returns a stringified version of whatever it prints
+- I should support mo instead of ha/ga
