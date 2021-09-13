@@ -1048,6 +1048,9 @@ kyou mo ame nochi hare => kyou = [ame, hare] because nochi means "and later"
 
 But the problem is that I wanted to use it for function composition.　I can still do that, but the order is reversed, i.e. f nochi g = g . f
 
+For function composition we could maybe use 連結 renketsu, but then of course it would be a noun function call
+
+
 Anyway, for the equivalent of Perl's comma operator, I could use 乍ら　ながら, "while"
 
 答えは四十二乍らコタエを見せて

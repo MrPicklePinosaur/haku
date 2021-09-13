@@ -8,38 +8,12 @@ class HakuActions {
     
     my %defined-functions;
 
-    # This is a workaround: the same code inside the method 'verb' gives an error
-    # 'Cannot assign to a readonly variable or a value'
-    # But I have moved this to the parser
-    # sub shorten(Str \str_ --> Str) {
-    #     if substr(str_,2) ~~ / ['て' | 'で'] .+$ / {
-    #         str_ ~~ s/ [ 'くだ' | '下' ] 'さい' //;
-    #         str_ ~~ s/ ['しま'|'仕舞'|'終'|'了'|'蔵'] ['っ'|'いまし'] 'た' //;            
-    #         str_ ~~ s/ [ 'く'| '呉'] 'れ'　.+? //;
-    #         str_ ~~ s/ [ '貰'|'もら'] .+? //; 
-    #     }
-    #     return str_;
-    # }
-
     method variable($/) {
         # say "VAR $/";
         make Variable[$/.Str].new;        
     }
-    #     token verb { 
-    #     <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
-    #    || [
-    #      <verb-dict> 
-    #    | <verb-masu> 
-    #    | <verb-ta> 
-    #    ]
+
     method verb($/) {
-        # say "VERB: $/.Str ";
-       
-        # if $<verb-ending> {
-        #     $verb-str ~=  $<verb-ending>
-        # } elsif $<verb-ending-te> {
-        #     $verb-str ~=  $<verb-ending-te>
-        # }
 
         # So wonderful
         my $verb-str = ($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
@@ -47,10 +21,6 @@ class HakuActions {
         if not $<verb-dict>  and %defined-functions{$verb-kanji}:exists {
             $verb-str = %defined-functions{$verb-kanji};
         }
-        # say "VERB after: $verb-str ";
-        #if $verb-str.chars > 2 { # and $verb-str.substr(2,1) eq ('て'|'で') {    
-        #    $verb-str = shorten($verb-str);
-        #}
         
         my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
 
@@ -82,9 +52,6 @@ class HakuActions {
     }
 
     method atomic-expression($/) {
-        # if $<number> { # Number
-        #     make $<number>.made
-        # }
         if $<mu> { # Null
             make Null.new;
         }
@@ -93,12 +60,6 @@ class HakuActions {
         } else {
             make $/.values[0].made;
         }
-        # if $<identifier> { # Variable, Noun or Verb
-        #     make $<identifier>.made;
-        # }
-        # if $<string> { # String        
-        #     make $<string>.made;            
-        # } 
     }
 
     method list-expression($/) {
@@ -131,12 +92,6 @@ class HakuActions {
 
     method arg-expression($/) {
         make $/.values[0].made
-        # if $<parens-expression> {
-        #     make $<parens-expression>.made;
-        # }
-        # if $<atomic-expression> {
-        #     make $<atomic-expression>.made;
-        # }
     }
 
     method operator-noun($/) {
@@ -158,15 +113,14 @@ class HakuActions {
         my $rhs-expr = $<arg-expression>[1].made;        
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
-    # token verb-operator-expression { <arg-expression> <ni>　<arg-expression> <wo> <operator-verb> }
+    
     method verb-operator-expression ($/) {
         my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
-        #say "Action:VERB-BINOP:" ~ $op.raku ~ ' ' ~ $lhs-expr.raku ~ ', ' ~ $rhs-expr.raku;
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
-    # token verb-operator-expression-infix { <arg-expression> <operator-verb> <arg-expression> }
+
     method verb-operator-expression-infix ($/) { 
         my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
@@ -184,7 +138,7 @@ class HakuActions {
         make FunctionApplyExpr[Verb['has'].new, [$map-expr,$key-expr],False].new
     }
     method comparison-expression($/) {
-        #   my $op=$<operator-verb>.made;
+
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
         my $op ='';
@@ -204,6 +158,7 @@ class HakuActions {
         }
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
     }
+
     method condition-expression($/) {
         make $/.values[0].made; 
     } 
@@ -310,10 +265,7 @@ class HakuActions {
         my $to = $<atomic-expression>[1].made;
         make RangeExpr[$from,$to].new;
     }
-=begin pod
-        | <let-expression>  
-        | <function-comp-expression>
-=end pod
+ 
     method bind-ga($/) {
         my $comment = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
         my $lhs-expr;
@@ -322,8 +274,14 @@ class HakuActions {
         } elsif $<cons-list-expression> {
             $lhs-expr = $<cons-list-expression>.made;
         }
-        my $rhs-expr=$<expression>.made;
-        make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
+        if $<zoi> {
+            my $expr = $<expression>[0].made;
+            my $zoi-expr = $<expression>[1].made;
+            make BindExpr[$lhs-expr, ZoiExpr[$expr,$zoi-expr].new, $comment].new;
+        } else {
+            my $rhs-expr=$<expression>.made;
+            make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
+        }                
     } 
     method kono-let($/) {
         my $result = $<expression>.made;         

@@ -1,13 +1,10 @@
 # Haku TODOs
 
-- Variables should probably be renamed because we'd like kanji-based variables as well as katakana
 - cons on the RHS
 - Adjectives as distinct parts of nouns, probably only -i and -na, plus maybe -kute, -de
-- Adjectival verbs as function application
 - Treatment of の which should bind tighter than と, specifically for Noun-based function application
 - File I/O
 - System call
-- I think I need 'nochi' so I can do prints on the RHS of a binding, like tjhe comma operator in Perl but in reverse. But then the function composition should maybe become 連結 renketsu
 
 # Haku TODOs DONE
 
@@ -18,3 +15,5 @@
 - Errors for missing delimiters
 - miseru returns a stringified version of whatever it prints
 - I should support mo instead of ha/ga
+- Adjectival verbs as function application
+- Variables should probably be renamed because we'd like kanji-based variables as well as katakana => no need, just support nouns on the LHS

@@ -1,6 +1,7 @@
+# Haku, a toy functional programming language based on Japanese
+
 use v6;
 #use Grammar::Tracer;
-# Haku, a toy functional programming language based on Japanese
 
 role Characters {
     token reserved-kanji {
@@ -66,9 +67,7 @@ role Characters {
     token word {
         \w
     }
-}
-
-
+} # End of role Characters
 
 # I think I will use the full stop and semicolon as equivalent for newline.
 role Punctuation {
@@ -110,7 +109,8 @@ role Punctuation {
     token close-sumitsuki { '】' }
     
     #  etc, see https://ja.wikipedia.org/wiki/%E6%8B%AC%E5%BC%A7
-}
+
+}  # End of role Punctuation
 
 role Particles {
 
@@ -153,8 +153,8 @@ role Particles {
             $*LASTRULE = callframe(1).code.name;
         }
     }
-   
-}
+
+}  # End of role Particles
 
 role Nouns does Characters {
     token sa { 'さ' }
@@ -218,7 +218,7 @@ role Verbs does Characters {
 #        ] 
     }
 
-}
+}  # End of role Verbs
 
 role Variables does Characters {
     # Variables must start with katakana then katakana, number kanji and 達 
@@ -254,7 +254,7 @@ role Auxiliaries {
     token kureru { [ 'く'| '呉'] 'れ'　[ 'て' | 'た' | <masu> ]};
     token morau { [ '貰'|'もら'] }; 
     
-}
+}  # End of role Auxiliaries
 
 # +: Tasu (足す)
 # -: Hiku (ひく or 引く)
@@ -444,12 +444,13 @@ does Nouns
 
     token kikan { '機関' } #で「ls」する
 
-} # End of Keywords
+} # End of role Keywords
 
 # Comment line: 註 or 注 or even just 言, must end with 。
 role Blanks {
     token blank {  '　' | ' ' | \n | \t }
 }
+
 role Comments does Punctuation does Blanks {
     token comment-start { '註' | '注' | '言' }
     token comment-chars { 
@@ -632,10 +633,6 @@ does Comments
     token chinamini-expression {
         <chinamini> <expression>
     }
-    # token zoi-expression {
-    #     <expression> <zoi> <expression>
-    # }
-
 
     token function-comp-expression {
         <identifier> [<nochi> <identifier>]+
@@ -654,6 +651,7 @@ does Comments
         | [ <.ni> <chigau> ]
         ]
     }
+
     # I wanted to use attara but aru nara|baai fits better in the existing conditions
     token has-expression {
         <identifier> <.ni> <identifier> <.ga-aru>
@@ -666,9 +664,9 @@ does Comments
         <.delim> 
          || {$*MSG = ', missing delimiter'}
      ]
-        }
-    token bind-ga { <comment>* [ <noun> | <variable> | <cons-list-expression>] [<.ga> | <.mo> ] <expression> [<.desu> | <.de> ]? <.ws>? }
-    # token bind-tara { <comment>* [ <variable> | <cons-list-expression>] <.ga> <expression> <.moshi-nanira> <.ws>? }
+    }
+
+    token bind-ga { <comment>* [ <noun> | <variable> | <cons-list-expression>] [<.ga> | <.mo> ] [<expression> <zoi>]? <expression> [<.desu> | <.de> ]? <.ws>? }
     
     token kono-let {
         <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga> [<.delim>  <bind-ga>]* <.delim>?
@@ -721,7 +719,7 @@ grammar Functions is Expression does Keywords does Punctuation {
     token function-end {
          <.ws>? [<no>|<toiu>]? <koto> <desu> <full-stop> <.ws>?
     }
-}
+} # End of Functions
 
 
 grammar Haku is Functions does Comments does Keywords {
@@ -838,4 +836,4 @@ grammar Haku is Functions does Comments does Keywords {
         #     exit;
     # }
 
-}
+} # End of Haku
