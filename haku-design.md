@@ -401,6 +401,22 @@ For files we need open, close and some way to iterate over a handle, which I gue
 閉める shimete
 assuming that the file is a list of strings.
 
+ハンドルはファイルを読むの為に開ける
+my \HANDORU = FAIRU.IO.open: :w;
+ハンドルはファイルを書くの為に開ける
+my \HANDORU = FAIRU.IO.open: :r;
+ハンドルはファイルを開ける
+my \HANDORU = FAIRU.IO.open: :rw;
+
+言葉をハンドルで書く
+HANDORU.put: KOTOBA;
+
+ラインはハンドルで読む
+my \line = HANDORU.get；
+
+ハンドルを閉める
+HANDORU.close;
+
 ## Strings
 
 Strings will be lists I guess. 

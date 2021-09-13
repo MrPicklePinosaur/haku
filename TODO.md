@@ -8,7 +8,7 @@
 
 # Haku TODOs DONE
 
-- Support から and に and maybe まで wherever と is OK
+- Support から and に and maybe まで wherever と is OK (rationale: for map operations)
 - Every expression should optionally be preceded by a comment
 - Errors should work on programs with newlines, we should say "on line $line-no"
 - Correct string handling: treat strings as lists, with at least head/tail/length/concat
