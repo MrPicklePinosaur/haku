@@ -57,7 +57,7 @@ sub ppFunctionName(\fn) {
 #        } #else {        
           #  $f_name_ ~~ s/ [ 'くだ' | '下' ] 'さい' //;
         #}
-         
+            
             my $f_name = $toRomaji ?? kanjiToRomaji($f_name_) !! $f_name_;
             given $f_name {
                 when / ^ [見せ|mise] / { 'show' } 
@@ -66,12 +66,18 @@ sub ppFunctionName(\fn) {
                 when / ^ [合わせ|awaseru] / { 'concat' } 
                 when / ^ [入れ|ireru] / { 'insert' } 
                 when / ^ [消|kesu] / { 'delete' } 
-                when / ^ [ 正引 | tadasiiINkisuru] / { 'lookup' }                 
+                when / ^ [ 正引 | tadasiiINkisuru] / { 'lookup' } 
+                when / ^ [ 書 | kaku] / { 'write' }
+                when / ^ [ 読 | yomu] / { 'read' }
+                when / ^ [ 開 | aku] / { 'open' } 
+                when / ^ [ 閉 | sima] / { 'close' }                 
                 default { $f_name }      
             }            
         }
         when Noun {  
+
             say "NOUN: " ~ fn.noun ~ "=>" ~  kanjiToRomaji(fn.noun) if $V;
+            
             my $f_name = $toRomaji ?? kanjiToRomaji(fn.noun).lc  !! fn.noun ;
             given $f_name {
                 when / 頭 | atama/ { 'head' } 
@@ -158,6 +164,7 @@ sub ppHakuExpr(\h) {
         
         }
         when FunctionApplyExpr {
+            
             if h.partial {
                     # Tricky! We need to know the correct number of args
                     # So we need the definition 
@@ -217,7 +224,10 @@ sub ppHakuExpr(\h) {
 
             ppVariable(h.var)
         }
-        when Verb {  $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb }
+        when Verb {  
+            # TODO: kaku/yomu 
+            $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb 
+        }
         when Noun {  $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun }
         when BinOpExpr {
              '(' ~ ppHakuExpr(h.args[0]) ~ ' ' ~h.op.op~' '~ ppHakuExpr(h.args[1]) ~ ')'

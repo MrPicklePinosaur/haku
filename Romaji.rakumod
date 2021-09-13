@@ -3,6 +3,7 @@ use v6;
 our $V=True;
 
 my %katakana is Map = < 
+ァ _A
 ア A
 ィ _I
 イ I
@@ -226,6 +227,10 @@ WI_YO WYO
 VI_YA VYA
 VI_YU VYU
 VI_YO VYO
+HU_I FI
+HU_A FA
+HU_E FE
+HU_O FO
 U_I WI
 U_E WE
 U_O WO

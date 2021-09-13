@@ -230,6 +230,7 @@ class HakuActions {
                 make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
             }   
         } else {
+            
             my @args =  map({$_.made},$<arg-expression-list>).flat;            
             if $<identifier> {                
                 my $function-name=$<identifier>.made;   
@@ -304,8 +305,21 @@ class HakuActions {
             my $zoi-expr = $<expression>[1].made;
             make BindExpr[$lhs-expr, ZoiExpr[$expr,$zoi-expr].new, $comment].new;
         } else {
+            # say '<'~$/.Str~'>';
+            if $<expression> ~~ Array {
+            # say $<expression>[0].made;
+            my @rhs-exprs = map({$_.made},$<expression>);
+            if @rhs-exprs.elems == 1 {
+                make BindExpr[$lhs-expr,@rhs-exprs[0],$comment].new;
+            } else {
+                die 'TODO!' ~ @rhs-exprs.raku;
+            }
+            
+            } else {
+            
             my $rhs-expr=$<expression>.made;
             make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
+            }
         }
     } 
 

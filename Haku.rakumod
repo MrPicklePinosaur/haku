@@ -1,7 +1,7 @@
 # Haku, a toy functional programming language based on Japanese
 
 use v6;
-#use Grammar::Tracer;
+# use Grammar::Tracer;
 
 role Characters {
     token reserved-kanji {
@@ -41,7 +41,7 @@ role Characters {
     token katakana { 
         # Using Block hangs
         # <:Block('Katakana')> 
-        <[ア..ヺー]>
+        <[ァ..ヺー]>
     }
 
     # I might allow A-Z as well for identifiers
@@ -593,7 +593,7 @@ does Comments
           <arg-expression-list> <.nominna>? <dake>? 
           [ <.wo> | <.no> <.comma>?]　
         [ <arg-expression-list> 
-         [<.de> <.no>? | <.no> <.tame> <.ni>] 
+         [<.de> <.no>? |  <.tame> <.ni>] # was <.no> <.tame> <.ni>
         ]?
         [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
         ]
