@@ -17,9 +17,10 @@ role Characters {
         # Using Block hangs
         <:Block('CJK Unified Ideographs') - reserved-kanji >
         # See Kanji.rakumod for a list instead of the Unicode block
-        }  
+    }  
 
     token number-kanji { 
+        | '〇' | '零' 
         | '一' | '二' | '三' | '四' | '五' | '六' | '七' | '八' | '九' | '十' 
         | '壱' | '弐' | '参' | '肆' | '伍' | '陸' | '漆' | '捌' | '玖' | '拾'                  
         | '弌' | '弍' | '弎'                      | '柒'       
@@ -31,7 +32,14 @@ role Characters {
 # See https://www.tofugu.com/japanese/counting-in-japanese/ for <1e-12
         | '分' | '厘' | '毛' | '糸' | '忽' | '微' | '繊' | '沙' | '塵' | '埃' | '渺' | '漠'
 
-        }
+    }
+
+    token non-number-kanji {  
+        # Using Block hangs
+        <:Block('CJK Unified Ideographs') - reserved-kanji - number-kanji>
+        # See Kanji.rakumod for a list instead of the Unicode block
+    }  
+
     
     token haku-kanji {
         '白' | '泊' | '箔' | '伯' | '拍' | '舶' | 
@@ -159,7 +167,9 @@ role Particles {
 role Nouns does Characters {
     token sa { 'さ' }
     token ki { 'き' }
-    token noun { <kanji>+ [<sa>|<ki>]? }
+    # 一線 is OK,  一 is not OK, 線 is OK
+    token noun { <number-kanji> ? <non-number-kanji> <kanji>*  [<sa>|<ki>]? }
+    # token noun { <kanji>+ [<sa>|<ki>]? }
 }
 
 role Verbs does Characters {
@@ -185,7 +195,7 @@ role Verbs does Characters {
     }    
     
     token verb-stem {
-        <kanji> <hiragana>?? <kanji>? #<hiragana>*?
+        <non-number-kanji> <hiragana>?? <kanji>? #<hiragana>*?
     }
 
     token verb-stem-hiragana {
@@ -690,12 +700,13 @@ does Comments
 
 
     token baai-ifthen {
-        <condition-expression> <.baaiha>   <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
+        <condition-expression> <.baaiha> <.comma>? <.ws>? 
+        <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
         <.soudenai> <.baaiha> <.comma>? <.ws>? <expression>
     }
     token moshi-ifthen {
         <.moshi>
-        <condition-expression>  <.nara> <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
+        <condition-expression>  <.nara> <.ws>? <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
         <.soudenai> <.comma>? <.ws>?　<expression> <.desu>?
     }
 
@@ -801,7 +812,7 @@ grammar Haku is Functions does Comments does Keywords {
         #     $context = @context_lines[0] ~ "\n$line_counter\t⏏" ~ @context_lines[1]  ~ "\n\t";
         # }        
         say "$msg after $token-type $*PARTICLE on line $line_counter:\n\n" ~ $parsed_annotated_context ~ $*PARTICLE ~ "⏏" ~$context~"...\n";    
-        # exit;
+        exit;
     }
 
     method parse($target, |c) {

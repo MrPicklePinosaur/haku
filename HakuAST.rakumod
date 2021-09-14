@@ -95,6 +95,16 @@ role LambdaExpr[ @lambda-args, $expr] does HakuExpr {
     has HakuExpr $.expr = $expr;
 } 
 
+role FunctionCompExpr[ @function-names] does HakuExpr {
+    has Identifier @.function-names=@function-names;
+}
+
+role FunctionCompApplyExpr[ @function-names, @args-exprs, $partial] does HakuExpr {
+    has Identifier @.function-names=@function-names;
+    has HakuExpr @.args=@args-exprs; 
+    has Bool $.partial = $partial;
+}
+
 role FunctionApplyExpr[ $function-name, @args-exprs, $partial] does HakuExpr {
     has Identifier $.function-name=$function-name;
     has HakuExpr @.args=@args-exprs; 

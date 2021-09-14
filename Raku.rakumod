@@ -30,8 +30,10 @@ ENDPREL
 }
 
 sub ppFunction($f) {
+    
     my Identifier $name = $f.name ;
-    if $name.verb {
+    # say $f.name;
+    if $name ~~ Verb {
             %defined-functions{$name.verb.substr(0,1)} = $name.verb;
     }
     my Variable @args = $f.args;
@@ -59,18 +61,22 @@ sub ppFunctionName(\fn) {
         #}
             
             my $f_name = $toRomaji ?? kanjiToRomaji($f_name_) !! $f_name_;
+            
             given $f_name {
+                # I/O
                 when / ^ [見せ|mise] / { 'show' } 
-                when / ^ [畳|tata] / { 'foldl' }            
-                when / ^ [写像|shazou|SHAZOU] / { 'map' } 
-                when / ^ [合わせ|awaseru] / { 'concat' } 
-                when / ^ [入れ|ireru] / { 'insert' } 
-                when / ^ [消|kesu] / { 'delete' } 
-                when / ^ [ 正引 | tadasiiINkisuru] / { 'lookup' } 
                 when / ^ [ 書 | kaku] / { 'write' }
                 when / ^ [ 読 | yomu] / { 'read' }
                 when / ^ [ 開 | aku] / { 'fopen' } 
                 when / ^ [ 閉 | sima] / { 'close' }                 
+                # map/fold
+                when / ^ [畳|tata] / { 'foldl' }             
+                when / ^ [写像|shazou|SHAZOU] / { 'map' } 
+                # lists and maps 
+                when / ^ [合わせ|awaseru] / { 'concat' } 
+                when / ^ [入れ|ireru] / { 'insert' } 
+                when / ^ [消|kesu] / { 'delete' } 
+                when m:i/ ^ [ 正引 | tadasiiINkisuru] / { 'lookup' } 
                 default { $f_name }      
             }            
         }
@@ -80,11 +86,15 @@ sub ppFunctionName(\fn) {
             
             my $f_name = $toRomaji ?? kanjiToRomaji(fn.noun).lc  !! fn.noun ;
             given $f_name {
+                 # lists
                 when / 頭 | atama/ { 'head' } 
                 when / 尻尾 | sirio / { 'tail' }            
+                 # lists and maps
                 when / 長さ | nagasa / { 'length' } 
+                 # maps
                 when / 鍵 | kagi / {'keys'}
                 when / 値 | atai / {'values'}
+                when m:i/ ^ [ 正引 | tadasiiINki] / { 'lookup' }
                 default { $f_name }      
             }            
         }
@@ -160,15 +170,45 @@ sub ppHakuExpr(\h) {
                     $comment ~ 'my \\' ~ ppHakuExpr(h.lhs)~' = '~ppHakuExpr(h.rhs)~';'
                 } 
 
-            }        
-        
+            }                        
         }
+        # when FunctionCompApplyExpr {
+        #     # Unused because currently we don't allow this in function application            
+        #     # f nochi g nochi h
+        #     # In Haskell we would have (h . g . f) x y z
+        #     # In Raku I guess we can simply do h(g(f()))
+        #     # TODO: partial
+        #     my $ncalls = h.function-names.elems;
+        #     my $function-call-seq=''
+        #     for h.function-names.reverse -> $function-name {
+        #         my $maybeDot = h.function-name ~~ Variable ?? '.' !! '';
+        #         $function-call-seq ~= ppFunctionName($function-name) ~ $maybeDot ~'(';
+        #     }
+        #     my $closing-parens = ')' x $ncalls;
+        #     $function-call-seq ~ 
+        #     join( ', ' , h.args.map({ppHakuExpr($_)}) )
+        #     ~ $closing-parens;
+        # }
+        # when FunctionCompExpr {
+        #     # This is for unapplied composition. 
+        #     # i.e. fg = g . f 
+        #     # In Raku : my \fg = sub(\x) { }
+        #     for h.function-names.reverse -> $function-name {
+        #         my $maybeDot = $function-name ~~ Variable ?? '.' !! '';
+        #         $function-call-seq ~= ppFunctionName($function-name) ~ $maybeDot ~'(';
+        #     }
+        #     my $closing-parens = ')' x $ncalls;
+        #     ' -> \x { ' ~
+        #     $function-call-seq ~ 
+        #     join( ', ' , h.args.map({ppHakuExpr($_)}) )
+        #     ~ $closing-parens
+        #     ~ '}';
+        # }
+
         when FunctionApplyExpr {
             
             if h.partial {
-                    # Tricky! We need to know the correct number of args
-                    # So we need the definition 
-                    # So we need state
+                '&' ~ ppFunctionName(h.function-name) ~ '.assuming' ~ '(' ~ join( ', ' , h.args.map({ppHakuExpr($_)}) )~ ')';
             } else {
                 my $maybeDot = h.function-name ~~ Variable ?? '.' !! '';
                 say "FNAME: " ~ h.function-name.raku if $V;

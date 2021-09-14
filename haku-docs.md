@@ -2,6 +2,16 @@
 
 A toy functional programming language based on literary Japanese 
 
+## Requirements
+
+To run Haku you'll need to [install the Raku programming language](https://rakudo.org/downloads). If you plan to use Raku (it is a wonderful language), I recommend you use the [Rakubrew](https://rakubrew.org/) installation tool.
+
+## Running Haku
+
+I am assuming you'll run Haku on command line, in the directory cloned from Git or where you unzipped the downloaded archive. 
+
+In that directory is a script `haku` and a few files with the `.haku` extension.
+
 ## About the name
 
 I call it 'haku' because I like the sound of it, and also because that word can be written in many ways and mean many things in Japanese. I was definitely thinking about Haku from Spirited Away. Also, I like the resemblance with [Raku](https://rakulang.org), the implementation language. I would write it 珀 (amber) or 魄 (soul, spirit).
@@ -60,6 +70,31 @@ In practice, only specific adverbs and adjectives are used in Haku. For example:
     エクス: katakana word　
     です: verb (copula)
 
+## Punctuation
+
+* As Haku does not rely on whitespace, spaces and newlines are not delimiters. 
+* Bindings in a _let_ and expressions and bindings in the main program must be delimited by 、or 。
+
+## Program structure
+
+* A haku program source file can contain named function definitions and must contain a main program, called 本. 
+* The main program differs from the functions in that functions must be pure and therefore consist of a single expression, whereas the main program can be a sequence of expressions, similar to the do-sequence in a Haskell main program. The main program is defined as
+
+    本とは 
+    <var1>は<rhs-expression1>、
+    <var2>は<rhs-expression2>、
+    ...
+    <expression1>、
+    <expression2>、
+    ...
+    の事です。
+
+There are a few variants to make it sound a bit more formal:  
+
+    * 本とは can also be 本真とは
+    * の事です。can also be と言う事です。
+
+
 ## Core language
 
 * Haku is a simple, mostly-pure, implicitly typed, strict functional language. 
@@ -110,7 +145,7 @@ The argument list can optionally be followed by の皆. This is used in particul
 
 ### Map and Fold
 
-Haku has built-in map and foldl:
+Haku has built-in `map` and `foldl`:
                 
     foldl: 畳み込む
 
@@ -122,9 +157,23 @@ Haku has built-in map and foldl:
 
 ### Partial application
 
-TODO
-
 The arg list can be followed by 岳 to indicate partial application.
+
+### Function composition
+
+We use 後, 'のち', to compose functions:
+
+    <function1>後<function2>
+
+Note that  
+
+    f1後f2 
+    
+corresponds to 
+
+    f2 . f1 
+
+Currently, you have to bind them to a variable or wrap them in a lambda to apply them (TODO)    
 
 ### Let binding
 
@@ -199,11 +248,12 @@ TODO:
 * The empty list is 空.
 * Lists have a minimal set of list manipulation functions: 
 
-    length: 長さ
-    head:　頭
-    tail: 尻尾
+    length: <list>の長さ
+    head: <list>の頭
+    tail: <list>の尻尾
     cons:・(中黒)　
-    concatenation: 後
+    concatenation: <list1>と<list2>を合わせる
+    range operator: <integer>〜<integer> 
 
 TODO: 
 
@@ -318,7 +368,9 @@ TODO
 
 TODO
 
-## Example
+## A few examples
+
+### Example 1: Iroha
 
 Consider the following Haku program:
 
@@ -453,3 +505,67 @@ And finally we show the result of an expression:
     "To show the sum of KEKKA and SHINKAZU"
 
     (displayln (+ KEKKA SHINKAZU ))
+
+### Example 2: Length of a list
+
+This example shows the use of named functions, conditionals and recursion. I will use a Haskellish pseudocode instead of Scheme.
+
+長さとはカズ達と回数で
+若しカズ達が空に等しいなら
+回数ですけど、
+そうでない、
+【カズ達の尻尾】と【回数足す壱】の高さ
+の事です。
+
+丈とはカズ達で
+カズ達と零の長さ
+の事です。
+
+本とは
+カズ達は壱〜四十弐、
+ナガサはカズ達の丈、
+ナガサを見せる
+の事です。
+
+Let's start with the main program:
+
+    カズ達は壱〜四十弐、
+    "KAZUtachi ha ichi .. jonjuuni"
+
+    kazutachi = [1 .. 42]
+
+We create a list `kazutachi` with the range operation 〜
+
+    ナガサはカズ達の丈、
+    "NAGASA ha KAZUtachi no Jou"
+    
+    nagasa = jou kazutachi
+
+We call the function `jou` on `kazutachi` and bind the result to `nagasa`
+
+    ナガサを見せる
+    "NAGASA wo Miseru"
+
+    print nagasa
+    
+The function `jou` is quite simple:
+
+    丈とはカズ達でカズ達と零の長さの事です。
+    "Jou ha KAZUtachi de KAZUtachi to Zero no Nagasa no Koto desu."
+
+    jou kazutachi = nagasa kazutachi 0
+
+Finally `nagasa`    
+
+    Nagasa ha KAZUtachi to KAISUU de
+    Moshi KAZUtachi ga Kuu ni Hitoshii nara
+    KAISUU desukedo,
+    soudenai,
+    (KAZUtachi no shippou) to (KAISUU Tasu Ichi) no Nagasa
+    no Koto desu
+    
+    nagasa kazutachi kaisuu = 
+        if kazutachi == [] 
+            then kaisuu 
+            else nagasa (tail kazutachi) (kaisuu+1)
+

@@ -156,7 +156,7 @@ class HakuActions {
                 $op = '!=';
             }            
         }
-        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
+        make BinOpExpr[BinOp[$op].new, $lhs-expr,$rhs-expr].new
     }
 
     method condition-expression($/) {
@@ -394,15 +394,18 @@ class HakuActions {
             @comments = map({$_.made}, $<comment>);
         }
         my $name=
+         $<verb> ?? $<verb>.made.verb
+        !! $<noun> ?? $<noun>.made.noun
+        !! '_';        
+        %defined-functions{$name.substr(0,1)}=$name;
+        my $fname=
          $<verb> ?? $<verb>.made
         !! $<noun> ?? $<noun>.made
-        !! '_';
-        %defined-functions{$name.substr(0,1)}=$name;
-
+        !! die "Not a Verb or Noun: "~$/.Str;
         my @args = $<variable-list>.made;
         # die @args.raku;
         my $body = $<expression>.made;
-        make Function[ $name, @args,  $body,@comments].new;        
+        make Function[ $fname, @args,  $body,@comments].new;        
     }
     method haku-program($/) {
         # say "PROGRAM $/";

@@ -3630,8 +3630,8 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
     elsif $kstr.chars > 1 and $kstr ~~ /<[あ..ん]>/ {       
         say "SINGLE KANJI with HIRAGANA: " ~ $kstr if $V; 
         my ($kanji,@rest) = $kstr.comb;
-        
-        if %joyo_kun_verb_readings{$kanji}:exists {
+        my $r = join('',@rest);
+        if  $r ne 'さ' and  %joyo_kun_verb_readings{$kanji}:exists {
         # a kanji with kun verb readings, one or more reasings            
             my @kana = %joyo_kun_verb_readings{$kanji};
             if @rest {
@@ -3642,6 +3642,7 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
                 } else {
                     my $r = join('',@rest);
                      say "OTHER FORM: $kstr => $kanji|$r" if $V;
+                    
                     # For every reading 
                     my $sel=6;
                     my $sel-ks='';
