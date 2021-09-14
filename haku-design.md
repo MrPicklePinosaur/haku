@@ -288,16 +288,6 @@ There is no operator precedence handling, so combined expressions need parenthes
 For interpolation: 《バリュー》
 Returns a string.
 
-### I/O
-
-- minimal I/O: open/close files, read from/write to files, print to stdout
-
-In addition:
-- map and fold are primitives because I want to give them separate syntax
-- partial application is supported with special syntax
-- function composition operator
-- limited pattern matching with cons on the LHS
-
 ## Types
 
 Haku is untyped but I could easily add types as no-adjectives with the "rui" keyword:
@@ -308,6 +298,14 @@ Haku is untyped but I could easily add types as no-adjectives with the "rui" key
 I could also have such qualifiers for verbs, maybe 文字列類用に
 
 The 類 is not really required but it makes it very clear that it is the type.
+
+## Also
+
+- map and fold are primitives 
+- partial application is supported with special syntax
+- function composition operator
+- limited pattern matching with cons on the LHS
+
 
 ## Examples
 
@@ -411,11 +409,23 @@ my \HANDORU = FAIRU.IO.open: :rw;
 言葉をハンドルで書く
 HANDORU.put: KOTOBA;
 
-ラインはハンドルで読む
+ラインはハンドルを読む
 my \line = HANDORU.get；
+
+But we can be specific and say that we want a single line, any number of lines in fact, or all lines:
+
+ラインは一線をハンドル一で読む、
+ライン達は全線をハンドル一で読む、
 
 ハンドルを閉める
 HANDORU.close;
+
+Maybe we need an eof as well. I will use 
+
+しゅうりょう
+終了
+
+ハンドル一の終了
 
 ## Strings
 

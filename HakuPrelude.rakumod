@@ -5,6 +5,34 @@ sub show(\x) is export {
     return x.gist;
 }
 
+sub fopen(\fn, $mode?) is export {
+    
+    if $mode {
+    if $mode == 1 {
+        open :r, fn;
+    } 
+    elsif $mode == 2 {
+        open :w, fn;
+    }
+    }
+    else {
+        open :rw, fn;
+    }
+}
+sub read($fh?) is export {
+    if $fh { 
+        $fh.get;
+    } 
+    1;
+}
+
+sub write($str?,$fh?) is export {
+    if $fh { 
+        $fh.put($str);
+    } 
+    2;
+}
+
 sub head( \lst) is export {
     given lst {
         when Str { 

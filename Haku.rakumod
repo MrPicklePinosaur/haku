@@ -452,7 +452,7 @@ role Blanks {
 }
 
 role Comments does Punctuation does Blanks {
-    token comment-start { '註' | '注' | '言' }
+    token comment-start { '註' | '注'  }
     token comment-chars { 
          <hiragana> | <katakana> | <kanji> | <word> | <blank>
     }
@@ -477,7 +477,8 @@ role Strings does Characters {
     token string-chars { 
          <hiragana> 
          | <katakana>
-          | <kanji> | <word> | ' ' | '　' | \n
+         | <kanji> |  ' ' | '　' | \n | <[! .. ~]>
+        #  <word> |
         #   | <blank> 
     }
     token string { 
@@ -523,7 +524,7 @@ does Comments
 
     token TOP { <comment-then-expression> }
  
-    token atomic-expression {  <number> | <string> | <mu> | <kuu> | <identifier>   }
+    token atomic-expression {  <identifier> || [<number> | <string> | <mu> | <kuu> ]    }
     token parens-expression { 
        [ [ <.open-maru> <expression> <.close-maru> ] |
         [ <.open-sumitsuki> <expression> <.close-sumitsuki> ] |

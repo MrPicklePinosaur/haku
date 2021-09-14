@@ -69,7 +69,7 @@ sub ppFunctionName(\fn) {
                 when / ^ [ 正引 | tadasiiINkisuru] / { 'lookup' } 
                 when / ^ [ 書 | kaku] / { 'write' }
                 when / ^ [ 読 | yomu] / { 'read' }
-                when / ^ [ 開 | aku] / { 'open' } 
+                when / ^ [ 開 | aku] / { 'fopen' } 
                 when / ^ [ 閉 | sima] / { 'close' }                 
                 default { $f_name }      
             }            
@@ -226,7 +226,17 @@ sub ppHakuExpr(\h) {
         }
         when Verb {  
             # TODO: kaku/yomu 
-            $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb 
+            # I think we generate 01 for read, 10 for write, assuming 11 for rw             
+            my $vn = $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb ;
+            if $vn ~~ / 読 | yomu / {
+                'read';
+            }
+            elsif $vn ~~ / 書 | kaku / {
+             'write';
+            }
+            else {
+                $vn
+            }
         }
         when Noun {  $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun }
         when BinOpExpr {
