@@ -53,7 +53,7 @@ sub tail(\lst) is export {
     }
 }
 
-sub length(\lst) {
+sub length(\lst) is export {
     given lst {
         when Str {
             lst.chars

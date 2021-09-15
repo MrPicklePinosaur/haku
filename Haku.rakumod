@@ -464,7 +464,7 @@ role Blanks {
 role Comments does Punctuation does Blanks {
     token comment-start { '註' | '注'  }
     token comment-chars { 
-         <hiragana> | <katakana> | <kanji> | <word> | <blank>
+         <hiragana> | <katakana> | <kanji> | <word> | <blank> | <[「」『』]>
     }
     token comment { <.comment-start> <comment-chars>+ <.full-stop> <.ws>? }
 }
@@ -561,6 +561,7 @@ does Comments
     # Keeping it simple: everything needs parens
     token arg-expression {
         <parens-expression> |
+        <kaku-parens-expression> |
         # <apply-expression> | # LOOP, needs parens
         # <lambda-expression> | 
         # <range-expression> |        
@@ -625,10 +626,10 @@ does Comments
         | <let-expression>  
         | <apply-expression>         
         | <operator-expression>
-        | <comparison-expression>
+        
         | <function-comp-expression>
         | <map-expression>
-        | <ifthen>
+        | [<ifthen> || <comparison-expression>]
         | <string-interpol>
         ] || 
         [ <parens-expression>  
@@ -690,19 +691,22 @@ does Comments
 
     # IfThen 
     token condition-expression {
+        <comparison-expression> ||
+        [
         <has-expression> |
         <operator-expression> |
-        <comparison-expression> |
+        # <comparison-expression> |
         <apply-expression> |   
         <parens-expression> |
         <atomic-expression>
+        ]
     }
 
 
     token baai-ifthen {
         <condition-expression> <.baaiha> <.comma>? <.ws>? 
         <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
-        <.soudenai> <.baaiha> <.comma>? <.ws>? <expression>
+        <.soudenai> <.baaiha> <.comma>? <.ws>? <expression> <.desu>?
     }
     token moshi-ifthen {
         <.moshi>

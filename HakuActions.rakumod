@@ -83,7 +83,7 @@ class HakuActions {
         }
                 
     }
-    # token kaku-parens-expression { <list-expression> | <range-expression> }
+    method kaku-parens-expression($/) { make $/.values[0].made }
 
     # it should be possible to put parens around function applications and lambdas as well!
     method parens-expression($/) {
@@ -280,8 +280,21 @@ class HakuActions {
             my $zoi-expr = $<expression>[1].made;
             make BindExpr[$lhs-expr, ZoiExpr[$expr,$zoi-expr].new, $comment].new;
         } else {
-            my $rhs-expr=$<expression>.made;
-            make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
+            if $<expression> ~~ Array {
+            # say $<expression>[0].made;
+                my @rhs-exprs = map({$_.made},$<expression>);
+                if @rhs-exprs.elems == 1 {
+                    make BindExpr[$lhs-expr,@rhs-exprs[0],$comment].new;
+                } else {
+                    die 'TODO!' ~ @rhs-exprs.raku;
+                }            
+            } else {            
+                my $rhs-expr=$<expression>.made;
+                make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
+            }
+
+            # my $rhs-expr=$<expression>.made;
+            # make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
         }                
     } 
     method kono-let($/) {
@@ -308,17 +321,15 @@ class HakuActions {
             # say '<'~$/.Str~'>';
             if $<expression> ~~ Array {
             # say $<expression>[0].made;
-            my @rhs-exprs = map({$_.made},$<expression>);
-            if @rhs-exprs.elems == 1 {
-                make BindExpr[$lhs-expr,@rhs-exprs[0],$comment].new;
-            } else {
-                die 'TODO!' ~ @rhs-exprs.raku;
-            }
-            
-            } else {
-            
-            my $rhs-expr=$<expression>.made;
-            make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
+                my @rhs-exprs = map({$_.made},$<expression>);
+                if @rhs-exprs.elems == 1 {
+                    make BindExpr[$lhs-expr,@rhs-exprs[0],$comment].new;
+                } else {
+                    die 'TODO!' ~ @rhs-exprs.raku;
+                }            
+            } else {            
+                my $rhs-expr=$<expression>.made;
+                make BindExpr[$lhs-expr,$rhs-expr,$comment].new;
             }
         }
     } 

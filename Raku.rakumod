@@ -133,15 +133,22 @@ sub ppHon($hon) {
 sub ppConsLhsBindExpr(\h) {
     my @elts = h.lhs.cons;
     # die 'Only 4 consecutive cons operations are supported' if @elts.elems>5;
-    my $elts_str = 
-        'my (' ~ 
-        @elts
+    my @pp_elts = @elts
             .grep( {$_ ~~ ConsVar})
-            .map({ '\\' ~ ppVariable($_.var) })
-            .join(',') 
+            .map({  ppVariable($_.var) });
+    my $last_elt = '@' ~ @pp_elts.tail ~ '_a';
+    my @init_elts = @pp_elts.head(@pp_elts.elems-1).map({ '\\' ~ $_ });     
+
+    my $elts_str = 
+        'my (' ~ @init_elts.join(',')
+        ~ ',' ~ $last_elt
+        # @elts
+        #     .grep( {$_ ~~ ConsVar})
+        #     .map({ '\\' ~ ppVariable($_.var) })
+            # .join(',') 
             ~ ') ';
     my $rhs = ppHakuExpr(h.rhs);
-    return $elts_str ~ ' = ' ~ $rhs ~ ';' ;
+    return $elts_str ~ ' = ' ~ $rhs ~ ';' ~ "\n" ~ 'my \\' ~ @pp_elts.tail ~ ' = ' ~ $last_elt ~ ';';
 }
 
 
