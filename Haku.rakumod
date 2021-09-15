@@ -710,8 +710,8 @@ does Comments
     }
     token moshi-ifthen {
         <.moshi>
-        <condition-expression>  <.nara> <.ws>? <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
-        <.soudenai> <.comma>? <.ws>?　<expression> <.desu>?
+        <condition-expression>  <.nara> <.comma>? <.ws>? <expression> [<.desu> [<.ga> | <.kedo> ]]? <.comma>? <.ws>?
+        [<.soudenai>|<.soudenakereba>] <.comma>? <.ws>?　<expression> <.desu>?
     }
 
     token ifthen {
@@ -726,7 +726,7 @@ grammar Functions is Expression does Keywords does Punctuation {
     token TOP { <function> }
     token function {
         <comment>*
-        [ <verb> | <noun> ] <.toha>
+        [ <verb> | <noun> ] <.toha> <.ws>? 
         <variable-list> <.de> <.ws>? 
         <expression> 
         <.function-end>

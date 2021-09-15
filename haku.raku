@@ -8,9 +8,9 @@ use Raku;
 sub USAGE() {
     print Q:c:to/EOH/;
     Usage: haku <Haku program, written horizontally or vertically, utf-8 text file>
-        [--tategaki, -t = do not run the program but print it vertically]
-        [--miseru, -m] = just print the Raku source code, don't execute] 
-        [--yomudake, -y] = just print the Haku source after reading, as a single line. Don't execute.] 
+        [--tategaki, -t] : do not run the program but print it vertically.
+        [--miseru, -m] : just print the Raku source code, don't execute.
+        [--yomudake, -y] : just print the Haku source after reading, as a single line. Don't execute.
  EOH
 }
 
