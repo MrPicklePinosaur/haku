@@ -8,15 +8,17 @@ use Raku;
 sub USAGE() {
     print Q:c:to/EOH/;
     Usage: haku <Haku program, written horizontally or vertically, utf-8 text file>
-        [--tategaki = do not run the program but print it vertically]
-        [--miseru] = just print the Raku source code, don't execute] 
+        [--tategaki, -t = do not run the program but print it vertically]
+        [--miseru, -m] = just print the Raku source code, don't execute] 
+        [--yomudake, -y] = just print the Haku source after reading, as a single line. Don't execute.] 
  EOH
 }
 
 unit sub MAIN(
           Str $src_file,
           Bool :t($tategaki) = False,   
-          Bool :m($miseru) = False     
+          Bool :m($miseru) = False,
+          Bool :y($yomudake) = False,
         );  
 
 if (not $src_file.defined) {
@@ -28,6 +30,11 @@ if $tategaki {
 }
 
 my $program_str = hakuReader($src_file);
+
+if $yomudake { 
+    say $program_str;
+    exit;
+}
 
 my $hon_parse = Haku.parse($program_str, :actions(HakuActions));
 my $hon_raku_code =  ppHakuProgram($hon_parse.made);
