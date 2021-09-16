@@ -169,7 +169,34 @@ role Nouns does Characters {
     token ki { 'き' }
     # 一線 is OK,  一 is not OK, 線 is OK
     token noun { <number-kanji> ? <non-number-kanji> <kanji>*  [<sa>|<ki>]? }
-    # token noun { <kanji>+ [<sa>|<ki>]? }
+}
+
+# の-adjectives are not supported because there is a fundamental ambiguity in function application:
+# e.g.
+# ORENJI no Densha => (ORENJI Densha)
+# but
+# MAPPU no Nagasa => (Nagasa MAPPU)
+# In these examples, ORENJI and MAPPU are nouns in my Grammar
+role Adjectives does Characters {
+
+    token i-adjective-stem {
+        <non-number-kanji> <hiragana>?? <kanji>? 
+    }
+
+    token i-adjective-stem-hiragana {
+         <hiragana>+? <?before 'い' >
+    }
+
+    token i-adjective {
+        <i-adjective-stem> <i-adjective-stem-hiragana> 'い'
+    }
+
+    # A na-adjective is treated as a Noun unless it is followed by な
+    token na-adjective { <noun> 'な' }
+
+    token adjective {
+        <i-adjective> | <na-adjective>
+    }
 }
 
 role Verbs does Characters {
@@ -214,18 +241,12 @@ role Verbs does Characters {
 # but to complicate it : wasu.rekakete(i)ta
     token verb { 
         <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
-        || <verb-sura>
-       || [
-         <verb-dict> 
-       | <verb-masu> 
-       | <verb-ta>        
-       ]
-#| <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
-#        <verb-stem>
-#        [
-#            <verb-ending> | 
-#            <verb-ending-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]Y?
-#        ] 
+     || <verb-sura>
+     || [
+          <verb-dict> 
+        | <verb-masu> 
+        | <verb-ta>        
+        ]
     }
 
 }  # End of role Verbs
@@ -597,8 +618,8 @@ does Comments
         [ <verb> | <lambda-expression> [<.shite-kudasai> | <.sura> ]?]
     }
     
-    token adjectival-verb-apply-expression {
-        [<arg-expression-list> <dake>? <.de> ]? <verb> <arg-expression>
+    token adjectival-apply-expression {
+        [<arg-expression-list> <dake>? <.de> ]? [ <verb> | <adjective> ] <arg-expression>
     }
     token apply-expression {
         [
@@ -610,7 +631,7 @@ does Comments
         [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
         ]
         || [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expression>  [<.shite-kudasai> | <.sura> ]? ]]
-        || <adjectival-verb-apply-expression>
+        || <adjectival-apply-expression>
     }
     token apply-expression-TODO {
          [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expression>  [<.shite-kudasai> | <.sura> ]? ]]
@@ -726,7 +747,7 @@ grammar Functions is Expression does Keywords does Punctuation {
     token TOP { <function> }
     token function {
         <comment>*
-        [ <verb> | <noun> ] <.toha> <.ws>? 
+        [ <verb> | <noun> | <adjective>] <.toha> <.ws>? 
         <variable-list> <.de> <.ws>? 
         <expression> 
         <.function-end>
