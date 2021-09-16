@@ -34,6 +34,10 @@ class HakuActions {
     method noun($/) {
         make Noun[$/.Str].new;
     }
+    
+    method adjective($/) {
+        make Adjective[$/.Str].new;
+    }    
 
     method identifier($/) {
         make $/.values[0].made;
@@ -205,20 +209,27 @@ class HakuActions {
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         }        
     }
-
-    method adjectival-verb-apply-expression($/) {        
+    method adjectival($/) {
+             make $/.values[0].made;  
+    }
+    method adjectival-apply-expression($/) {        
         my $partial = $<dake> ?? True !! False;
-        my @args =  $<arg-expression-list> ?? 
+        if $<adjectival> ~~ Array {
+                    die 'TODO';
+        } else {
+            my @args =  $<arg-expression-list> ?? 
             [map({$_.made},$<arg-expression-list>).flat,$<arg-expression>.made]
             !! [$<arg-expression>.made];
-        my $function-name=$<verb>.made;   
-        make FunctionApplyExpr[$function-name, @args, $partial].new;
+
+            my $function-name=  $<adjectival>.made;   
+            make FunctionApplyExpr[$function-name, @args, $partial].new;
+        }
     }
 
     method apply-expression($/) {
         my $partial = $<dake> ?? True !! False;
-        if $<adjectival-verb-apply-expression> {
-            make $<adjectival-verb-apply-expression>.made;
+        if $<adjectival-apply-expression> {
+            make $<adjectival-apply-expression>.made;
         } elsif $<non-verb-apply-expression> {        
             my @args= [ $<non-verb-apply-expression>.made ];
             if $<verb> {
@@ -256,10 +267,21 @@ class HakuActions {
          my $comment_str = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
         #  say $comment_str;
         if $<expression> {
-        my $expr = $<expression>.made;
-        # $expr.comment = $comment_str;
-        # say $expr.raku;
-            make CommentedExpr[$expr,$comment_str].new;
+            
+            # if $<expression> ~~ Array {            
+            #     my @rhs-exprs = map({$_.made},$<expression>);
+            #     if @rhs-exprs.elems == 1 {
+            #         die @rhs-exprs.raku;
+            #         # make BindExpr[$lhs-expr,@rhs-exprs[0],$comment].new;
+            #     } else {
+            #         die 'TODO!' ~ @rhs-exprs.raku;
+            #     }            
+            # } else {
+                my $expr = $<expression>.made;
+            # $expr.comment = $comment_str;
+            # say $expr.raku;
+                make CommentedExpr[$expr,$comment_str].new;
+            # }
         } elsif $<bind> {
             my $bind = $<bind>.made;
             make CommentedExpr[$bind,$comment_str].new;
@@ -326,8 +348,7 @@ class HakuActions {
             make BindExpr[$lhs-expr, ZoiExpr[$expr,$zoi-expr].new, $comment].new;
         } else {
             # say '<'~$/.Str~'>';
-            if $<expression> ~~ Array {
-            # say $<expression>[0].made;
+            if $<expression> ~~ Array {            
                 my @rhs-exprs = map({$_.made},$<expression>);
                 if @rhs-exprs.elems == 1 {
                     make BindExpr[$lhs-expr,@rhs-exprs[0],$comment].new;

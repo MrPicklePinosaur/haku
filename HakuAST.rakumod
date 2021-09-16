@@ -21,6 +21,9 @@ role Noun[ $noun] does Identifier does LhsExpr does HakuExpr　{
     has Str $.noun=$noun;
 }
 
+role Adjective[ $adjective] does Identifier does LhsExpr does HakuExpr　{
+    has Str $.adjective=$adjective;
+}
 # I could enumerate them here instead
 role BinOp[ $op] {
     has Str $.op=$op;

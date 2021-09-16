@@ -1,10 +1,11 @@
 # Haku TODOs
 
-
+- Better error messages
 - Adjectives as distinct parts of nouns, probably only -i and -na, plus maybe -kute, -de
 - Treatment of の which should bind tighter than と, specifically for Noun-based function application
 - File I/O
 - System call
+- Bring the Scheme emitter in sync with the Raku emitter
 
 # Haku TODOs DONE
 

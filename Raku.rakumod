@@ -3,7 +3,7 @@ use HakuAST;
 use Romaji;
 use JapaneseNumberParser;
 our $toRomaji=True;
-$V=False;
+$Raku::V=False;
 
 our $nspaces = 4;
 my $indent = ' ' x $nspaces;
@@ -52,6 +52,7 @@ sub ppFunctionName(\fn) {
     given fn {
         when Verb { 
         my $f_name_ =  fn.verb;
+        say "ppFunctionName: VERB: " ~ $f_name_ ~ "=>" ~  kanjiToRomaji($f_name_) if $V;
         if $f_name_ ~~ / <[a..z]>+ / { return $f_name_ }
         my $verb-kanji = $f_name_.substr(0,1);
 #        if %defined-functions{$verb-kanji}:exists {
@@ -82,7 +83,7 @@ sub ppFunctionName(\fn) {
         }
         when Noun {  
 
-            say "NOUN: " ~ fn.noun ~ "=>" ~  kanjiToRomaji(fn.noun) if $V;
+            say "ppFunctionName: NOUN: " ~ fn.noun ~ "=>" ~  kanjiToRomaji(fn.noun) if $V;
             
             my $f_name = $toRomaji ?? kanjiToRomaji(fn.noun).lc  !! fn.noun ;
             given $f_name {
@@ -272,9 +273,11 @@ sub ppHakuExpr(\h) {
             ppVariable(h.var)
         }
         when Verb {  
+
             # TODO: kaku/yomu 
             # I think we generate 01 for read, 10 for write, assuming 11 for rw             
             my $vn = $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb ;
+            
             if $vn ~~ / 読 | yomu / {
                 'read';
             }
@@ -285,7 +288,16 @@ sub ppHakuExpr(\h) {
                 $vn
             }
         }
-        when Noun {  $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun }
+        when Noun {  
+            say "ppHakuExpr: NOUN: " ~ h.noun ~ ( $toRomaji  ?? "=>" ~  kanjiToRomaji(h.noun) !! '') if $V;
+            my $n = $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun ;
+            if $n eq '無' or $n eq 'nai' {
+                'Nil' 
+            } else {
+                $n
+            }
+            
+        }
         when BinOpExpr {
              '(' ~ ppHakuExpr(h.args[0]) ~ ' ' ~h.op.op~' '~ ppHakuExpr(h.args[1]) ~ ')'
         }
@@ -309,4 +321,4 @@ sub ppHakuExpr(\h) {
             die "TODO:" ~ h.raku;
         }        
     }
-}
+} # End of ppHakuExpr

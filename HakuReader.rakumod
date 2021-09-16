@@ -21,7 +21,7 @@ sub yokogakiReader(Str $file) {
 my $input_file = IO::Path.new( $file ) ;
 my $horiz_str = $input_file.IO.slurp;
 if $horiz_str ~~ /本真?とは/ {
-    return $horiz_str.lines.grep({ not /^ '#' / }).join('');
+    return $horiz_str.lines.grep({ not /^ '#' / }).join("\n");
 } else {
     return Nil;
 }
@@ -80,13 +80,15 @@ sub tategakiReader ( Str $file --> Str) {
                 @horiz_chars.push( '　' );
             }
         }
+        @horiz_chars.push( "\n" );
     }
     my $horiz_str = '';
-    my $begin_comment=/<[註注言「『《]>/;   # comment or string
+    my $begin_comment=/<[註注「『《]>/;   # comment or string
     my $end_comment=/<[。」』》]>/;
 
     my $in_comment=False;
     for @horiz_chars -> $c {
+        
         if $c ~~ $begin_comment {
             $in_comment=True;
         } elsif $c ~~ $end_comment {

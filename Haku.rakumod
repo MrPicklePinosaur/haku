@@ -3,6 +3,8 @@
 use v6;
 # use Grammar::Tracer;
 
+our $reportErrors = True;
+
 role Characters {
     token reserved-kanji {
         '或' |
@@ -240,7 +242,7 @@ role Verbs does Characters {
 # su.tete, su.teru <>  ki.te
 # but to complicate it : wasu.rekakete(i)ta
     token verb { 
-        <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau>]?
+        <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau> | <.imashita>]?
      || <verb-sura>
      || [
           <verb-dict> 
@@ -283,7 +285,8 @@ role Auxiliaries {
 
     token shimau { ['しま'|'仕舞'|'終'|'了'|'蔵'] ['う' | ['っ'|'いまし'] 'た'] };            
     token kureru { [ 'く'| '呉'] 'れ'　[ 'て' | 'た' | <masu> ]};
-    token morau { [ '貰'|'もら'] }; 
+    token morau { [ '貰'|'もら'] }
+    token imashita { ['い']? ['まし']? 'た' }
     
 }  # End of role Auxiliaries
 
@@ -617,9 +620,11 @@ does Comments
         ]??
         [ <verb> | <lambda-expression> [<.shite-kudasai> | <.sura> ]?]
     }
-    
+    token adjectival {
+        <verb> | <adjective>
+    }
     token adjectival-apply-expression {
-        [<arg-expression-list> <dake>? <.de> ]? [ <verb> | <adjective> ] <arg-expression>
+        [<arg-expression-list> <dake>? <.de> ]? <adjectival>+ <arg-expression>
     }
     token apply-expression {
         [
@@ -855,7 +860,9 @@ grammar Haku is Functions does Comments does Keywords {
         my $*MSG='';
 
         my $match = callsame;
-        self.error($target) unless $match;
+        if $reportErrors {
+            self.error($target) unless $match 
+        }
         return $match;
     }
 
@@ -865,7 +872,9 @@ grammar Haku is Functions does Comments does Keywords {
         my $*LASTRULE;
         my $*MSG='';
         my $match = callsame;
-        self.error($target) unless $match;
+        if $reportErrors {
+            self.error($target) unless $match;
+        }
         return $match;
     }
 
