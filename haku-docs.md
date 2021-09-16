@@ -375,7 +375,11 @@ There are a few forms of function application:
 
         <arg-list> の [ 、 <arg-list> での ] <function>
           
-The argument list can optionally be followed by の皆. This is used in particular when applying map or fold.
+The argument list can optionally be followed by の皆. This is used in particular when applying map or fold. Also, instead of で you can use のために or の為に.
+
+#### Partial application
+
+The arg list can be followed by だけ or 丈 to indicate partial application.
 
 ### Map and Fold
 
@@ -388,10 +392,6 @@ Haku has built-in `map` and `foldl`:
     map: 写像する
     
     <list>の皆を<function>ので写像する
-
-### Partial application
-
-The arg list can be followed by だけ or 丈 to indicate partial application.
 
 ### Function composition
 
@@ -492,7 +492,7 @@ TODO:
 
 ### Lists
 
-* Haku list are simply expressions separated by と, without parentheses. 
+* Haku list are simply expressions separated by と ( or に, から or まで), without parentheses. 
 * Square brackets (角括弧) ［］ are used for nesting lists. 
 * The empty list is 空.
 * Lists have a minimal set of list manipulation functions: 
