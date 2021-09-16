@@ -255,10 +255,17 @@ class HakuActions {
     method comment-then-expression($/) { 
          my $comment_str = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
         #  say $comment_str;
+        if $<expression> {
         my $expr = $<expression>.made;
         # $expr.comment = $comment_str;
         # say $expr.raku;
-        make CommentedExpr[$expr,$comment_str].new;
+            make CommentedExpr[$expr,$comment_str].new;
+        } elsif $<bind> {
+            my $bind = $<bind>.made;
+            make CommentedExpr[$bind,$comment_str].new;
+        } else {
+            die "Comment must come before bind or expression\n";
+        }
     }
 
     method range-expression($/) {
@@ -333,6 +340,10 @@ class HakuActions {
             }
         }
     } 
+
+    method bind($/) {
+        make $/.values[0].made;
+    }
 
     method kuromaru-let($/) {
         my $result = $<expression>.made;         

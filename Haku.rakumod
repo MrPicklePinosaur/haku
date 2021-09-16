@@ -262,10 +262,10 @@ role Variables does Characters {
     token tachi { '達' }    
 }
 
-role Identifiers does Verbs does Nouns does Variables {
+role Identifiers does Verbs does Nouns does Adjectives does Variables {
     
     # Identifiers are variables noun-style and verb-style function names
-    token identifier { <variable> | <verb> [<.no>|<.koto>]? | <noun> <.sura>?  }
+    token identifier { <variable> | <verb> [<.no>|<.koto>]? | <noun> <.sura>? | <adjective> }
 
 }
 
@@ -639,7 +639,7 @@ does Comments
     }
 
     token comment-then-expression {
-        <comment>* <expression>
+        <comment>* [<bind> || <expression>]
     }
 
     token expression {        
@@ -690,6 +690,8 @@ does Comments
         <identifier> <.ni> <identifier> <.ga-aru>
     }
 
+
+
     token bind-ha { <comment>* [ <noun> | <variable> | <cons-list-expression>] [ <.ha> | <.mo> ]
      [<expression> <zoi>]? 
      <expression>  [<.desu> | <.de> ]? 
@@ -699,7 +701,14 @@ does Comments
      ]
     }
 
-    token bind-ga { <comment>* [ <noun> | <variable> | <cons-list-expression>] [<.ga> | <.mo> ] [<expression> <zoi>]? <expression> [<.desu> | <.de> ]? <.ws>? }
+    token bind-ga { <comment>* [ <noun> | <variable> | <cons-list-expression>] [<.ga> | <.mo> ] 
+    [<expression> <zoi>]? 
+    <expression> [<.desu> | <.de> ]? <.ws>? 
+    }
+
+    token bind {
+        <bind-ha> | <bind-ga>
+    }
     
     token kono-let {
         <.kono>  <.ws>? <expression> <.ni> <.ws>? <bind-ga> [<.delim>  <bind-ga>]* <.delim>?
@@ -784,13 +793,12 @@ grammar Haku is Functions does Comments does Keywords {
 
     # Behaves like an 'do' but without the monads
     token hon-definition { 
-        　<hontoha> 
-[ 
+        <hontoha> 
+        [ 
             | <bind-ha> 
             | <comment-then-expression> <.delim>
-            # | <comment>
-          ]*?
-          <comment-then-expression> <.delim>?
+        ]*?
+        <comment-then-expression> <.delim>?
         <.function-end>                 
     }
 
