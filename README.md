@@ -609,6 +609,48 @@ Haku lets you conjugate the verbs. For example:
 
 TODO: Not all of this works yet, currently you can do dictionary form (adjectival or plain), -te form with or without 下さい and even くれて. And です can be で御座います. 
 
+## Expressiveness
+
+Because Haku tries to be more like a natural language, there is a lot of choice in how to express certain constructs, in particular function application. For example,
+
+    書類を読むの為に開ける
+    "to open the document for reading"  
+    open doc ReadOnly
+
+    辞書にカギとバリューを入れる
+    "to insert a key and value in the dictionary"
+    insert dict key value
+
+    ジショにカギを正引きする
+    "to lookup a key in the dictionary"
+    lookup dict key
+
+    辞書からカギを消す
+    "to delete a key from the dictionary"
+    delete dict key
+
+    カギとバリューから図を作る 
+    "to create a map from key and value"
+    fromList [(key,value)]
+
+    カズ達とアクを足すので畳み込む
+    "to fold the numbers and the acc with addition"
+    foldl add acc xs
+
+    数達の皆を二倍で写像する
+    "to map all numbers with double"
+    map double xs
+
+    六に七を足す
+    "add seven to six"
+    6+7
+    六で掛ける七
+    "multiply seven with six"
+    6*7
+    六と七の積
+    "the product of six and seven"
+    6*7
+
 ## Types
 
 TODO

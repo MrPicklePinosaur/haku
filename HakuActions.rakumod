@@ -215,7 +215,26 @@ class HakuActions {
     method adjectival-apply-expression($/) {        
         my $partial = $<dake> ?? True !! False;
         if $<adjectival> ~~ Array {
-                    die 'TODO';
+            # I will be lazy and only support one or two elements
+            if $<adjectival>.elems == 1 {
+                my $f1-name = $<adjectival>[0].made;
+                my @args =  $<arg-expression-list> ?? 
+                [map({$_.made},$<arg-expression-list>).flat,$<arg-expression>.made]
+                !! [$<arg-expression>.made];
+                make FunctionApplyExpr[$f1-name, @args, $partial].new;
+            } elsif $<adjectival>.elems == 2 {
+                my $f1-name = $<adjectival>[0].made;
+                my $f2-name = $<adjectival>[1].made;
+                my $f2-as-arg = FunctionApplyExpr[$f2-name, [$<arg-expression>.made], False].new;
+
+                my @args =  $<arg-expression-list> ?? 
+                [map({$_.made},$<arg-expression-list>).flat,$f2-as-arg]
+                !! [$f2-as-arg];
+                make FunctionApplyExpr[$f1-name, @args, $partial].new;
+            } else {        
+                die 'TODO';
+            }                    
+
         } else {
             my @args =  $<arg-expression-list> ?? 
             [map({$_.made},$<arg-expression-list>).flat,$<arg-expression>.made]
