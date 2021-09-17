@@ -12,11 +12,10 @@ role Characters {
         '後' | '為' | '等' | '若' | '不' | '下' |
         '本' | '事' | 
         '皆' | '空' | '若' |
-        '因' |　'沿' 
+        '因' | '沿' 
     }
    
     token kanji {  
-        # Using Block hangs
         <:Block('CJK Unified Ideographs') - reserved-kanji >
         # See Kanji.rakumod for a list instead of the Unicode block
     }  
@@ -37,9 +36,7 @@ role Characters {
     }
 
     token non-number-kanji {  
-        # Using Block hangs
         <:Block('CJK Unified Ideographs') - reserved-kanji - number-kanji>
-        # See Kanji.rakumod for a list instead of the Unicode block
     }  
 
     

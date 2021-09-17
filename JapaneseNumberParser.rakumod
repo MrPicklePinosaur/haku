@@ -25,7 +25,7 @@ sub kanjiToNumbersMag(Str $kazu --> Num ) {
     my Num $acc = 0e0;
     my Int $m = 0;
 
-    for 0..(@kazu_kanji.elems-1)  -> $k {    
+    for 0..(@kazu_kanji.elems-1) -> $k {    
         if %digits{@kazu_kanji[$k]}:exists {
             if $m > 0 {
                 $acc=$acc+$m;
@@ -85,21 +85,19 @@ sub parseJapaneseNumbers(Str $kazu_str --> Num ) is export {
     {        
         return kanjiToNumbersPosDec( $kazu_str ) ;
     } else {
-        
         return kanjiToNumbersMag( $kazu_str ) ;
     }
 }
 
 sub substituteKanjiToDigits(Str $kstr --> Str) is export {
-            my @chars = $kstr.comb;
-            my @rchars = @chars.map({
-                if %digits{$_}:exists and not %unique-digits{$_}:exists {
-                    say "Error: In variable $kstr: in variable names, only 一 二 三 四 五 六 七 八 九 〇 are supported";
-                    exit;
-                } else {
-                    %digits{$_} // $_           
-                }
-            });
-            @rchars.join('');
-
+    my @chars = $kstr.comb;
+    my @rchars = @chars.map({
+        if %digits{$_}:exists and not %unique-digits{$_}:exists {
+            say "Error: In variable $kstr: in variable names, only 一 二 三 四 五 六 七 八 九 〇 are supported";
+            exit;
+        } else {
+            %digits{$_} // $_           
+        }
+    });
+    @rchars.join('');
 }

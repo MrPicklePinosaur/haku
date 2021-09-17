@@ -1,9 +1,7 @@
 use v6;
 
 # role HakuExpr {...}
-role HakuExpr {
-    # has $.comment is rw;
-}
+role HakuExpr {}
 role CommentedExpr[$e,$c] does HakuExpr {
     has HakuExpr $.expr = $e;
     has Str $.comment = $c;

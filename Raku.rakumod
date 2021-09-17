@@ -68,18 +68,18 @@ sub ppFunctionName(\fn) {
             
             given $f_name {
                 # I/O
-                when / ^ [見せ|mise] / { 'show' } 
+                when / ^ [ 見 |mise] / { 'show' } 
                 when / ^ [ 書 | kaku] / { 'write' }
                 when / ^ [ 読 | yomu] / { 'read' }
                 when / ^ [ 開 | aku] / { 'fopen' } 
                 when / ^ [ 閉 | sima] / { 'close' }                 
                 # map/fold
-                when / ^ [畳|tata] / { 'foldl' }             
-                when / ^ [写像|shazou|SHAZOU] / { 'map' } 
+                when / ^ [ 畳 | tata] / { 'foldl' }             
+                when / ^ [ 写像 | shazou|SHAZOU] / { 'map' } 
                 # lists and maps 
-                when / ^ [合わせ|awaseru] / { 'concat' } 
-                when / ^ [入れ|ireru] / { 'insert' } 
-                when / ^ [消|kesu] / { 'delete' } 
+                when / ^ [ 合わせ|awaseru] / { 'concat' } 
+                when / ^ [ 入れ|ireru] / { 'insert' } 
+                when / ^ [ 消|kesu] / { 'delete' } 
                 when m:i/ ^ [ 正引 | tadasiiINkisuru] / { 'lookup' } 
                 default { $f_name }      
             }            
@@ -104,7 +104,7 @@ sub ppFunctionName(\fn) {
         }
         when Adjective {  
 
-            say "ppFunctionName: ADJ: " ~ fn.adjective ~ "=>" ~  kanjiToRomaji(fn.adjective) if $V;
+            say "ppFunctionName: ADJECTIVE: " ~ fn.adjective ~ "=>" ~  kanjiToRomaji(fn.adjective) if $V;
             
             my $f_name = $toRomaji ?? kanjiToRomaji(fn.adjective).lc  !! fn.adjective ;
             $f_name;
