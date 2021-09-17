@@ -18,7 +18,7 @@ class HakuActions {
         # So wonderful
         my $verb-str = ($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
         my $verb-kanji = substr($verb-str,0,1);
-        if not $<verb-dict>  and %defined-functions{$verb-kanji}:exists {
+        if not $<verb-dict> and %defined-functions{$verb-kanji}:exists {
             $verb-str = %defined-functions{$verb-kanji};
         }
         
@@ -67,9 +67,7 @@ class HakuActions {
     }
 
     method list-expression($/) {
-        # say $/.raku;
         my @exprs= map({$_.made},$<atomic-expression>);
-        # say 'ELTS:'~@exprs.raku;  
         if @exprs.elems==1 {
             make @exprs[0];
         } else {
