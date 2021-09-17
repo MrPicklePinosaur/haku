@@ -570,9 +570,23 @@ TODO:
         eof: <filehandle>の終了 (TODO)
 
 
-## Verb conjugation
 
-Haku lets you conjugate the verbs. For example:
+
+### Types
+
+TODO
+
+### Modules and imports
+
+TODO
+
+## Expressiveness
+
+Haku tries to be more like a natural language. Apart from adopting Japanese writing and word order, it does this mainly in two ways:
+
+### Verb conjugation on function calls
+
+Haku lets you conjugate the verbs for a function call. For example:
 
 * Given a function send:
 
@@ -607,11 +621,11 @@ Haku lets you conjugate the verbs. For example:
         送ったメッセージ。
         “The sent message”
 
-TODO: Not all of this works yet, currently you can do dictionary form (adjectival or plain), -te form with or without 下さい and even くれて. And です can be で御座います. 
+TODO: Not all of this works yet, currently you can do dictionary form (adjectival or plain), -te form with or without 下さい、しなさい and even くれて. And です can be で御座います. 
 
-## Expressiveness
+### Choice of list separators and function application constructs
 
-Because Haku tries to be more like a natural language, there is a lot of choice in how to express certain constructs, in particular function application. For example,
+There is a lot of choice in how to express certain constructs, in particular function application. For example,
 
     書類を読むの為に開ける
     "to open the document for reading"  
@@ -651,14 +665,7 @@ Because Haku tries to be more like a natural language, there is a lot of choice 
     "the product of six and seven"
     6*7
 
-## Types
-
-TODO
-
-## Modules and imports
-
-TODO
-
+I plan to add support for adjectives as well (TODO).
 
 ## Motivation
 

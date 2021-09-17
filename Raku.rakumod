@@ -1,15 +1,18 @@
 use v6;
+unit module Raku;
 use HakuAST;
 use Romaji;
 use JapaneseNumberParser;
 our $toRomaji=True;
-$Raku::V=False;
+
+our $V=False; 
 
 our $nspaces = 4;
 my $indent = ' ' x $nspaces;
 our %defined-functions;
 
 sub ppHakuProgram(HakuProgram $p) is export {
+    $Romaji::V=$V;
      my @comments = $p.comments;
      my $comment_str = @comments.map({ '#' ~ $_}).join("\n") ~ "\n";
      my $function_strs = '';

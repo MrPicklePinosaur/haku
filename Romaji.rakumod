@@ -1,6 +1,6 @@
 use v6;
-
-our $V=True;
+unit module Romaji;
+our $V=False;
 
 my %katakana is Map = < 
 ァ _A

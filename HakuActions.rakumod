@@ -2,7 +2,7 @@ use v6;
 use HakuAST;
 use JapaneseNumberParser;
 
-our $V=True;
+# our $V=False;
 
 class HakuActions {
     

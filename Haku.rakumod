@@ -790,6 +790,7 @@ grammar Haku is Functions does Comments does Keywords {
         >;
     token TOP { <haku-program> }
     token haku-program {
+        <.ws>?
         # <comment>
         [<function> | <comment>]*? 
         <hon-definition>

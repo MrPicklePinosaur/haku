@@ -27,8 +27,9 @@ unit sub MAIN(
           Bool :s($subparse) = False,
         );  
 
-if ($verbose) {
-    $V=True;
+if ($verbose) { 
+    
+    $Raku::V=True;
 }
 
 if (not $src_file.defined) {
