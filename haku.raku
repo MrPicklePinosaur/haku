@@ -13,6 +13,7 @@ sub USAGE() {
         [--yomudake, -y] : just print the Haku source after reading, as a single line. Don't execute.
         [--parse-only, -p] : for debugging, parse and print out the parse tree.
         [--subparse, -s] : for debugging, use subparse instead of parse.
+        [--rule, -r] :  for debugging, use a specific grammar rule.
         [--verbose, -v] : for debugging, verbose output.        
  EOH
 }
@@ -25,6 +26,7 @@ unit sub MAIN(
           Bool :p($parse-only) = False,
           Bool :v($verbose) = False,
           Bool :s($subparse) = False,
+          Str :r($rule) 
         );  
 
 if ($verbose) { 
@@ -50,9 +52,17 @@ if $yomudake {
 if $parse-only { 
     $reportErrors = False;
     if $subparse {
-        say Haku.subparse($program_str);
+        if $rule {
+            say Haku.subparse($program_str,:rule($rule));
+        } else {
+            say Haku.subparse($program_str);
+        }
     } else {
+        if $rule {
+        say Haku.parse($program_str,:rule($rule));
+        } else {
         say Haku.parse($program_str);
+        }
     }
     exit;
 } else {

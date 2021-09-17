@@ -102,6 +102,13 @@ sub ppFunctionName(\fn) {
                 default { $f_name }      
             }            
         }
+        when Adjective {  
+
+            say "ppFunctionName: ADJ: " ~ fn.adjective ~ "=>" ~  kanjiToRomaji(fn.adjective) if $V;
+            
+            my $f_name = $toRomaji ?? kanjiToRomaji(fn.adjective).lc  !! fn.adjective ;
+            $f_name;
+        }
         when Variable { 
             ppVariable(fn.var)
         }

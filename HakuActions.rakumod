@@ -463,7 +463,9 @@ class HakuActions {
         my $fname=
          $<verb> ?? $<verb>.made
         !! $<noun> ?? $<noun>.made
-        !! die "Not a Verb or Noun: "~$/.Str;
+        !! $<adjective> ?? $<adjective>.made
+        !! $<adjectival> ?? $<adjectival>.made
+        !! die "Not a Verb, Adjective or Noun: "~$/.Str;
         my @args = $<variable-list>.made;
         # die @args.raku;
         my $body = $<expression>.made;

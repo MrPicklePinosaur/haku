@@ -184,13 +184,13 @@ role Adjectives does Characters {
     token i-adjective-stem {
         <non-number-kanji> <hiragana>?? <kanji>? 
     }
-
+    token i { 'い' }
     token i-adjective-stem-hiragana {
-         <hiragana>+? <?before 'い' >
+         <hiragana>*? <?before 'い' >
     }
 
     token i-adjective {
-        <i-adjective-stem> <i-adjective-stem-hiragana> 'い'
+        <i-adjective-stem> <i-adjective-stem-hiragana> <i>
     }
 
     # A na-adjective is treated as a Noun unless it is followed by な
@@ -624,7 +624,7 @@ does Comments
         <verb> | <adjective>
     }
     token adjectival-apply-expression {
-        [<arg-expression-list> <dake>? <.de> ]? <adjectival>+ <arg-expression>
+        [<arg-expression-list> <dake>? <.de> ]? <adjectival>+ <arg-expression> 
     }
     token apply-expression {
         [
@@ -761,7 +761,7 @@ grammar Functions is Expression does Keywords does Punctuation {
     token TOP { <function> }
     token function {
         <comment>*
-        [ <verb> | <noun> | <adjective>] <.toha> <.ws>? 
+        [ <adjectival> || <noun>] <.toha> <.ws>? 
         <variable-list> <.de> <.ws>? 
         <expression> 
         <.function-end>
