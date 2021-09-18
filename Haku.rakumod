@@ -10,7 +10,7 @@ role Characters {
         '或' |
         '和' | '差' | '積' | '除' |
         '後' | '為' | '等' | '若' | '不' | '下' |
-        '本' | '事' | 
+        '本' | '事' | '無' | 
         '皆' | '空' | '若' |
         '因' | '沿' 
     }
@@ -42,7 +42,8 @@ role Characters {
     
     token haku-kanji {
         '白' | '泊' | '箔' | '伯' | '拍' | '舶' | 
-        '迫' | '岶' | '珀' | '魄' | '柏' | '帛' | '博'
+        '迫' | '岶' | '珀' | '魄' | '柏' | '帛' | '博' |
+        '物' | '件' | '条'   
     }
 
     token katakana { 
@@ -262,9 +263,11 @@ role Variables does Characters {
 }
 
 role Identifiers does Verbs does Nouns does Adjectives does Variables {
-    
+    token nominaliser {
+        <no> <!before <koto> > |<koto> <!before <desu> > 
+    }
     # Identifiers are variables noun-style and verb-style function names
-    token identifier { <variable> | <verb> [<.no>|<.koto>]? | <noun> <.sura>? | <adjective> }
+    token identifier { <variable> | <verb> <nominaliser>? | <noun> <.sura>? | <adjective> }
 
 }
 
@@ -327,7 +330,7 @@ does Nouns
     token kuu { '空' }
     # For Nil
     token mu { '無' }
-
+    token mugendai { '無限大' }
     # For Ranges
     token nyoro { '〜' }
 
@@ -555,7 +558,7 @@ does Comments
 
     token TOP { <comment-then-expression> }
  
-    token atomic-expression {  <identifier> || [<number> | <string> | <mu> | <kuu> ]    }
+    token atomic-expression {  <identifier> || [<number> | <string> | <mugendai> | <mu> | <kuu> ]    }
     token parens-expression { 
        [ [ <.open-maru> <expression> <.close-maru> ] |
         [ <.open-sumitsuki> <expression> <.close-sumitsuki> ] |
@@ -575,19 +578,20 @@ does Comments
     
     token list-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* }
     token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> '図' }
-    token arg-expression-list {
-        <arg-expression> [<.list-operator> <arg-expression>]*
-    }
-
+    
+    
     # Keeping it simple: everything needs parens
     token arg-expression {
         <parens-expression> |
         <kaku-parens-expression> |
-        # <apply-expression> | # LOOP, needs parens
-        # <lambda-expression> | 
-        # <range-expression> |        
         <atomic-expression>         
     }
+    
+    token arg-expression-list {
+        <arg-expression> [<.list-operator> <arg-expression>]*
+    }
+
+    
     token empty {
         <open-kaku><close-kaku>
     }
@@ -759,7 +763,7 @@ grammar Functions is Expression does Keywords does Punctuation {
     token function {
         <comment>*
         [ <adjectival> || <noun>] <.toha> <.ws>? 
-        <variable-list> <.de> <.ws>? 
+        [<variable-list> <.de> <.ws>?]? 
         <expression> 
         <.function-end>
     }
@@ -844,7 +848,7 @@ grammar Haku is Functions does Comments does Keywords {
         # FIXME: This is weak, will break if there are two expressions on a single line
         # There must be a check that the position is at the end of a line
         # if $token-type eq 'delimiter' {
-        #     ++$line_counter;
+        #     ++$line_counter;k
         #     $context = @context_lines[0] ~ "\n$line_counter\t⏏" ~ @context_lines[1]  ~ "\n\t";
         # }        
         say "$msg after $token-type $*PARTICLE on line $line_counter:\n\n" ~ $parsed_annotated_context ~ $*PARTICLE ~ "⏏" ~$context~"...\n";    

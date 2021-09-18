@@ -22,6 +22,10 @@ role Noun[ $noun] does Identifier does LhsExpr does HakuExpr　{
 role Adjective[ $adjective] does Identifier does LhsExpr does HakuExpr　{
     has Str $.adjective=$adjective;
 }
+
+role FunctionAsArg[$verb] does HakuExpr {
+    has Verb $.verb = $verb;
+}
 # I could enumerate them here instead
 role BinOp[ $op] {
     has Str $.op=$op;
@@ -132,6 +136,7 @@ role String[ @chars] does AtomicExpr {
 }
 
 role Null does AtomicExpr {}
+role Infinity does AtomicExpr {}
 
 role Identifier[ $id] does AtomicExpr {
     has Str $.id = $id;

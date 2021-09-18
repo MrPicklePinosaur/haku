@@ -298,6 +298,9 @@ sub ppHakuExpr(\h) {
                 $vn
             }
         }
+        when FunctionAsArg {            
+            '&' ~ ppHakuExpr(h.verb);
+        }
         when Noun {  
             say "ppHakuExpr: NOUN: " ~ h.noun ~ ( $toRomaji  ?? "=>" ~  kanjiToRomaji(h.noun) !! '') if $V;
             my $n = $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun ;
@@ -307,6 +310,12 @@ sub ppHakuExpr(\h) {
                 $n
             }
             
+        }
+        when Null {
+            'Nil'   
+        }
+        when Infinity {
+            '∞'
         }
         when BinOpExpr {
              '(' ~ ppHakuExpr(h.args[0]) ~ ' ' ~h.op.op~' '~ ppHakuExpr(h.args[1]) ~ ')'

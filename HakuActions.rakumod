@@ -40,7 +40,11 @@ class HakuActions {
     }    
 
     method identifier($/) {
-        make $/.values[0].made;
+        if not $<nominaliser> {
+            make $/.values[0].made;
+        } else {
+            make FunctionAsArg[$<verb>.made].new;
+        }
     }
     
     method string($/) {
@@ -58,6 +62,9 @@ class HakuActions {
     method atomic-expression($/) {
         if $<mu> { # Null
             make Null.new;
+        }
+        elsif $<mugendai> { # Null
+            make Infinity.new;
         }
         elsif $<kuu> { # ConsNil
             make ConsNil.new;
@@ -464,7 +471,7 @@ class HakuActions {
         !! $<adjective> ?? $<adjective>.made
         !! $<adjectival> ?? $<adjectival>.made
         !! die "Not a Verb, Adjective or Noun: "~$/.Str;
-        my @args = $<variable-list>.made;
+        my @args = $<variable-list>.made // [];
         # die @args.raku;
         my $body = $<expression>.made;
         make Function[ $fname, @args,  $body,@comments].new;        
