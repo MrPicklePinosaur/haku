@@ -43,71 +43,71 @@ our $verbose = False;
 
 sub tategakiWriter($file) is export {
 
-if (not $file.defined) {
-# USAGE();
-     die "Please provide an input file\n";
-	 
-}
-my $input_file = IO::Path.new( $file ) ;
-my $V = $verbose;
+	if (not $file.defined) {
+	# USAGE();
+		die "Please provide an input file\n";
+		
+	}
+	my $input_file = IO::Path.new( $file ) ;
+	my $V = $verbose;
 
-my $use_col_spacer = ($spacer.defined and !($spacer ~~ NONE));
+	my $use_col_spacer = ($spacer.defined and !($spacer ~~ NONE));
 
-my $col_space_char = $spacer.value;
+	my $col_space_char = $spacer.value;
 
-# '' (nothing, the default)
-# thin space  U+2009   THIN SPACE (HTML &#8201; · &thinsp;). 
-# non-breaking space U+202F   NARROW NO-BREAK SPACE (HTML &#8239;) is a non-breaking space with a width similar to that of the thin space. 
-# Ordinary space
-# '|'
+	# '' (nothing, the default)
+	# thin space  U+2009   THIN SPACE (HTML &#8201; · &thinsp;). 
+	# non-breaking space U+202F   NARROW NO-BREAK SPACE (HTML &#8239;) is a non-breaking space with a width similar to that of the thin space. 
+	# Ordinary space
+	# '|'
 
-my $col_spacer = $use_col_spacer ?? $col_space_char !! NONE.value;
+	my $col_spacer = $use_col_spacer ?? $col_space_char !! NONE.value;
 
 
-my $pad_ws= $V ?? '＿' !! '　'; 
+	my $pad_ws= $V ?? '＿' !! '　'; 
 
-my @lines = $input_file.IO.lines;
+	my @lines = $input_file.IO.lines;
 
-my $max_line_length = 0;
-for @lines -> $line {
-	my $line_length =  $line.chars;
-	$max_line_length = $line_length > $max_line_length ?? $line_length !! $max_line_length;
-};
+	my $max_line_length = 0;
+	for @lines -> $line {
+		my $line_length =  $line.chars;
+		$max_line_length = $line_length > $max_line_length ?? $line_length !! $max_line_length;
+	};
 
-my @rows=();
-for 0 .. $max_line_length - 1 -> $idx {
-	my @row_chars=();
-    for @lines -> $line {
-        my @chars = $line.comb();
-		if @chars[$idx] {
-			my $c=@chars[$idx];
-			if %h2v{$c}:exists {
-				$c = %h2v{$c};
+	my @rows=();
+	for 0 .. $max_line_length - 1 -> $idx {
+		my @row_chars=();
+		for @lines -> $line {
+			my @chars = $line.comb();
+			if @chars[$idx] {
+				my $c=@chars[$idx];
+				if %h2v{$c}:exists {
+					$c = %h2v{$c};
+				}
+				@row_chars.push($c);
+			} else {
+				@row_chars.push($pad_ws);
 			}
-			@row_chars.push($c);
-		} else {
-			@row_chars.push($pad_ws);
 		}
-    }
-	 @rows.push(@row_chars);
-}
-
-# say @rows.raku;
-my @code_strs=();
-if $spacer-rows>0 {
-	for 1 .. $spacer-rows {
-		push @code_strs, '';
+		@rows.push(@row_chars);
 	}
-}
-for @rows -> @row {
-if $spacer-cols>0 {
-	for 1 .. $spacer-cols {
-		@row.push($pad_ws);
-	}
-}
 
-	@code_strs.push( join($col_spacer,@row.reverse));
-}
-my $code_str = @code_strs.join("\n");
-return $code_str;
+	# say @rows.raku;
+	my @code_strs=();
+	if $spacer-rows>0 {
+		for 1 .. $spacer-rows {
+			push @code_strs, '';
+		}
+	}
+	for @rows -> @row {
+	if $spacer-cols>0 {
+		for 1 .. $spacer-cols {
+			@row.push($pad_ws);
+		}
+	}
+
+		@code_strs.push( join($col_spacer,@row.reverse));
+	}
+	my $code_str = @code_strs.join("\n");
+	return $code_str;
 }

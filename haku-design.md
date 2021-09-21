@@ -1097,6 +1097,70 @@ I think I will also use 因に　ちなみに for any expression that can actual
 ramen wo supoon de taberu
 supoon de tabeta ramen
 
+## Closures
+
+I want to generalise the use of nominalisers and verbalisers:
+ 
+    xx to yy to zz wo f-verb
+
+should call f but
+
+    xx to yy to zz wo f koto 
+
+should result in 
+
+    sub f(\x,\y,\z) {x+y+z}
+
+        sub ff {
+        my \xx=11;
+        my \yy=22;
+        my \zz=33;
 
 
+        -> { say "Only when called";
+            f(xx,yy,xx) }
+    }
 
+    my \c = ff();
+    say c.();
+
+Which should use a verbaliser:
+
+
+    f-verb toha  x to y to z de x+y+z no koto desu
+
+    ff-verb toha
+        - xx ha 11
+        - yy ha 22
+        - zz ha 33
+        de ha
+            xx to yy to zz wo f koto
+    to iu koto desu
+    
+    hon toha
+        CC ha ff-verb,
+        CC suru
+    no koto desu    
+
+In principle ff-verb suru should work too, i.e. ff().()
+
+This would mean that a noun-style function needs a verbaliser to work. 
+I would say that this is only the case if it does not have a の　argument list
+
+x no f-noun => call
+x wo f-noun => closure
+x wo f-noun suru => call
+
+### Logical values and operations
+
+ろんりち
+論理値
+n, comp, math
+￼ Logical value (true or false), truth value.
+
+True 陽 正 (proper but is used in principle in number 10^40)
+False　陰 ()
+XOR: 排他的論理和 
+OR: 又は (または) 論理和 
+AND:共に　ともに 論理積
+NOT: 不 論理否定

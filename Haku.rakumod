@@ -39,7 +39,7 @@ role Characters {
         <:Block('CJK Unified Ideographs') - reserved-kanji - number-kanji>
     }  
 
-    
+    # The last row is for function arguments, should factor out
     token haku-kanji {
         '白' | '泊' | '箔' | '伯' | '拍' | '舶' | 
         '迫' | '岶' | '珀' | '魄' | '柏' | '帛' | '博' |
@@ -549,7 +549,6 @@ role Strings does Characters {
 # }
 grammar Expression 
 does Identifiers 
-# does Variables
 does Keywords 
 does Numbers
 does Strings
@@ -652,8 +651,7 @@ does Comments
         [  <lambda-expression>         
         | <let-expression>  
         | <apply-expression>         
-        | <operator-expression>
-        
+        | <operator-expression>        
         | <function-comp-expression>
         | <map-expression>
         | [<ifthen> || <comparison-expression>]

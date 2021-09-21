@@ -235,10 +235,10 @@ sub ppHakuExpr(\h) {
             }            
         }
         when ListExpr {
-            '['~ join(', ',map(&ppHakuExpr,h.elts)) ~']'
+            '[' ~ join(', ' , map(&ppHakuExpr,h.elts)) ~ ']'
         }
         when MapExpr {
-            '{'~ join(' => ',map(&ppHakuExpr,h.elts)) ~'}'
+            '{' ~ join(' => ' , map(&ppHakuExpr,h.elts)) ~ '}'
         }        
         when  IfExpr { 
             ('do if ' ~ ppHakuExpr(h.cond) ~ ' {' ,

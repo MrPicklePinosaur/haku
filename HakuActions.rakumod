@@ -141,11 +141,13 @@ class HakuActions {
     method operator-expression($/) {
         make $/.values[0].made
     }
+
     method has-expression($/) {
         my $map-expr = $<identifier>[0].made;
         my $key-expr = $<identifier>[1].made;
         make FunctionApplyExpr[Verb['has'].new, [$map-expr,$key-expr],False].new
     }
+
     method comparison-expression($/) {
 
         my $lhs-expr = $<arg-expression>[0].made;
@@ -214,9 +216,11 @@ class HakuActions {
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         }        
     }
+    
     method adjectival($/) {
              make $/.values[0].made;  
     }
+
     method adjectival-apply-expression($/) {        
         my $partial = $<dake> ?? True !! False;
         if $<adjectival> ~~ Array {
@@ -499,6 +503,8 @@ class HakuActions {
     method TOP ($/) {
         if ($<haku-program>) {
             make $<haku-program>.made;
+        } else {
+            die "Not a Haku program: " ~ $/.Str;
         }
     }
 
