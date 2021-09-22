@@ -10,7 +10,10 @@ class HakuActions {
 
     method variable($/) {
         # say "VAR $/";
-        make Variable[$/.Str].new;        
+        my %special-vars is Map = <件 matter 物　thing 条　item 魄　soul 珀　haku >;
+        my $var-str = %special-vars{$/.Str} // $/.Str;
+        
+        make Variable[$var-str].new;        
     }
 
     method verb($/) {

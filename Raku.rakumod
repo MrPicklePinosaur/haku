@@ -107,7 +107,12 @@ sub ppFunctionName(\fn) {
             say "ppFunctionName: ADJECTIVE: " ~ fn.adjective ~ "=>" ~  kanjiToRomaji(fn.adjective) if $V;
             
             my $f_name = $toRomaji ?? kanjiToRomaji(fn.adjective).lc  !! fn.adjective ;
-            $f_name;
+            # die $f_name;
+            given $f_name {
+                when /逆 | saka / {'reverse'}
+                default { $f_name }
+            }
+            
         }
         when Variable { 
             ppVariable(fn.var)
@@ -302,13 +307,16 @@ sub ppHakuExpr(\h) {
         }
         when Noun {  
             say "ppHakuExpr: NOUN: " ~ h.noun ~ ( $toRomaji  ?? "=>" ~  kanjiToRomaji(h.noun) !! '') if $V;
+            if h.noun eq '逆'　{
+                '&reverse'
+            } else {
             my $n = $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun ;
             if $n eq '無' or $n eq 'nai' {
                 'Nil' 
             } else {
                 $n
             }
-            
+            }
         }
         when Null {
             'Nil'   

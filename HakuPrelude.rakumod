@@ -83,6 +83,9 @@ sub foldl (List \lst, \acc, &f) is export  {
     $res;
 }  
 # TODO: map needs a wrapper to make it work on strings
+sub map (\lst, &f) is export  {
+    lst.map(&f);
+}  
 sub insert (\m,\k,\v) is export {
     m{k}=v;
     return m;    

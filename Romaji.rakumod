@@ -3631,7 +3631,7 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
         say "SINGLE KANJI with HIRAGANA: " ~ $kstr if $V; 
         my ($kanji,@rest) = $kstr.comb;
         my $r = join('',@rest);
-        if  $r ne 'さ' and  %joyo_kun_verb_readings{$kanji}:exists {
+        if  $r ne ('さ'|'い'|'な') and  %joyo_kun_verb_readings{$kanji}:exists {
         # a kanji with kun verb readings, one or more reasings            
             my @kana = %joyo_kun_verb_readings{$kanji};
             if @rest {
@@ -3708,7 +3708,10 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
             my @kana = %joyo_kun_non_verb_readings{$kanji};
             say "NON-VERB: " ~ @kana ~ ':' ~ @rest if $V;
             if @rest {
-                my $r = join('',@rest);
+                my $r = join('',@rest);                
+                if $r eq 'な' { # na-adjective
+                    return hiraganaToRomaji(@kana[0]);
+                } else {
                 for @kana -> $ks {
                 if ($r eq 'さ' and $ks.substr(*-1) eq 'い') {
                     return hiraganaToRomaji($ks.substr(0,$ks.chars-1) ) ~ 'sa';
@@ -3716,6 +3719,7 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
                         return hiraganaToRomaji($ks);
                     }
                 }
+                } 
             } else {
                 return hiraganaToRomaji(@kana[0]);
             } 
