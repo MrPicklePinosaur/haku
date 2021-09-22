@@ -106,8 +106,8 @@ role Punctuation {
     token close-nami { '｝' }
 
     # Kakukakko (角括弧)
-    token open-kaku { '［' }
-    token close-kaku { '］' }
+    token open-kaku { '［' | '[' }
+    token close-kaku { '］' | ']' }
 
     token open-sen { '〈' }
     token close-sen { '〉' }
@@ -277,7 +277,7 @@ role Auxiliaries {
 
     token shite-kudasai { 'して' [ '下' | 'くだ' ] 'さい' }
     token suru { 'する' | '為る' | 'した' }
-    token shimasu { 'しま' | [ 'す' | 'した' ] }
+    token shimasu { 'しま'  [ 'す' | 'した' ] }
     token sura {
         <suru> | <shimasu> | <shite-kudasai> 
     }
@@ -575,7 +575,9 @@ does Comments
         <verb-operator-expression-infix> 
     }
     
-    token list-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* }
+    token list-expression { 
+        [<atomic-expression> | <kaku-parens-expression>]
+        [ <.list-operator> [<atomic-expression> | <kaku-parens-expression>] ]* }
     token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> '図' }
     
     
@@ -594,7 +596,8 @@ does Comments
     token empty {
         <open-kaku><close-kaku>
     }
-    token cons-list-expression { <variable> [ <.cons> [<variable>|<kuu>|<empty>]]* } #? [<.cons> [<kuu>|<empty>] ]? }
+    token cons-elt-expression { <kaku-parens-expression> | <variable>|<kuu>|<empty> } 
+    token cons-list-expression { <cons-elt-expression> [ <.cons> <cons-elt-expression> ]* } #? [<.cons> [<kuu>|<empty>] ]? }
     
     token variable-list { <variable> [ <.list-operator> <variable> ]* }
 
@@ -660,6 +663,7 @@ does Comments
         [ <parens-expression>  
         | <range-expression>
         | <list-expression>
+        | <kaku-parens-expression>
         | <cons-list-expression> 
         | <chinamini-expression>               
         | <atomic-expression>

@@ -21,7 +21,7 @@ sub yokogakiReader(Str $file) {
 my $input_file = IO::Path.new( $file ) ;
 my $horiz_str = $input_file.IO.slurp;
 if $horiz_str ~~ /本真?とは/ {
-    return $horiz_str.lines.grep({ not /^ '#' / }).join("\n");
+    return $horiz_str.lines.grep({ not /^ [ '#' | '＃' ] / }).join("\n");
 } else {
     return Nil;
 }

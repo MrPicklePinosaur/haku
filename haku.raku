@@ -30,13 +30,13 @@ unit sub MAIN(
         );  
 
 if ($verbose) { 
-    
     $Raku::V=True;
 }
 
 if (not $src_file.defined) {
          die "Please provide an input file\n";
 }
+
 if $tategaki {
     say tategakiWriter($src_file);
     exit;
@@ -76,8 +76,8 @@ if $parse-only {
         my $fh = 'Hon.rakumod'.IO.open: :w;
         $fh.put: $hon_raku_code;
         $fh.close;
+        
         # Require the module. This will execute the program
-
         require Hon;
     }
 }

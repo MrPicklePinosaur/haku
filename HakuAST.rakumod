@@ -31,10 +31,15 @@ role BinOp[ $op] {
     has Str $.op=$op;
 }
 
+# The allowed expressions in a cons: variable, [...], []
 role ConsExpr {}
-role ConsVar[Str $var] does ConsExpr {
-    has Str $.var = $var;
+role ConsVar[ $var] does ConsExpr {
+    has Variable $.var = $var;
 }
+role ConsList[ $lst] does ConsExpr {
+    has HakuExpr $.list = $lst;
+}
+
 role ConsNil does ConsExpr does HakuExpr {
 }
 
@@ -42,7 +47,7 @@ role LhsExpr {}
 role Tuple[ @tuple] does LhsExpr {
     has LhsExpr @.tuple = @tuple;
 }
-role Cons[ @cons] does LhsExpr {
+role Cons[ @cons] does LhsExpr does HakuExpr {
     has ConsExpr @.cons = @cons;
 }
 

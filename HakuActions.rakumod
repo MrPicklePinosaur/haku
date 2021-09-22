@@ -405,13 +405,24 @@ class HakuActions {
         make $/.values[0].made;
     }
 
-    method cons-list-expression($/) {
-            my @cons = map({ConsVar[$_.Str].new},$<variable>);
-            if $<kuu> or $<empty> {
-                @cons.push(ConsNil.new);
+    method cons-elt-expression($/) {
+            if $<variable> {
+                make ConsVar[$<variable>.made].new;
+            } elsif $<kaku-parens-expression> {
+                make ConsList[$<kaku-parens-expression>.made].new;
+
             }
+            elsif $<kuu> or $<empty> {
+                make ConsNil.new;
+            }
+                
+    }
+
+    method cons-list-expression($/) {
+            my @cons = map({$_.made},$<cons-elt-expression>);
             make Cons[@cons].new    
     }
+
     method variable-list($/) {
         my @args = map({$_.made},$<variable>);
         make @args;
