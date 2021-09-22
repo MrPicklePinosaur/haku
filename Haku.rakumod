@@ -33,7 +33,7 @@ role Characters {
 # See https://www.tofugu.com/japanese/counting-in-japanese/ for <1e-12
         | '分' | '厘' | '毛' | '糸' | '忽' | '微' | '繊' | '沙' | '塵' | '埃' | '渺' | '漠'
 
-    }
+    }    
 
     token non-number-kanji {  
         <:Block('CJK Unified Ideographs') - reserved-kanji - number-kanji>
@@ -212,7 +212,7 @@ role Verbs does Characters {
         'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' 
     }
     token verb-ending-masu {
-        'ま' [ 'す'| 'し' ['た'| 'ょう'] | 'せん'] 'か'?
+        'ま' [　'す'　| 'し' [　'た'| 'ょう'] | 'せん'] 'か'?
     }
     token verb-ending-ta {
         'った'| 'た'| 'いだ'| 'んだ'
@@ -222,12 +222,20 @@ role Verbs does Characters {
     }    
     
     token verb-stem {
-        <non-number-kanji> <hiragana>?? <kanji>? #<hiragana>*?
+        <non-number-kanji> <hiragana> <kanji> 
+        # exception because of せいびき　正引き
+        || ['正' | <non-number-kanji>] <kanji>
+        || <non-number-kanji> 
     }
-
     token verb-stem-hiragana {
          <hiragana>+? <?before <verb-ending> >
     }
+    # Trying not to match kanji + desu
+    # token su {'す'}
+    # token verb-stem-hiragana {
+    #      <+hiragana -de>+? <?before <verb-ending> >
+    #      | <de> <?before <+verb-ending -su> >
+    # }
 
     token verb-dict { <verb-stem> <verb-stem-hiragana>? <verb-ending-dict> }
     token verb-masu { <verb-stem> <hiragana>*? <verb-ending-masu> }
@@ -563,7 +571,30 @@ does Comments
         [ <.open-sumitsuki> <expression> <.close-sumitsuki> ] |
         [ <.open-sen> <expression> <.close-sen> ] ] <.ws>
     }
-    token kaku-parens-expression { <.open-kaku> [<list-expression> | <range-expression>] <.close-kaku> }
+    token empty {
+        <open-kaku><close-kaku>
+    }
+    token cons-elt-expression { <kaku-parens-expression> | <variable>|<kuu>|<empty> } 
+    token cons-list-expression { <cons-elt-expression> [ <.cons> <cons-elt-expression> ]+ } 
+
+    #TODO: 
+    token list-elt-expression {
+        <kuu>|<empty>|<atomic-expression> | <kaku-parens-expression>
+    }
+    # TODO: this means that a list of empty lists is not possible
+    token list-expression { 
+        <kuu>|<empty>| [
+        <list-elt-expression>
+        [ <.list-operator> <list-elt-expression> ]+ ] 
+    }
+
+    token kaku-parens-expression { <.open-kaku> [
+        <cons-list-expression> | 
+        <list-expression>  |
+        <atomic-expression> |
+        <range-expression> |
+        <kaku-parens-expression>
+        ] <.close-kaku> }
 
     token verb-operator-expression { <arg-expression> <.ni>　<arg-expression> <.wo> <operator-verb> }
     token verb-operator-expression-infix { <arg-expression> <operator-verb> <arg-expression> }
@@ -575,9 +606,7 @@ does Comments
         <verb-operator-expression-infix> 
     }
     
-    token list-expression { 
-        [<atomic-expression> | <kaku-parens-expression>]
-        [ <.list-operator> [<atomic-expression> | <kaku-parens-expression>] ]* }
+
     token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> '図' }
     
     
@@ -593,11 +622,7 @@ does Comments
     }
 
     
-    token empty {
-        <open-kaku><close-kaku>
-    }
-    token cons-elt-expression { <kaku-parens-expression> | <variable>|<kuu>|<empty> } 
-    token cons-list-expression { <cons-elt-expression> [ <.cons> <cons-elt-expression> ]* } #? [<.cons> [<kuu>|<empty>] ]? }
+
     
     token variable-list { <variable> [ <.list-operator> <variable> ]* }
 
@@ -661,12 +686,11 @@ does Comments
         | <string-interpol>
         ] || 
         [ <parens-expression>  
-        | <range-expression>
-        | <list-expression>
-        | <kaku-parens-expression>
-        | <cons-list-expression> 
+        | <range-expression>        
+        | [<cons-list-expression>||<kaku-parens-expression>]
+        |<list-expression>|<atomic-expression>
         | <chinamini-expression>               
-        | <atomic-expression>
+        
         # | <comment-then-expression>
         ]
     }

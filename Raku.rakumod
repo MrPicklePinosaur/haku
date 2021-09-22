@@ -140,10 +140,9 @@ sub ppHon($hon) {
     return $hon_str;
 }
 
-
+# TODO: Cons now supports nested lists, but not (yet) on the LHS
 sub ppConsLhsBindExpr(\h) {
     my @elts = h.lhs.cons;
-    # die 'Only 4 consecutive cons operations are supported' if @elts.elems>5;
     my @pp_elts = @elts
             .grep( {$_ ~~ ConsVar})
             .map({  ppVariable($_.var) });
@@ -234,7 +233,7 @@ sub ppHakuExpr(\h) {
                 ppFunctionName(h.function-name) ~ $maybeDot ~'('~ join( ', ' , h.args.map({ppHakuExpr($_)}) )~ ')';
             }            
         }
-        when ListExpr {
+        when ListExpr {        
             '[' ~ join(', ' , map(&ppHakuExpr,h.elts)) ~ ']'
         }
         when MapExpr {
@@ -336,6 +335,25 @@ sub ppHakuExpr(\h) {
         when ConsNil {
             '[]'
         }
+        when EmptyList {
+            '[]'
+        }
+        when ConsVar {
+            ppHakuExpr(h.var)
+        }    
+        when ConsList {
+            '' ~ ppHakuExpr(h.list) ~ ''
+        }            
+        when Cons {
+            my @pp_elts = h.cons.map(&ppHakuExpr);
+            if @pp_elts.elems == 1 {
+                '' ~ @pp_elts[0] ~ '';
+            } else {
+            my $last_elt = '|' ~ @pp_elts.tail ;
+            my @init_elts = @pp_elts.head(@pp_elts.elems-1);#.map({ '\\' ~ $_ }); 
+            '[' ~ @init_elts.join(',') ~ ', ' ~ $last_elt ~ ']'
+            }
+        }  
         default {
             die "TODO:" ~ h.raku;
         }        

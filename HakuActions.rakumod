@@ -27,7 +27,14 @@ class HakuActions {
         if %vbinops{$verb-kanji}:exists {
             make BinOp[%vbinops{$verb-kanji}].new;
         } else {
-            make Verb[$verb-str].new;
+            
+            if  $verb-str.substr(*-2,2)  eq 'です' and 3 <= $verb-str.chars <= 4   { 
+                my $noun-str = $verb-str.substr(0,$verb-str.chars-2);
+                make Noun[$noun-str].new;
+            } else {
+                make Verb[$verb-str].new;    
+            }
+            
         }
     }
     
@@ -72,14 +79,37 @@ class HakuActions {
             make $/.values[0].made;
         }
     }
-
-    method list-expression($/) {
-        my @exprs= map({$_.made},$<atomic-expression>);
-        if @exprs.elems==1 {
-            make @exprs[0];
-        } else {
+    method list-elt-expression($/) {        
+        if $<kaku-parens-expression> {
+            # die $<kaku-parens-expression>.raku;
+            my @exprs =  map({$_.made},$<kaku-parens-expression>);
             make ListExpr[@exprs].new;
+        } elsif $<atomic-expression> {
+            # say $<atomic-expression>.made.raku;
+            make $<atomic-expression>.made;
+        } elsif $<kuu> { 
+            make EmptyList.new;
         }
+    }
+    method list-expression($/) {
+       if $<kuu> or $<empty> {
+            make EmptyList.new;
+       } else {
+            my @exprs= map({$_.made},$<list-elt-expression>);
+            # say @exprs.raku;
+            make ListExpr[@exprs].new;
+       }
+        #     # die $<kaku-parens-expression>.raku;
+        #     my @exprs =  map({$_.made},$<kaku-parens-expression>);
+        #     make ListExpr[@exprs].new;
+        # } else {
+        # my @exprs= map({$_.made},$<atomic-expression>);
+        # if @exprs.elems==1 {            
+        #     make @exprs[0];
+        # } else {
+        #     make ListExpr[@exprs].new;
+        # }
+        # }
     }
     method map-expression($/) {
               
@@ -89,10 +119,28 @@ class HakuActions {
             make MapExpr[()].new;
         } else {
             make MapExpr[@exprs].new;
-        }
-                
+        }                
     }
-    method kaku-parens-expression($/) { make $/.values[0].made }
+        # <cons-list-expression> | 
+        # <list-expression>  |
+        # <atomic-expression> |
+        # <range-expression> |
+        # <kaku-parens-expression>
+    
+    # [ a to b ] => just as is
+    # [ a . bs ] => idem
+    # [ a ~ b] idem
+    # [a] => needs a list
+    # [ [...] ] => needs a list
+    method kaku-parens-expression($/) { 
+        if $<atomic-expression> {
+            make ListExpr[ [$<atomic-expression>.made] ].new
+        } elsif $<kaku-parens-expression> {
+            make ListExpr[ [$<kaku-parens-expression>.made] ].new
+        } else {
+            make $/.values[0].made
+        }
+    }
 
     # it should be possible to put parens around function applications and lambdas as well!
     method parens-expression($/) {
@@ -410,7 +458,6 @@ class HakuActions {
                 make ConsVar[$<variable>.made].new;
             } elsif $<kaku-parens-expression> {
                 make ConsList[$<kaku-parens-expression>.made].new;
-
             }
             elsif $<kuu> or $<empty> {
                 make ConsNil.new;
@@ -418,7 +465,7 @@ class HakuActions {
                 
     }
 
-    method cons-list-expression($/) {
+    method cons-list-expression($/) {        
             my @cons = map({$_.made},$<cons-elt-expression>);
             make Cons[@cons].new    
     }

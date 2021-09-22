@@ -74,15 +74,15 @@ sub concat(\l1, \l2) is export {
         }
     }        
 }
-
-sub foldl (&f, \acc, List \lst) is export  {
+# TODO: make work on strings
+sub foldl (List \lst, \acc, &f) is export  {
     my $res = acc;
     for  lst -> \elt {
         $res = f($res,elt);
     }
     $res;
 }  
-
+# TODO: map needs a wrapper to make it work on strings
 sub insert (\m,\k,\v) is export {
     m{k}=v;
     return m;    

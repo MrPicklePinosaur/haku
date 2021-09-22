@@ -12,5 +12,7 @@ say Haku.parse("捨てる",:rule('verb'));
 say Haku.parse("捨てて",:rule('verb'));
 say Haku.parse("忘れかけて",:rule('verb'));
 say Haku.parse("合わせる",:rule('verb'));
+say Haku.parse("畳み込む",:rule('verb'));
 say Haku.parse("探索する",:rule('verb'));
 say Haku.parse("正引きする",:rule('verb'));
+say Haku.parse("正引する",:rule('verb'));
