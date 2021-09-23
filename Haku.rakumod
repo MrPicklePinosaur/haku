@@ -93,11 +93,14 @@ role Punctuation {
         { self.highwater('：'); }
     }
     token interpunct { '・' } # nakaguro 
+      
     token punctuation { <full-stop> | <comma> | <semicolon> | <colon> }
     token delim { 
             [<full-stop> | <comma> | <semicolon>] <ws>?
     }
-    
+    # kuromaru is not full-width!
+    # So I use 'period' as alternative
+    token kuromaru { '●' | '．' | '一'}
     # Marukakko (丸括弧) 
     token open-maru { '（' }
     token close-maru { '）' }
@@ -364,7 +367,7 @@ does Nouns
     token dattara { 'だったら' }
     token moshi-nanira { <dattara> |　<tara> | <nara> }
     
-    token kuromaru { '●' }    
+     
 
     # For IfThenElse
 

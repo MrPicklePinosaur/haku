@@ -66,7 +66,7 @@ sub tategakiWriter($file) is export {
 
 	my $pad_ws= $V ?? '＿' !! '　'; 
 
-	my @lines = $input_file.IO.lines;
+	my @lines = $input_file.IO.lines.grep({ not /^ [ '#' | '＃' ] / });
 
 	my $max_line_length = 0;
 	for @lines -> $line {

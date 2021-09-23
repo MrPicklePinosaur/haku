@@ -1,15 +1,14 @@
-註 https://theweeklychallenge.org/blog/perl-weekly-challenge-131/#TASK1。
-
+# https://theweeklychallenge.org/blog/perl-weekly-challenge-131/#TASK1
 裂くとはパーツとヨウソで
 若しパーツが空に等しいなら
 ［［ヨウソ］］ですけど
 そうでなければ、
-●パートはパーツの頭、
-●パーツ一はパーツの尻尾、
-●マエはパートの頭、
+一パートはパーツの頭、
+一パーツ一はパーツの尻尾、
+一マエはパートの頭、
 では
 若しマエが〈ヨウソ引く一〉に等しいなら
-［ヨウソ・パート]・パーツ一ですが
+［ヨウソ・パート］・パーツ一ですが
 そうでなければ
 ［ヨウソ］・パーツ
 の事です。
