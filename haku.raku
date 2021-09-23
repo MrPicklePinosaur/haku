@@ -1,4 +1,5 @@
 use v6;
+# use lib ('.');
 use Haku;
 use HakuActions;
 use HakuReader;

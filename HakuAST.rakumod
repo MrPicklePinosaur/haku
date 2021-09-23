@@ -89,7 +89,7 @@ role ListExpr[ @exprs] does HakuExpr {
     has  @.elts = @exprs;
 }
 
-role EmptyList does HakuExpr {}
+role EmptyList does ConsExpr does HakuExpr {}
 role MapExpr[ @exprs] does HakuExpr {
     has  @.elts = @exprs;
 }

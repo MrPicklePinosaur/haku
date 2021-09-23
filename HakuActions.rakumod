@@ -5,7 +5,30 @@ use JapaneseNumberParser;
 # our $V=False;
 
 class HakuActions {
-    
+    my %predefined-functions = <
+        見 show
+        書  write
+        読  read
+        開  fopen 
+        閉  close                 
+        # map/fold
+        畳  foldl             
+        写像  map 
+        # lists and maps 
+        合  concat 
+        頭 head 
+        尻尾 tail            
+        逆 reverse
+        長さ length 
+            # maps
+        鍵 　keys
+        値 　values
+        入  insert 
+        消  delete 
+        正引 lookup
+        正引き lookup 
+
+    >;
     my %defined-functions;
 
     method variable($/) {
@@ -30,7 +53,7 @@ class HakuActions {
         if %vbinops{$verb-kanji}:exists {
             make BinOp[%vbinops{$verb-kanji}].new;
         } else {
-            
+            # This is a hack because currently Noun + desu is parsed as a Verb
             if  $verb-str.substr(*-2,2)  eq 'です' and 3 <= $verb-str.chars <= 4   { 
                 my $noun-str = $verb-str.substr(0,$verb-str.chars-2);
                 make Noun[$noun-str].new;
@@ -42,7 +65,13 @@ class HakuActions {
     }
     
     method noun($/) {
+        if $/.Str eq '無' {
+        make Null.new;
+        } elsif $/.Str eq '空' {
+            make EmptyList.new;
+        } else {
         make Noun[$/.Str].new;
+        }
     }
     
     method adjective($/) {
@@ -76,8 +105,8 @@ class HakuActions {
         elsif $<mugendai> { # Null
             make Infinity.new;
         }
-        elsif $<kuu> { # ConsNil
-            make ConsNil.new;
+        elsif $<kuu> { # EmptyList, was ConsNil
+            make EmptyList.new;
         } else {
             make $/.values[0].made;
         }
@@ -118,7 +147,7 @@ class HakuActions {
               
         my @exprs= map({$_.made},$<atomic-expression>);
         # say "MAP EXPR: "~@exprs.raku;  
-        if @exprs.elems==1 and @exprs[0] ~~ ConsNil {
+        if @exprs.elems==1 and @exprs[0] ~~ EmptyList {
             make MapExpr[()].new;
         } else {
             make MapExpr[@exprs].new;
@@ -463,7 +492,7 @@ class HakuActions {
                 make ConsList[$<kaku-parens-expression>.made].new;
             }
             elsif $<kuu> or $<empty> {
-                make ConsNil.new;
+                make EmptyList.new;
             }
                 
     }

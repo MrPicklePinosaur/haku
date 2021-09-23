@@ -724,9 +724,11 @@ does Comments
 
 
 
-    token bind-ha { <comment>* [ <noun> | <variable> | <cons-list-expression>] [ <.ha> | <.mo> ]
+    token bind-ha { 
+        <comment>* 
+        [ <noun> | <variable> | <cons-list-expression>] [ <.ha> | <.mo> ]
      [<expression> <zoi>]? 
-     <expression>  [<.desu> | <.de> ]? 
+     <expression> [<.desu> | <.de> ]? 
      [
         <.delim> 
          || {$*MSG = ', missing delimiter'}

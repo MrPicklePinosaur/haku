@@ -1165,4 +1165,6 @@ OR: 又は (または) 論理和
 AND:共に　ともに 論理積
 NOT: 不 論理否定
 
-List reverse: 逆
+### State
+
+We should keep the program state in the HakuProgram AST node.

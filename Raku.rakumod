@@ -9,6 +9,8 @@ our $V=False;
 
 our $nspaces = 4;
 my $indent = ' ' x $nspaces;
+
+# I could put all predefined functions in here
 our %defined-functions;
 
 sub ppHakuProgram(HakuProgram $p) is export {
@@ -22,8 +24,9 @@ sub ppHakuProgram(HakuProgram $p) is export {
          }     
      my $hon = $p.hon;
      my $hon_str = ppHon($hon);
-     my $prelude_str = q:to/ENDPREL/;
+     my $prelude_str = Q:to/ENDPREL/;
 use v6;
+unit module Hon;
 use HakuPrelude;
     
 ENDPREL
@@ -38,6 +41,10 @@ sub ppFunction($f) {
     # say $f.name;
     if $name ~~ Verb {
             %defined-functions{$name.verb.substr(0,1)} = $name.verb;
+    } elsif $name ~~ Noun {
+            %defined-functions{$name.noun} =  $name.noun;
+    } elsif $name ~~ Adjective {
+            %defined-functions{$name.adjective} =  $name.adjective;
     }
     my Variable @args = $f.args;
     my $args_str = @args.map({ '\\' ~ ppHakuExpr($_) }).join( ', ' );
@@ -108,7 +115,7 @@ sub ppFunctionName(\fn) {
             
             my $f_name = $toRomaji ?? kanjiToRomaji(fn.adjective).lc  !! fn.adjective ;
             # die $f_name;
-            given $f_name {
+            given $f_name {                
                 when /逆 | saka / {'reverse'}
                 default { $f_name }
             }
@@ -133,15 +140,9 @@ sub ppHon($hon) {
     if $hon_name eq 'honshin' { 
         $hon_name = 'honma';
     }
-    my $hon_str = 'sub '~$hon_name~'() {' ~  "\n" ~
+    my $hon_str = 'sub '~$hon_name~'() is export {' ~  "\n" ~
     $bindings_str ~  "\n" ~
     $body_str ~ "\n" ~ '}' ~"\n\n" ~$hon_name~"();\n";
-#     my $hon_str = qq:to/ENDHON/;
-# sub {$hon_name}() {
-#     $bindings_str
-#     $body_str
-# }
-# ENDHON
     return $hon_str;
 }
 
@@ -150,7 +151,7 @@ sub ppConsLhsBindExpr(\h) {
     my @elts = h.lhs.cons;
     my @pp_elts = @elts
             .grep( {$_ ~~ ConsVar})
-            .map({  ppVariable($_.var) });
+            .map({  ppVariable($_.var.var) }); # TODO: overkill, simplify to .var
     my $last_elt = '@' ~ @pp_elts.tail ~ '_a';
     my @init_elts = @pp_elts.head(@pp_elts.elems-1).map({ '\\' ~ $_ });     
 
@@ -283,7 +284,6 @@ sub ppHakuExpr(\h) {
         when Number { h.num }
         when String { "'" ~ join('',h.chars) ~ "'" }
         when Variable {
-
             ppVariable(h.var)
         }
         when Verb {  
@@ -314,7 +314,7 @@ sub ppHakuExpr(\h) {
             if $n eq '無' or $n eq 'nai' {
                 'Nil' 
             } else {
-                $n
+                %defined-functions{h.noun}:exists ?? '&' ~ $n !! $n;
             }
             }
         }
@@ -340,9 +340,9 @@ sub ppHakuExpr(\h) {
             # TODO make this skippable with a flag!
             ppHakuExpr(h.expr);
         }
-        when ConsNil {
-            '[]'
-        }
+        # when ConsNil {
+        #     '[]'
+        # }
         when EmptyList {
             '[]'
         }
