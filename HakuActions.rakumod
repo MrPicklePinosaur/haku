@@ -2,38 +2,38 @@ use v6;
 use HakuAST;
 use JapaneseNumberParser;
 
-# our $V=False;
+our $V=False;
 
 class HakuActions {
-    my %predefined-functions = <
+    my %predefined-functions is Map = <    
         見 show
         書  write
         読  read
+        入力 enter
+        一線 one
+        全線 all
         開  fopen 
         閉  close                 
-        # map/fold
         畳  foldl             
         写像  map 
-        # lists and maps 
         合  concat 
         頭 head 
         尻尾 tail            
         逆 reverse
         長さ length 
-            # maps
         鍵 　keys
         値 　values
         入  insert 
         消  delete 
         正引 lookup
-        正引き lookup 
-
+        正引き lookup         
     >;
+    my %special-vars is Map = <件 matter 物　thing 条　item 魄　soul 珀　haku >;
+    my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
+
     my %defined-functions;
 
     method variable($/) {
-        # say "VAR $/";
-        my %special-vars is Map = <件 matter 物　thing 条　item 魄　soul 珀　haku >;
         my $var-str = %special-vars{$/.Str} // $/.Str;
         
         make Variable[$var-str].new;        
@@ -48,34 +48,41 @@ class HakuActions {
             $verb-str = %defined-functions{$verb-kanji};
         }
         
-        my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
-
         if %vbinops{$verb-kanji}:exists {
             make BinOp[%vbinops{$verb-kanji}].new;
         } else {
             # This is a hack because currently Noun + desu is parsed as a Verb
             if  $verb-str.substr(*-2,2)  eq 'です' and 3 <= $verb-str.chars <= 4   { 
                 my $noun-str = $verb-str.substr(0,$verb-str.chars-2);
-                make Noun[$noun-str].new;
+                my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
+                say "NOUN: $noun-str-s" if $V;
+                make Noun[$noun-str-s].new;
             } else {
-                make Verb[$verb-str].new;    
-            }
-            
+                my $verb-str-s = %predefined-functions{$verb-str.substr(0,1)} // $verb-str;
+                say "VERB: $verb-str-s" if $V;
+                make Verb[$verb-str-s].new;    
+            }            
         }
     }
     
     method noun($/) {
         if $/.Str eq '無' {
-        make Null.new;
+            make Null.new;
         } elsif $/.Str eq '空' {
             make EmptyList.new;
         } else {
-        make Noun[$/.Str].new;
+            my $noun-str = $/.Str;
+            my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
+            say "NOUN: $noun-str-s" if $V;
+            make Noun[$noun-str-s].new;
         }
     }
     
     method adjective($/) {
-        make Adjective[$/.Str].new;
+        my $adj-str = $/.Str;
+        my $adj-str-s = %predefined-functions{$adj-str.substr(0,$adj-str.chars-1)} // $adj-str;
+        say "ADJECTIVE: $adj-str-s" if $V;
+        make Adjective[$adj-str].new;
     }    
 
     method identifier($/) {

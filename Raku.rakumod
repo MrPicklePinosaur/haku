@@ -71,54 +71,57 @@ sub ppFunctionName(\fn) {
           #  $f_name_ ~~ s/ [ 'くだ' | '下' ] 'さい' //;
         #}
             
-            my $f_name = $toRomaji ?? kanjiToRomaji($f_name_) !! $f_name_;
+            # my $f_name = 
+            $toRomaji ?? kanjiToRomaji($f_name_) !! $f_name_;
             
-            given $f_name {
-                # I/O
-                when / ^ [ 見 |mise] / { 'show' } 
-                when / ^ [ 書 | kaku] / { 'write' }
-                when / ^ [ 読 | yomu] / { 'read' }
-                when / ^ [ 開 | aku] / { 'fopen' } 
-                when / ^ [ 閉 | sima] / { 'close' }                 
-                # map/fold
-                when / ^ [ 畳 | tata] / { 'foldl' }             
-                when / ^ [ 写像 | shazou|SHAZOU] / { 'map' } 
-                # lists and maps 
-                when / ^ [ 合わせ|awaseru] / { 'concat' } 
-                when / ^ [ 入れ|ireru] / { 'insert' } 
-                when / ^ [ 消|kesu] / { 'delete' } 
-                when m:i/ ^ [ 正引 | tadasiiINkisuru] / { 'lookup' } 
-                default { $f_name }      
-            }            
+            # given $f_name {
+            #     # I/O
+            #     when / ^ [ 見 |mise] / { die 'show' } 
+            #     when / ^ [ 書 | kaku] / { 'write' }
+            #     when / ^ [ 読 | yomu] / { 'read' }
+            #     when / ^ [ 開 | aku] / { 'fopen' } 
+            #     when / ^ [ 閉 | sima] / { 'close' }                 
+            #     # map/fold
+            #     when / ^ [ 畳 | tata] / { 'foldl' }             
+            #     when / ^ [ 写像 | shazou|SHAZOU] / { 'map' } 
+            #     # lists and maps 
+            #     when / ^ [ 合わせ|awaseru] / { 'concat' } 
+            #     when / ^ [ 入れ|ireru] / { 'insert' } 
+            #     when / ^ [ 消|kesu] / { 'delete' } 
+            #     when m:i/ ^ [ 正引 | tadasiiINkisuru] / { 'lookup' } 
+            #     default { $f_name }      
+            # }            
         }
         when Noun {  
 
             say "ppFunctionName: NOUN: " ~ fn.noun ~ "=>" ~  kanjiToRomaji(fn.noun) if $V;
             
-            my $f_name = $toRomaji ?? kanjiToRomaji(fn.noun).lc  !! fn.noun ;
-            given $f_name {
-                 # lists
-                when / 頭 | atama/ { 'head' } 
-                when / 尻尾 | sirio / { 'tail' }            
-                 # lists and maps
-                when / 長さ | nagasa / { 'length' } 
-                 # maps
-                when / 鍵 | kagi / {'keys'}
-                when / 値 | atai / {'values'}
-                when m:i/ ^ [ 正引 | tadasiiINki] / { 'lookup' }
-                default { $f_name }      
-            }            
+            # my $f_name = 
+            $toRomaji ?? kanjiToRomaji(fn.noun).lc  !! fn.noun ;
+            # given $f_name {
+            #      # lists
+            #     when / 頭 | atama/ { 'head' } 
+            #     when / 尻尾 | sirio / { 'tail' }            
+            #      # lists and maps
+            #     when / 長さ | nagasa / { 'length' } 
+            #      # maps
+            #     when / 鍵 | kagi / {'keys'}
+            #     when / 値 | atai / {'values'}
+            #     when m:i/ ^ [ 正引 | tadasiiINki] / { 'lookup' }
+            #     default { $f_name }      
+            # }            
         }
         when Adjective {  
 
             say "ppFunctionName: ADJECTIVE: " ~ fn.adjective ~ "=>" ~  kanjiToRomaji(fn.adjective) if $V;
             
-            my $f_name = $toRomaji ?? kanjiToRomaji(fn.adjective).lc  !! fn.adjective ;
+            # my $f_name = 
+            $toRomaji ?? kanjiToRomaji(fn.adjective).lc  !! fn.adjective ;
             # die $f_name;
-            given $f_name {                
-                when /逆 | saka / {'reverse'}
-                default { $f_name }
-            }
+            # given $f_name {                
+            #     when /逆 | saka / {'reverse'}
+            #     default { $f_name }
+            # }
             
         }
         when Variable { 
@@ -290,25 +293,28 @@ sub ppHakuExpr(\h) {
 
             # TODO: kaku/yomu 
             # I think we generate 01 for read, 10 for write, assuming 11 for rw             
-            my $vn = $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb ;
+            # my $vn = 
+            $toRomaji ?? kanjiToRomaji(h.verb) !! h.verb ;
             
-            if $vn ~~ / 読 | yomu / {
-                'read';
-            }
-            elsif $vn ~~ / 書 | kaku / {
-             'write';
-            }
-            else {
-                $vn
-            }
+            # if $vn ~~ / 読 | yomu / {
+            #     'read';
+            # }
+            # elsif $vn ~~ / 書 | kaku / {
+            #  'write';
+            # }
+            # else {
+            #     $vn
+            # }
         }
         when FunctionAsArg {            
             '&' ~ ppHakuExpr(h.verb);
         }
         when Noun {  
             say "ppHakuExpr: NOUN: " ~ h.noun ~ ( $toRomaji  ?? "=>" ~  kanjiToRomaji(h.noun) !! '') if $V;
-            if h.noun eq '逆'　{
-                '&reverse'
+            
+            # if h.noun eq '逆'　{ '&reverse'
+            if h.noun ~~ m:i/^ <[a..z]>/　{
+                '&' ~ h.noun  
             } else {
             my $n = $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun ;
             if $n eq '無' or $n eq 'nai' {

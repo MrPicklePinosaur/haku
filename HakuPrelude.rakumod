@@ -6,23 +6,47 @@ sub show(\x) is export {
 }
 
 sub fopen(\fn, $mode?) is export {
-    
     if $mode {
-    if $mode == 1 {
-        open :r, fn;
+    if $mode.gist eq '&read' {
+        open :r, fn or note( "Could not open file "~ fn ~ " for reading.") and exit 1;
     } 
-    elsif $mode == 2 {
-        open :w, fn;
+    elsif $mode.gist eq '&write' {
+        open :w, fn or note( "Could not open file "~ fn ~ " for writing.")  and exit 1;
     }
     }
     else {
-        open :rw, fn;
+        open :rw, fn or note( "Could not open file "~ fn ~ "in r/w mode." ) and  exit 1;
     }
 }
-sub read($fh?) is export {
-    if $fh { 
-        $fh.get;
-    } 
+sub read(  $fh, Sub $mode? ) is export {
+    if $fh ~~ IO::Handle { 
+        if $mode {
+            if $mode.gist eq 'one' {
+                $fh.get;
+            }
+            elsif $mode.gist eq 'all' {
+                $fh.lines; 
+            }
+        } else {
+            $fh.get;
+        }
+    } else { # Assuming failure    
+        note 'Failed to open file for reading' && exit 1;
+    }
+    1;
+}
+
+sub enter(Sub $mode?) is export {
+        if $mode {
+            if $mode.gist eq 'one' {
+                $*IN.get
+            }
+            elsif $mode.gist eq 'all' {
+                $*IN.lines; 
+            }
+        } else {
+            $*IN.get;
+        }
     1;
 }
 

@@ -3613,6 +3613,7 @@ sub hiraganaToRomaji (Str $kstr --> Str) is export  {
 # When there are only kanji, I use the ON readings
 # What I should do is see if there are 2 kanji in a row
 sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
+    if $kstr ~~ m:i/ ^ <[a..z]>/ { return $kstr }
     say "KANJI: " ~ $kstr if $V;
     # There are 2 kanji and then some hiragana
     if $kstr.chars > 1 and not $kstr.substr(0,2) ~~/<[あ..ん]>/ and $kstr ~~ /<[あ..ん]>/  {
