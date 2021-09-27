@@ -333,6 +333,11 @@ sub ppHakuExpr(\h) {
         when BinOpExpr {
              '(' ~ ppHakuExpr(h.args[0]) ~ ' ' ~h.op.op~' '~ ppHakuExpr(h.args[1]) ~ ')'
         }
+        when ListOpExpr {
+            my $list-op = '[' ~h.op.op~']';
+            my $args_str = h.args.map({ ppHakuExpr($_) }).join( ', ' );
+            $list-op ~ ' ' ~ $args_str;            
+        }        
         when RangeExpr {
             '[' ~ ppHakuExpr(h.from) ~ ' .. '~ ppHakuExpr(h.to) ~ ']'
         }

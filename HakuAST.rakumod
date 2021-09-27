@@ -27,7 +27,7 @@ role FunctionAsArg[$verb] does HakuExpr {
     has Verb $.verb = $verb;
 }
 # I could enumerate them here instead
-role BinOp[ $op] {
+role Operator[ $op] {
     has Str $.op=$op;
 }
 
@@ -64,13 +64,18 @@ role BindExpr[ $lhs-expr, $rhs-expr, $comment]  does HakuExpr {
     has Str $.comment = $comment;
 } 
 
-# data HakuExpr = LetExpr | IfExpr | ListExpr | MapExpr | AtomicExpr | LambdaExpr | FunctionApplyExpr | LambdaApplyExpr | ParensExpr | BinOpExpr
+# data HakuExpr = LetExpr | IfExpr | ListExpr | MapExpr | AtomicExpr | LambdaExpr | FunctionApplyExpr | LambdaApplyExpr | ParensExpr | BinOpExpr | ListOpExpr
 # role HakuExpr {}
 
 # data BinOpExpr = mkBinOpExpr BinOp HakuExpr HakuExpr
 role BinOpExpr[ $op, $lhs-expr,  $rhs-expr] does HakuExpr {
-    has BinOp $.op=$op;
+    has Operator $.op=$op;
     has HakuExpr @.args = $lhs-expr, $rhs-expr;
+}
+
+role ListOpExpr[ $op, @args] does HakuExpr {
+    has Operator $.op=$op;
+    has HakuExpr @.args = @args;
 }
 
 # data LetExpr = mkLetExpr [BindExpr] ResultExpr

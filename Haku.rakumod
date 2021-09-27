@@ -9,10 +9,12 @@ role Characters {
     token reserved-kanji {
         '或' |
         '和' | '差' | '積' | '除' |
+        '足' | '引' | '掛' | '割' |
         '後' | '為' | '等' | '若' | '不' | '下' |
         '本' | '事' | '無' | 
         '皆' | '空' | '若' |
         '因' | '沿' 
+
     }
    
     token kanji {  
@@ -599,24 +601,11 @@ does Comments
         <kaku-parens-expression>
         ] <.close-kaku> }
 
-    token verb-operator-expression { <arg-expression> <.ni>　<arg-expression> <.wo> <operator-verb> }
-    token verb-operator-expression-infix { <arg-expression> <operator-verb> <arg-expression> }
-    token noun-operator-expression { <arg-expression> <.to-particle>　<arg-expression> <.no> <operator-noun> }
-
-    token operator-expression { 
-        <noun-operator-expression> | 
-        <verb-operator-expression> | 
-        <verb-operator-expression-infix> 
-    }
-    
-
-    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> '図' }
-    
-    
     # Keeping it simple: everything needs parens
     token arg-expression {
-        <parens-expression> |
+        <parens-expression> |        
         <kaku-parens-expression> |
+        <range-expression> | # Should be safe
         <atomic-expression>         
     }
     
@@ -624,8 +613,17 @@ does Comments
         <arg-expression> [<.list-operator> <arg-expression>]*
     }
 
-    
+    token verb-operator-expression { <arg-expression> <.ni>　<arg-expression> <.wo> <operator-verb> }
+    token verb-operator-expression-infix { <arg-expression> [<operator-verb> <arg-expression>]+ }
+    token noun-operator-expression { <arg-expression-list> <.no> <operator-noun> }
 
+    token operator-expression { 
+        <noun-operator-expression> | 
+        <verb-operator-expression> | 
+        <verb-operator-expression-infix> 
+    }
+    
+    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> '図' }
     
     token variable-list { <variable> [ <.list-operator> <variable> ]* }
 

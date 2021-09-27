@@ -28,7 +28,7 @@ class HakuActions {
         正引 lookup
         正引き lookup         
     >;
-    my %special-vars is Map = <件 matter 物　thing 条　item 魄　soul 珀　haku >;
+    my %special-vars is Map = <件 matter 物　thing 条　item 魄　soul 珀　haku 数 number>;
     my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
 
     my %defined-functions;
@@ -49,7 +49,7 @@ class HakuActions {
         }
         
         if %vbinops{$verb-kanji}:exists {
-            make BinOp[%vbinops{$verb-kanji}].new;
+            make Operator[%vbinops{$verb-kanji}].new;
         } else {
             # This is a hack because currently Noun + desu is parsed as a Verb
             if  $verb-str.substr(*-2,2)  eq 'です' and 3 <= $verb-str.chars <= 4   { 
@@ -193,21 +193,20 @@ class HakuActions {
     method operator-noun($/) {
         my $op-kanji= $/.Str;
         my %nbinops is Map = < 和 + 差 - 積 * 除 />;
-        make BinOp[%nbinops{$op-kanji}].new;
+        make Operator[%nbinops{$op-kanji}].new;
     }
 
     method operator-verb($/) {
         my $op-kanji= $<operator-verb-kanji>.Str;
 
         my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
-        make BinOp[%vbinops{$op-kanji}].new;
+        make Operator[%vbinops{$op-kanji}].new;
     }
 
     method noun-operator-expression ($/) {
         my $op=$<operator-noun>.made;
-        my $lhs-expr = $<arg-expression>[0].made;
-        my $rhs-expr = $<arg-expression>[1].made;        
-        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
+        my @args =  map({$_.made},$<arg-expression-list>).flat; 
+        make ListOpExpr[$op, @args].new
     }
     
     method verb-operator-expression ($/) {
@@ -218,11 +217,29 @@ class HakuActions {
     }
 
     method verb-operator-expression-infix ($/) { 
-        my $op=$<operator-verb>.made;
+         if $<operator-verb> ~~ Array {
+        my @ops=map({$_.made},$<operator-verb>).flat;
+        my @args =  map({$_.made},$<arg-expression-list>).flat; 
+        die (@ops,@args).raku;
+# If there is more than one op we have arg1 `op1` arg2 `op2` arg3 `op3` arg4 `op4` arg5
+# We have the following cases: 
+# 1. They are all the same => Nest from left
+# 2. They are * and / => Nest from left
+# 3. They are + and - => Nest from left
+# 4. They are * or / and + or - 
+# That is the hard one: we need to group them by precedence. 
+# But we have only 2 precedence levels. So:
+
+
+
+        
+         } else {
+             my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
                     # say 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
+         }
     }
 
     method operator-expression($/) {
@@ -254,7 +271,7 @@ class HakuActions {
                 $op = '!=';
             }            
         }
-        make BinOpExpr[BinOp[$op].new, $lhs-expr,$rhs-expr].new
+        make BinOpExpr[Operator[$op].new, $lhs-expr,$rhs-expr].new
     }
 
     method condition-expression($/) {
@@ -292,7 +309,8 @@ class HakuActions {
         
         if $<operator-noun> {
             my $op=$<operator-noun>.made;   
-            make BinOpExpr[$op, @args[0],@args[1]].new;
+            # make BinOpExpr[$op, @args[0],@args[1]].new;
+            make ListOpExpr[$op, @args].new            
         } 
         elsif $<noun> {
             my $function-name=$<noun>.made;   
@@ -360,7 +378,7 @@ class HakuActions {
             my @args =  map({$_.made},$<arg-expression-list>).flat;            
             if $<identifier> {                
                 my $function-name=$<identifier>.made;   
-                if $function-name ~~ BinOp {
+                if $function-name ~~ Operator {
                     make BinOpExpr[$function-name, @args[0],@args[1]].new
                 } else {
                     make FunctionApplyExpr[$function-name, @args, $partial].new;
