@@ -1,7 +1,7 @@
 use v6;
 # 1 +2 -3 *4 /5 +6 *7 *8 -9 -10 /11 *12 +13 +14 *15 -16
-my @args = 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17;
-my @ops = '+','-','*','/','+','*','*','-','-','/','*','+','+','*','-','-';
+my @args = 4,2,1;#1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17;
+my @ops = '*','+';#'+','-','*','/','+','*','*','-','-','/','*','+','+','*','-','-';
 
 my $first-arg = @args[0];
 my $first = True;
@@ -17,12 +17,12 @@ for  0 .. @args.elems-2 -> $arg-idx {
         say "l2 $op $arg  ";
         if $first {
             # push @l2-args,$first-arg;   
-            $l2-args =     [$first-arg,$arg,$op];
+            $l2-args = [$first-arg,$arg,$op];
         } else {
             if $l2-args {
-            $l2-args =     [$l2-args,$arg,$op];
+            $l2-args = [$l2-args,$arg,$op];
             } else {
-                $l2-args =     [$prev-l1-arg,$arg,$op];
+                $l2-args = [$prev-l1-arg,$arg,$op]; #BinOpExpr[$op, $prev-l1-arg,$arg].new;
             }
         }
         
@@ -34,14 +34,16 @@ for  0 .. @args.elems-2 -> $arg-idx {
             push @l1-args,$first-arg;
         }   
         if $l2-args {
-            push @l1-args, $l2-args;#[@l2-args];
+            push @l1-args, $l2-args;
         } #else {
-            if @ops[$arg-idx+1] and @ops[$arg-idx+1] eq ('+'|'-') {
+        if @ops[$arg-idx+1] and @ops[$arg-idx+1] eq ('+'|'-') 
+        or @ops.elems <= $arg-idx+1
+        {
             push @l1-args,$arg;
-            }
+        }
         #}
         ++$l1-idx;
-        # say 'l1: ',@l1-args;
+        say 'l1: ',@l1-args;
         # @l2-args=();
         $l2-args=Nil;
         $prev-l1-arg=$arg;
@@ -50,13 +52,13 @@ for  0 .. @args.elems-2 -> $arg-idx {
 }
 
 my @l1-ops = @ops.grep({$_ eq ('+'|'-')});
-say @l1-args.raku;
-say @l1-args.elems;
-say @l1-ops.raku;
+# say @l1-args.raku;
+# say @l1-args.elems;
+# say @l1-ops.raku;
 my $l1-expr = @l1-args[0];
-for  1 .. @l1-args.elems-2 -> $arg-idx {
+for  1 .. @l1-args.elems-1 -> $arg-idx {
     my $op = @l1-ops[$arg-idx-1];
     my $arg = @l1-args[$arg-idx];
-$l1-expr = [$l1-expr,$arg, $op]
+    $l1-expr = [$l1-expr,$arg, $op]; #BinOpExpr[$op, $l1-expr,$arg].new
 }
 say $l1-expr.raku;

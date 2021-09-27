@@ -58,7 +58,9 @@ class HakuActions {
                 say "NOUN: $noun-str-s" if $V;
                 make Noun[$noun-str-s].new;
             } else {
-                my $verb-str-s = %predefined-functions{$verb-str.substr(0,1)} // $verb-str;
+                
+                my $verb-str-s = %predefined-functions{$verb-str.substr(0,1)} // 
+                %predefined-functions{$verb-str.substr(0,2)} // $verb-str;
                 say "VERB: $verb-str-s" if $V;
                 make Verb[$verb-str-s].new;    
             }            
@@ -219,8 +221,11 @@ class HakuActions {
     method verb-operator-expression-infix ($/) { 
          if $<operator-verb> ~~ Array {
         my @ops=map({$_.made},$<operator-verb>).flat;
-        my @args =  map({$_.made},$<arg-expression-list>).flat; 
-        die (@ops,@args).raku;
+        my @args =  map({$_.made},$<arg-expression>).flat; 
+        # die (@args,@ops).raku;
+        my $nested-expr = binop-expr-two-prec-levs(@args,@ops);
+        # die $nested-expr.raku;
+        make $nested-expr;
 # If there is more than one op we have arg1 `op1` arg2 `op2` arg3 `op3` arg4 `op4` arg5
 # We have the following cases: 
 # 1. They are all the same => Nest from left
@@ -623,5 +628,59 @@ class HakuActions {
         }
     }
 
-}
+    sub binop-expr-two-prec-levs(@args,@ops) {
 
+        my $first-arg = @args[0];
+        my $first = True;
+        my $l2-args=Nil;#=();
+        my @l1-args=();
+        my $prev-l1-arg=Nil;
+        my $l1-idx=0;
+        for  0 .. @args.elems-2 -> $arg-idx {
+            my $op = @ops[$arg-idx];
+            my $arg = @args[$arg-idx+1];
+            
+            if $op.op eq ('/'|'*') {
+                if $first {
+                    $l2-args = BinOpExpr[$op, $first-arg,$arg].new;
+                } else {
+                    if $l2-args {
+                    $l2-args = BinOpExpr[$op,$l2-args,$arg].new;
+                    } else {
+                        $l2-args = BinOpExpr[$op, $prev-l1-arg,$arg].new;
+                    }
+                }
+            } else { # must be + or -
+                if $first {
+                    push @l1-args,$first-arg;
+                }   
+                if $l2-args {
+                    push @l1-args, $l2-args; 
+                } 
+                if @ops[$arg-idx+1] and @ops[$arg-idx+1] eq ('+'|'-')                 
+                {
+                    push @l1-args,$arg;
+                }                
+                elsif $arg-idx == @args.elems-2  {
+                    # die $arg.raku;
+                    push @l1-args,$arg;
+                }
+                ++$l1-idx;
+                $l2-args=Nil;
+                $prev-l1-arg=$arg;
+            }
+            $first=False;    
+        }
+
+        my @l1-ops = @ops.grep({$_.op eq ('+'|'-')});
+        my $l1-expr = @l1-args[0];
+        # die @l1-args.raku;
+        for  1 .. @l1-args.elems-1 -> $arg-idx {
+            my $op = @l1-ops[$arg-idx-1];
+            my $arg = @l1-args[$arg-idx];
+            $l1-expr = BinOpExpr[$op, $l1-expr,$arg].new
+        }
+        return $l1-expr;
+    }
+
+}
