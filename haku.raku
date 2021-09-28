@@ -32,6 +32,7 @@ unit sub MAIN(
 
 if ($verbose) { 
     $Raku::V=True;
+    $HakuActions::V=True;
 }
 
 if (not $src_file.defined) {
@@ -74,9 +75,11 @@ if $parse-only {
         say $hon_raku_code;
     } else {
         # Write the parsed program to a module 
-        my $fh = 'Hon.rakumod'.IO.open: :w;
-        $fh.put: $hon_raku_code;
-        $fh.close;
+        # my $fh = 'Hon.rakumod'.IO.open: :w;
+        # $fh.put: $hon_raku_code;
+        # $fh.close;
+        # Liz suggests
+        'Hon.rakumod'.IO.spurt($hon_raku_code);
         
         # Require the module. This will execute the program
         require Hon;

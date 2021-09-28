@@ -509,7 +509,7 @@ role Comments does Punctuation does Blanks {
     token comment-chars { 
          <hiragana> | <katakana> | <kanji> | <word> | <blank> | <[「」『』]> | '.' | ':' | '/' | '-'  | '#'
     }
-    token comment { <.comment-start> <co, TODOmment-chars>+ <.full-stop> <.ws>? }
+    token comment { <.comment-start> <comment-chars>+ <.full-stop> <.ws>? }
 }
 
 role Numbers does  Characters {

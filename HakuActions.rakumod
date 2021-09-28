@@ -2,9 +2,10 @@ use v6;
 use HakuAST;
 use JapaneseNumberParser;
 
-our $V=False;
+
 
 class HakuActions {
+    our $V=False;
     my %predefined-functions is Map = <    
         見 show
         書  write
@@ -603,8 +604,6 @@ class HakuActions {
         make Function[ $fname, @args,  $body,@comments].new;        
     }
     method haku-program($/) {
-        # say "PROGRAM $/";
-        # TODO: handle functions
         my @functions=();
         my @comments=();
         if $<function> {
@@ -617,7 +616,7 @@ class HakuActions {
             # say 'HAKU PROGRAM';
             make HakuProgram[@functions,$<hon-definition>.made,@comments].new;
         } else {
-            die 'A Haku program must have a 本 main routine';
+            note( 'A Haku program must have a 本 main routine') and exit 1;
             # make 'Haku error: '~$/
         }
     }
@@ -626,7 +625,7 @@ class HakuActions {
         if ($<haku-program>) {
             make $<haku-program>.made;
         } else {
-            die "Not a Haku program: " ~ $/.Str;
+            note(  "Not a Haku program: " ~ $/.Str) and exit 1;
         }
     }
 
