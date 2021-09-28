@@ -3,7 +3,6 @@
 - Better error messages
 - Adjectives as distinct parts of nouns, probably only -i and -na, plus maybe -kute, -de
 - Treatment of の which should bind tighter than と, specifically for Noun-based function application
-- File I/O
 - System call
 - Bring the Scheme emitter in sync with the Raku emitter
 
@@ -19,3 +18,4 @@
 - Adjectival verbs as function application
 - Variables should probably be renamed because we'd like kanji-based variables as well as katakana => no need, just support nouns on the LHS
 - cons on the RHS => was already supported
+- File I/O

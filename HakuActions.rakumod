@@ -26,10 +26,12 @@ class HakuActions {
         入  insert 
         消  delete 
         正引 lookup
-        正引き lookup         
+        正引き lookup  
+        探索 lookup       
     >;
-    my %special-vars is Map = <件 matter 物　thing 条　item 魄　soul 珀　haku 数 number>;
-    my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
+    my %special-vars is Map = <件 matter 物 thing 条 item 魄 soul 珀 haku 数 number>;
+    my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>; # TODO could add 残る remainder
+    my %nbinops is Map = < 和 + 差 - 積 * 除 />; # TODO could add 余 remainder
 
     my %defined-functions;
 
@@ -194,14 +196,14 @@ class HakuActions {
 
     method operator-noun($/) {
         my $op-kanji= $/.Str;
-        my %nbinops is Map = < 和 + 差 - 積 * 除 />;
+        
         make Operator[%nbinops{$op-kanji}].new;
     }
 
     method operator-verb($/) {
         my $op-kanji= $<operator-verb-kanji>.Str;
 
-        my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
+        # my %vbinops is Map = < 足 + 引 - 掛 * 割 /　>;
         make Operator[%vbinops{$op-kanji}].new;
     }
 
