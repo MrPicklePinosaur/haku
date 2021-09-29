@@ -21,6 +21,7 @@ class HakuActions {
         頭 head 
         尻尾 tail            
         逆 reverse
+        逆な reverse
         長さ length 
         鍵 　keys
         値 　values
@@ -87,7 +88,7 @@ class HakuActions {
         my $adj-str = $/.Str;
         my $adj-str-s = %predefined-functions{$adj-str.substr(0,$adj-str.chars-1)} // $adj-str;
         say "ADJECTIVE: $adj-str-s" if $V;
-        make Adjective[$adj-str].new;
+        make Adjective[$adj-str-s].new;
     }    
 
     method identifier($/) {
@@ -222,7 +223,10 @@ class HakuActions {
     }
 
     method verb-operator-expression-infix ($/) { 
+         say "verb-operator-expression-infix:"~ $/.Str if $V;
          if $<operator-verb> ~~ Array {
+             if $<operator-verb>.elems>1 {
+
         my @ops=map({$_.made},$<operator-verb>).flat;
         my @args =  map({$_.made},$<arg-expression>).flat; 
         # die (@args,@ops).raku;
@@ -237,20 +241,26 @@ class HakuActions {
 # 4. They are * or / and + or - 
 # That is the hard one: we need to group them by precedence. 
 # But we have only 2 precedence levels. So:
-
-
+} else {
+                 my $op=$<operator-verb>[0].made;
+        my $lhs-expr = $<arg-expression>[0].made;
+        my $rhs-expr = $<arg-expression>[1].made;
+                    # die 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
+        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
+}
 
         
          } else {
              my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
-                    # say 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
+                    # die 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
          }
     }
 
     method operator-expression($/) {
+        say "operator-expression:"~ $/.Str if $V;
         make $/.values[0].made
     }
 
@@ -540,7 +550,9 @@ class HakuActions {
         make @args;
     } 
     method lambda-expression($/) {
-#say "VARLIST: "~$<variable-list>.made.raku;
+        # say $/.hash.raku;
+say "VARLIST: "~$<variable-list>.made.raku if $V;
+say "EXPRESSION: "~$<expression>.made.raku if $V;
             my @args = $<variable-list>.made;
             my $expr = $<expression>.made;
             make LambdaExpr[@args,$expr].new;
