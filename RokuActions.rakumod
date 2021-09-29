@@ -1,10 +1,10 @@
 use v6;
 use HakuAST;
-use JapaneseNumberParser;
+# use JapaneseNumberParser;
 
 
 
-class HakuActions {
+class RokuActions {
     our $V=False;
     my %predefined-functions is Map = <    
         見 show
@@ -21,7 +21,6 @@ class HakuActions {
         頭 head 
         尻尾 tail            
         逆 reverse
-        逆な reverse
         長さ length 
         鍵 　keys
         値 　values
@@ -70,7 +69,7 @@ class HakuActions {
             }            
         }
     }
-
+    
     method noun($/) {
         if $/.Str eq '無' {
             make Null.new;
@@ -83,19 +82,12 @@ class HakuActions {
             make Noun[$noun-str-s].new;
         }
     }
-
-    method keyword-noun($/) {
-            my $noun-str = $/.Str;
-            my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
-            say "KEYWORD-NOUN: $noun-str-s" if $V;
-            make Noun[$noun-str-s].new;
-    }    
     
     method adjective($/) {
         my $adj-str = $/.Str;
         my $adj-str-s = %predefined-functions{$adj-str.substr(0,$adj-str.chars-1)} // $adj-str;
         say "ADJECTIVE: $adj-str-s" if $V;
-        make Adjective[$adj-str-s].new;
+        make Adjective[$adj-str].new;
     }    
 
     method identifier($/) {
@@ -114,7 +106,7 @@ class HakuActions {
 
     }
     method number($/) {
-            my Num $number = parseJapaneseNumbers($/.Str);
+            my Num $number = $/.Num;
             make Number[$number].new;        
     }
 
@@ -230,10 +222,7 @@ class HakuActions {
     }
 
     method verb-operator-expression-infix ($/) { 
-         say "verb-operator-expression-infix:"~ $/.Str if $V;
          if $<operator-verb> ~~ Array {
-             if $<operator-verb>.elems>1 {
-
         my @ops=map({$_.made},$<operator-verb>).flat;
         my @args =  map({$_.made},$<arg-expression>).flat; 
         # die (@args,@ops).raku;
@@ -248,26 +237,20 @@ class HakuActions {
 # 4. They are * or / and + or - 
 # That is the hard one: we need to group them by precedence. 
 # But we have only 2 precedence levels. So:
-} else {
-                 my $op=$<operator-verb>[0].made;
-        my $lhs-expr = $<arg-expression>[0].made;
-        my $rhs-expr = $<arg-expression>[1].made;
-                    # die 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
-        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
-}
+
+
 
         
          } else {
              my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
-                    # die 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
+                    # say 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
          }
     }
 
     method operator-expression($/) {
-        say "operator-expression:"~ $/.Str if $V;
         make $/.values[0].made
     }
 
@@ -328,40 +311,25 @@ class HakuActions {
         make @args;
     }
 
-    method nominal($/) {
-        make $/.values[0].made
-    }
-
     method non-verb-apply-expression($/) {    
         my @args =  map({$_.made},$<arg-expression-list>).flat;
         my $partial = $<dake> ?? True !! False;
         
-        if $<nominal>.made ~~ Operator {
-            my $op=$<nominal>.made;   
+        if $<operator-noun> {
+            my $op=$<operator-noun>.made;   
+            # make BinOpExpr[$op, @args[0],@args[1]].new;
             make ListOpExpr[$op, @args].new            
-        } else {
-            my $function-name=$<nominal>.made;   
+        } 
+        elsif $<noun> {
+            my $function-name=$<noun>.made;   
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         } 
+        elsif $<variable> {
+            my $function-name=$<variable>.made;   
+            make FunctionApplyExpr[$function-name, @args, $partial].new;
+        }        
     }
     
-    method verbal($/) {
-        make $/.values[0].made;
-    }
-
-    method verb-apply-expression($/) {    
-        my @args =  map({$_.made},$<arg-expression-list>).flat;
-        my $partial = $<dake> ?? True !! False;
-        
-        if $<verbal>.made ~~ LambdaExpr {
-            my $lambda-expr=$<verbal>.made;
-            make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
-        } else {
-            my $function-name=$<verbal>.made;   
-            make FunctionApplyExpr[$function-name, @args, $partial].new;
-        } 
-    }
-
     method adjectival($/) {
              make $/.values[0].made;  
     }
@@ -401,36 +369,19 @@ class HakuActions {
 
     method apply-expression($/) {
         my $partial = $<dake> ?? True !! False;
-        if $<verbal> { # means it is non-verb-apply-expression wo verbal
-            my @args= [ $<non-verb-apply-expression>.made ];
-            if $<verbal>.made ~~ LambdaExpr {
-                my $lambda-expr=$<verbal>.made;
-                make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
-            } else {
-                my $function-name=$<verbal>.made;   
-                make FunctionApplyExpr[$function-name, @args, $partial].new;
-            }
-        } elsif $<adjectival-apply-expression> {
+        if $<adjectival-apply-expression> {
             make $<adjectival-apply-expression>.made;
-        } elsif $<non-verb-apply-expression> {
-            make $<non-verb-apply-expression>.made;
-            # my @args =  map({$_.made},$<arg-expression-list>).flat;
-            # my $function-name=$<nominal>.made;   
-            # make FunctionApplyExpr[$function-name, @args, $partial].new;
-        } elsif $<verb-apply-expression> {              
-            make $<verb-apply-expression>.made;
-        #     my @args =  map({$_.made},$<arg-expression-list>).flat;
-        # #  <verb> | [ <keyword> | <operator-noun> | <noun> | <variable> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]
-        #     if $<verb> {
-        #         my $function-name=$<verb>.made;   
-        #         make FunctionApplyExpr[$function-name, @args, $partial].new;
-        #     } 
-        #     elsif $<lambda-expression> {
-        #         my $lambda-expr=$<lambda-expression>.made;
-        #         make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
-        #     }   
-
-        } else { die "SHOULD NOT HAPPEN: unknown apply-expr";
+        } elsif $<non-verb-apply-expression> {        
+            my @args= [ $<non-verb-apply-expression>.made ];
+            if $<verb> {
+                my $function-name=$<verb>.made;   
+                make FunctionApplyExpr[$function-name, @args, $partial].new;
+            } 
+            elsif $<lambda-expression> {
+                my $lambda-expr=$<lambda-expression>.made;
+                make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
+            }   
+        } else {
             
             my @args =  map({$_.made},$<arg-expression-list>).flat;            
             if $<identifier> {                
@@ -455,9 +406,9 @@ class HakuActions {
     # This is not practical. I need comments to be part of expressions. 
     method comment-then-expression($/) { 
          my $comment_str = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
-         say "COMMENT:$comment_str" if $V;
+        #  say $comment_str;
         if $<expression> {
-            say $<expression>.Str;
+            
             # if $<expression> ~~ Array {            
             #     my @rhs-exprs = map({$_.made},$<expression>);
             #     if @rhs-exprs.elems == 1 {
@@ -589,9 +540,7 @@ class HakuActions {
         make @args;
     } 
     method lambda-expression($/) {
-        # say $/.hash.raku;
-say "VARLIST: "~$<variable-list>.made.raku if $V;
-say "EXPRESSION: "~$<expression>.made.raku if $V;
+#say "VARLIST: "~$<variable-list>.made.raku;
             my @args = $<variable-list>.made;
             my $expr = $<expression>.made;
             make LambdaExpr[@args,$expr].new;
