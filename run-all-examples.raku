@@ -31,7 +31,7 @@ sum-of-list
 # To iterate over the contents of the current directory: 
 for @src_files  -> $src_file {
          
-say $src_file;
+say '* ' ~$src_file;
 run 'haku', "examples/$src_file.haku";
 # my $program_str = hakuReader("examples/$src_file.haku");
 

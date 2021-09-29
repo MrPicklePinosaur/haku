@@ -457,7 +457,7 @@ class HakuActions {
          my $comment_str = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
          say "COMMENT:$comment_str" if $V;
         if $<expression> {
-            say $<expression>.Str;
+            say "EXPRESSION: "~$<expression>.Str if $V;
             # if $<expression> ~~ Array {            
             #     my @rhs-exprs = map({$_.made},$<expression>);
             #     if @rhs-exprs.elems == 1 {
