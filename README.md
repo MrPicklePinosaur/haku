@@ -16,7 +16,9 @@ To run Haku you'll need to [install the Raku programming language](https://rakud
 
 I am assuming you'll run Haku on command line, in the directory cloned from Git or where you unzipped the downloaded archive. 
 
-In that directory is a script `haku`. Example programs are in the subdirectory `examples` (horizontal writing) and `examples/tategaki` (vertical writing). 
+In that directory is a script `haku`. If you want to run `haku` outside this directory, you'll need to add the path to the environment variable `RAKULIB`.
+
+Example programs are in the subdirectory `examples` (horizontal writing) and `examples/tategaki` (vertical writing). 
 
     Usage: haku <Haku program, written horizontally or vertically, utf-8 text file>
         [--tategaki, -t] : do not run the program but print it vertically.
@@ -317,7 +319,7 @@ In Haskell this becomes:
 
 * As Haku does not rely on whitespace, spaces and newlines are not delimiters. 
 * Bindings in a _let_ and expressions and bindings in the main program must be delimited by 、or 。.
-* At some places, newlines are allowed to ease readability.
+* At some places (e.g. after delimiters), newlines are allowed to ease readability.
 
 ### Comments
 
@@ -347,14 +349,14 @@ A newline is allowed after 本とは and after all bindings and expressions.
 ### Identifiers 
     
 - variables: the first character must be _katakana_; further characters katakana or number kanji. The last character can be 達, to indicate a plural. 
-- function names: must start with a kanji. If they are nouns, further characters are also kanji; if they are verbs, further characters are hiragana verb endings.
+- function names: must start with a kanji. If they are nouns, further characters are also kanji; if they are verbs, further characters are hiragana verb endings. If they are adjectives, the final character must be い or な.
     
 ### Constants
 
-- integer: written using number kanji. For zero, either 零, ゼロ or ◯. Negative number prefix is マイナス, optional positive number prefix is プラス
+- integer: written using number kanji. For zero, either 零, ゼロ or ◯. Negative number prefix is マイナス, optional positive number prefix is プラス. All kanji for large numbers (億, 兆, 京, etc) are supported, please read [my article](https://quickandtastycooking.org.uk/articles/japanese-large-numbers/) if you are not familiar with them. 
 - rational: two integers separated by 点
-- string: 「」or 『』 
-- list: consist of identifiers or constants separated by と or 、
+- string: quotes are「」or 『』 
+- list: consist of identifiers or constants separated by と or 、. To nest lists, wrap them in ［...］.
 
 ### Named function definitions
 
@@ -363,6 +365,7 @@ In Haku, named function definitions are statements. The structure is
     <function-name> とは <argument-list> で <expression> の事です。
 
 The same closing variants as for 本 are allowed; a newline is allowed after とは, で and the expression.
+The function name should be either a verb, noun or adjective (-i or -na).
 
 ### Lambdas
 
@@ -376,13 +379,25 @@ There are a few forms of function application:
 
         <arg-list> を [ <arg-list> で ] <function>
 
+        味噌汁をスプーンで食べる
+
 * Adjectival verb form (single argument only):
 
         <function> <arg>
 
+        青い信号
+
 * Noun form:
 
         <arg-list> の [ 、 <arg-list> での ] <function>
+
+        六と七の積
+
+* Adjective form:
+
+        <funtion> <argument>
+
+        送ったメッセージ
           
 The argument list can optionally be followed by の皆. This is used in particular when applying map or fold. Also, instead of で you can use のために or の為に.
 
@@ -396,11 +411,16 @@ Haku has built-in `map` and `foldl`:
                 
     foldl: 畳み込む
 
-    <list>と<accumulator>を<function>ので畳み込む
+    <list>と<accumulator>を<nominal-function>で畳み込む
 
     map: 写像する
     
-    <list>の皆を<function>ので写像する
+    <list>の皆を<nominal-function>で写像する
+
+A 'nominal function' is either a noun, variable, lambda expression, a verb nominalised with の or こと, or a -na adjective nominalised by dropping -na.
+
+    零〜四を〈或カズでカズ掛ける弐足す壱〉で写像する
+    仮二を逆で写像する
 
 ### Function composition
 
@@ -433,6 +453,7 @@ The second is more like a conventional let (expression at the end):
     では<expression>
 
 A newline is allowed after every bind expression.
+The `●` is not full-width so for vertical writing `．` and `一` are also supported.
 
 ### Conditional expressions
 
@@ -482,9 +503,25 @@ Noun form:
     *: 積
     /:　除
 
-#### Logical
+#### Logical (TODO)
 
-TODO
+Boolean values:
+
+    True: 陽
+    False: 陰 
+
+Operations:
+
+    A and B: A も B も
+    A or B: A また[は] B 
+    not A: 不A 
+
+I will likely also support the formal names:
+
+    XOR: 排他的論理和 
+    OR: 論理和 
+    AND: 論理積
+    NOT: 論理否定
 
 #### Comparison
 
@@ -512,10 +549,7 @@ TODO:
         cons:・(中黒)　
         concatenation: <list1>と<list2>を合わせる
         range operator: <integer>〜<integer> 
-
-TODO: 
-
-    reverse: を反転する or の逆引き　    
+        reverse: 逆な<list>　    
     
 
 ### Maps
@@ -542,14 +576,15 @@ TODO:
         keys:    <map>の鍵
         values:  <map>の値
 
+### Interpolation in strings (TODO) 
 
-### System call
+    《バリュー》 returns a string.
 
-TODO:
+### System call (TODO)
 
-    機関で「ls」する
+    機関で「<system call string>」する
 
-For interpolation: 《バリュー》; returns a string.
+Any string will be passed on to the shell for execution.
 
 ### I/O
 
@@ -571,15 +606,12 @@ TODO:
 
         write: ＜string>を<filehandle>で書く
         read: 
-            a single line: 一線を<filehandle>で読む、
-            all lines: 全線を<filehandle>で読む、
+            a single line: <filehandle>から一線を読む、
+            all lines: <filehandle>から全線を読む、
 
         close: <filehandle>を閉める
 
         eof: <filehandle>の終了 (TODO)
-
-
-
 
 ### Types
 
@@ -625,7 +657,7 @@ Haku lets you conjugate the verbs for a function call. For example:
         メッセージを送なさい。
         “Do send the message”
 
-* Adverbial 
+* Adjectival 
 
         送ったメッセージ。
         “The sent message”
