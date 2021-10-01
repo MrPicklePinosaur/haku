@@ -4,7 +4,10 @@ use v6;
 # use Grammar::Tracer;
 
 our $reportErrors = True;
+# use HakuRoles;
+# use HakuGrammars;
 
+# =begin pod
 role Characters {
     token reserved-kanji {
         '或' |
@@ -481,7 +484,9 @@ does Nouns
     # empty map 空 
 
     # map creation (from a list) で図を作る 
-    # I could use 連想配列 rensouhairetsu but that is really long.
+    # I could use 連想配列 rensouhairetsu but that is really long, currently unused
+    token rensouhairetsu { '連想配列' }
+    token zu { '図' }
     token zuwotsukuru { '図' 'を' '作' <ru-endings> }
     token keyword-noun {
         <seibiki> | <tansaku>
@@ -626,7 +631,7 @@ does Comments
         <verb-operator-expression-infix> 
     }
     
-    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> '図' }
+    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> <.zu> }
     
     token variable-list { <variable> [ <.list-operator> <variable> ]* }
 
@@ -810,6 +815,7 @@ does Punctuation
     }
 } # End of Functions
 
+# =end pod
 
 grammar Haku is Functions 
 does Comments 
