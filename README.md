@@ -18,7 +18,7 @@ I am assuming you'll run Haku on command line, in the directory cloned from Git 
 
 In that directory is a script `haku`. If you want to run `haku` outside this directory, you'll need to add the path to the environment variable `RAKULIB`.
 
-Example programs are in the subdirectory `examples` (horizontal writing) and `examples/tategaki` (vertical writing). 
+Example programs are [in the subdirectory `examples`](https://codeberg.org/wimvanderbauwhede/haku/src/branch/main/examples) (horizontal writing) and `examples/tategaki` (vertical writing). 
 
     Usage: haku <Haku program, written horizontally or vertically, utf-8 text file>
         [--tategaki, -t] : do not run the program but print it vertically.
@@ -357,7 +357,7 @@ Translation:
 
     Comment: Example recursive function "Sum"
 
-    Sum is this:
+    Sum is:
     Given NUMBERs and SUM,
     in case the length of NUMBERs is zero,
     it is SUM but
@@ -366,13 +366,19 @@ Translation:
     NUMBER:REMAININGNUMBERS is NUMBERs;
     NEWSUM is to Add NUMBER to SUM
 
+    Comment: Main program.
+
+    Main is:
+    ANSWER is Sum of [34 and 8] and 0;
+    to show the ANSWER    
+
 Starting again with the main program:
 
     "KOTAE ha [sanjuuyon to hachi] to zero wo Kuwaeru"
 
     kotae = kuwaeru [34,8] 0
 
-Then the function 加える
+Then the function 加える (_kuwaeru_, "so sum")
 
     Kuwaeru to ha
     KAZUtachi to SAMU de
