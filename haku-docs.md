@@ -357,7 +357,7 @@ Translation:
 
     Comment: Example recursive function "Sum"
 
-    Sum is this:
+    Sum is:
     Given NUMBERs and SUM,
     in case the length of NUMBERs is zero,
     it is SUM but
@@ -366,13 +366,19 @@ Translation:
     NUMBER:REMAININGNUMBERS is NUMBERs;
     NEWSUM is to Add NUMBER to SUM
 
+    Comment: Main program.
+
+    Main is:
+    ANSWER is Sum of [34 and 8] and 0;
+    to show the ANSWER    
+
 Starting again with the main program:
 
     "KOTAE ha [sanjuuyon to hachi] to zero wo Kuwaeru"
 
     kotae = kuwaeru [34,8] 0
 
-Then the function 加える
+Then the function 加える (_kuwaeru_, "so sum")
 
     Kuwaeru to ha
     KAZUtachi to SAMU de
