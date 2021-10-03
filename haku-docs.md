@@ -44,6 +44,8 @@ The first time you run `haku` will take quite a long time (several minutes) beca
 
 ### Example 1: Iroha
 
+_Iroha_ is the name of [a famous poem](https://en.wikipedia.org/wiki/Iroha) in which every _kana_ occurs only once. The _i_,_ro_,_ha_ sequence is used for ordered lists, so it is similar to a,b,c (or x,y,z in this case).
+
 Consider the following Haku program:
 
     註 例のはくのプログラム。
@@ -58,7 +60,7 @@ Consider the following Haku program:
     【ケッカとシンカズの和】を見せる
     のことです。
 
-In Romaji this reads
+In Romaji (Japanese written using the Latin script) this reads:
 
     Chuu Rei no Haku no PUROGURAMU.
 
@@ -68,15 +70,17 @@ In Romaji this reads
     I:RO:HA:Kuu ha KAZUtachi desu,
     SHINKAZU ha I to RO no Wa desu,
     SHINKAZU wo Miseru,
-    KEKKA ha <741 wo RAMUDA suru> Tasu919,
+    KEKKA ha (741 wo RAMUDA suru) Tasu919,
     (KEKKA to SHINKAZU no Wa) wo Miseru
     no Koto desu.
+
+In this documentation I use capitals to indicate words starting with _kanji_ (nouns, verbs and adjectives), and all caps for words originally written in _katakana_. 
 
 And the translation is
 
     Comment: an example Haku program
 
-    Main is the following (things):
+    Main is (the following things):
     LAMBDA is, with a given X, X * X;
     NUMBERs is 88 and 7100 and 55;
     I:RO:HA:Empty is NUMBERs;
@@ -160,7 +164,6 @@ Next we have a bit of syntactic sugar borrowed from Haskell (cons):
 
 空 _kuu_ means "empty". This means that the list is deconstructed into elements I, RO, HA and and empty list. Scheme does not have this kind of pattern matching so each assignment is generated separately. 
 
-("Iroha" is the name of a poem use to memorise _kana_ characters, as every _kana_ occurs only ones. The _i_,_ro_,_ha_ sequence is used for ordered lists, so it is similar to a,b,c or x,y,x.) 
 
 The next assignment,
 
@@ -248,17 +251,17 @@ In Romaji:
 
 Translation:
 
-    Longness is the following (thing):
+    Longness is (the following thing):
     With NUMBERs and Count,
     If NUMBERS is equal to Empty, Count 
     but if this is not so
     Longness of (Tail of Numbers) and (Count + 1)
 
-    Length is the following (thing):
+    Length is (the following thing):
     With NUMBERs, 
     Longness of NUMBERS and 0
 
-    Main is the following (things):
+    Main is (the following things):
     NUMBERS is 1 .. 42;
     LENGTH is Length of NUMBERS;
     Show LENGTH
