@@ -55,12 +55,14 @@ if $parse-only {
     $reportErrors = False;
     if $subparse {
         if $rule {
+            # die "$program_str,:rule($rule)";
             say Roku.subparse($program_str,:rule($rule));
         } else {
             say Roku.subparse($program_str);
         }
     } else {
         if $rule {
+            # die "$program_str,:rule($rule)";
         say Roku.parse($program_str,:rule($rule));
         } else {
         say Roku.parse($program_str);

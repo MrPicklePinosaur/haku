@@ -55,7 +55,7 @@ class RokuActions {
             make Operator[%vbinops{$verb-kanji}].new;
         } else {
             # This is a hack because currently Noun + desu is parsed as a Verb
-            if  $verb-str.substr(*-2,2)  eq 'です' and 3 <= $verb-str.chars <= 4   { 
+            if  $verb-str.chars >4 and $verb-str.substr(*-4,4)  eq 'desu' and 3 <= $verb-str.chars <= 4   { 
                 my $noun-str = $verb-str.substr(0,$verb-str.chars-2);
                 my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
                 say "NOUN: $noun-str-s" if $V;
@@ -69,11 +69,17 @@ class RokuActions {
             }            
         }
     }
+    method keyword-noun($/) {
+            my $noun-str = $/.Str;
+            my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
+            say "KEYWORD-NOUN: $noun-str-s" if $V;
+            make Noun[$noun-str-s].new;
+    }    
     
     method noun($/) {
-        if $/.Str eq '無' {
+        if $/.Str eq 'Mu' {
             make Null.new;
-        } elsif $/.Str eq '空' {
+        } elsif $/.Str eq 'Kuu' {
             make EmptyList.new;
         } else {
             my $noun-str = $/.Str;
@@ -311,23 +317,38 @@ class RokuActions {
         make @args;
     }
 
+    method nominal($/) {
+        make $/.values[0].made
+    }
+
     method non-verb-apply-expression($/) {    
         my @args =  map({$_.made},$<arg-expression-list>).flat;
         my $partial = $<dake> ?? True !! False;
         
-        if $<operator-noun> {
-            my $op=$<operator-noun>.made;   
-            # make BinOpExpr[$op, @args[0],@args[1]].new;
+        if $<nominal>.made ~~ Operator {
+            my $op=$<nominal>.made;   
             make ListOpExpr[$op, @args].new            
-        } 
-        elsif $<noun> {
-            my $function-name=$<noun>.made;   
+        } else {
+            my $function-name=$<nominal>.made;   
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         } 
-        elsif $<variable> {
-            my $function-name=$<variable>.made;   
+    }
+    
+    method verbal($/) {
+        make $/.values[0].made;
+    }
+
+    method verb-apply-expression($/) {    
+        my @args =  map({$_.made},$<arg-expression-list>).flat;
+        my $partial = $<dake> ?? True !! False;
+        
+        if $<verbal>.made ~~ LambdaExpr {
+            my $lambda-expr=$<verbal>.made;
+            make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
+        } else {
+            my $function-name=$<verbal>.made;   
             make FunctionApplyExpr[$function-name, @args, $partial].new;
-        }        
+        } 
     }
     
     method adjectival($/) {
@@ -369,19 +390,36 @@ class RokuActions {
 
     method apply-expression($/) {
         my $partial = $<dake> ?? True !! False;
-        if $<adjectival-apply-expression> {
-            make $<adjectival-apply-expression>.made;
-        } elsif $<non-verb-apply-expression> {        
+        if $<verbal> { # means it is non-verb-apply-expression wo verbal
             my @args= [ $<non-verb-apply-expression>.made ];
-            if $<verb> {
-                my $function-name=$<verb>.made;   
-                make FunctionApplyExpr[$function-name, @args, $partial].new;
-            } 
-            elsif $<lambda-expression> {
-                my $lambda-expr=$<lambda-expression>.made;
+            if $<verbal>.made ~~ LambdaExpr {
+                my $lambda-expr=$<verbal>.made;
                 make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
-            }   
-        } else {
+            } else {
+                my $function-name=$<verbal>.made;   
+                make FunctionApplyExpr[$function-name, @args, $partial].new;
+            }
+        } elsif $<adjectival-apply-expression> {
+            make $<adjectival-apply-expression>.made;
+        } elsif $<non-verb-apply-expression> {
+            make $<non-verb-apply-expression>.made;
+            # my @args =  map({$_.made},$<arg-expression-list>).flat;
+            # my $function-name=$<nominal>.made;   
+            # make FunctionApplyExpr[$function-name, @args, $partial].new;
+        } elsif $<verb-apply-expression> {              
+            make $<verb-apply-expression>.made;
+        #     my @args =  map({$_.made},$<arg-expression-list>).flat;
+        # #  <verb> | [ <keyword> | <operator-noun> | <noun> | <variable> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]
+        #     if $<verb> {
+        #         my $function-name=$<verb>.made;   
+        #         make FunctionApplyExpr[$function-name, @args, $partial].new;
+        #     } 
+        #     elsif $<lambda-expression> {
+        #         my $lambda-expr=$<lambda-expression>.made;
+        #         make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
+        #     }   
+
+        } else { die "SHOULD NOT HAPPEN: unknown apply-expr";
             
             my @args =  map({$_.made},$<arg-expression-list>).flat;            
             if $<identifier> {                

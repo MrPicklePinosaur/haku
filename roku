@@ -1,2 +1,2 @@
 #!/bin/sh
-raku roku.raku $*
+raku -I. roku.raku $*

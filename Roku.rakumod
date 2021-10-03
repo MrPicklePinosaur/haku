@@ -1,7 +1,7 @@
 # Haku, a toy functional programming language based on Japanese
 
 use v6;
-# use Grammar::Tracer;
+use Grammar::Tracer;
 
 our $reportErrors = True;
 
@@ -71,37 +71,41 @@ role Punctuation {
 
 role Particles {
 
-    token ga { ' ga ' 
-        { self.highwater( ' ga ' ); }
+    token ga { 'ga'
+        { self.highwater('ga'); }
     }
-    token ha { ' ha ' 
-        { self.highwater( ' ha ' ); }
+    token ha {'ha'
+        { self.highwater('ha'); }
     }
-    token no { ' no ' 
-        { self.highwater( ' no '); }
+    token no {'no'
+        { self.highwater('no'); }
     }
-    token to-particle { ' to ' }
+    token to-particle {'to'}
 
-    token mo { ' mo ' }
+    token mo {'mo'}
 
-    token wo { ' wo ' 
-        { self.highwater( ' wo '); }
+    token wo {'wo'
+        { self.highwater('wo'); }
     }
-    token de { ' de ' 
-        { self.highwater( ' de '); }
+    token de {'de'
+        { self.highwater('de'); }
     }
-    token ni { ' ni ' 
-        { self.highwater( ' ni '); }
+    token ni {'ni'
+        { self.highwater('ni'); }
     }
-    token ka { ' ka ' }
-    token kara { ' kara ' 
-        { self.highwater( ' kara ' ); }
+    # token ka {'ka'}
+    token kara {'kara'
+        { self.highwater('kara'); }
     }
-    token made-particle { ' made ' }
-    token deha { ' deha ' }
-    token node { ' node ' }
-    token noha { ' noha ' }
-    token dake { ' dake ' } 
+    token made-particle {'made'}
+    token deha {'deha'}
+    token node {'node'}
+    token noha {'noha'}
+    token dake {'dake' } 
+    token particle {
+        [<deha>|<node>|<noha>|<dake>|<kara>|<made-particle>] ||
+        [<ga>|<ha>|<no>|<to-particle>|<mo>|<de>|<ni>]
+    }
         
     method highwater($p) {
         # if self.pos > $*HIGHWATER {
@@ -249,14 +253,14 @@ role Operators does Characters does Punctuation
     # Arithmetic
 #                         +       -      *      /
     token operator-noun { 'Wa' | 'Sa' | 'Seki' | 'Jo' } # TODO could add 余 remainder
-    token operator-verb-kanji { ' Ta' | ' Hi' | ' Kake' | ' Wa' } # TODO could add 残る remainder
+    token operator-verb-kanji { 'Ta' | 'Hi' | 'Kake' | 'Wa' } # TODO could add 残る remainder
     token operator-verb { <operator-verb-kanji> <verb-ending> }    
     # List separator operator
     token list-operator { <ni> | <to-particle> | <kara> | <made-particle> } # NOT comma, conflicts with delimiter! }
     # Function composition
-    token nochi { ' nochi ' } # g . f but note order is opposite
+    token nochi { 'nochi' } # g . f but note order is opposite
     # The \ operator
-    token aru { 'aru ' } 
+    token aru { 'aru' } 
     # The cons operator
     token cons { <interpunct> | <colon> }
 
@@ -265,13 +269,13 @@ role Operators does Characters does Punctuation
 
     # For Comparisons 
     token hitoshii { 'hitoshii' } # ==
-    token yori { ' yori ' } 
+    token yori { 'yori ' } 
     token ooi { 'ooi' }    # >
     token sukunai { 'sukunai' } # <
 
     # Maybe technically this is not an operator?
     token chinamini { 'chinamini ' }
-    token zoi { ' zoi ' }
+    token zoi { 'zoi' }
 }
 
 role Keywords 
@@ -311,8 +315,8 @@ does Nouns
 
     # For Maps and Folds
 
-    token nokaku { 'no kaku' }
-    token nominna { 'no minna' }
+    token nokaku { 'nokaku' }
+    token nominna { 'nominna' }
     token shazou { 'Shazou' <sura> }     
     token tatamikomu { 'Tatamiko' <mu-endings> }
 
@@ -322,8 +326,8 @@ does Nouns
     token tame { 'tame' }
 
     # For Function and Hon    
-    token toha { ' toha' }
-    token toiu { ' toiu '  }
+    token toha { 'toha' }
+    token toiu { 'toiu'  }
     token koto { 'koto'  }
 
     # For Haku
@@ -403,7 +407,18 @@ does Nouns
 
     # map creation (from a list) で図を作る 
     # I could use 連想配列 rensouhairetsu but that is really long.
-    token zuwotsukuru { 'Zu wo Tsuku' <ru-endings> }
+    token zuwotsukuru { 'ZuwoTsuku' <ru-endings> }
+    token seibiki { 'Seibiki'  } #<suru>
+    token tansaku { 'Tansaku' } # <suru> 
+    # I could use 連想配列 rensouhairetsu but that is really long, currently unused
+    token rensouhairetsu { 'Rensouhairetsu' }
+    token zu { 'Zu' }
+    token keyword-noun {
+        <seibiki> | <tansaku>
+    }
+    token keyword-verb {
+        <zuwotsukuru> 
+    }
 
 
     # File operations
@@ -552,41 +567,40 @@ does Comments
     # suppose I have x de x ni x wo kakeru , then it should really be x de x ni x wo kakete (kudasai)
     
     token lambda-expression { <.aru> <variable-list> <.de> <expression> }
-
+    token nominal {
+        <operator-noun> | <noun> | <variable> 
+    }
     token non-verb-apply-expression {
           <arg-expression-list> <.nominna>? <dake>? 
           <.no> <.comma>?
         [ <arg-expression-list> 
          <.de> <.no> 
         ]??
-        [ <operator-noun> | <noun> | <variable> ]  [<.shite-kudasai> | <.sura> ]?
+        <nominal>  #[<.shite-kudasai> | <.sura> ]?
     }
+    token verbal {
+         <verb> | [ <keyword-noun> | <operator-noun> | <noun> | <variable> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]
+    }
+
     token verb-apply-expression {
           <arg-expression-list> <.nominna>? <dake>? 
-          [ <.wo> ]　
+          [ <.wo> | <.no> <.comma>? ]　
         [ <arg-expression-list> 
-         [<.de> | <.no> <.tame> <.ni>] 
-        ]??
-        [ <verb> | <lambda-expression> [<.shite-kudasai> | <.sura> ]?]
+         [<.de> <.no>? | <.tame> <.ni>] 
+        ]?
+        <verbal>
     }
     token adjectival-apply-expression {
         [<arg-expression-list> <dake>? <.de> ]? <adjectival>+ <arg-expression> 
     }
+
     token apply-expression {
-        [
-          <arg-expression-list> <.nominna>? <dake>? 
-          [ <.wo> | <.no> <.comma>?]　
-        [ <arg-expression-list> 
-         [<.de> <.no>? |  <.tame> <.ni>] # was <.no> <.tame> <.ni>
-        ]?
-        [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
-        ]
-        || [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expression>  [<.shite-kudasai> | <.sura> ]? ]]
-        || <adjectival-apply-expression>
-    }
-    token apply-expression-TODO {
-         [ <non-verb-apply-expression> <.wo> [ <verb> | <lambda-expression>  [<.shite-kudasai> | <.sura> ]? ]]
+        # This is a special case to avoid one level of parens
+         [ <non-verb-apply-expression> <.wo> <verbal> 
+         #[ <verb> | [ <keyword> | <lambda-expression>]  [<.shite-kudasai> | <.sura> ]? ]
+         ]
          || [<verb-apply-expression> | <non-verb-apply-expression> ]  
+         || <adjectival-apply-expression>
     }
 
     token comment-then-expression {
@@ -712,8 +726,8 @@ does Punctuation
         <.function-end>
     }
 
-    token function-end {
-         <.ws>? [<no>|<toiu>]? <koto> <desu> <full-stop> <.ws>?
+    token function-end {'@' |
+        [  <.ws>? [<no>|<toiu>]? <koto> <desu> <full-stop> <.ws>? ]
     }
 } # End of Functions
 
