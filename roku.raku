@@ -1,9 +1,9 @@
 use v6;
-use lib ('.');
-use Haku;
-use HakuActions;
+# use lib ('.');
+use Roku;
+use RokuActions;
 use HakuReader;
-use Tategaki;
+# use Tategaki;
 use Raku;
 
 sub USAGE() {
@@ -29,22 +29,22 @@ unit sub MAIN(
           Bool :s($subparse) = False,
           Str :r($rule) 
         );  
-
+$Raku::toRomaji=False;
 if ($verbose) { 
     $Raku::V=True;
-    $HakuActions::V=True;
+    $RokuActions::V=True;
 }
 
 if (not $src_file.defined) {
          die "Please provide an input file\n";
 }
 
-if $tategaki {
-    say tategakiWriter($src_file);
-    exit;
-}
+# if $tategaki {
+#     say tategakiWriter($src_file);
+#     exit;
+# }
 
-my $program_str = hakuReader($src_file);
+my $program_str = rokuReader($src_file);
 
 if $yomudake { 
     say $program_str;
@@ -55,21 +55,23 @@ if $parse-only {
     $reportErrors = False;
     if $subparse {
         if $rule {
-            say Haku.subparse($program_str,:rule($rule));
+            # die "$program_str,:rule($rule)";
+            say Roku.subparse($program_str,:rule($rule));
         } else {
-            say Haku.subparse($program_str);
+            say Roku.subparse($program_str);
         }
     } else {
         if $rule {
-        say Haku.parse($program_str,:rule($rule));
+            # die "$program_str,:rule($rule)";
+        say Roku.parse($program_str,:rule($rule));
         } else {
-        say Haku.parse($program_str);
+        say Roku.parse($program_str);
         }
     }
     exit;
 } else {
 
-    my $hon_parse = Haku.parse($program_str, :actions(HakuActions));
+    my $hon_parse = Roku.parse($program_str, :actions(RokuActions));
     my $hon_raku_code =  ppHakuProgram($hon_parse.made);
     if $miseru {
         say $hon_raku_code;
@@ -87,3 +89,13 @@ if $parse-only {
 }
 
 
+sub rokuReader($file) {
+    my $input_file = IO::Path.new( $file ) ;
+my $horiz_str = $input_file.IO.slurp;
+if $horiz_str ~~ /'Hon' ['ma']? ' toha' <.ws>?/ {
+    return $horiz_str.lines.grep({ not /^ '#' / }).join("\n");
+} else {
+    return Nil;
+}
+
+}

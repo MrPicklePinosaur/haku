@@ -176,7 +176,7 @@ sub ppVariable($var) {
             my $tvar = $var;
             $tvar ~~ s/達/tachi/;
 
-            my $ttvar = substituteKanjiToDigits($tvar); 
+            my $ttvar = $toRomaji ?? substituteKanjiToDigits($tvar) !! $tvar; 
             $toRomaji ?? katakanaToRomaji($ttvar).lc !! $ttvar; 
 }
 

@@ -1,10 +1,10 @@
 use v6;
 use HakuAST;
-use JapaneseNumberParser;
+# use JapaneseNumberParser;
 
 
 
-class HakuActions {
+class RokuActions {
     our $V=False;
     my %predefined-functions is Map = <    
         見 show
@@ -17,15 +17,13 @@ class HakuActions {
         閉  close                 
         畳  foldl             
         写像  map 
-        濾  filter
         合  concat 
         頭 head 
         尻尾 tail            
         逆 reverse
-        逆な reverse
-        長さ length
-        鍵  keys
-        値  values
+        長さ length 
+        鍵 　keys
+        値 　values
         入  insert 
         消  delete 
         正引 lookup
@@ -57,7 +55,7 @@ class HakuActions {
             make Operator[%vbinops{$verb-kanji}].new;
         } else {
             # This is a hack because currently Noun + desu is parsed as a Verb
-            if  $verb-str.substr(*-2,2)  eq 'です' and 3 <= $verb-str.chars <= 4   { 
+            if  $verb-str.chars >4 and $verb-str.substr(*-4,4)  eq 'desu' and 3 <= $verb-str.chars <= 4   { 
                 my $noun-str = $verb-str.substr(0,$verb-str.chars-2);
                 my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
                 say "NOUN: $noun-str-s" if $V;
@@ -71,11 +69,17 @@ class HakuActions {
             }            
         }
     }
-
+    method keyword-noun($/) {
+            my $noun-str = $/.Str;
+            my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
+            say "KEYWORD-NOUN: $noun-str-s" if $V;
+            make Noun[$noun-str-s].new;
+    }    
+    
     method noun($/) {
-        if $/.Str eq '無' {
+        if $/.Str eq 'Mu' {
             make Null.new;
-        } elsif $/.Str eq '空' {
+        } elsif $/.Str eq 'Kuu' {
             make EmptyList.new;
         } else {
             my $noun-str = $/.Str;
@@ -84,19 +88,12 @@ class HakuActions {
             make Noun[$noun-str-s].new;
         }
     }
-
-    method keyword-noun($/) {
-            my $noun-str = $/.Str;
-            my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
-            say "KEYWORD-NOUN: $noun-str-s" if $V;
-            make Noun[$noun-str-s].new;
-    }    
     
     method adjective($/) {
         my $adj-str = $/.Str;
         my $adj-str-s = %predefined-functions{$adj-str.substr(0,$adj-str.chars-1)} // $adj-str;
         say "ADJECTIVE: $adj-str-s" if $V;
-        make Adjective[$adj-str-s].new;
+        make Adjective[$adj-str].new;
     }    
 
     method identifier($/) {
@@ -115,7 +112,7 @@ class HakuActions {
 
     }
     method number($/) {
-            my Num $number = parseJapaneseNumbers($/.Str);
+            my Num $number = $/.Num;
             make Number[$number].new;        
     }
 
@@ -231,10 +228,7 @@ class HakuActions {
     }
 
     method verb-operator-expression-infix ($/) { 
-         say "verb-operator-expression-infix:"~ $/.Str if $V;
          if $<operator-verb> ~~ Array {
-             if $<operator-verb>.elems>1 {
-
         my @ops=map({$_.made},$<operator-verb>).flat;
         my @args =  map({$_.made},$<arg-expression>).flat; 
         # die (@args,@ops).raku;
@@ -249,26 +243,20 @@ class HakuActions {
 # 4. They are * or / and + or - 
 # That is the hard one: we need to group them by precedence. 
 # But we have only 2 precedence levels. So:
-} else {
-                 my $op=$<operator-verb>[0].made;
-        my $lhs-expr = $<arg-expression>[0].made;
-        my $rhs-expr = $<arg-expression>[1].made;
-                    # die 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
-        make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
-}
+
+
 
         
          } else {
              my $op=$<operator-verb>.made;
         my $lhs-expr = $<arg-expression>[0].made;
         my $rhs-expr = $<arg-expression>[1].made;
-                    # die 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
+                    # say 'HERE:'~$op.raku~'('~$lhs-expr.raku~','~$rhs-expr.raku~')';
         make BinOpExpr[$op, $lhs-expr,$rhs-expr].new
          }
     }
 
     method operator-expression($/) {
-        say "operator-expression:"~ $/.Str if $V;
         make $/.values[0].made
     }
 
@@ -362,7 +350,7 @@ class HakuActions {
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         } 
     }
-
+    
     method adjectival($/) {
              make $/.values[0].made;  
     }
@@ -456,9 +444,9 @@ class HakuActions {
     # This is not practical. I need comments to be part of expressions. 
     method comment-then-expression($/) { 
          my $comment_str = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
-         say "COMMENT:$comment_str" if $V;
+        #  say $comment_str;
         if $<expression> {
-            say "EXPRESSION: "~$<expression>.Str if $V;
+            
             # if $<expression> ~~ Array {            
             #     my @rhs-exprs = map({$_.made},$<expression>);
             #     if @rhs-exprs.elems == 1 {
@@ -590,9 +578,7 @@ class HakuActions {
         make @args;
     } 
     method lambda-expression($/) {
-        # say $/.hash.raku;
-say "VARLIST: "~$<variable-list>.made.raku if $V;
-say "EXPRESSION: "~$<expression>.made.raku if $V;
+#say "VARLIST: "~$<variable-list>.made.raku;
             my @args = $<variable-list>.made;
             my $expr = $<expression>.made;
             make LambdaExpr[@args,$expr].new;
@@ -606,9 +592,7 @@ say "EXPRESSION: "~$<expression>.made.raku if $V;
             make $/.values[0].made;
     }
     method  hontoha($/) {
-        make $<hon> ??
-            $<hon>.Str ~ ( $<ma> ?? $<ma>.Str !! '')
-            !! $<haiku>.Str;
+        make $<hon>.Str ~ ( $<ma> ?? $<ma>.Str !! '');
     }
     method hon-definition($/) {
         # say 'HON action';

@@ -1,81 +1,27 @@
 # Haku, a toy functional programming language based on Japanese
 
 use v6;
-# use Grammar::Tracer;
+use Grammar::Tracer;
 
 our $reportErrors = True;
-# use HakuRoles;
-# use HakuGrammars;
 
-# =begin pod
 role Characters {
-    token reserved-kanji {
-        '或' |
-        '和' | '差' | '積' | '除' |
-        '足' | '引' | '掛' | '割' |
-        '後' | '為' | '等' | '若' | '不' | '下' |
-        '本' | '事' | '無' | 
-        '皆' | '空' | '若' |
-        '因' | '沿' 
 
-    }
-   
-    token kanji {  
-        <:Block('CJK Unified Ideographs') - reserved-kanji >
-        # See Kanji.rakumod for a list instead of the Unicode block
-    }  
-
-    token number-kanji { 
-        | '〇' | '零' 
-        | '一' | '二' | '三' | '四' | '五' | '六' | '七' | '八' | '九' | '十' 
-        | '壱' | '弐' | '参' | '肆' | '伍' | '陸' | '漆' | '捌' | '玖' | '拾'                  
-        | '弌' | '弍' | '弎'                      | '柒'       
-        | '壹' | '貳' 
-               | '貮' 
-        | '百' | '千' | '万' | '億' 
-        |               '萬' 
-        | '兆' | '京' | '垓' | '𥝱' | '穣' | '溝' | '澗' | '正' | '載' | '極' 
-# See https://www.tofugu.com/japanese/counting-in-japanese/ for <1e-12
-        | '分' | '厘' | '毛' | '糸' | '忽' | '微' | '繊' | '沙' | '塵' | '埃' | '渺' | '漠'
-
-    }    
-
-    token non-number-kanji {  
-        <:Block('CJK Unified Ideographs') - reserved-kanji - number-kanji>
-    }  
-
-    # The last row is for function arguments, should factor out
-    token haku-kanji {
-        '白' | '泊' | '箔' | '伯' | '拍' | '舶' | 
-        '迫' | '岶' | '珀' | '魄' | '柏' | '帛' | '博' |
-        '物' | '件' | '条'   
-    }
-
-    token katakana { 
-        # Using Block hangs
-        # <:Block('Katakana')> 
-        <[ァ..ヺー]>
-    }
 
     # I might allow A-Z as well for identifiers
-    token romaji {
+    token dai-romaji {
         <[A..Z]>
     }    
+    token ko-romaji {
+        <[a..z]>
+    }    
     
-    # 算用数字
-    token sanyousuji {
-        '０' | '１' | '２' | '３' | '４' | '５' | '６' | '７' | '８' | '９'
-    }
     
     # I might allow ordinary digits in identifier names
     token digits {
         '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' 
     }    
 
-    token hiragana {
-        <:Block('Hiragana')>
-        # <[あ..を]>
-    }    
 
     token word {
         \w
@@ -85,19 +31,19 @@ role Characters {
 # I think I will use the full stop and semicolon as equivalent for newline.
 role Punctuation {
 
-    token full-stop { '。' 
-        { self.highwater('。'); }
+    token full-stop { ';' 
+        { self.highwater(';'); }
     }
-    token comma { '、'
-        { self.highwater('、'); }
+    token comma { ','
+        { self.highwater(','); }
     }
-    token semicolon { '；' 
-        { self.highwater('；'); }
+    token semicolon { ';' 
+        { self.highwater(';'); }
     }    
-    token colon { '：' 
-        { self.highwater('：'); }
+    token colon { ':' 
+        { self.highwater(':'); }
     }
-    token interpunct { '・' } # nakaguro 
+    token interpunct { ':' } # nakaguro 
       
     token punctuation { <full-stop> | <comma> | <semicolon> | <colon> }
     token delim { 
@@ -105,78 +51,74 @@ role Punctuation {
     }
     # kuromaru is not full-width!
     # So I use 'period' as alternative
-    token kuromaru { '●' | '．' | '一'}
+    token kuromaru { '*'  }
     # Marukakko (丸括弧) 
-    token open-maru { '（' }
-    token close-maru { '）' }
+    token open-maru { '(' }
+    token close-maru { ')' }
     # Namikakko (波括弧)
-    token open-nami { '｛' }
-    token close-nami { '｝' }
+    token open-nami { '{' }
+    token close-nami { '}' }
 
     # Kakukakko (角括弧)
-    token open-kaku { '［' | '[' }
-    token close-kaku { '］' | ']' }
+    token open-kaku {  '[' }
+    token close-kaku {  ']' }
 
-    token open-sen { '〈' }
-    token close-sen { '〉' }
+    token open-sen { '<' }
+    token close-sen { '>' }
 
-    # Sumitsukikakko (隅付き括弧)
-    token open-sumitsuki { '【' }
-    token close-sumitsuki { '】' }
-    
-    #  etc, see https://ja.wikipedia.org/wiki/%E6%8B%AC%E5%BC%A7
 
 }  # End of role Punctuation
 
 role Particles {
 
-    token ga { 'が' 
-        { self.highwater('が'); }
+    token ga { 'ga'
+        { self.highwater('ga'); }
     }
-    token ha { 'は' 
-        { self.highwater('は'); }
+    token ha {'ha'
+        { self.highwater('ha'); }
     }
-    token no { 'の' 
-        { self.highwater('の'); }
+    token no {'no'
+        { self.highwater('no'); }
     }
-    token to-particle { 'と' }
+    token to-particle {'to'}
 
-    token mo { 'も' }
+    token mo {'mo'}
 
-    token wo { 'を' 
-        { self.highwater('を'); }
+    token wo {'wo'
+        { self.highwater('wo'); }
     }
-    token de { 'で' 
-        { self.highwater('で'); }
+    token de {'de'
+        { self.highwater('de'); }
     }
-    token ni { 'に' 
-        { self.highwater('に'); }
+    token ni {'ni'
+        { self.highwater('ni'); }
     }
-    token ka { 'か' }
-    token kara { 'から' 
-        { self.highwater('から'); }
+    # token ka {'ka'}
+    token kara {'kara'
+        { self.highwater('kara'); }
     }
-    token made-particle { '迄' | 'まで' }
-    token deha { 'では' }
-    token node { 'ので' }
-    token noha { 'のは' }
-    token dake { '丈' | 'だけ' } 
+    token made-particle {'made'}
+    token deha {'deha'}
+    token node {'node'}
+    token noha {'noha'}
+    token dake {'dake' } 
+    token particle {
+        [<deha>|<node>|<noha>|<dake>|<kara>|<made-particle>] ||
+        [<ga>|<ha>|<no>|<to-particle>|<mo>|<de>|<ni>]
+    }
         
     method highwater($p) {
-        if self.pos > $*HIGHWATER {
-            $*HIGHWATER = self.pos;
-            $*PARTICLE = $p;
-            $*LASTRULE = callframe(1).code.name;
-        }
+        # if self.pos > $*HIGHWATER {
+        #     $*HIGHWATER = self.pos;
+        #     $*PARTICLE = $p;
+        #     $*LASTRULE = callframe(1).code.name;
+        # }
     }
 
 }  # End of role Particles
 
 role Nouns does Characters {
-    token sa { 'さ' }
-    token ki { 'き' }
-    # 一線 is OK,  一 is not OK, 線 is OK
-    token noun { <number-kanji> ? <non-number-kanji> <kanji>*  [<sa>|<ki>]? }
+    token noun { <dai-romaji> <ko-romaji>+ }
 }
 
 # の-adjectives are not supported because there is a fundamental ambiguity in function application:
@@ -187,20 +129,13 @@ role Nouns does Characters {
 # In these examples, ORENJI and MAPPU are nouns in my Grammar
 role Adjectives does Characters {
 
-    token i-adjective-stem {
-        <non-number-kanji> <hiragana>?? <kanji>? 
-    }
-    token i { 'い' }
-    token i-adjective-stem-hiragana {
-         <hiragana>*? <?before 'い' >
-    }
 
     token i-adjective {
-        <i-adjective-stem> <i-adjective-stem-hiragana> <i>
+        <noun> 'i'
     }
 
     # A na-adjective is treated as a Noun unless it is followed by な
-    token na-adjective { <noun> 'な' }
+    token na-adjective { <noun> 'na' }
 
     token adjective {
         <i-adjective> | <na-adjective>
@@ -210,46 +145,33 @@ role Adjectives does Characters {
 role Verbs does Characters {
     token verb-ending {
         <sura> || <verb-ending-masu> || [
-        'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' |
-        'った'| 'た'| 'いだ'| 'んだ' |  
-         'って'| 'て'| 'いで' | 'んで' 
+        'ru'| 'su'| 'mu'| 'ku'| 'gu'| 'tsu'| 'nu' | 'u' |
+        'tta'| 'ta'| 'ida'| 'nda' |  
+         'tte'| 'te'| 'ide' | 'nde' 
         ]
 
     }
     token verb-ending-dict {
-        'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' 
+        'ru'| 'su'| 'mu'| 'ku'| 'gu'| 'tsu'| 'nu' | 'u' 
     }
     token verb-ending-masu {
-        'ま' [　'す'　| 'し' [　'た'| 'ょう'] | 'せん'] 'か'?
+        'ma' [[　'su'　| 'shita'| 'shou'] | 'sen'] 'ka'?
     }
     token verb-ending-ta {
-        'った'| 'た'| 'いだ'| 'んだ'
+        'tta'| 'ta'| 'ida'| 'nda'
     }
     token verb-ending-te {
-        'って'| 'て'| 'いで' | 'んで'
+        'tte'| 'te'| 'ide' | 'nde'
     }    
     
     token verb-stem {
-        <non-number-kanji> <hiragana> <kanji> 
-        # exception because of せいびき　正引き
-        || ['正' | <non-number-kanji>] <kanji>
-        || <non-number-kanji> 
+        <dai-romaji> <ko-romaji>+? <?before <verb-ending> >
     }
-    token verb-stem-hiragana {
-         <hiragana>+? <?before <verb-ending> >
-    }
-    # Trying not to match kanji + desu
-    # token su {'す'}
-    # token verb-stem-hiragana {
-    #      <+hiragana -de>+? <?before <verb-ending> >
-    #      | <de> <?before <+verb-ending -su> >
-    # }
-
-    token verb-dict { <verb-stem> <verb-stem-hiragana>? <verb-ending-dict> }
-    token verb-masu { <verb-stem> <hiragana>*? <verb-ending-masu> }
-    token verb-ta { <verb-stem> <hiragana>*? <verb-ending-ta> }
-    token verb-te { <verb-stem> <verb-stem-hiragana>? <verb-ending-te> }
-    token verb-sura { <verb-stem> <verb-stem-hiragana>? <sura> }
+    token verb-dict { <verb-stem> <verb-ending-dict> }
+    token verb-masu { <verb-stem> <verb-ending-masu> }
+    token verb-ta { <verb-stem> <verb-ending-ta> }
+    token verb-te { <verb-stem> <verb-ending-te> }
+    token verb-sura { <verb-stem> <sura> }
 
 # This fails on e.g. su.teru because the te is seen as -te form
 # We should have a rule for a -te after a kanji and before te/ru/masu/ta 
@@ -271,11 +193,11 @@ role Variables does Characters {
     # Variables must start with katakana then katakana, number kanji and 達 
     # But kanji with a "haku" on-reading are also supported.
     token variable { 
-        [ <katakana> | <haku-kanji> ]
-        [ <katakana>  | <haku-kanji> | <number-kanji> ]* <tachi>? 
+        <dai-romaji> 
+        [ <dai-romaji>  | <digit>  ]* <tachi>? 
     }
     # To indicate plural
-    token tachi { '達' }    
+    token tachi { 'tachi' }    
 }
 
 role Identifiers 
@@ -296,21 +218,21 @@ does Variables
 }
 
 role Auxiliaries {
-    token kudasai { [　'下' | 'くだ' ] 'さい' }    
-    token masu { 'ま' [ 'す' | 'した' ] }
+    token kudasai { 'kudasai' }    
+    token masu { 'ma' [ 'su' | 'shita' ] }
 
-    token shite-kudasai { 'して' [ '下' | 'くだ' ] 'さい' }
-    token suru { 'する' | '為る' | 'した' }
-    token shimasu { 'しま'  [ 'す' | 'した' ] }
+    token shite-kudasai { 'shitekudasai' }
+    token suru { 'suru'  | 'shita' }
+    token shimasu { 'shima'  [ 'su' | 'shita' ] }
     token sura {
-        <suru> | <shimasu> | <shite-kudasai> 
+        <.ws>? [ <suru> | <shimasu> | <shite-kudasai> ] 
     }
-    token desu { 'です' | 'だ'  | 'である' |　'で或る' |　'でございます' |　'で御座います'　 }
+    token desu { <.ws>? [ 'desu' | 'da' | 'dearu' | 'degozaimasu' ] }
 
-    token shimau { ['しま'|'仕舞'|'終'|'了'|'蔵'] ['う' | ['っ'|'いまし'] 'た'] };            
-    token kureru { [ 'く'| '呉'] 'れ'　[ 'て' | 'た' | <masu> ]};
-    token morau { [ '貰'|'もら'] }
-    token imashita { ['い']? ['まし']? 'た' }
+    token shimau { 'shima' ['u' | ['t'|'imashi'] 'ta'] };            
+    token kureru { 'kure'　[ 'te' | 'ta' | <masu> ]};
+    token morau { 'mora' [ 'tte' | 'tta' | 'i' <masu> ]}
+    token imashita { ['i']? ['mashi']? 'ta' }
     
 }  # End of role Auxiliaries
 
@@ -330,30 +252,30 @@ role Operators does Characters does Punctuation
 {
     # Arithmetic
 #                         +       -      *      /
-    token operator-noun { '和' | '差' | '積' | '除' } # TODO could add 余 remainder
-    token operator-verb-kanji { '足' | '引' | '掛' | '割' } # TODO could add 残る remainder
-    token operator-verb { <operator-verb-kanji> <hiragana>*? <verb-ending> }    
+    token operator-noun { 'Wa' | 'Sa' | 'Seki' | 'Jo' } # TODO could add 余 remainder
+    token operator-verb-kanji { 'Ta' | 'Hi' | 'Kake' | 'Wa' } # TODO could add 残る remainder
+    token operator-verb { <operator-verb-kanji> <verb-ending> }    
     # List separator operator
     token list-operator { <ni> | <to-particle> | <kara> | <made-particle> } # NOT comma, conflicts with delimiter! }
     # Function composition
-    token nochi { '後' | 'のち' } # g . f but note order is opposite
+    token nochi { 'nochi' } # g . f but note order is opposite
     # The \ operator
-    token aru { '或' } 
+    token aru { 'aru' } 
     # The cons operator
     token cons { <interpunct> | <colon> }
 
     # For Ranges (..)
-    token nyoro { '〜' }
+    token nyoro { '~' }
 
     # For Comparisons 
-    token hitoshii { '等しい' } # ==
-    token yori { 'より' } 
-    token ooi { '多い' }    # >
-    token sukunai { '少ない' } # <
+    token hitoshii { 'hitoshii' } # ==
+    token yori { 'yori ' } 
+    token ooi { 'ooi' }    # >
+    token sukunai { 'sukunai' } # <
 
     # Maybe technically this is not an operator?
-    token chinamini { 'ちなみに' | '因みに' | '因に' }
-    token zoi { 'ぞい' | '沿い' }
+    token chinamini { 'chinamini ' }
+    token zoi { 'zoi' }
 }
 
 role Keywords 
@@ -365,55 +287,54 @@ does Nouns
 # I might split these out further
 {
     # For an empty list
-    token kuu { '空' }
+    token kuu { 'Kuu' }
     # For Nil
-    token mu { '無' }
-    token mugendai { '無限大' }    
+    token mu { 'Mu' }
+    token mugendai { 'Mugendai' }    
 
     # For Let
     token kono {
-        'この'
+        'kono '
     }
     # See design doc
     token moshi { 
-        [ 'もし' | '若し' ] <mo>?　<ws>?
+        [ 'moshi' ] <mo>?　<ws>?
     }
-    token nara { 'なら' }
-    token tara { 'たら' }
+    token nara { ' nara ' }
+    token tara { ' tara ' }
 
-    token dattara { 'だったら' }
+    token dattara { 'dattara' }
     token moshi-nanira { <dattara> |　<tara> | <nara> }         
 
-    # For IfThenElse
+    # For IfThenElse'
 
-    token kedo { 'けど' | 'けれど' <mo>? }
-    token baaiha { '場合は' }
-    token soudenai { 'そうでない' }
-    token soudenakereba { 'そうでなければ' }
+    token kedo { 'kedo' | 'keredo' <mo>? }
+    token baaiha { 'baaiha' }
+    token soudenai { 'soudenai' }
+    token soudenakereba { 'soudenakerab' }
 
     # For Maps and Folds
 
-    token nokaku { 'の各' }
-    token nominna { 'の皆' }
-    token shazou { '写像' <sura> }     
-    token tatamikomu { '畳み込む' <mu-endings> }
+    token nokaku { 'nokaku' }
+    token nominna { 'nominna' }
+    token shazou { 'Shazou' <sura> }     
+    token tatamikomu { 'Tatamiko' <mu-endings> }
 
     # For IO
     # ファイルを{読む|書く}のために開く
     # ハンドル を  開く | 閉じる
-    token tame { 'ため' | '為' | '爲' }
+    token tame { 'tame' }
 
     # For Function and Hon    
-    token toha { 'とは' }
-    token toiu { 'という' | 'と言う' }
-    token koto { 'こと' | '事' }
+    token toha { 'toha' }
+    token toiu { 'toiu'  }
+    token koto { 'koto'  }
 
     # For Haku
-    token hon {'本'} 
-    token ma {'真'} 
-    token haiku {'俳句'} 
+    token hon {'Hon'} 
+    token ma {'ma'} 
     token hontoha {
-        [ <hon> <ma>? | <haiku> ] <.toha> <.ws>? 
+        <hon> <ma>? <.toha> <.ws>? 
     }
 
     # # Built-in verbs, I suspect this is unused
@@ -424,9 +345,9 @@ does Nouns
     #     'む' | 'んで' <kudasai>? | 'み' <masu>
     # }
 
-    token ru-endings {
-         'る' | 'て' <kudasai>? | 'り' <masu>
-    }
+    # token ru-endings {
+    #      'る' | 'て' <kudasai>? | 'り' <masu>
+    # }
 
     # token ku-endings {
     #      'く' | 'いて' <kudasai>? | 'き' <masu>
@@ -463,15 +384,15 @@ does Nouns
     # # length 長さ , see above
     
     # has　マップにカギがあったら
-    token attara { 'あったら' | '有ったら' }
-    token ga-aru { 'がある' | 'が有る' }
+    token attara { 'attara' }
+    token ga-aru { 'ga aru'  }
     
     # #insert　マップにカギとバリューを入れる
     # token ireru { '入れ' <ru-endings> }
 
-    # #lookup　マップにカギを正引きする・探索する
-    token seibiki { '正引き'  } #<suru>
-    token tansaku { '探索' } # <suru> 
+    # #lookup　マップにカギを正引きする:探索する
+    # token seibiki { '正引き' <suru> }
+    # token tansaku { '探索' <suru> }
     
     # #delete　マップからカギを消す
     # token kiesu { '消' <su-endings> }
@@ -485,16 +406,20 @@ does Nouns
     # empty map 空 
 
     # map creation (from a list) で図を作る 
+    # I could use 連想配列 rensouhairetsu but that is really long.
+    token zuwotsukuru { 'ZuwoTsuku' <ru-endings> }
+    token seibiki { 'Seibiki'  } #<suru>
+    token tansaku { 'Tansaku' } # <suru> 
     # I could use 連想配列 rensouhairetsu but that is really long, currently unused
-    token rensouhairetsu { '連想配列' }
-    token zu { '図' }
-    token zuwotsukuru { '図' 'を' '作' <ru-endings> }
+    token rensouhairetsu { 'Rensouhairetsu' }
+    token zu { 'Zu' }
     token keyword-noun {
         <seibiki> | <tansaku>
     }
     token keyword-verb {
         <zuwotsukuru> 
     }
+
 
     # File operations
     # token akeru { '開け' <ru-endings> }
@@ -503,33 +428,33 @@ does Nouns
     # token yomu { '読' <mu-endings> }
 
     # For comparisons, TODO
-    token chigau { '違' <u-endings> }
+    token chigau { 'Chiga' <u-endings> }
     
     # System call, TODO    
-    token kikan { '機関' } #で「ls」する
+    token kikan { 'Kikan' } #で「ls」する
 
 } # End of role Keywords
 
-# Comment line: 註 or 注 or even just 言, must end with 。
+# Comment line: 註 or 注 or even just 言, must end with .
 role Blanks {
     token blank {  '　' | ' ' | \n | \t }
 }
 
 role Comments does Punctuation does Blanks {
-    token comment-start { '註' | '注'  }
+    token comment-start { 'Chuu '  }
     token comment-chars { 
-         <hiragana> | <katakana> | <kanji> | <word> | <blank> | <[「」『』]> | '.' | ':' | '/' | '-'  | '#'
+         <word> | <blank> | '.' | ':' | '/' | '-'  | '#'
     }
     token comment { <.comment-start> <comment-chars>+ <.full-stop> <.ws>? }
 }
 
 role Numbers does  Characters {
-    token zero {  'ゼロ' | 'マル'  } # '〇' | '零'  are in number-kanji
-    token minus {'マイナス'}
-    token plus {'プラス'}
-    token integer { [<number-kanji> | <zero>]+ }
+    token zero {  'zero' | 'maru'  } # '〇' | '零'  are in number-kanji
+    token minus {'MAINASU'}
+    token plus {'PURASU'}
+    token integer { <digit> + }
     token signed-integer { (<minus> | <plus>) <integer> }
-    token ten { '点' }
+    token ten { 'Ten' }
     token rational { <signed-integer>+ <.ten> <integer>+ }
     token number { 
         <rational> | <signed-integer> | <integer> 
@@ -543,10 +468,10 @@ role Strings does Characters {
          | <kanji> |  ' ' | '　' | \n | <[! .. ~]>
     }
     token string { 
-         '「」' |
-         '『』' |    
-        [ '「'  <string-chars>+ '」' ] |
-        [ '『'  <string-chars>+ '』' ]         
+         '""' |
+         "''" |    
+        [ '"'  <string-chars>+ '"' ] |
+        [ "'"  <string-chars>+ "'" ]         
     }
     
     token string-interpol-left {
@@ -579,11 +504,12 @@ does Comments
 
     token TOP { <comment-then-expression> }
  
-    token atomic-expression {  <identifier> || [<number> | <string> | <mugendai> | <mu> | <kuu> ]    }
+    token atomic-expression {  <identifier> | <number> | <string> | <mugendai> | <mu> | <kuu>     }
     token parens-expression { 
        [ [ <.open-maru> <expression> <.close-maru> ] |
-        [ <.open-sumitsuki> <expression> <.close-sumitsuki> ] |
-        [ <.open-sen> <expression> <.close-sen> ] ] <.ws>
+        # [ <.open-sumitsuki> <expression> <.close-sumitsuki> ] |
+        [ <.open-sen> <expression> <.close-sen> ] ] 
+        #<.ws>? TODO: support newline!
     }
     token empty {
         <open-kaku><close-kaku>
@@ -632,7 +558,7 @@ does Comments
         <verb-operator-expression-infix> 
     }
     
-    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> <.zu> }
+    token map-expression { <atomic-expression> [ <.list-operator> <atomic-expression> ]* <.de> <.zuwotsukuru> | <atomic-expression> 'Zu' }
     
     token variable-list { <variable> [ <.list-operator> <variable> ]* }
 
@@ -667,18 +593,7 @@ does Comments
     token adjectival-apply-expression {
         [<arg-expression-list> <dake>? <.de> ]? <adjectival>+ <arg-expression> 
     }
-    token apply-expression-PREV {
-        [
-          <arg-expression-list> <.nominna>? <dake>? 
-          [ <.wo> | <.no> <.comma>?]　
-        [ <arg-expression-list> 
-         [<.de> <.no>? |  <.tame> <.ni>] # was <.no> <.tame> <.ni>
-        ]?
-        [ <identifier> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]?
-        ]
-        || [ <non-verb-apply-expression> <.wo> [ <verb> | [ <keyword> | <lambda-expression>]  [<.shite-kudasai> | <.sura> ]? ]]
-        || <adjectival-apply-expression>
-    }
+
     token apply-expression {
         # This is a special case to avoid one level of parens
          [ <non-verb-apply-expression> <.wo> <verbal> 
@@ -744,7 +659,7 @@ does Comments
      <expression> [<.desu> | <.de> ]? 
      [
         <.delim> 
-         || {$*MSG = ', missing delimiter'}
+        #  || {$*MSG = ', missing delimiter'}
      ]
     }
 
@@ -811,31 +726,30 @@ does Punctuation
         <.function-end>
     }
 
-    token function-end {
-         <.ws>? [<no>|<toiu>]? <koto> <desu> <full-stop> <.ws>?
+    token function-end {'@' |
+        [  <.ws>? [<no>|<toiu>]? <koto> <desu> <full-stop> <.ws>? ]
     }
 } # End of Functions
 
-# =end pod
 
-grammar Haku is Functions 
+grammar Roku is Functions 
 does Comments 
 does Keywords 
 {
     # For error messages
     my %token-types is Map = <
-        。 delimiter
-        、 delimiter
-        ： delimiter
-        ； delimiter
-        は particle
-        が particle
-        と particle
-        の particle
-        に particle
-        で particle
-        を particle
-        から  particle
+        . delimiter
+        , delimiter
+        : delimiter
+        ; delimiter
+        ha particle
+        ga particle
+        to particle
+        no particle
+        ni particle
+        de particle
+        wo particle
+        kara particle
         >;
 
     token TOP { <haku-program> }
@@ -904,30 +818,30 @@ does Keywords
         exit;
     }
 
-    method parse($target, |c) {
-        my $*HIGHWATER = 0;
-        my $*PARTICLE= '';
-        my $*LASTRULE;
-        my $*MSG='';
+    # method parse($target, |c) {
+    #     my $*HIGHWATER = 0;
+    #     my $*PARTICLE= '';
+    #     my $*LASTRULE;
+    #     my $*MSG='';
 
-        my $match = callsame;
-        if $reportErrors {
-            self.error($target) unless $match 
-        }
-        return $match;
-    }
+    #     my $match = callsame;
+    #     if $reportErrors {
+    #         self.error($target) unless $match 
+    #     }
+    #     return $match;
+    # }
 
-    method subparse($target, |c) {
-        my $*HIGHWATER = 0;
-        my $*PARTICLE= '';
-        my $*LASTRULE;
-        my $*MSG='';
-        my $match = callsame;
-        if $reportErrors {
-            self.error($target) unless $match;
-        }
-        return $match;
-    }
+    # method subparse($target, |c) {
+    #     my $*HIGHWATER = 0;
+    #     my $*PARTICLE= '';
+    #     my $*LASTRULE;
+    #     my $*MSG='';
+    #     my $match = callsame;
+    #     if $reportErrors {
+    #         self.error($target) unless $match;
+    #     }
+    #     return $match;
+    # }
 
 # for error messages, later.
     # method token-error($msg) {

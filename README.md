@@ -4,7 +4,7 @@ A toy functional programming language based on literary Japanese.
 
 ## Is Haku for you?
 
-* Haku lets you write programs that look very much like written Japanese. So you need to be familiar with written Japanese to program in Haku. 
+* Haku lets you write programs that look very much like written Japanese. So you need to be familiar with written Japanese to program in Haku. I have added translations and explanations to the documentation.
 * Haku is an experiment, not a practical programming language. Several of its features are rather contrary.
 * The implementation is incomplete and buggy, and error messages are poor.
 
@@ -16,7 +16,9 @@ To run Haku you'll need to [install the Raku programming language](https://rakud
 
 I am assuming you'll run Haku on command line, in the directory cloned from Git or where you unzipped the downloaded archive. 
 
-In that directory is a script `haku`. Example programs are in the subdirectory `examples` (horizontal writing) and `examples/tategaki` (vertical writing). 
+In that directory is a script `haku`. If you want to run `haku` outside this directory, you'll need to add the path to the environment variable `RAKULIB`.
+
+Example programs are [in the subdirectory `examples`](https://codeberg.org/wimvanderbauwhede/haku/src/branch/main/examples) (horizontal writing) and `examples/tategaki` (vertical writing). 
 
     Usage: haku <Haku program, written horizontally or vertically, utf-8 text file>
         [--tategaki, -t] : do not run the program but print it vertically.
@@ -42,6 +44,8 @@ The first time you run `haku` will take quite a long time (several minutes) beca
 
 ### Example 1: Iroha
 
+_Iroha_ is the name of [a famous poem](https://en.wikipedia.org/wiki/Iroha) in which every _kana_ occurs only once. The _i_,_ro_,_ha_ sequence is used for ordered lists, so it is similar to a,b,c (or x,y,z in this case).
+
 Consider the following Haku program:
 
     註 例のはくのプログラム。
@@ -55,6 +59,34 @@ Consider the following Haku program:
     ケッカは〈七百四十壱をラムダする〉足す九百十九、
     【ケッカとシンカズの和】を見せる
     のことです。
+
+In Romaji (Japanese written using the Latin script) this reads:
+
+    Chuu Rei no Haku no PUROGURAMU.
+
+    Hon toha
+    RAMUDA ha aru EKSU de EKUSU Kakeru EKUSU desu,
+    KAZUtachi ha 88 to 7100 to 55 desu,
+    I:RO:HA:Kuu ha KAZUtachi desu,
+    SHINKAZU ha I to RO no Wa desu,
+    SHINKAZU wo Miseru,
+    KEKKA ha (741 wo RAMUDA suru) Tasu919,
+    (KEKKA to SHINKAZU no Wa) wo Miseru
+    no Koto desu.
+
+In this documentation I use capitals to indicate words starting with _kanji_ (nouns, verbs and adjectives), and all caps for words originally written in _katakana_. 
+
+And the translation is
+
+    Comment: an example Haku program
+
+    Main is (the following things):
+    LAMBDA is, with a given X, X * X;
+    NUMBERs is 88 and 7100 and 55;
+    I:RO:HA:Empty is NUMBERs;
+    NEWNUMBER is the Sum of I and RO; 
+    RESULT is (do LAMBDA with 741) + 919;
+    Show (the Sum of RESULT and NEWNUMBER)
 
 which compiles to the following Scheme code:
 
@@ -82,9 +114,9 @@ Let's take it apart:
 
     註 ... 。
     
-is a comment.
+is a comment (註 _chuu_ means "note").
 
-The main program (called 本, _hon_) has a fixed begin and end string:
+The main program (called 本, _hon_, here meaning "main") has a fixed begin and end string:
 
     本とは
     ...
@@ -118,9 +150,9 @@ Next we have an assignment to a list of number constants:
 
     カズ達は八十八と七千百と五十五で、
 
-    "KAZUTachi wa 88 to 7100 to 55 de,"
+    "KAZUTachi wa 88 to 7100 to 55 desu,"
 
-Numbers are written in kanji. The particle _to_ is the list separator. You can use 達 _tachi_ to show that a variable name is plural. In Scheme this becomes:
+Numbers are written in kanji. The particle _to_ ("and") is the list separator. You can use the pluralising suffix 達 _tachi_ to show that a variable name is plural. In Scheme this becomes:
 
     (KAZUTACHI (list 88 7100 55))
 
@@ -130,7 +162,8 @@ Next we have a bit of syntactic sugar borrowed from Haskell (cons):
 
     "I:RO:HA:Kuu wa KAZUTachi de,"
 
-空 _kuu_ means "empty". This means that the list is deconstructed into elements I, RO, HA and and empty list. Scheme does not have this kind of pattern matching so each assignment is generated separately.
+空 _kuu_ means "empty". This means that the list is deconstructed into elements I, RO, HA and and empty list. Scheme does not have this kind of pattern matching so each assignment is generated separately. 
+
 
 The next assignment,
 
@@ -197,10 +230,48 @@ This example shows the use of named functions, conditionals and recursion. I wil
     ナガサを見せる
     の事です。
 
+In Romaji:
+
+    Nagasa toha KAZUtachi to KAISUU de
+    Moshi KAZUtachi ga Kuu ni Hitoshii nara
+    KAISUU desukedo,
+    soudenai,
+    (KAZUtachi no shippou) to (KAISUU Tasu Ichi) no Nagasa
+    no Koto desu.
+
+    Jou toha 
+    KAZUtachi de KAZUtachi to Zero no Nagasa 
+    no Koto desu.
+
+    Hon toha
+    KAZUtachi ha ichi .. yonjuuni
+    NAGASA ha KAZUtachi no Jou    
+    NAGASA wo Miseru
+    no Koto desu.
+
+Translation:
+
+    Longness is (the following thing):
+    With NUMBERs and Count,
+    If NUMBERS is equal to Empty, Count 
+    but if this is not so
+    Longness of (Tail of Numbers) and (Count + 1)
+
+    Length is (the following thing):
+    With NUMBERs, 
+    Longness of NUMBERS and 0
+
+    Main is (the following things):
+    NUMBERS is 1 .. 42;
+    LENGTH is Length of NUMBERS;
+    Show LENGTH
+
+(長さ and 丈 both mean "length" but to avoid a naming conflict, I literally translate _nagasa_ as "long-ness".)
+
 Let's start with the main program:
 
     カズ達は壱〜四十弐、
-    "KAZUtachi ha ichi .. jonjuuni"
+    "KAZUtachi ha ichi .. yonjuuni"
 
     kazutachi = [1 .. 42]
 
@@ -221,18 +292,18 @@ We call the function `jou` on `kazutachi` and bind the result to `nagasa`
 The function `jou` is quite simple:
 
     丈とはカズ達でカズ達と零の長さの事です。
-    "Jou ha KAZUtachi de KAZUtachi to Zero no Nagasa no Koto desu."
+    "Jou toha KAZUtachi de KAZUtachi to Zero no Nagasa no Koto desu."
 
     jou kazutachi = nagasa kazutachi 0
 
 Finally `nagasa`    
 
-    Nagasa ha KAZUtachi to KAISUU de
+    Nagasa toha KAZUtachi to KAISUU de
     Moshi KAZUtachi ga Kuu ni Hitoshii nara
     KAISUU desukedo,
     soudenai,
     (KAZUtachi no shippou) to (KAISUU Tasu Ichi) no Nagasa
-    no Koto desu
+    no Koto desu.
 
 In Haskell:
 
@@ -264,13 +335,53 @@ This example shows the use of comments, named functions, conditionals, let-bindi
     コタエを見せる
     の事です。
 
+In Romaji:
+
+    Chuu Saikikansuu no Rei no "Kuwaeru".
+
+    Kuwaeru toha
+    KAZUtachi to SAMU de
+    (KAZUtachi no Nagasa) ga zero ni hitoshii baaiha,
+    SAMU desukeredo,
+    soudenai baaiha,
+    kono NOKOKAZUtachi to SHINSAMU wo Kuwaeru ni
+    KAZU:NOKOKAZUtachi ga KAZUtachi、
+    SHINSAMU ga SAMU ni KAZU wo Tasu
+    no Koto desu.
+
+    Chuu ShuPUROGURAMU.
+
+    Hon toha
+    KOTAE ha［34 to 8］to 0 wo Kuwaeru,
+    KOTAE wo Miseru
+    no Koto desu.
+
+Translation:
+
+    Comment: Example recursive function "Sum"
+
+    Sum is:
+    Given NUMBERs and SUM,
+    in case the length of NUMBERs is zero,
+    it is SUM but
+    in case this is not so,
+    in this Sum of REMAININGNUMBERS and NEWSUM,
+    NUMBER:REMAININGNUMBERS is NUMBERs;
+    NEWSUM is to Add NUMBER to SUM
+
+    Comment: Main program.
+
+    Main is:
+    ANSWER is Sum of [34 and 8] and 0;
+    to show the ANSWER    
+
 Starting again with the main program:
 
     "KOTAE ha [sanjuuyon to hachi] to zero wo Kuwaeru"
 
     kotae = kuwaeru [34,8] 0
 
-Then the function 加える
+Then the function 加える (_kuwaeru_, "so sum")
 
     Kuwaeru to ha
     KAZUtachi to SAMU de
@@ -317,15 +428,15 @@ In Haskell this becomes:
 
 * As Haku does not rely on whitespace, spaces and newlines are not delimiters. 
 * Bindings in a _let_ and expressions and bindings in the main program must be delimited by 、or 。.
-* At some places, newlines are allowed to ease readability.
+* At some places (e.g. after delimiters), newlines are allowed to ease readability.
 
 ### Comments
 
-All comments must start with 註 or 注 (so you can write 注意) and end with a 。. A newline is allowed after a comment.
+All comments must start with 註 (_chuu_, "note") or 注 (_chuu_, "comment", so you can write 注意, "warning") and end with a `。`. A newline is allowed after a comment.
 
 ### Program structure
 
-* A haku program source file can contain named function definitions and must contain a main program, called 本. 
+* A haku program source file can contain named function definitions and must contain a main program, called" 本 (pronounced _hon_ and meaning "main"). 
 * The main program differs from the functions in that functions must be pure and therefore consist of a single expression, whereas the main program can be a sequence of expressions, similar to the do-sequence in a Haskell main program. The main program is defined as
 
         本とは 
@@ -339,22 +450,22 @@ All comments must start with 註 or 注 (so you can write 注意) and end with a
 
 There are a few variants to make it sound a bit more formal:  
 
-* 本とは can also be 本真とは
-* の事です。can also be と言う事です。
+* 本とは can also be 本真とは. 本真 _honma_ means "truth".
+* の事です。(_no koto desu_, "is this thing") can also be と言う事です (_to iu koto desu_, "the said thing")。
 
 A newline is allowed after 本とは and after all bindings and expressions.
 
 ### Identifiers 
     
-- variables: the first character must be _katakana_; further characters katakana or number kanji. The last character can be 達, to indicate a plural. 
-- function names: must start with a kanji. If they are nouns, further characters are also kanji; if they are verbs, further characters are hiragana verb endings.
+- variables: the first character must be _katakana_; further characters katakana or number kanji. The last character can be 達 (_tachi_), to indicate a plural. 
+- function names: must start with a kanji. If they are nouns, further characters are also kanji; if they are verbs, further characters are hiragana verb endings. If they are adjectives, the final character must be い _i_ or な _na_.
     
 ### Constants
 
-- integer: written using number kanji. For zero, either 零, ゼロ or ◯. Negative number prefix is マイナス, optional positive number prefix is プラス
-- rational: two integers separated by 点
-- string: 「」or 『』 
-- list: consist of identifiers or constants separated by と or 、
+- integer: written using number kanji. For zero, either 零 (_rei_, means zero), ゼロ (ZERO, also means zero) or ◯ (_maru_, also zero). Negative number prefix is マイナス (_MAINASU_, "minus"), optional positive number prefix is プラス (_PURASU_,"plus"). All kanji for large numbers (億, 兆, 京, etc) are supported, please read [my article](https://quickandtastycooking.org.uk/articles/japanese-large-numbers/) if you are not familiar with them. 
+- rational: two integers separated by 点 (_ten_, "point")
+- string: quotes are「」or 『』 
+- list: consist of identifiers or constants separated by と (_to_, "and"). To nest lists, wrap them in ［...］.
 
 ### Named function definitions
 
@@ -363,10 +474,13 @@ In Haku, named function definitions are statements. The structure is
     <function-name> とは <argument-list> で <expression> の事です。
 
 The same closing variants as for 本 are allowed; a newline is allowed after とは, で and the expression.
+The function name should be either a verb, noun or adjective (-i or -na).
 
 ### Lambdas
 
     或　<argument-list> で <expression>
+
+或 _aru_ means "a certain ..., a given ..., some ...", 
 
 ### Function application
 
@@ -376,35 +490,72 @@ There are a few forms of function application:
 
         <arg-list> を [ <arg-list> で ] <function>
 
+        味噌汁をスプーンで食べる
+
+        misoshiru wo SUPUUN de Taberu
+
+        To eat miso soup with a spoon
+
 * Adjectival verb form (single argument only):
 
         <function> <arg>
 
+        青い信号
+
+        Aoi Shingo
+        
+        green traffic light
+
 * Noun form:
 
         <arg-list> の [ 、 <arg-list> での ] <function>
+
+        六と七の積
+
+        Roku to Nana no Seki
+
+        the product of six and seven
+
+* Adjective form:
+
+        <funtion> <argument>
+
+        送ったメッセージ
+
+        Okutta MESSEEJI
+
+        the sent message
           
-The argument list can optionally be followed by の皆. This is used in particular when applying map or fold. Also, instead of で you can use のために or の為に.
+The argument list can optionally be followed by の皆 (_no minna_, "all of"). This is used in particular when applying map or fold. Also, instead of で you can use のために or の為に (_no tame ni_, "in order to").
 
 #### Partial application
 
-The arg list can be followed by だけ or 丈 to indicate partial application.
+The arg list can be followed by だけ or 丈 (_dake_, "only") to indicate partial application.
 
 ### Map and Fold
 
 Haku has built-in `map` and `foldl`:
                 
-    foldl: 畳み込む
+* foldl: 畳み込む (_Tatamikomu_, "to fold")
 
-    <list>と<accumulator>を<function>ので畳み込む
+        <list>と<accumulator>を<nominal-function>で畳み込む
 
-    map: 写像する
+* map: 写像する (_Shazou suru_, "to map")
     
-    <list>の皆を<function>ので写像する
+        <list>の皆を<nominal-function>で写像する
 
+A 'nominal function' is either a noun, variable, lambda expression, a verb nominalised with の (_no_) or こと (_koto_), or a -na adjective nominalised by dropping -na.
+
+    零〜四を〈或カズでカズ掛ける弐足す壱〉で写像する
+    仮二を逆で写像する
+
+    zero~yon wo (aru KAZU de KAZU Kakeru Ni Tasu Ichi) de Shazou suru
+
+    Map (with a given NUMBER, NUMBER times two plus one) to 0 .. 4
+ 
 ### Function composition
 
-We use 後, 'のち', to compose functions:
+We use 後, 'のち' (_nochi_, "and then"), to compose functions:
 
     <function1>後<function2>
 
@@ -424,7 +575,7 @@ There are two forms. The first is more like where-clause (expression at the star
 
     この <expression> に <variable> が <expression> 、... 。
 
-A newline is allowed after この, に and every bind expression.
+A newline is allowed after この (_kono_, "this"), に and every bind expression.
 
 The second is more like a conventional let (expression at the end):
 
@@ -433,10 +584,11 @@ The second is more like a conventional let (expression at the end):
     では<expression>
 
 A newline is allowed after every bind expression.
+The `●` is not full-width so for vertical writing `．` and `一` are also supported.
 
 ### Conditional expressions
 
-Similar to other Japanese natural programming languages, we use 若し or もし as the keyword to introduce an if-then-else. The condition can be either なら, ならば or 〜たら. The 'true' expression can optionally be followed by ですけれども or variants; the 'false' branch is introduced by そうでなければ or そうでないなら.
+Similar to other Japanese natural programming languages, we use 若し or もし (_moshi_, "if, supposing") as the keyword to introduce an if-then-else. The condition can be either なら, ならば or 〜たら (all of them have a meaning close to "would be the case"). The 'true' expression can optionally be followed by ですけれども (_desukeredomo_, a polite "but") or variants; the 'false' branch is introduced by そうでなければ or そうでないなら (_soudenakereba_ or _soudenainara_, "if that would not be the case").
 
 For example
 
@@ -445,7 +597,7 @@ For example
 そうでなければ can also be written そうでない. A newline and/or comma is allowed after なら and before and after そうでなければ. 
 Before そうでなければ, an optional ですけれど/ですけど/ですけれども or ですが is allowed.
 
-Currently, there is another form of if-then-else expression supported, which uses 場合:
+Currently, there is another form of if-then-else expression supported, which uses 場合 (_baai_, "in case"):
 
     <cond-expression>場合は<expression>ですけれど、そうでない場合は<expression>
 
@@ -468,61 +620,78 @@ or
 
     <expression> と <expression> を <verb>
 
-    +: 足す
-    -: 引く
-    *: 掛ける
-    /: 割る
+    +: 足す (Tasu)
+    -: 引く (Hiku)
+    *: 掛ける (Kakeru)
+    /: 割る (Waru)
 
 Noun form: 
 
     <expression> と <expression> の <noun>
 
-    +: 和
-    -: 差
-    *: 積
-    /:　除
+    +: 和 (Wa)
+    -: 差 (Sa)
+    *: 積 (Seki)
+    /:　除 (Jo)
 
-#### Logical
+#### Logical (TODO)
 
-TODO
+Boolean values:
+
+    True: 陽 (You)
+    False: 陰 (In)
+
+(These are the _kanji_ for yang and yin, so they do not really mean "true" and "false" but close connotations such as light and darkness, sun and moon, positive and negative.)
+
+Operations:
+
+    A and B: A も B も
+    A or B: A また[は] B 
+    not A: 不A 
+
+ _A mo B mo_ means "both A and B", _mata_ means "or"
+
+I will likely also support the formal names:
+
+    XOR: 排他的論理和 (Haitateki Ronriwa, exclusive logical sum)
+    OR: 論理和 (Ronriwa, logical sum)
+    AND: 論理積 (Ronriseki, logical product)
+    NOT: 論理否定 (Ronrihitei, logical negation)
 
 #### Comparison
 
     <expression> が <expression> <comparison-operation>
 
-    ==: に等しい    
-    >: より多い
-    <: より少ない
+    ==: に等しい (ni hitoshii)
+    >: より多い (yori ooi)
+    <: より少ない (yori sukunai)
 
 TODO:
 
-    >=: 以上
-    <=: 以下
+    >=: 以上 (ijou)
+    <=: 以下 (ika)
 
 ### Lists
 
-* Haku list are simply expressions separated by と ( or に, から or まで), without parentheses. 
-* Square brackets (角括弧) ［］ are used for nesting lists. 
-* The empty list is 空.
+* Haku list are simply expressions separated by と _to_ ( or に _ni_ "at, into", から _kara_ "from" or まで _made_ "to"), without parentheses. 
+* Square brackets (角括弧 _kakugakko_) `［］` are used for nesting lists. 
+* The empty list is 空 (Kuu, "empty").
 * Lists have a minimal set of list manipulation functions: 
 
-        length: <list>の長さ
-        head: <list>の頭
-        tail: <list>の尻尾
-        cons:・(中黒)　
-        concatenation: <list1>と<list2>を合わせる
+        length: <list>の長さ (Nagasa)
+        head: <list>の頭 (Atama)
+        tail: <list>の尻尾 (Shippou)
+        cons:・(中黒) (Nakamaru)
+        concatenation: <list1>と<list2>を合わせる (Awaseru)
         range operator: <integer>〜<integer> 
-
-TODO: 
-
-    reverse: を反転する or の逆引き　    
+        reverse: 逆な<list> (Gyaku na, an adjectival function)
     
 
 ### Maps
 
 * Maps ("dictionaries") are created from lists of pairs,
     
-        <key1>と<value1>と...で図を作る
+        <key1>と<value1>と...で図を作る 
 
     or from an empty list
 
@@ -532,28 +701,33 @@ TODO:
 
         空図
 
+図を作る _Zu wo Tsukuru_ means "to create a map".        
+
 * Maps support the following functions:
         
-        has:　<map>に<key>が有る
-        insert:　<map>に<key>と<value>を入れる
-        lookup:　<map>に<key>を正引きする (TODO: 探索する)
+        has:　<map>に<key>が有る (ga Aru)
+        insert:　<map>に<key>と<value>を入れる (wo Ireru)
+        lookup:　<map>に<key>を正引きする (TODO: 探索する) (Seibiki suru, Tansaku suru) 
         delete:　<map>から<key>を消す
         length: <map>の長さ 
-        keys:    <map>の鍵
-        values:  <map>の値
+        keys:    <map>の鍵 (Kagi)
+        values:  <map>の値 (Atai)
 
+### Interpolation in strings (TODO) 
 
-### System call
+    《バリュー》 returns a string.
 
-TODO:
+### System call (TODO)
 
-    機関で「ls」する
+    機関で「<system call string>」する
 
-For interpolation: 《バリュー》; returns a string.
+機関 _kikan_ means "system".    
+
+Any string will be passed on to the shell for execution.
 
 ### I/O
 
-* The print function is called 見せる, and returns the stringified argument.
+* The print function is called 見せる _miseru_, "to show", and returns the stringified argument.
 
         <arg>を見せる
 
@@ -562,24 +736,21 @@ TODO:
 * Minimal file I/O for text files only. 
 
         open: 
-            <file>を<mode>の為に開ける
+            <file>を<mode>の為に開ける (_Akeru_)
             where
-            <mode>: 読む (read) or 書く (write)
+            <mode>: 読む (Yomu, read) or 書く (Kaku, write)
             or
             <file>を開ける
             for read-write
 
         write: ＜string>を<filehandle>で書く
         read: 
-            a single line: 一線を<filehandle>で読む、
-            all lines: 全線を<filehandle>で読む、
+            a single line: <filehandle>から一線を読む、(Issen, a single line)
+            all lines: <filehandle>から全線を読む、(Zensen, all lines)
 
-        close: <filehandle>を閉める
+        close: <filehandle>を閉める (Shimeru)
 
-        eof: <filehandle>の終了 (TODO)
-
-
-
+        eof: <filehandle>の終了 (Shuuryou, TODO)
 
 ### Types
 
@@ -613,64 +784,78 @@ Haku lets you conjugate the verbs for a function call. For example:
 * Plain Haku 
 
         メッセージを送る。
+        MESSEEGI wo Okuru
         “To send a message”
 
 * Polite Haku
 
         メッセージを送って下さい。
+        MESSEEGI wo Okutte kudasai
         “Please send the message”
 
 * Insistent Haku
 
         メッセージを送なさい。
+        MESSEEGI wo Okunasai
         “Do send the message”
 
-* Adverbial 
+* Adjectival 
 
         送ったメッセージ。
+        Okutta MESSEEGI
         “The sent message”
 
-TODO: Not all of this works yet, currently you can do dictionary form (adjectival or plain), -te form with or without 下さい、しなさい and even くれて. And です can be で御座います. 
+TODO: Not all of this works yet, currently you can do dictionary form (adjectival or plain), -te form with or without 下さい、しなさい and even くれて. And です can be で御座います (_degozaimasu_). 
 
 ### Choice of list separators and function application constructs
 
 There is a lot of choice in how to express certain constructs, in particular function application. For example,
 
     書類を読むの為に開ける
+    Shorui wo Yomu no tame no Akeru
     "to open the document for reading"  
     open doc ReadOnly
 
     辞書にカギとバリューを入れる
+    Jisho ni KAGI to BARYUU wo Ireru
     "to insert a key and value in the dictionary"
     insert dict key value
 
     ジショにカギを正引きする
+    JISHO ni KAGI wo Seibiki suru
     "to lookup a key in the dictionary"
     lookup dict key
 
     辞書からカギを消す
+    Jisho kara KAGI wo Kesu
     "to delete a key from the dictionary"
     delete dict key
 
     カギとバリューから図を作る 
+    KAGI to BARYUU kara Zu wo Tsukuru
     "to create a map from key and value"
     fromList [(key,value)]
 
     カズ達とアクを足すので畳み込む
+    KAZUtachi to AKU wo Tasu no de Tatamikomu
     "to fold the numbers and the acc with addition"
     foldl add acc xs
 
     数達の皆を二倍で写像する
+    Kazutachi no minna wo nibai de Shazou suru
     "to map all numbers with double"
     map double xs
 
     六に七を足す
+    Roku ni Nana wo Tasu
     "add seven to six"
     6+7
     六で掛ける七
+    Roku de Kakeru NANA
     "multiply seven with six"
     6*7
     六と七の積
+    Rok to Nana no Seki
     "the product of six and seven"
     6*7
 
@@ -693,7 +878,7 @@ The main motivation for Haku is the difference in grammar between Japanese and m
 
 Some time ago I ran a poll about how coders perceive function calls, and 3/4 of respondents answered "imperative" (other options were infinitive, noun, -ing form). 
 
-In Japanese, the imperative (命令形, "command form") is rarely used. Therefore in Haku you can't use this form. Instead, you can use the plain form, -masu form or -te form, including -te kudasai. Whether a function is perceived as a verb or a noun is up to you, and the difference is clear from the syntax. If it is a noun, you can turn it into a verb by adding suru, and if it is a verb, you can add the 'no' or 'koto' nominalisers. And you can conjugate the verb forms.
+In Japanese, the imperative (命令形 _meireikei_, "command form") is rarely used. Therefore in Haku you can't use this form. Instead, you can use the plain form, -masu form or -te form, including -te kudasai. Whether a function is perceived as a verb or a noun is up to you, and the difference is clear from the syntax. If it is a noun, you can turn it into a verb by adding suru, and if it is a verb, you can add the 'no' or 'koto' nominalisers. And you can conjugate the verb forms.
 
 ### Naming and giving meaning
 
