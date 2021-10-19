@@ -110,13 +110,28 @@ sub foldl (List \lst, \acc, &f) is export  {
 sub map (\lst, &f) is export  {
     lst.map(&f);
 }  
+
+sub filter (\lst,&f) is export {
+    lst.grep(&f); 
+}
+
+
 sub insert (\m,\k,\v) is export {
     m{k}=v;
     return m;    
 }
 
+# We use this for map as well as list
 sub has (\m,\k) is export {
-    m{k}:exists 
+    given m {
+        when Map {
+            m{k}:exists 
+        } 
+        default {
+           my \s = set m;
+           s{k} 
+        }
+    }
 }
 
 sub lookup (\m,\k) is export {

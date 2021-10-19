@@ -38,22 +38,23 @@ ENDPREL
 sub ppFunction($f) {
     
     my Identifier $name = $f.name ;
-    # say $f.name;
-    if $name ~~ Verb {
-            %defined-functions{$name.verb.substr(0,1)} = $name.verb;
-    } elsif $name ~~ Noun {
-            %defined-functions{$name.noun} =  $name.noun;
-    } elsif $name ~~ Adjective {
-            %defined-functions{$name.adjective} =  $name.adjective;
-    }
     my Variable @args = $f.args;
-    my $args_str = @args.map({ '\\' ~ ppHakuExpr($_) }).join( ', ' );
+    my $args_str = @args.map({ '\\' ~ ppHakuExpr($_) }).join( ', ' );    # say $f.name;
+    if $name ~~ Verb {
+            %defined-functions{$name.verb.substr(0,1)} = [$name.verb,@args];
+    } elsif $name ~~ Noun {
+            %defined-functions{$name.noun} =  [$name.noun,@args];
+    } elsif $name ~~ Adjective {
+            %defined-functions{$name.adjective} =  [$name.adjective,@args];
+    }
+
     my HakuExpr $body = $f.body;
     my $body_str = ppHakuExpr($body);
     my @comments = $f.comments;
     my $comment_str = @comments.map({ '#' ~ $_}).join("\n") ;
+    my $sig_str = $args_str ?? '( '~ $args_str ~ ' )' !! '';
     $comment_str ~ "\n" ~
-    'sub ' ~ ppFunctionName($name) ~'( '~ $args_str ~ ') {' ~ $body_str ~ '}';
+    'sub ' ~ ppFunctionName($name) ~ $sig_str ~ ' {' ~ $body_str ~ '}';
 }
 
 
@@ -307,22 +308,34 @@ sub ppHakuExpr(\h) {
             # }
         }
         when FunctionAsArg {            
+            # %defined-functions{$name.adjective} =  [$name.adjective,@args];
+            say "ppHakuExpr: FUNCTION AS ARG: " ~ h.verb;
             '&' ~ ppHakuExpr(h.verb);
         }
         when Noun {  
             say "ppHakuExpr: NOUN: " ~ h.noun ~ ( $toRomaji  ?? "=>" ~  kanjiToRomaji(h.noun) !! '') if $V;
             
             # if h.noun eq '逆'　{ '&reverse'
+            
             if h.noun ~~ m:i/^ <[a..z]>/　{
+                if %defined-functions{h.noun}:exists {
+                    %defined-functions{h.noun}[1] 
+                    ?? '&' ~ h.noun  
+                    !! h.noun  
+                } else {
                 '&' ~ h.noun  
+                }
             } else {
-            my $n = $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun ;
-            if $n eq '無' or $n eq 'nai' {
-                'Nil' 
-            } else {
-                %defined-functions{h.noun}:exists ?? '&' ~ $n !! $n;
-            }
-            }
+                my $n = $toRomaji ?? kanjiToRomaji(h.noun).lc !! h.noun ;
+                if $n eq '無' or $n eq 'nai' {
+                    'Nil' 
+                } elsif %defined-functions{h.noun}:exists {
+                    # say "ppHakuExpr: ACTUAL NOUN: $n";
+                    %defined-functions{h.noun}[1] ?? '&' ~ $n !! $n;
+                } else {
+                    $n
+                }
+            }                            
         }
         when Null {
             'Nil'   

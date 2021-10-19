@@ -20,7 +20,7 @@ sub yokogakiReader(Str $file) {
 
 my $input_file = IO::Path.new( $file ) ;
 my $horiz_str = $input_file.IO.slurp;
-if $horiz_str ~~ /本真?とは/ {
+if $horiz_str ~~ /[本真?|俳句]とは/ {
     return $horiz_str.lines.grep({ not /^ [ '#' | '＃' ] / }).join("\n");
 } else {
     return Nil;
@@ -98,7 +98,7 @@ sub tategakiReader ( Str $file --> Str) {
             $horiz_str ~= $c;
         }
     }
-    if $horiz_str ~~ /本とは/ {
+    if $horiz_str ~~ /[本真?|俳句]とは/ {
         return $horiz_str;
     } else {
         return Nil;

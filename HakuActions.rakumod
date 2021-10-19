@@ -17,14 +17,15 @@ class HakuActions {
         閉  close                 
         畳  foldl             
         写像  map 
+        濾  filter
         合  concat 
         頭 head 
         尻尾 tail            
         逆 reverse
         逆な reverse
-        長さ length 
-        鍵 　keys
-        値 　values
+        長さ length
+        鍵  keys
+        値  values
         入  insert 
         消  delete 
         正引 lookup
@@ -566,7 +567,9 @@ say "EXPRESSION: "~$<expression>.made.raku if $V;
             make $/.values[0].made;
     }
     method  hontoha($/) {
-        make $<hon>.Str ~ ( $<ma> ?? $<ma>.Str !! '');
+        make $<hon> ??
+            $<hon>.Str ~ ( $<ma> ?? $<ma>.Str !! '')
+            !! $<haiku>.Str;
     }
     method hon-definition($/) {
         # say 'HON action';

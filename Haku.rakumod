@@ -408,8 +408,9 @@ does Nouns
     # For Haku
     token hon {'本'} 
     token ma {'真'} 
+    token haiku {'俳句'} 
     token hontoha {
-        <hon> <ma>? <.toha> <.ws>? 
+        [ <hon> <ma>? | <haiku> ] <.toha> <.ws>? 
     }
 
     # # Built-in verbs, I suspect this is unused
