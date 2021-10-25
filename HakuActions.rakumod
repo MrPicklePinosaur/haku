@@ -605,18 +605,20 @@ say "EXPRESSION: "~$<expression>.made.raku if $V;
     method expression($/) { 
             make $/.values[0].made;
     }
-    method  hontoha($/) {
+    method hontoha($/) {
         make $<hon> ??
             $<hon>.Str ~ ( $<ma> ?? $<ma>.Str !! '')
-            !! $<haiku>.Str;
+            !! $<haiku> ?? $<haiku>.Str
+            !! $<shi> ?? $<shi>.Str
+            !! 'main'
     }
     method hon-definition($/) {
         # say 'HON action';
         my @comments = ();
         my @bindings = ();
-        if $<bind-ha> {
+        if $<bind> {
             # In general an array, iterate
-            @bindings = map({$_.made}, $<bind-ha>); 
+            @bindings = map({$_.made}, $<bind>); 
         }
         my @exprs = ();
         if $<comment-then-expression> {

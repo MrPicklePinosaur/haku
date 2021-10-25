@@ -309,7 +309,7 @@ sub ppHakuExpr(\h) {
         }
         when FunctionAsArg {            
             # %defined-functions{$name.adjective} =  [$name.adjective,@args];
-            say "ppHakuExpr: FUNCTION AS ARG: " ~ h.verb;
+            # say "ppHakuExpr: FUNCTION AS ARG: " ~ h.verb;
             '&' ~ ppHakuExpr(h.verb);
         }
         when Noun {  

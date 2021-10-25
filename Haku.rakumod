@@ -76,7 +76,9 @@ role Characters {
         <:Block('Hiragana')>
         # <[あ..を]>
     }    
-
+    token onaji {
+        '々'
+    }
     token word {
         \w
     }
@@ -176,7 +178,7 @@ role Nouns does Characters {
     token sa { 'さ' }
     token ki { 'き' }
     # 一線 is OK,  一 is not OK, 線 is OK
-    token noun { <number-kanji> ? <non-number-kanji> <kanji>*  [<sa>|<ki>]? }
+    token noun { <number-kanji> ? <non-number-kanji> [<onaji> | <kanji>]*  [<sa>|<ki>]? }
 }
 
 # の-adjectives are not supported because there is a fundamental ambiguity in function application:
@@ -188,7 +190,7 @@ role Nouns does Characters {
 role Adjectives does Characters {
 
     token i-adjective-stem {
-        <non-number-kanji> <hiragana>?? <kanji>? 
+        <non-number-kanji>+ <onaji>? <hiragana>?? <kanji>? 
     }
     token i { 'い' }
     token i-adjective-stem-hiragana {
@@ -408,12 +410,13 @@ does Nouns
     token toiu { 'という' | 'と言う' }
     token koto { 'こと' | '事' }
 
-    # For Haku
+    # For Haku    
     token hon {'本'} 
     token ma {'真'} 
     token haiku {'俳句'} 
+    token shi {'詩'|'詞'} 
     token hontoha {
-        [ <hon> <ma>? | <haiku> ] <.toha> <.ws>? 
+        [ <hon> <ma>? | <haiku> | <shi> ] <.toha> <.ws>? 
     }
 
     # # Built-in verbs, I suspect this is unused
@@ -739,7 +742,7 @@ does Comments
 
     token bind-ha { 
         <comment>* 
-        [ <noun> | <variable> | <cons-list-expression>] [ <.ha> | <.mo> ]
+        [ <noun> | <variable> | <cons-list-expression> | <list-expression>] [ <.ha> | <.mo> ]
      [<expression> <zoi>]? 
      <expression> [<.desu> | <.de> ]? 
      [
@@ -851,7 +854,7 @@ does Keywords
     token hon-definition { 
         <hontoha> 
         [ 
-            | <bind-ha> 
+            | <bind> 
             | <comment-then-expression> <.delim>
         ]*?
         <comment-then-expression> <.delim>?
