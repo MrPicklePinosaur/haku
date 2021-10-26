@@ -1,2 +1,2 @@
 #!/bin/sh
-raku -I. haku.raku $*
+raku -Ilib haku.raku $*

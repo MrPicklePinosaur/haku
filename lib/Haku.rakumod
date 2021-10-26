@@ -236,7 +236,7 @@ role Verbs does Characters {
         [ <non-number-kanji> <hiragana> <kanji> 
         # exception because of せいびき　正引き
         || ['正' | <non-number-kanji>] <kanji>
-        || <non-number-kanji> ] | <katakana>
+        || <non-number-kanji> ] | <katakana>+
         
     }
     token verb-stem-hiragana {
@@ -898,7 +898,7 @@ does Keywords
             @ann_parsed_lines.push($line_counter ~ "\t" ~ $parsed_line);
         } 
         my $parsed_annotated_context = @ann_parsed_lines[*-3 .. *].join("\n") ;
-        my $token-type = %token-types{$*PARTICLE};
+        my $token-type = %token-types{$*PARTICLE} // 'unknown';
         # FIXME: This is weak, will break if there are two expressions on a single line
         # There must be a check that the position is at the end of a line
         # if $token-type eq 'delimiter' {

@@ -130,7 +130,6 @@ class HakuActions {
 
     method number($/) {
             my Num $number = parseJapaneseNumbers($/.Str);
-            say "$/ => $number";
             make Number[$number].new;        
     }
 
