@@ -114,8 +114,23 @@ class HakuActions {
         }
 
     }
+
+    method integer($/) {
+            my Num $number = parseJapaneseNumbers($/.Str);
+            make Number[$number].new;        
+    }
+    method signed-integer($/) {
+            my Num $number = parseJapaneseNumbers($/.Str);
+            make Number[$number].new;        
+    }    
+    method rational($/) {
+            my Num $number = parseJapaneseNumbers($/.Str);
+            make Number[$number].new;        
+    }        
+
     method number($/) {
             my Num $number = parseJapaneseNumbers($/.Str);
+            say "$/ => $number";
             make Number[$number].new;        
     }
 

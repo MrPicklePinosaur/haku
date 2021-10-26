@@ -81,16 +81,18 @@ sub kanjiToNumbersPos(Str $mag  ) {
 
 
 sub parseJapaneseNumbers(Str $kazu_str --> Num ) is export {
-    if $kazu_str ~~ /^ [ [0 .. 9] | [０ .. ９] ] / {
-        return $kazu_str;
-    } else {
-    if $kazu_str ~~ /^ <[一二三四五六七八九壱弐参弌壹弍貳貮弎肆伍陸漆柒捌玖〇零]>+　['点'　<[一二三四五六七八九壱弐参弌壹弍貳貮弎肆伍陸漆柒捌玖〇零]>+　]? $/
+    if $kazu_str ~~ /^ [ <[0 .. 9]> | <[０..９]> ] / {
+        return $kazu_str.Num;
+    } 
+    elsif $kazu_str ~~ /^ 
+        <[一二三四五六七八九壱弐参弌壹弍貳貮弎肆伍陸漆柒捌玖〇零]>+　
+        ['点'　<[一二三四五六七八九壱弐参弌壹弍貳貮弎肆伍陸漆柒捌玖〇零]>+　]? 
+        $/
     {        
         return kanjiToNumbersPosDec( $kazu_str ) ;
     } else {
         return kanjiToNumbersMag( $kazu_str ) ;
-    }
-    }
+    }    
 }
 
 sub substituteKanjiToDigits(Str $kstr --> Str) is export {

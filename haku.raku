@@ -76,9 +76,13 @@ if $parse-only {
     }
     exit;
 } else {
-
-    my $hon_parse = Haku.parse($program_str, :actions(HakuActions));
-    
+    my $hon_parse = $rule 
+        ?? Haku.parse($program_str, :actions(HakuActions),:rule($rule)) 
+        !! Haku.parse($program_str, :actions(HakuActions));
+    if $rule {
+        say $hon_parse.made.raku ;
+        exit;
+    }
     my $hon_raku_code =  ppHakuProgram($hon_parse.made);
     if $miseru {
         say $hon_raku_code;

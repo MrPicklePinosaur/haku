@@ -231,12 +231,13 @@ role Verbs does Characters {
     token verb-ending-te {
         'って'| 'て'| 'いで' | 'んで'
     }    
-    
+    # WV 2021-10-26 This is a bit bold,make sure no regression!
     token verb-stem {
-        <non-number-kanji> <hiragana> <kanji> 
+        [ <non-number-kanji> <hiragana> <kanji> 
         # exception because of せいびき　正引き
         || ['正' | <non-number-kanji>] <kanji>
-        || <non-number-kanji> 
+        || <non-number-kanji> ] | <katakana>
+        
     }
     token verb-stem-hiragana {
          <hiragana>+? <?before <verb-ending> >
@@ -252,7 +253,7 @@ role Verbs does Characters {
     token verb-masu { <verb-stem> <hiragana>*? <verb-ending-masu> }
     token verb-ta { <verb-stem> <hiragana>*? <verb-ending-ta> }
     token verb-te { <verb-stem> <verb-stem-hiragana>? <verb-ending-te> }
-    token verb-sura { <verb-stem> <verb-stem-hiragana>? <sura> }
+    token verb-sura { <verb-stem> <verb-stem-hiragana>?  <sura> }
 
 # This fails on e.g. su.teru because the te is seen as -te form
 # We should have a rule for a -te after a kanji and before te/ru/masu/ta 
