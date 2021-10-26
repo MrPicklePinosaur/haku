@@ -15,19 +15,21 @@ sub USAGE() {
         [--parse-only, -p] : for debugging, parse and print out the parse tree.
         [--subparse, -s] : for debugging, use subparse instead of parse.
         [--rule, -r] :  for debugging, use a specific grammar rule.
-        [--verbose, -v] : for debugging, verbose output.        
+        [--verbose, -v] : for debugging, verbose output.
+        [--expression, -e] : provide an expression string instead of a file name 
  EOH
 }
 
 unit sub MAIN(
-          Str $src_file,
+          Str $src_file = 'NONE',
           Bool :t($tategaki) = False,   
           Bool :m($miseru) = False,
           Bool :y($yomudake) = False,
           Bool :p($parse-only) = False,
           Bool :v($verbose) = False,
           Bool :s($subparse) = False,
-          Str :r($rule) 
+          Str :r($rule), 
+          Str :e($expression) 
         );  
 
 if ($verbose) { 
@@ -35,8 +37,14 @@ if ($verbose) {
     $HakuActions::V=True;
 }
 
-if (not $src_file.defined) {
-         die "Please provide an input file\n";
+my $use-expression = False;
+
+if $src_file eq 'NONE'  {
+    if not $expression.defined {
+         die "Please provide an input file or expression\n";
+    } else {
+        $use-expression = True;
+    }
 }
 
 if $tategaki {
@@ -44,7 +52,7 @@ if $tategaki {
     exit;
 }
 
-my $program_str = hakuReader($src_file);
+my $program_str = $use-expression ?? $expression !! hakuReader($src_file);
 
 if $yomudake { 
     say $program_str;

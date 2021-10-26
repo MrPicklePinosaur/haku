@@ -21,7 +21,8 @@ role Characters {
     }
    
     token kanji {  
-        <:Block('CJK Unified Ideographs') - reserved-kanji >
+        <:Block('CJK Unified Ideographs')>
+        # <:Block('CJK Unified Ideographs') - reserved-kanji >
         # See Kanji.rakumod for a list instead of the Unicode block
     }  
 
@@ -530,9 +531,9 @@ role Numbers does  Characters {
     token zero {  'ゼロ' | 'マル'  } # '〇' | '零'  are in number-kanji
     token minus {'マイナス'}
     token plus {'プラス'}
-    token integer { [<number-kanji> | <zero>]+ }
+    token integer { [<number-kanji> | <sanyousuji> | <zero>]+ }
     token signed-integer { (<minus> | <plus>) <integer> }
-    token ten { '点' }
+    token ten { '点' | '.' }
     token rational { <signed-integer>+ <.ten> <integer>+ }
     token number { 
         <rational> | <signed-integer> | <integer> 
