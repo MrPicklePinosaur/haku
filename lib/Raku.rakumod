@@ -39,7 +39,7 @@ sub ppFunction($f) {
     
     my Identifier $name = $f.name ;
     my Variable @args = $f.args;
-    my $args_str = @args.map({ '\\' ~ ppHakuExpr($_) }).join( ', ' );    # say $f.name;
+    my $args_str = @args.map({ '\\' ~ ppHakuExpr($_) }).join( ', ' ); # say $f.name;
     if $name ~~ Verb {
             %defined-functions{$name.verb.substr(0,1)} = [$name.verb,@args];
     } elsif $name ~~ Noun {
@@ -237,6 +237,7 @@ sub ppHakuExpr(\h) {
             if h.partial {
                 '&' ~ ppFunctionName(h.function-name) ~ '.assuming' ~ '(' ~ join( ', ' , h.args.map({ppHakuExpr($_)}) )~ ')';
             } else {
+                # I think I need to check if this function is in the table!
                 my $maybeDot = h.function-name ~~ Variable ?? '.' !! '';
                 say "FNAME: " ~ h.function-name.raku if $V;
                 say "FARGS: " ~ h.args.raku if $V;

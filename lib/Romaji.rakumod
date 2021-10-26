@@ -3562,7 +3562,7 @@ my @y_col = <YA YU YO>;
 #}
 
 sub katakanaToRomaji(Str $kstr --> Str) is export {
-    # say "KATAKANA: "~ $kstr;
+    say "KATAKANA: "~ $kstr if $V;
     my @ks = $kstr.comb;
     my @rs = @ks.map({ %katakana{$_} // $_ });
     my @nrs = ();
@@ -3581,11 +3581,18 @@ sub katakanaToRomaji(Str $kstr --> Str) is export {
     }
     
     while $r_str ~~/_/ {
-        for %combined_chars.keys -> $c {
+        # The sort is to make sure U_A etc come as late as possible
+        for %combined_chars.keys.sort -> $c {
+            
             my $cc = %combined_chars{$c};
+            # say "$c => $cc";
             $r_str ~~ s/$c/$cc/;  
         }
     }
+    # VU_A => VA is never reached as
+    # U_A => WA is encountered first
+    # so we get VWA 
+    $r_str ~~ s:g:i/vw/v/;  
     
     return $r_str;
 }
@@ -3617,6 +3624,14 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
     say "KANJI: " ~ $kstr if $V;
     # There are 2 kanji and then some hiragana
     if $kstr.chars > 1 and not $kstr.substr(0,2) ~~/<[あ..ん]>/ and $kstr ~~ /<[あ..ん]>/  {
+        if $kstr ~~/^ $<katakana_part> = <[ァ..ヺー]>+ $<hiragana_part> = <:Block('Hiragana')>+ $/ {
+            say "KATAKANA with HIRAGANA: " ~ $kstr if $V;    
+            my $katakana_str = $<katakana_part>.Str;
+            my $kataroma = katakanaToRomaji($katakana_str);
+            my $hiragana_str = $<hiragana_part>.Str;
+            my $hiraroma = hiraganaToRomaji($hiragana_str);
+            return $kataroma.lc ~ $hiraroma;
+        } else {
         say "MULTI-KANJI with HIRAGANA: " ~ $kstr if $V;
         # We transliterate the kanji, using ON readings
         my $kanji=kanjiToRomaji($kstr.substr(0,2));
@@ -3624,7 +3639,7 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
         my $str = $kanji ~ $kana;
         $str ~~ s/aa/awa/; # ad hoc!
         return $str;
-
+        }
     } 
     # There is more than one character and some of them are hiragana
     # This is a bit not good because if there are no kanji I should just call hiraganaToRomaji
