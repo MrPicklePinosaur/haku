@@ -1,4 +1,5 @@
 use v6;
+use lib ();
 use lib ('.');
 use Haku;
 use HakuActions;
@@ -92,10 +93,14 @@ if $parse-only {
         # $fh.put: $hon_raku_code;
         # $fh.close;
         # Liz suggests
-        'Hon.rakumod'.IO.spurt($hon_raku_code);
+        #'Hon.raku'.IO.spurt($hon_raku_code);
         
         # Require the module. This will execute the program
-        require Hon;
+        #use lib ('runtime-lib');
+        #require Hon;
+        #run <raku -I. Hon.raku>;
+        use  MONKEY-SEE-NO-EVAL;
+        EVAL($hon_raku_code);
     }
 }
 

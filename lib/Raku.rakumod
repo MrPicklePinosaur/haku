@@ -26,7 +26,8 @@ sub ppHakuProgram(HakuProgram $p) is export {
      my $hon_str = ppHon($hon);
      my $prelude_str = Q:to/ENDPREL/;
 use v6;
-unit module Hon;
+#unit module Hon;
+use lib ('runtime-lib');
 use HakuPrelude;
     
 ENDPREL

@@ -3900,3 +3900,50 @@ sub te-form-to-dict-form (Str $kstr) {
 # say kanjiToRomaji('聴こえる');
 
 #say katakanaToRomaji('ケッカ');
+
+# How to handle diacritics? No change in number, or +/- 1? 
+# Also, what about the small kana? 
+# there are about 120 of them in total. 
+# - For the small kana, I would prefer to treat them as if they are large ones
+# So I need some small-to-large translation first for ya/yu/yo
+# - For the diacritics, I would simply remove them, so I need another translation table with 25 entries
+my %kana-mappings is Map = <
+ゃ や
+ゅ ゆ
+ょ よ
+が か
+ぎ き
+ぐ く
+げ け
+ご こ
+ざ さ
+じ し
+ず す
+ぜ せ
+ぞ そ
+だ た
+ぢ ち
+づ つ
+で て
+ど と
+ば は
+び ひ
+ぶ ふ
+べ へ
+ぼ ほ
+ぱ は
+ぴ ひ
+ぷ ふ
+ぺ へ
+ぽ ほ
+ん む
+>;
+# ん,  was just a variant of む
+my @iroha = 'いろはにほへとちりぬるをわかよたれそつねならむうゐのおくやまけふこえてあさきゆめみしゑひもせす'.comb;
+my %iroha-code = map {state $i=0; $_ => $i++ }, @iroha;
+
+sub irohaEncoding (Str $kana --> Int) is export {
+    my $mapped_kana = %kana-mappings{$kana} // $kana;
+    my $iroha-encoding = %iroha-code{$mapped_kana};
+    return $iroha-encoding;
+}
