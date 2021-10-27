@@ -504,10 +504,12 @@ class HakuActions {
     method bind-ga($/) {
         my $comment = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
         my $lhs-expr;
-        if $<variable> {
-            $lhs-expr = $<variable>.made;
+        if $<identifier> {
+            $lhs-expr = $<identifier>.made;
         } elsif $<cons-list-expression> {
-            $lhs-expr = $<cons-list-expression>.made;
+            $lhs-expr = $<cons-list-expression>.made;        
+        } elsif $<list-expression> {
+            $lhs-expr = $<list-expression>.made;            
         }
         if $<zoi> {
             my $expr = $<expression>[0].made;
@@ -540,12 +542,14 @@ class HakuActions {
     method bind-ha($/) {
         my $comment = $<comment>.map({ '#' ~ $_.made ~ "\n"}).join('') // '';
         my $lhs-expr;
-        if $<variable> {            
-            $lhs-expr = $<variable>.made;
-        } elsif $<noun> {
-            $lhs-expr = $<noun>.made;
+        if $<identifier> {            
+            $lhs-expr = $<identifier>.made;
+        # } elsif $<noun> {
+        #     $lhs-expr = $<noun>.made;
         } elsif $<cons-list-expression> {
             $lhs-expr = $<cons-list-expression>.made;
+        } elsif $<list-expression> {
+            $lhs-expr = $<list-expression>.made;
         }
         if $<zoi> {
             my $expr = $<expression>[0].made;

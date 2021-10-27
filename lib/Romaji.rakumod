@@ -3940,7 +3940,7 @@ my %kana-mappings is Map = <
 >;
 # ん,  was just a variant of む
 my @iroha = 'いろはにほへとちりぬるをわかよたれそつねならむうゐのおくやまけふこえてあさきゆめみしゑひもせす'.comb;
-my %iroha-code = map {state $i=0; $_ => $i++ }, @iroha;
+my %iroha-code = map {state $i=0; $_ => ++$i }, @iroha;
 
 sub irohaEncoding (Str $kana --> Int) is export {
     my $mapped_kana = %kana-mappings{$kana} // $kana;

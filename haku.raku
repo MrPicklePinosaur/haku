@@ -60,7 +60,7 @@ if $yomudake {
     exit;
 }
 
-if $parse-only { 
+if $parse-only or $subparse { 
     $reportErrors = False;
     if $subparse {
         if $rule {

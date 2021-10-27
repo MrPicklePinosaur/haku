@@ -90,7 +90,7 @@ role IfExpr[ $cond, $true-expr,  $false-expr] does HakuExpr  {
     has HakuExpr $.if-true=$true-expr;
     has HakuExpr $.if-false=$false-expr;
 }
-role ListExpr[ @exprs] does HakuExpr {
+role ListExpr[ @exprs] does LhsExpr does HakuExpr {
     has  @.elts = @exprs;
 }
 

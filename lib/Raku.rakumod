@@ -171,7 +171,46 @@ sub ppConsLhsBindExpr(\h) {
     my $rhs = ppHakuExpr(h.rhs);
     return $elts_str ~ ' = ' ~ $rhs ~ ';' ~ "\n" ~ 'my \\' ~ @pp_elts.tail ~ ' = ' ~ $last_elt ~ ';';
 }
+sub ppIdentifier(\h) {
+    die 'TODO: needs ppVerb, ppNoun, ppAdjective';
+    given h {
+        when ConsVar {
+           ppVariable h.var.var;
+        }
+        when Variable {
+            ppVariable h.var;
+        }
+        when Verb {    
+            h.verb;
+        }
+        when Noun　{
+            h.noun;
+        }
+        when Adjective　{
+            h.adjective;
+        }        
+    }
+}
+sub ppListExprLhsBindExpr(\h) {
+    my @elts = h.lhs.elts;
+    my @pp_elts = @elts
+            # .grep( {$_ ~~ ConsVar})
+            .map({  '\\' ~ ppIdentifier($_) });
+            # .map({ $_.raku });
+    # my $last_elt = '@' ~ @pp_elts.tail ~ '_a';
+    # my @init_elts = @pp_elts.head(@pp_elts.elems-1).map({ '\\' ~ $_ });     
 
+    my $elts_str = 
+        'my (' ~ @pp_elts.join(',')
+        # ~ ',' ~ $last_elt
+        # @elts
+        #     .grep( {$_ ~~ ConsVar})
+        #     .map({ '\\' ~ ppVariable($_.var) })
+            # .join(',') 
+            ~ ') ';
+    my $rhs = ppHakuExpr(h.rhs);
+    return $elts_str ~ ' = ' ~ $rhs ~ ';';
+}
 
 sub ppVariable($var) {
             my $tvar = $var;
@@ -194,6 +233,9 @@ sub ppHakuExpr(\h) {
                 when Cons {
                     $comment ~ ppConsLhsBindExpr(h);
                 }
+                when ListExpr {
+                    $comment ~ ppListExprLhsBindExpr(h);
+                }                
                 default {
                     $comment ~ 'my \\' ~ ppHakuExpr(h.lhs)~' = '~ppHakuExpr(h.rhs)~';'
                 } 
@@ -339,6 +381,31 @@ sub ppHakuExpr(\h) {
                 }
             }                            
         }
+        when Adjective {  
+            say "ppHakuExpr: ADJECTIVE: " ~ h.adjective ~ ( $toRomaji  ?? "=>" ~  kanjiToRomaji(h.adjective) !! '') if $V;
+            
+            # if h.noun eq '逆'　{ '&reverse'
+            
+            if h.adjective ~~ m:i/^ <[a..z]>/　{
+                if %defined-functions{h.adjective}:exists {
+                    %defined-functions{h.adjective}[1] 
+                    ?? '&' ~ h.adjective  
+                    !! h.adjective  
+                } else {
+                '&' ~ h.adjective  
+                }
+            } else {
+                my $n = $toRomaji ?? kanjiToRomaji(h.adjective).lc !! h.adjective ;
+                if $n eq '無' or $n eq 'nai' {
+                    'Nil' 
+                } elsif %defined-functions{h.adjective}:exists {
+                    say "ppHakuExpr: ACTUAL ADJECTIVE: $n";
+                    %defined-functions{h.adjective}[1] ?? '&' ~ $n !! $n;
+                } else {
+                    $n
+                }
+            }                            
+        }        
         when Null {
             'Nil'   
         }

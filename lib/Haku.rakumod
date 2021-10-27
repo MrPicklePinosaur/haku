@@ -45,6 +45,10 @@ role Characters {
         <:Block('CJK Unified Ideographs') - reserved-kanji - number-kanji>
     }  
 
+    token non-reserved-kanji {  
+        <:Block('CJK Unified Ideographs') - reserved-kanji>
+    }  
+
     # The last row is for function arguments, should factor out
     token haku-kanji {
         '白' | '泊' | '箔' | '伯' | '拍' | '舶' | 
@@ -191,7 +195,7 @@ role Nouns does Characters {
 role Adjectives does Characters {
 
     token i-adjective-stem {
-        <non-number-kanji>+ <onaji>? <hiragana>?? <kanji>? 
+        <non-reserved-kanji>+ <onaji>? <hiragana>?? <kanji>? 
     }
     token i { 'い' }
     token i-adjective-stem-hiragana {
@@ -237,7 +241,6 @@ role Verbs does Characters {
         # exception because of せいびき　正引き
         || ['正' | <non-number-kanji>] <kanji>
         || <non-number-kanji> ] | <katakana>+
-        
     }
     token verb-stem-hiragana {
          <hiragana>+? <?before <verb-ending> >
@@ -292,7 +295,7 @@ does Variables
         <.mo>? <no> <!before <koto> > |<koto> <!before <desu> > 
     }
     # Identifiers are variabletoken ides noun-style and verb-style function names
-    token identifier { <variable> | <verb> <nominaliser>? | <noun> <.sura>? | <adjective> }
+    token identifier { <variable> | <verb> <nominaliser>? | [<adjective> || <noun> <.sura>? ]  }
     token adjectival {
         <verb> | <adjective>
     }
@@ -598,7 +601,7 @@ does Comments
 
      
     token list-elt-expression {
-        <kuu>|<empty>|<atomic-expression> | <kaku-parens-expression>
+        <kuu> | <empty> | <atomic-expression> | <kaku-parens-expression>
     }
     # TODO: this means that a list of empty lists is not possible
     token list-expression { 
@@ -698,10 +701,10 @@ does Comments
     }
 
     token expression {        
-        [ <lambda-expression>         
-        | <let-expression>  
-        | <apply-expression>         
-        | <operator-expression>        
+        [ <lambda-expression>
+        | <let-expression>
+        | <apply-expression>
+        | <operator-expression>
         | <function-comp-expression>
         | <map-expression>
         | [<ifthen> || <comparison-expression>]
@@ -710,7 +713,8 @@ does Comments
         [ <parens-expression>  
         | <range-expression>        
         | [<cons-list-expression>||<kaku-parens-expression>]
-        |<list-expression>|<atomic-expression>
+        | <list-expression>
+        | <atomic-expression>
         | <chinamini-expression>                       
         ]
     }
@@ -744,7 +748,7 @@ does Comments
 
     token bind-ha { 
         <comment>* 
-        [ <noun> | <variable> | <cons-list-expression> | <list-expression>] [ <.ha> | <.mo> ]
+        [ [ <cons-list-expression>  | <list-expression> ] || <identifier> ] [ <.ha> | <.mo> ]
      [<expression> <zoi>]? 
      <expression> [<.desu> | <.de> ]? 
      [
@@ -753,7 +757,7 @@ does Comments
      ]
     }
 
-    token bind-ga { <comment>* [ <noun> | <variable> | <cons-list-expression>] [<.ga> | <.mo> ] 
+    token bind-ga { <comment>* [  [ <cons-list-expression>  | <list-expression> ] || <identifier> ] [<.ga> | <.mo> ] 
     [<expression> <zoi>]? 
     <expression> [<.desu> | <.de> ]? <.ws>? 
     }
