@@ -385,7 +385,7 @@ does Nouns
     token moshi { 
         [ 'もし' | '若し' ] <mo>?　<ws>?
     }
-    token nara { 'なら' }
+    token nara { 'なら' 'ば'? }
     token tara { 'たら' }
 
     token dattara { 'だったら' }
@@ -707,7 +707,7 @@ does Comments
         | <operator-expression>
         | <function-comp-expression>
         | <map-expression>
-        | [<ifthen> || <comparison-expression>]
+        | [<ifthen> || <if> || <comparison-expression>]
         | <string-interpol>
         ] || 
         [ <parens-expression>  
@@ -802,6 +802,10 @@ does Comments
     token ifthen {
         <moshi-ifthen> |
         <baai-ifthen> 
+    }
+    # This is a "monadic-style" if without then
+    token if {
+        <condition-expression>  <.nara> <.comma>? <.ws>? <expression> <.desu>? <.comma>? <.ws>?
     }
 
 } # End of Expression

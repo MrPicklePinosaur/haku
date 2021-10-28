@@ -96,6 +96,8 @@ class HakuActions {
         my $adj-str = $/.Str;
         my $adj-str-s = %predefined-functions{$adj-str.substr(0,$adj-str.chars-1)} // $adj-str;
         say "ADJECTIVE: $adj-str-s" if $V;
+        # try die "Something bad happened";
+        # with $! { .backtrace.print ; }
         make Adjective[$adj-str-s].new;
     }    
 

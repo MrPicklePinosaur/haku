@@ -172,7 +172,7 @@ sub ppConsLhsBindExpr(\h) {
     return $elts_str ~ ' = ' ~ $rhs ~ ';' ~ "\n" ~ 'my \\' ~ @pp_elts.tail ~ ' = ' ~ $last_elt ~ ';';
 }
 sub ppIdentifier(\h) {
-    die 'TODO: needs ppVerb, ppNoun, ppAdjective';
+    # die 'TODO: needs ppVerb, ppNoun, ppAdjective';
     given h {
         when ConsVar {
            ppVariable h.var.var;
@@ -181,13 +181,13 @@ sub ppIdentifier(\h) {
             ppVariable h.var;
         }
         when Verb {    
-            h.verb;
+            ppVerb(h.verb);
         }
         when Noun　{
-            h.noun;
+            ppNoun(h.noun);
         }
         when Adjective　{
-            h.adjective;
+            ppAdjective(h.adjective);
         }        
     }
 }
@@ -219,6 +219,65 @@ sub ppVariable($var) {
             my $ttvar = $toRomaji ?? substituteKanjiToDigits($tvar) !! $tvar; 
             $toRomaji ?? katakanaToRomaji($ttvar).lc !! $ttvar; 
 }
+
+sub ppVerb (\h) {
+    $toRomaji ?? kanjiToRomaji(h) !! h ;
+}
+
+sub ppNoun (\h) {
+    say "ppHakuExpr: NOUN: " ~ h ~ ( $toRomaji  ?? "=>" ~  kanjiToRomaji(h) !! '') if $V;
+    
+    # if h eq '逆'　{ '&reverse'
+    
+    if h ~~ m:i/^ <[a..z]>/　{
+        if %defined-functions{h}:exists {
+            %defined-functions{h}[1] 
+            ?? '&' ~ h  
+            !! h  
+        } else {
+        '&' ~ h  
+        }
+    } else {
+        my $n = $toRomaji ?? kanjiToRomaji(h).lc !! h ;
+        if $n eq '無' or $n eq 'nai' {
+            'Nil' 
+        } elsif %defined-functions{h}:exists {
+            # say "ppHakuExpr: ACTUAL NOUN: $n";
+            %defined-functions{h}[1] ?? '&' ~ $n !! $n;
+        } else {
+            $n
+        }
+    }                            
+}
+
+sub ppAdjective (\h) {
+
+    say "ppHakuExpr: ADJECTIVE: " ~ h ~ ( $toRomaji  ?? "=>" ~  kanjiToRomaji(h) !! '') if $V;
+    
+    # if h.noun eq '逆'　{ '&reverse'
+    
+    if h ~~ m:i/^ <[a..z]>/　{
+        if %defined-functions{h}:exists {
+            %defined-functions{h}[1] 
+            ?? '&' ~ h  
+            !! h  
+        } else {
+        '&' ~ h  
+        }
+    } else {
+        my $n = $toRomaji ?? kanjiToRomaji(h).lc !! h ;
+        if $n eq '無' or $n eq 'nai' {
+            'Nil' 
+        } elsif %defined-functions{h}:exists {
+            say "ppHakuExpr: ACTUAL ADJECTIVE: $n";
+            %defined-functions{h}[1] ?? '&' ~ $n !! $n;
+        } else {
+            $n
+        }
+    }
+}
+
+
 
 sub ppHakuExpr(\h) {
             
