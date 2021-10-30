@@ -352,13 +352,20 @@ sub ppHakuExpr(\h) {
         when MapExpr {
             '{' ~ join(' => ' , map(&ppHakuExpr,h.elts)) ~ '}'
         }        
-        when  IfExpr { 
-            ('do if ' ~ ppHakuExpr(h.cond) ~ ' {' ,
+        when  IfExpr {             
+            my $if-str = ('do if ' ~ ppHakuExpr(h.cond) ~ ' {' ,
                 $indent ~ ppHakuExpr(h.if-true) ,
-                '} else {' ,
+                '}',
+            ).join("\n");
+            if not h.if-false ~~ Null {    
+                $if-str ~ (
+                ' else {' ,
                 $indent ~ppHakuExpr(h.if-false),
                 '}'
             ).join("\n");
+            } else {
+                $if-str;
+            }
         }   
         when LetExpr {
             (

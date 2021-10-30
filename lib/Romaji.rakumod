@@ -1,6 +1,10 @@
 use v6;
 unit module Romaji;
+use HakuDict;
 our $V=False;
+
+# A workaround from Liz because is Map is export does not work:
+my %dictionary := dictionary;
 
 my %katakana is Map = < 
 ァ _A
@@ -197,12 +201,15 @@ SI_YO SHO
 ZI_YA ZHA
 ZI_YU ZHU
 ZI_YO ZHO
+ZI_E ZHE
 TI_YA CHA
 TI_YU CHU
 TI_YO CHO
+TI_E CHE
 DI_YA JA
 DI_YU JU
 DI_YO JO
+DI_E JE
 NI_YA NYA
 NI_YU NYU
 NI_YO NYO
@@ -239,8 +246,15 @@ VU_I VI
 VU_E VE
 VU_O VO
 VU_A VA
+TE_I TI
+TE_U TU
+DE_I DI
+DE_U DU
+JI_YA JA
+JI_YU JU
+JI_YO JO
+JI_E JE
 >;
-
 
 my @i_row = <
 KI
@@ -3565,6 +3579,7 @@ sub katakanaToRomaji(Str $kstr --> Str) is export {
     say "KATAKANA: "~ $kstr if $V;
     my @ks = $kstr.comb;
     my @rs = @ks.map({ %katakana{$_} // $_ });
+    # say @rs;
     my @nrs = ();
     for 0 .. @rs.elems - 1 -> $idx {        
         if @rs[$idx] eq 'ー' { 
@@ -3573,13 +3588,14 @@ sub katakanaToRomaji(Str $kstr --> Str) is export {
             @nrs.push(@rs[$idx]) 
         }
     }
-    
+    # say @nrs;
     my $r_str = @nrs.join('');
+    # say $r_str;
     while $r_str ~~/_TU(.)/ {
         my $c=$0;
         $r_str ~~ s/_TU$c/$c$c/;
     }
-    
+    # say $r_str;
     while $r_str ~~/_/ {
         # The sort is to make sure U_A etc come as late as possible
         for %combined_chars.keys.sort -> $c {
@@ -3589,30 +3605,54 @@ sub katakanaToRomaji(Str $kstr --> Str) is export {
             $r_str ~~ s/$c/$cc/;  
         }
     }
+    # say $r_str;
     # VU_A => VA is never reached as
     # U_A => WA is encountered first
     # so we get VWA 
     $r_str ~~ s:g:i/vw/v/;  
     
     return $r_str;
-}
+} # END of katakanaToRomaji
 
 sub hiraganaToRomaji (Str $kstr --> Str) is export  {
-
+say 'HIRAGANA: '~ $kstr if $V;;
     my @ks = $kstr.comb;
-    my @rs = @ks.map({%hiragana{$_}});
-    my $r_str = @rs.join('');
+    # my @hrs = @ks.map({%hiragana{$_}});
+    my @hrs = @ks.map({ %hiragana{$_} // $_ });
+    my $r_str = @hrs.join('');
+    # say $r_str;
     while $r_str ~~/_TU(.)/ {
         my $c=$0;
         $r_str ~~ s/_TU$c/$c$c/;
     }
+    # say $r_str;
     while $r_str ~~/_/ {
-        for %combined_chars.keys -> $c {
+        for %combined_chars.keys.sort -> $c {
             my $cc = %combined_chars{$c};
             $r_str ~~ s/$c/$cc/;  
         }
     }
+    # say $r_str;
+    $r_str ~~ s:g:i/vw/v/;  
     return $r_str.lc;
+} # END of hiraganaToRomaji
+
+sub kanaToRomaji (Str \kstr --> Str) is export {
+    if kstr ~~/ <[ァ..ヺー]> / {
+        # say "katakanaToRomaji({kstr})";
+        my \rstr = katakanaToRomaji(kstr);
+        # say rstr;
+        if rstr ~~ /<:Block('Hiragana')>/ {
+            
+            hiraganaToRomaji(rstr)    
+        }  else {
+            rstr
+        }
+    } 
+    else {
+        # say "hiraganaToRomaji({kstr})";
+        hiraganaToRomaji(kstr)
+    }
 }
 
 # This is not so good:
@@ -3620,6 +3660,10 @@ sub hiraganaToRomaji (Str $kstr --> Str) is export  {
 # When there are only kanji, I use the ON readings
 # What I should do is see if there are 2 kanji in a row
 sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
+    if %dictionary{$kstr}:exists {
+        %dictionary{$kstr}[0]
+    } else {
+        say "Not in dictionary: " ~ $kstr;
     if $kstr ~~ m:i/ ^ <[a..z]>/ { return $kstr }
     say "KANJI: " ~ $kstr if $V;
     # There are 2 kanji and then some hiragana
@@ -3648,13 +3692,18 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
         my ($kanji,@rest) = $kstr.comb;
         my $r = join('',@rest);
         if  $r ne ('さ'|'い'|'な') and  %joyo_kun_verb_readings{$kanji}:exists {
-        # a kanji with kun verb readings, one or more reasings            
+        # a kanji with kun verb readings, one or more readings            
             my @kana = %joyo_kun_verb_readings{$kanji};
             if @rest {
                 my ($kstr2,$te-form) = te-form-to-dict-form ($kstr);
                 if $te-form {
                      say "TE-FORM: $kstr => $kstr2" if $V;
-                    return hiraganaToRomaji($kstr2);
+                    if %dictionary{$kstr2}:exists {
+                        return %dictionary{$kstr2}[0]
+                    } else {
+                        say "Verb not in dictionary: " ~ $kstr;
+                        return hiraganaToRomaji($kstr2);
+                    }
                 } else {
                     my $r = join('',@rest);
                      say "OTHER FORM: $kstr => $kanji|$r" if $V;
@@ -3663,20 +3712,18 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
                     my $sel=6;
                     my $sel-ks='';
                     my $prev-sel=6;
+                    say @kana if $V;
                     for @kana -> $ks { 
                         
                         # if it is the dictionary form                            
                         if $ks.chars>=$r.chars and $ks.substr(*-$r.chars)  eq $r {
                             say "1. $ks matched $r" if $V;
                             $sel=1;
-                            
-                            #return hiraganaToRomaji($ks);
                         }
                         elsif $r.chars > 1 and $ks.substr(*-2)  eq $r.substr(*-2) {
                             # If the last 2 chars match, so also dict form
                             say "2. $ks matched " ~ $r.substr(*-2) if $V;
                             $sel=2;
-                            #return hiraganaToRomaji($ks);
                         }
                         elsif $r.chars > 1 and $ks.substr(*-2,1)  eq $r.substr(*-2,1) {
                             # If only the last but one char matches the last but one
@@ -3684,7 +3731,6 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
 
                             say "3. $ks matched " ~ $r.substr(*-2,1) if $V;
                             $sel=3;
-                            #return hiraganaToRomaji($ks);
                         }
                         elsif  $ks.substr(*-2,1)  eq @rest[0] {
                             # If only the last but one char matches the first char of the rest
@@ -3693,23 +3739,24 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
 
                             say "4. $ks matched " ~ $r.substr(*-2,1) if $V;
                             $sel=4;
-                            #return hiraganaToRomaji($ks);
                         }                        
                         elsif $ks.substr(*-1)  eq $r.substr(*-1) {
                             # If only the last character matches, this is weak.
                             say "5. $ks matched " ~$r.substr(*-1) if $V;
                             $sel=5;
-                            #return hiraganaToRomaji($ks);
                         }
                         if $sel < $prev-sel {
                             $prev-sel = $sel;
                             $sel-ks=$ks;
                             $sel=0;
+                        } else {
+                            say 'FALLBACK: '~$ks if $V;
+                            $sel-ks=$ks~$r;
                         }
                     }
                     
                     if $prev-sel > 0 {
-                        say "$prev-sel $sel-ks" if $V;
+                        say "$prev-sel:$sel-ks" if $V;
                         return hiraganaToRomaji($sel-ks);
                     } else {
                         say @rest ~ " did not match " if $V;
@@ -3798,7 +3845,8 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
         #     }
         # }
     }
-}
+    }
+} # END of kanjiToRomaji
 
 my %dict-ending-for-te-form is Map = {
     'いて' =>　<く>,
@@ -3867,7 +3915,7 @@ sub te-form-to-dict-form (Str $kstr) {
     } else { # not te-form, could be anything
         return ($kstr,False);
     }
-}
+} # END of te-form-to-dict-form
 
 #say katakanaToRomaji('ウィムデス');
 #say hiraganaToRomaji('どうもありがとうございました');

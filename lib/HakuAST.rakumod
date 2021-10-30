@@ -147,7 +147,7 @@ role String[ @chars] does AtomicExpr {
     has Str @.chars = @chars;
 }
 
-role Null does AtomicExpr {}
+role Null does AtomicExpr does HakuExpr {}
 role Infinity does AtomicExpr {}
 
 role Identifier[ $id] does AtomicExpr {

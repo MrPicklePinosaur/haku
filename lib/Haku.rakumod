@@ -207,7 +207,7 @@ role Adjectives does Characters {
     }
 
     # A na-adjective is treated as a Noun unless it is followed by な
-    token na-adjective { <noun> 'な' }
+    token na-adjective { <noun> 'な' <!before 'ら' >}
 
     token adjective {
         <i-adjective> | <na-adjective>
@@ -385,7 +385,7 @@ does Nouns
     token moshi { 
         [ 'もし' | '若し' ] <mo>?　<ws>?
     }
-    token nara { 'なら' 'ば'? }
+    token nara { 'なら' | 'ならば' }
     token tara { 'たら' }
 
     token dattara { 'だったら' }
@@ -707,7 +707,7 @@ does Comments
         | <operator-expression>
         | <function-comp-expression>
         | <map-expression>
-        | [<ifthen> || <if> || <comparison-expression>]
+        | [<ifthen> || <ifonly> || <comparison-expression>]
         | <string-interpol>
         ] || 
         [ <parens-expression>  
@@ -748,7 +748,7 @@ does Comments
 
     token bind-ha { 
         <comment>* 
-        [ [ <cons-list-expression>  | <list-expression> ] || <identifier> ] [ <.ha> | <.mo> ]
+        [ [ <cons-list-expression>  | <list-expression> ] || <identifier> ] [ <.de>? <.ha> | <.mo> ]
      [<expression> <zoi>]? 
      <expression> [<.desu> | <.de> ]? 
      [
@@ -804,7 +804,7 @@ does Comments
         <baai-ifthen> 
     }
     # This is a "monadic-style" if without then
-    token if {
+    token ifonly {
         <condition-expression>  <.nara> <.comma>? <.ws>? <expression> <.desu>? <.comma>? <.ws>?
     }
 

@@ -340,6 +340,13 @@ class HakuActions {
         make $/.values[0].made;        
     }    
 
+    method ifonly ($/) {
+        my $cond = $<condition-expression>.made;
+        my $true-expr = $<expression>.made;
+        
+        make IfExpr[ $cond, $true-expr, Null].new;
+    }    
+
     method arg-expression-list($/) {
         my @args = map({$_.made},$<arg-expression>);
         make @args;
