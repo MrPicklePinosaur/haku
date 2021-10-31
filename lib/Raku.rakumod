@@ -209,7 +209,7 @@ sub ppListExprLhsBindExpr(\h) {
             # .join(',') 
             ~ ') ';
     my $rhs = ppHakuExpr(h.rhs);
-    return $elts_str ~ ' = ' ~ $rhs ~ ';';
+    return $elts_str ~ ' = ' ~ $rhs ~ '; ';
 }
 
 sub ppVariable($var) {
@@ -269,7 +269,7 @@ sub ppAdjective (\h) {
         if $n eq '無' or $n eq 'nai' {
             'Nil' 
         } elsif %defined-functions{h}:exists {
-            say "ppHakuExpr: ACTUAL ADJECTIVE: $n";
+            say "ppHakuExpr: ACTUAL ADJECTIVE: $n" if $V;
             %defined-functions{h}[1] ?? '&' ~ $n !! $n;
         } else {
             $n
@@ -353,7 +353,7 @@ sub ppHakuExpr(\h) {
             '{' ~ join(' => ' , map(&ppHakuExpr,h.elts)) ~ '}'
         }        
         when  IfExpr {             
-            my $if-str = ('do if ' ~ ppHakuExpr(h.cond) ~ ' {' ,
+            my $if-str = ('do if (' ~ ppHakuExpr(h.cond) ~ ') {' ,
                 $indent ~ ppHakuExpr(h.if-true) ,
                 '}',
             ).join("\n");
@@ -396,6 +396,7 @@ sub ppHakuExpr(\h) {
             }            
         }
         when Number { h.num }
+        when Boolean { h.bool }
         when String { "'" ~ join('',h.chars) ~ "'" }
         when Variable {
             ppVariable(h.var)
@@ -465,7 +466,7 @@ sub ppHakuExpr(\h) {
                 if $n eq '無' or $n eq 'nai' {
                     'Nil' 
                 } elsif %defined-functions{h.adjective}:exists {
-                    say "ppHakuExpr: ACTUAL ADJECTIVE: $n";
+                    say "ppHakuExpr: ACTUAL ADJECTIVE: $n" if $V;
                     %defined-functions{h.adjective}[1] ?? '&' ~ $n !! $n;
                 } else {
                     $n

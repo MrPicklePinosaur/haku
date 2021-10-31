@@ -135,6 +135,15 @@ class HakuActions {
             make Number[$number].new;        
     }
 
+    method boolean($/) {
+        my Bool $bool = $/.Str eq '陽' 
+            ?? True 
+            !! $/.Str eq '陽' 
+                ?? False 
+                !! die 'Not a boolean: '~ $/.Str;
+        make Boolean[$bool].new;
+    }
+
     method atomic-expression($/) {
         if $<mu> { # Null
             make Null.new;
@@ -496,8 +505,8 @@ class HakuActions {
             # say $expr.raku;
                 make CommentedExpr[$expr,$comment_str].new;
             # }
-        } elsif $<bind> {
-            my $bind = $<bind>.made;
+        } elsif $<bind-ha> {
+            my $bind = $<bind-ha>.made;
             make CommentedExpr[$bind,$comment_str].new;
         } else {
             die "Comment must come before bind or expression\n";
@@ -637,25 +646,35 @@ say "EXPRESSION: "~$<expression>.made.raku if $V;
             $<hon>.Str ~ ( $<ma> ?? $<ma>.Str !! '')
             !! $<haiku> ?? $<haiku>.Str
             !! $<shi> ?? $<shi>.Str
+            !! $<nazo> ?? $<nazo>.Str
             !! 'main'
     }
     method hon-definition($/) {
         # say 'HON action';
         my @comments = ();
         my @bindings = ();
-        if $<bind> {
-            # In general an array, iterate
-            @bindings = map({$_.made}, $<bind>); 
-        }
+        # if $<bind> {
+        #     # In general an array, iterate
+        #     @bindings = map({$_.made}, $<bind>); 
+        # }
         my @exprs = ();
-        if $<comment-then-expression> {
-            
             # In general an array, iterate
-            @exprs = map({$_.made}, $<comment-then-expression>);
-            
+        my @commented-exprs = $<comment-then-expression> ?? map({$_.made}, $<comment-then-expression>) !! die 'Main must contain at least one expression: ' ~ $/.Str;
+        for @commented-exprs -> $commented-expr {
+            given $commented-expr {
+                when CommentedExpr[BindExpr,Str] {
+                    push @bindings, $commented-expr.expr;
+                }
+                default {
+                    push @exprs, $commented-expr.expr;
+                }
+            }
         }
-        my @haku-exprs = |@bindings,|@exprs;
-        # say 'EXPRS: '~@haku-exprs.raku;
+
+
+        # my @haku-exprs = |@bindings,|@exprs;
+        
+        # say 'EXPRS: '~@exprs.raku;
         if $<comment> {
             # In general an array, iterate
             @comments = map({$_.made}, $<comment>);

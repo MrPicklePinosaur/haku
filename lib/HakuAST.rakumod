@@ -136,13 +136,17 @@ role ParensExpr[ $parens-expr] does HakuExpr {
     has $.expr=$parens-expr;
 }
 
-# data AtomicExpr = Number | Identifier | String
+# data AtomicExpr = Number | Identifier | String | Boolean
 role AtomicExpr[\_] does HakuExpr {
     has $._ = _;
 }
 role Number[ \num_] does AtomicExpr {
     has Num $.num = num_;
 }
+role Boolean[ \bool_] does AtomicExpr {
+    has Bool $.bool = bool_;
+}
+
 role String[ @chars] does AtomicExpr {
     has Str @.chars = @chars;
 }

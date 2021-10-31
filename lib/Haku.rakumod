@@ -16,8 +16,9 @@ role Characters {
         '後' | '為' | '等' | '若' | '不' | '下' |
         '本' | '事' | '無' | 
         '皆' | '空' | '若' |
-        '因' | '沿' 
-
+        '因' | '沿' |
+        '陽' | '陰' |
+        '点'
     }
    
     token kanji {  
@@ -377,6 +378,11 @@ does Nouns
     token mu { '無' }
     token mugendai { '無限大' }    
 
+    # True and False
+
+    token you { '陽' }
+    token in { '陰' }
+
     # For Let
     token kono {
         'この'
@@ -417,11 +423,12 @@ does Nouns
 
     # For Haku    
     token hon {'本'} 
+    token nazo {'謎'} 
     token ma {'真'} 
     token haiku {'俳句'} 
     token shi {'詩'|'詞'} 
     token hontoha {
-        [ <hon> <ma>? | <haiku> | <shi> ] <.toha> <.ws>? 
+        [ <hon> <ma>? | <haiku> | <shi> | <nazo> ] <.toha> <.ws>? 
     }
 
     # # Built-in verbs, I suspect this is unused
@@ -538,9 +545,13 @@ role Numbers does  Characters {
     token integer { [<number-kanji> | <sanyousuji> | <zero>]+ }
     token signed-integer { (<minus> | <plus>) <integer> }
     token ten { '点' | '.' }
-    token rational { <signed-integer>+ <.ten> <integer>+ }
+    token rational { [<signed-integer> || <integer>] <.ten> <integer> }
     token number { 
-        <rational> | <signed-integer> | <integer> 
+        <rational> || <signed-integer> || <integer> 
+    }
+    # For convenience, lump booleans in with numbers
+    token boolean {
+        <you> | <in>
     }
 }
 
@@ -587,7 +598,7 @@ does Comments
 
     token TOP { <comment-then-expression> }
  
-    token atomic-expression {  <identifier> || [<number> | <string> | <mugendai> | <mu> | <kuu> ]    }
+    token atomic-expression {  <identifier> || [<number> | <string> | <mugendai> | <mu> | <kuu> | <boolean> ]    }
     token parens-expression { 
        [ [ <.open-maru> <expression> <.close-maru> ] |
         [ <.open-sumitsuki> <expression> <.close-sumitsuki> ] |
@@ -697,7 +708,7 @@ does Comments
     }
 
     token comment-then-expression {
-        <comment>* [<bind> || <expression>]
+        <comment>* [<bind-ha> || <expression> <.delim>? ]
     }
 
     token expression {        
@@ -748,7 +759,7 @@ does Comments
 
     token bind-ha { 
         <comment>* 
-        [ [ <cons-list-expression>  | <list-expression> ] || <identifier> ] [ <.de>? <.ha> | <.mo> ]
+        [ [ <cons-list-expression>  | <list-expression> ] || <identifier> ] [ <.de>? <.ha> | <.ga> | <.mo> ]
      [<expression> <zoi>]? 
      <expression> [<.desu> | <.de> ]? 
      [
@@ -763,7 +774,7 @@ does Comments
     }
 
     token bind {
-        <bind-ha> | <bind-ga>
+        <bind-ha> || <bind-ga>
     }
     
     token kono-let {
@@ -863,11 +874,13 @@ does Keywords
     # Behaves like an 'do' but without the monads
     token hon-definition { 
         <hontoha> 
-        [ 
-            | <bind> 
-            | <comment-then-expression> <.delim>
-        ]*?
-        <comment-then-expression> <.delim>?
+        # [ 
+        #     # | <bind> 
+        #     # | 
+        #     <comment-then-expression> <.delim>
+        # ]*?
+        <comment-then-expression>+ 
+        # <.delim>?
         <.function-end>                 
     }
 
