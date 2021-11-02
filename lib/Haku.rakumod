@@ -13,12 +13,12 @@ role Characters {
         '或' |
         '和' | '差' | '積' | '除' |
         '足' | '引' | '掛' | '割' |
-        '後' | '為' | '等' | '若' | '不' | '下' |
+        '後' | '為' | '等' | '不' | '下' |
         '本' | '事' | '無' | 
         '皆' | '空' | '若' |
         '因' | '沿' |
         '陽' | '陰' |
-        '点'
+        '点' 
     }
    
     token kanji {  
@@ -169,6 +169,10 @@ role Particles {
     token node { 'ので' }
     token noha { 'のは' }
     token dake { '丈' | 'だけ' } 
+
+    token particle {
+        <ha>|<ga>|<wo>|<no>|<de>|<ni>|<mo>
+    }
         
     method highwater($p) {
         if self.pos > $*HIGHWATER {
@@ -194,9 +198,10 @@ role Nouns does Characters {
 # MAPPU no Nagasa => (Nagasa MAPPU)
 # In these examples, ORENJI and MAPPU are nouns in my Grammar
 role Adjectives does Characters {
+# 一そうでない　is recognised as i-adjective 
 
     token i-adjective-stem {
-        <non-reserved-kanji>+ <onaji>? <hiragana>?? <kanji>? 
+        [<non-number-kanji> || <non-reserved-kanji> <non-number-kanji>+] <onaji>? <+hiragana -particle>?? <kanji>? 
     }
     token i { 'い' }
     token i-adjective-stem-hiragana {
@@ -238,7 +243,7 @@ role Verbs does Characters {
     }    
     # WV 2021-10-26 This is a bit bold,make sure no regression!
     token verb-stem {
-        [ <non-number-kanji> <hiragana> <kanji> 
+        [ <non-number-kanji> [<+hiragana -particle> <kanji>] 
         # exception because of せいびき　正引き
         || ['正' | <non-number-kanji>] <kanji>
         || <non-number-kanji> ] | <katakana>+

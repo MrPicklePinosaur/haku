@@ -11,3 +11,5 @@
 ./haku examples/zoi_chinamini.haku
 ./haku examples/dailymaths-25.haku
 ./haku examples/sum-of-list.haku
+./haku examples/piem.haku
+./haku examples/haiku.haku

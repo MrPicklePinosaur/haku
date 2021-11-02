@@ -1,17 +1,12 @@
 #!/usr/bin/env raku 
 use v6;
-use Test;
-use Haku;
-use HakuActions;
-use HakuReader;
-use Raku;
-# iroha
-# maps
-# mugendai
-# pwc131-t1
-# recursion_let
-# recursive_length_calc
-# yuki
+use lib ('.');
+# use Test;
+
+# use Haku;
+# use HakuActions;
+# use HakuReader;
+# use Raku;
 
 my @src_files = <
 adjectives
@@ -27,6 +22,8 @@ yuki
 zoi_chinamini
 dailymaths-25
 sum-of-list
+piem
+haiku
 >; 
 # To iterate over the contents of the current directory: 
 for @src_files  -> $src_file {

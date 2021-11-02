@@ -3,7 +3,11 @@ unit module Raku;
 use HakuAST;
 use Romaji;
 use JapaneseNumberParser;
-our $toRomaji=True;
+
+# enum Kakikata <Romaji Kanji Kana Nai>;
+
+our $KK=0;
+our $toRomaji= True;
 
 our $V=False; 
 
@@ -15,6 +19,8 @@ our %defined-functions;
 
 sub ppHakuProgram(HakuProgram $p) is export {
     $Romaji::V=$V;
+    # die $KK==1;    
+    $toRomaji = $KK==1;
      my @comments = $p.comments;
      my $comment_str = @comments.map({ '#' ~ $_}).join("\n") ~ "\n";
      my $function_strs = '';
@@ -214,7 +220,7 @@ sub ppListExprLhsBindExpr(\h) {
 
 sub ppVariable($var) {
             my $tvar = $var;
-            $tvar ~~ s/達/tachi/;
+            $tvar ~~ s/達/tachi/ if $toRomaji;
 
             my $ttvar = $toRomaji ?? substituteKanjiToDigits($tvar) !! $tvar; 
             $toRomaji ?? katakanaToRomaji($ttvar).lc !! $ttvar; 

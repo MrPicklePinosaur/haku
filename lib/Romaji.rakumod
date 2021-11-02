@@ -3660,11 +3660,14 @@ sub kanaToRomaji (Str \kstr --> Str) is export {
 # When there are only kanji, I use the ON readings
 # What I should do is see if there are 2 kanji in a row
 sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
+    if $kstr ~~ m:i/^ <[a..z]>+ $/ { return $kstr }
     if %dictionary{$kstr}:exists {
         %dictionary{$kstr}[0]
     } else {
-        say "Not in dictionary: " ~ $kstr;
-    if $kstr ~~ m:i/ ^ <[a..z]>/ { return $kstr }
+        if not ($kstr ~~ /て$/) {
+        say "Not in dictionary: " ~ $kstr ;
+        }
+    # if $kstr ~~ m:i/ ^ <[a..z]>/ { return $kstr }
     say "KANJI: " ~ $kstr if $V;
     # There are 2 kanji and then some hiragana
     if $kstr.chars > 1 and not $kstr.substr(0,2) ~~/<[あ..ん]>/ and $kstr ~~ /<[あ..ん]>/  {
@@ -3695,13 +3698,13 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
         # a kanji with kun verb readings, one or more readings            
             my @kana = %joyo_kun_verb_readings{$kanji};
             if @rest {
-                my ($kstr2,$te-form) = te-form-to-dict-form ($kstr);
+                my ($kstr2,$kstr3,$te-form) = te-form-to-dict-form ($kstr);
                 if $te-form {
-                     say "TE-FORM: $kstr => $kstr2" if $V;
-                    if %dictionary{$kstr2}:exists {
-                        return %dictionary{$kstr2}[0]
+                     say "TE-FORM: $kstr => $kstr2 ($kstr3)" if $V;
+                    if %dictionary{$kstr3}:exists {
+                        return %dictionary{$kstr3}[0]
                     } else {
-                        say "Verb not in dictionary: " ~ $kstr;
+                        say "Verb not in dictionary: " ~ $kstr ~ " ($kstr2,$kstr3)";
                         return hiraganaToRomaji($kstr2);
                     }
                 } else {
@@ -3868,13 +3871,12 @@ sub te-form-to-dict-form (Str $kstr) {
         if %dict-ending-for-te-form{$kstr.substr(*-2,2)}:exists { # godan verb
             my @endings = %dict-ending-for-te-form{$kstr.substr(*-2,2)};
             for @endings -> $ending {
-                # my $dict-form =  $kanji ~ $ending; 
                 if %joyo_kun_verb_readings{$kanji}:exists {
                     my @kana = %joyo_kun_verb_readings{$kanji};
                         # For every reading 
                         for @kana -> $ks { 
                             if $ks.substr(*-$ending.chars) eq $ending {
-                                return ($ks,True);
+                                return ($ks,"$kanji$ending",True);
                             }
                         }
                 }
@@ -3886,7 +3888,7 @@ sub te-form-to-dict-form (Str $kstr) {
                     # For every reading 
                     for @kana -> $ks { 
                         if $ks.substr(*-$ending.chars) eq $ending {
-                            return ($ks,True);
+                            return ($ks,"$kanji$ending",True);
                         }
                     }
             }
@@ -3901,19 +3903,18 @@ sub te-form-to-dict-form (Str $kstr) {
     # so what we need to do in case of plural forms is test, and hope there is no clash
     # When we have found the correct stem, we can append the ending. 
     # For our purpose it must be the stem though.
-    } elsif $kstr.chars == 2 and $kstr.substr(*-1) eq 'て' { # ichidan butjust kanji+ru 
-        # my $dict-form = $kanji ~ 'る';
+    } elsif $kstr.chars == 2 and $kstr.substr(*-1) eq 'て' { # ichidan butjust kanji+ru         
         if %joyo_kun_verb_readings{$kstr.substr(0,1)}:exists {
             my @kana = %joyo_kun_verb_readings{$kanji};
             # For every reading 
             for @kana -> $ks { 
                 if $ks.substr(*-1) eq 'る' {
-                    return ($ks,True);
+                    return ($ks,$kanji ~ 'る',True);
                 } 
             }
         }
     } else { # not te-form, could be anything
-        return ($kstr,False);
+        return ($kstr,$kstr,False);
     }
 } # END of te-form-to-dict-form
 

@@ -7,6 +7,10 @@ use HakuReader;
 use Tategaki;
 use Raku;
 
+enum Kakikata <Romaji 1 Kanji 2 Kana 3>;
+# TODO: for Kanji or Kana need to get the verbs in dict form
+# [--kakikata, -k] : generate code with Romaji, Kanji or Kana (default is Romaji).
+
 sub USAGE() {
     print Q:c:to/EOH/;
     Usage: haku <Haku program, written horizontally or vertically, utf-8 text file>
@@ -25,7 +29,8 @@ unit sub MAIN(
           Str $src_file = 'NONE',
           Bool :t($tategaki) = False,   
           Bool :m($miseru) = False,
-          Bool :y($yomudake) = False,
+          Kakikata :k($kakikata) = Romaji,
+          Bool :y($yomudake) = False,          
           Bool :p($parse-only) = False,
           Bool :v($verbose) = False,
           Bool :s($subparse) = False,
@@ -34,8 +39,14 @@ unit sub MAIN(
         );  
 
 if ($verbose) { 
-    $Raku::V=True;
+    $Raku::V=True;    
     $HakuActions::V=True;
+}
+
+if ($kakikata) {
+    $Raku::KK = $kakikata.value;    
+} else {
+    $Raku::KK = 1;
 }
 
 my $use-expression = False;
