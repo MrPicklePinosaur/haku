@@ -2,8 +2,6 @@ use v6;
 use HakuAST;
 use JapaneseNumberParser;
 
-
-
 class HakuActions {
     our $V=False;
     my %predefined-functions is Map = <    
@@ -47,8 +45,20 @@ class HakuActions {
     method verb($/) {
 
         # So wonderful
-        my $verb-str = ($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
+        my $verb-match = $<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $<verb-sura> // $/;
+        my $verb-str = $verb-match.Str;#($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
+        # Weak, we should use the stem
+        my $verb-stem = $verb-match<verb-stem>.Str;
+        my $verb-stem-hiragana = '';
+        if  $$verb-match<hiragana> {
+            $verb-stem-hiragana = $verb-match<hiragana>.Str;
+        }
+        elsif $verb-match<verb-stem-hiragana> {
+            $verb-stem-hiragana = $verb-match<verb-stem-hiragana>.Str;
+        }
+        
         my $verb-kanji = substr($verb-str,0,1);
+        # say $verb-str ~ ':' ~ $verb-stem ~ '・' ~ $verb-stem-hiragana ~ ' <> ' ~ $verb-kanji ;
         if not $<verb-dict> and %defined-functions{$verb-kanji}:exists {
             $verb-str = %defined-functions{$verb-kanji};
         }
@@ -62,8 +72,7 @@ class HakuActions {
                 my $noun-str-s = %predefined-functions{$noun-str} // $noun-str;
                 say "NOUN: $noun-str-s" if $V;
                 make Noun[$noun-str-s].new;
-            } else {
-                
+            } else {                
                 my $verb-str-s = %predefined-functions{$verb-str.substr(0,1)} // 
                 %predefined-functions{$verb-str.substr(0,2)} // $verb-str;
                 say "VERB: $verb-str-s" if $V;

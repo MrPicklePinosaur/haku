@@ -8,7 +8,7 @@ use Tategaki;
 use Raku;
 
 enum Kakikata <Romaji 1 Kanji 2 Kana 3>;
-# TODO: for Kanji or Kana need to get the verbs in dict form
+# TODO: for Kanji or Kana need to get the verbs in dict form§
 # [--kakikata, -k] : generate code with Romaji, Kanji or Kana (default is Romaji).
 
 sub USAGE() {
