@@ -220,7 +220,46 @@ role Adjectives does Characters {
     }
 }
 
-role Verbs does Characters {
+
+role Auxiliaries {
+    token kudasai { [　'下' | 'くだ' ] 'さい' }    
+    token masu { 'ま' [ 'す' | 'した' ] }
+
+    token shite-kudasai { 'して' [ '下' | 'くだ' ] 'さい' }
+    token suru { 'する' | '為る' | 'した' }
+    token shimasu { 'しま'  [ 'す' | 'した' ] }
+    token sura {
+        <suru> | <shimasu> | <shite-kudasai> 
+    }
+    token desu { 'です' | 'だ'  | 'である' |　'で或る' |　'でございます' |　'で御座います'　 }
+
+    token shimau { ['しま'|'仕舞'|'終'|'了'|'蔵'] ['う' | ['っ'|'いまし'] 'た'] };            
+    token kureru { [ 'く'| '呉'] 'れ'　[ 'る' | 'て' | 'た' | <masu> ]};
+    token morau { [ '貰' | 'もら' ] [ 'う' | 'って' | 'った' | 'い' <masu> ] }
+    # Should be obsolete
+    token imashita { ['い']? ['まし']? 'た' }
+    
+    token iru { 'い'? [ <masu> | 'る' ] }
+    token kuru { [ 'く' | '来' ] 'る' 
+        | [ '来' | 'き' ] [ <masu> | 'た' | 'て' ]　
+    }
+    token iku { ['い'|'行'] ['く' | 'き' <masu> | 'った' | 'って' ] }
+    
+}  # End of role Auxiliaries
+
+role Verbs does Characters does Auxiliaries {
+    
+    token after-te-verbs {
+        | [<.kureru> | <.morau> ]? 
+        [
+          <.kudasai> 
+        | <.shimau> 
+        | <.iru> 
+        | <.kuru>
+        | <.iku>
+        ]
+    }
+
     token verb-ending {
         <sura> || <verb-ending-masu> || [
         'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' |
@@ -235,12 +274,27 @@ role Verbs does Characters {
     token verb-ending-masu {
         'ま' [　'す'　| 'し' [　'た'| 'ょう'] | 'せん'] 'か'?
     }
+
+    token rari { 'ら'　|　'り' }
+
     token verb-ending-ta {
-        'った'| 'た'| 'いだ'| 'んだ'
+        [ 'った'| 'た'| 'いだ'| 'んだ'] <rari>        
     }
     token verb-ending-te {
         'って'| 'て'| 'いで' | 'んで'
     }    
+
+    token verb-ending-na {
+        | 'ない' 'で'? <.after-te-verbs>? 
+        | 'なかった' 'ら'?
+        | 'なければ' 
+        | [　'せ'　| 'れ' ]　[　'ば'　|　'る'　|　<masu>　|　'た'　|　'て'　<.after-te-verbs>? ] 
+    }
+
+    token verb-ending-tai {
+        'た' 'くな'? [ 'い' | 'かった' ]        
+    }
+
     # WV 2021-10-26 This is a bit bold,make sure no regression!
     token verb-stem {
         [ <non-number-kanji> [<+hiragana -particle> <kanji>] 
@@ -263,18 +317,21 @@ role Verbs does Characters {
     token verb-ta { <verb-stem> <hiragana>*? <verb-ending-ta> }
     token verb-te { <verb-stem> <verb-stem-hiragana>? <verb-ending-te> }
     token verb-sura { <verb-stem> <verb-stem-hiragana>?  <sura> }
+    token verb-tai {<verb-stem> <verb-stem-hiragana>? <verb-ending-tai> }
+    token verb-na {<verb-stem> <hiragana>*? <verb-ending-na> }
 
 # This fails on e.g. su.teru because the te is seen as -te form
 # We should have a rule for a -te after a kanji and before te/ru/masu/ta 
 # su.tete, su.teru <>  ki.te
 # but to complicate it : wasu.rekakete(i)ta
     token verb { 
-        <verb-te> [ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau> | <.imashita>]?
+        <verb-te> <.after-te-verbs>? #[ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau> | <.imashita>]?
      || <verb-sura>
      || [
           <verb-dict> 
-        | <verb-masu> 
-        | <verb-ta>        
+        | [<verb-masu> | <verb-tai>]
+        | <verb-ta>    
+        | <verb-na>    
         ]
     }
 
@@ -306,26 +363,8 @@ does Variables
         <verb> | <adjective>
     }
 
-}
+} # END of role Identifiers
 
-role Auxiliaries {
-    token kudasai { [　'下' | 'くだ' ] 'さい' }    
-    token masu { 'ま' [ 'す' | 'した' ] }
-
-    token shite-kudasai { 'して' [ '下' | 'くだ' ] 'さい' }
-    token suru { 'する' | '為る' | 'した' }
-    token shimasu { 'しま'  [ 'す' | 'した' ] }
-    token sura {
-        <suru> | <shimasu> | <shite-kudasai> 
-    }
-    token desu { 'です' | 'だ'  | 'である' |　'で或る' |　'でございます' |　'で御座います'　 }
-
-    token shimau { ['しま'|'仕舞'|'終'|'了'|'蔵'] ['う' | ['っ'|'いまし'] 'た'] };            
-    token kureru { [ 'く'| '呉'] 'れ'　[ 'て' | 'た' | <masu> ]};
-    token morau { [ '貰'|'もら'] }
-    token imashita { ['い']? ['まし']? 'た' }
-    
-}  # End of role Auxiliaries
 
 # +: Tasu (足す)
 # -: Hiku (ひく or 引く)

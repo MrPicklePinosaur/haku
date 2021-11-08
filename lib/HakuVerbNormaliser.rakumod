@@ -70,9 +70,11 @@ So I think for any verb ending in su, we should test suru as well.
 
     # token imashita { ['い']? ['まし']? 'た' }
     
+    # all these are Auxiliaries I guess
     token iru { 'い'? [ <masu> | 'る' }
     token kuru { ['く'|'来'] 'る' | ['来'|'き'] [<masu>|'た'|'て'　}
     token iku { ['い'|'行'] ['く' | 'き' <masu> | 'った' | 'って' }
+    
     token tarari {
         'た' [　'ら'　|　'り' ]?
     }

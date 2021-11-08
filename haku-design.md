@@ -1237,6 +1237,19 @@ Which would require this special apply for verbs in conditional form
 
 "make or let do something" is close enough to just doing something that we don't need anything special
 
+### -tai form
+
+"want to do something": interesting, this could be a future
+
+INORI = KAZU wo DABUtai
+
+KEKKA  = INORI wo shimu (使む,令む "to make happen") 
 
 
+### Potential
+
+"able to do something" could also be a future, we interpret it as a promise: I can so I will 
+
+YAKUSOKU ha KAZU wo 二倍できる
+YAKUSOKU wo mamoru (守る,護る)
 
