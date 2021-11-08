@@ -239,11 +239,12 @@ role Auxiliaries {
     # Should be obsolete
     token imashita { ['い']? ['まし']? 'た' }
     
-    token iru { 'い'? [ <masu> | 'る' ] }
+    token iru { 'い'? [ <masu> | 'る' | 'た'] }
     token kuru { [ 'く' | '来' ] 'る' 
         | [ '来' | 'き' ] [ <masu> | 'た' | 'て' ]　
     }
     token iku { ['い'|'行'] ['く' | 'き' <masu> | 'った' | 'って' ] }
+    token hanaranai { 'は'? [　'なら' | 'いけ' ] 'ない' }
     
 }  # End of role Auxiliaries
 
@@ -257,6 +258,7 @@ role Verbs does Characters does Auxiliaries {
         | <.iru> 
         | <.kuru>
         | <.iku>
+        | <.hanaranai>
         ]
     }
 
@@ -278,16 +280,22 @@ role Verbs does Characters does Auxiliaries {
     token rari { 'ら'　|　'り' }
 
     token verb-ending-ta {
-        [ 'った'| 'た'| 'いだ'| 'んだ'] <rari>        
+        [ 'った'| 'た'| 'いだ'| 'んだ'] <rari>?
     }
     token verb-ending-te {
         'って'| 'て'| 'いで' | 'んで'
     }    
 
+# Bit of a misnomer as it is na* as well as se/re
     token verb-ending-na {
         | 'ない' 'で'? <.after-te-verbs>? 
+        | 'なくて' <.after-te-verbs>? 
         | 'なかった' 'ら'?
         | 'なければ' 
+        # I have the impression this is never reached except for 'れば'　れた　
+        # -rarete is parsed as verb-te
+        # -rareru is parsed as verb-dict
+        # -raremasu is parsed as verb-masu
         | [　'せ'　| 'れ' ]　[　'ば'　|　'る'　|　<masu>　|　'た'　|　'て'　<.after-te-verbs>? ] 
     }
 
@@ -327,11 +335,12 @@ role Verbs does Characters does Auxiliaries {
     token verb { 
         <verb-te> <.after-te-verbs>? #[ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau> | <.imashita>]?
      || <verb-sura>
+     || <verb-na>
      || [
           <verb-dict> 
         | [<verb-masu> | <verb-tai>]
         | <verb-ta>    
-        | <verb-na>    
+        
         ]
     }
 
