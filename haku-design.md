@@ -1168,3 +1168,75 @@ NOT: 不 論理否定
 ### State
 
 We should keep the program state in the HakuProgram AST node.
+
+
+## Verb forms
+
+### Negative
+
+Suppose I have
+
+values = compute-fibonacci-numbers 5 
+
+which returns the first 5 values of the Fibonacci series and binds them to `values`
+
+Now, in a natural language you could have something like
+
+"values is to compute five fibonacci-numbers"
+
+What would be the semantics of 
+
+"values is not to compute five fibonacci-numbers"
+
+as opposed to 
+
+"values is to not compute five fibonacci-numbers"
+
+The first one would be 
+
+values = not (compute-fibonacci-numbers 5)
+
+and the second one 
+
+values = (not compute-fibonacci-numbers) 5 
+
+This is in the context of my Haku language, where I would have
+
+カズ達は五をフィボる
+
+カズ達は五をフィボらない
+
+In  Japanese, the "not" binds to the verb, not to the entire expression.
+
+So if I were to allow use of negatives in the language, what would the semantics mean?
+
+In general I think it could only work if the "not" case is actually defined as a variant of the function. So maybe this is what I should enforce. I could at a pinch return Nil if it is not implemented.
+
+### Passive
+
+ケッカはカズをダバる
+as for the result, to double the number
+ケッカはカズがダバられる
+as for the result, the number is doubled
+
+So this would require 'ga' where we currently allow 'wo' and 'ni', but only if the verb is passive.
+
+### Conditional
+
+Example use would be a verb like 'is positive', and it would mean that instead of
+
+<.moshi> <condition-expression> <.nara>
+
+we have
+
+<.moshi> <apply-verb-conditional>
+
+Which would require this special apply for verbs in conditional form
+
+### Causative
+
+"make or let do something" is close enough to just doing something that we don't need anything special
+
+
+
+
