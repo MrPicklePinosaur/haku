@@ -262,14 +262,6 @@ role Verbs does Characters does Auxiliaries {
         ]
     }
 
-    token verb-ending {
-        <sura> || <verb-ending-masu> || [
-        'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' |
-        'った'| 'た'| 'いだ'| 'んだ' |  
-         'って'| 'て'| 'いで' | 'んで' 
-        ]
-
-    }
     token verb-ending-dict {
         'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' 
     }
@@ -296,12 +288,26 @@ role Verbs does Characters does Auxiliaries {
         # -rarete is parsed as verb-te
         # -rareru is parsed as verb-dict
         # -raremasu is parsed as verb-masu
-        | [　'せ'　| 'れ' ]　[　'ば'　|　'る'　|　<masu>　|　'た'　|　'て'　<.after-te-verbs>? ] 
+        | [　'さ'? 'せ'　| 'ら'? 'れ' ]　[　'ば'　|　'る'　|　<masu>　|　'た'　|　'て'　<.after-te-verbs>? ] 
     }
 
     token verb-ending-tai {
         'た' 'くな'? [ 'い' | 'かった' ]        
     }
+
+    token verb-ending {
+        <sura> || <verb-ending-masu> || [
+        <verb-ending-dict> |
+        <verb-ending-ta> |  
+        <verb-ending-te> <.after-te-verbs>?
+        ] || <verb-ending-kakeru>
+    }
+
+    token verb-ending-kakeru {
+        'かけ' <verb-ending>
+    }
+
+
 
     # WV 2021-10-26 This is a bit bold,make sure no regression!
     token verb-stem {
@@ -326,7 +332,9 @@ role Verbs does Characters does Auxiliaries {
     token verb-te { <verb-stem> <verb-stem-hiragana>? <verb-ending-te> }
     token verb-sura { <verb-stem> <verb-stem-hiragana>?  <sura> }
     token verb-tai {<verb-stem> <verb-stem-hiragana>? <verb-ending-tai> }
+    token verb-kakeru {<verb-stem> <verb-stem-hiragana>? <verb-ending-kakeru> }
     token verb-na {<verb-stem> <hiragana>*? <verb-ending-na> }
+    
 
 # This fails on e.g. su.teru because the te is seen as -te form
 # We should have a rule for a -te after a kanji and before te/ru/masu/ta 
@@ -336,9 +344,10 @@ role Verbs does Characters does Auxiliaries {
         <verb-te> <.after-te-verbs>? #[ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau> | <.imashita>]?
      || <verb-sura>
      || <verb-na>
+     || <verb-kakeru>
      || [
           <verb-dict> 
-        | [<verb-masu> | <verb-tai>]
+        | [<verb-masu> | <verb-tai> ]
         | <verb-ta>    
         
         ]

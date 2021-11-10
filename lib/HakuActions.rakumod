@@ -1,6 +1,7 @@
 use v6;
 use HakuAST;
 use JapaneseNumberParser;
+use HakuVerbNormaliser;
 
 class HakuActions {
     our $V=False;
@@ -44,8 +45,11 @@ class HakuActions {
 
     method verb($/) {
 
+        my $norm-verb = normalise-verb($/,%predefined-functions);
+        say "NORMALISED VERB: " ~ $norm-verb;
         # So wonderful
-        my $verb-match = $<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $<verb-sura> // $/;
+        my $verb-match = $<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $<verb-sura> 
+                    // $<verb-tai> // $<verb-kakeru> // $/;
         my $verb-str = $verb-match.Str;#($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
         # Weak, we should use the stem
         my $verb-stem = $verb-match<verb-stem>.Str;
