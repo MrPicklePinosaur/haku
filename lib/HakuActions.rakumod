@@ -5,6 +5,7 @@ use HakuVerbNormaliser;
 
 class HakuActions {
     our $V=False;
+    our $useVerbNormaliser = True;
     my %predefined-functions is Map = <    
         見 show
         書  write
@@ -45,28 +46,32 @@ class HakuActions {
 
     method verb($/) {
 
-        my $norm-verb = normalise-verb($/,%predefined-functions);
+        my $norm-verb = normalise-verb($/,%defined-functions);
         say "NORMALISED VERB: " ~ $norm-verb;
         # So wonderful
         my $verb-match = $<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $<verb-sura> 
                     // $<verb-tai> // $<verb-kakeru> // $/;
-        my $verb-str = $verb-match.Str;#($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
+        my $verb-str = $useVerbNormaliser ?? $norm-verb !! $verb-match.Str;#($<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $/).Str ;
         # Weak, we should use the stem
-        my $verb-stem = $verb-match<verb-stem>.Str;
-        my $verb-stem-hiragana = '';
-        if  $$verb-match<hiragana> {
-            $verb-stem-hiragana = $verb-match<hiragana>.Str;
-        }
-        elsif $verb-match<verb-stem-hiragana> {
-            $verb-stem-hiragana = $verb-match<verb-stem-hiragana>.Str;
-        }
+        # my $verb-stem = $verb-match<verb-stem>.Str;
+        # my $verb-stem-hiragana = '';
+        # if  $$verb-match<hiragana> {
+        #     $verb-stem-hiragana = $verb-match<hiragana>.Str;
+        # }
+        # elsif $verb-match<verb-stem-hiragana> {
+        #     $verb-stem-hiragana = $verb-match<verb-stem-hiragana>.Str;
+        # }
         
-        my $verb-kanji = substr($verb-str,0,1);
-        # say $verb-str ~ ':' ~ $verb-stem ~ '・' ~ $verb-stem-hiragana ~ ' <> ' ~ $verb-kanji ;
-        if not $<verb-dict> and %defined-functions{$verb-kanji}:exists {
-            $verb-str = %defined-functions{$verb-kanji};
+        my $verb-kanji =  substr($verb-str,0,1); 
+        if $useVerbNormaliser {
+            if not $<verb-dict> and %defined-functions{$norm-verb}:exists {
+                $verb-str = %defined-functions{$norm-verb};
+            }
+        } else {
+            if not $<verb-dict> and %defined-functions{$verb-kanji}:exists {
+                $verb-str = %defined-functions{$verb-kanji};
+            }
         }
-        
         if %vbinops{$verb-kanji}:exists {
             make Operator[%vbinops{$verb-kanji}].new;
         } else {
@@ -705,8 +710,13 @@ say "EXPRESSION: "~$<expression>.made.raku if $V;
         my $name=
          $<verb> ?? $<verb>.made.verb
         !! $<noun> ?? $<noun>.made.noun
-        !! '_';        
-        %defined-functions{$name.substr(0,1)}=$name;
+        !! '_';
+        if $useVerbNormaliser {
+            %defined-functions{$name}=$name;
+        } else {
+            %defined-functions{$name.substr(0,1)}=$name;
+        }
+        
         my $fname=
          $<verb> ?? $<verb>.made
         !! $<noun> ?? $<noun>.made

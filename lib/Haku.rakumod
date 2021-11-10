@@ -330,7 +330,7 @@ role Verbs does Characters does Auxiliaries {
     token verb-masu { <verb-stem> <hiragana>*? <verb-ending-masu> }
     token verb-ta { <verb-stem> <hiragana>*? <verb-ending-ta> }
     token verb-te { <verb-stem> <verb-stem-hiragana>? <verb-ending-te> }
-    token verb-sura { <verb-stem> <verb-stem-hiragana>?  <sura> }
+    token verb-sura { <verb-stem> <verb-stem-hiragana>??  <sura> }
     token verb-tai {<verb-stem> <verb-stem-hiragana>? <verb-ending-tai> }
     token verb-kakeru {<verb-stem> <verb-stem-hiragana>? <verb-ending-kakeru> }
     token verb-na {<verb-stem> <hiragana>*? <verb-ending-na> }
