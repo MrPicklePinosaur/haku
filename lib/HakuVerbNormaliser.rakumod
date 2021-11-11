@@ -105,39 +105,104 @@ sub normalise-verb ($verb-match, %defined-verbs) is export {
         my $vm1 = $verb-match<verb-te> // $verb-match<verb-sura> // $verb-match<verb-tai> // $verb-match<verb-kakeru>;
         my $vm2 =  $verb-match<verb-na> // $verb-match<verb-masu> // $verb-match<verb-ta> ;
         my $vm = $vm1 // $vm2;
-        # First, treat it as ichidan
-        my $is-ichidan = True;
-        my $maybe-ichidan-verb-hiragana = $vm1 ?? ($vm1<verb-stem-hiragana> // '')
-        !! $vm2 ?? ($vm2<hiragana>// '')  !! die 'No match: ' ~ $verb-match.Str;
+        
         my $stem = $vm<verb-stem>;
+        my $is-ichidan = True;
+        # Then, treat it as noun + suru
+        if $verb-match<verb-sura> { 
+            my $maybe-noun = $stem ~ ($vm1<verb-stem-hiragana> // '');
+            if %defined-verbs{$maybe-noun~ 'する'}:exists or %dictionary{$maybe-noun}:exists {
+                say "Noun + suru";
+                return $maybe-noun ~ 'する';
+            }
+            # Assuming it really is suru, because sareru is valid for godan as well
+            # So we should lookup the stem in the dict
+            
+        }
+      
+        # Then, treat it as ichidan
+        
+        # But this needs refining. 
+        # For example tabe.saseru and kurikae.saseru 
+        # Problem is that kurikae.ru actually exists, but that should have been kae.raseru
+        # Whereas for tabe.saseru, tabe.ru is fine.
+        my $maybe-ichidan-verb-hiragana = $vm1 ?? ($vm1<verb-stem-hiragana> // '')
+        !! $vm2 ?? ($vm2<hiragana> // '')  !! die 'No match: ' ~ $verb-match.Str;
+        
         my $hiragana = $maybe-ichidan-verb-hiragana ~ 'る' ;
+        if $verb-match<verb-te> and $vm1<verb-stem-hiragana> ~ $vm1<verb-ending-te> ~~/ないで/
+        { # -te form of -nai form
+            $hiragana = ($vm1<verb-stem-hiragana> ~ $vm1<verb-ending-te>).substr(0,*-3)  ~ 'る';
+            say "-te form of -nai form: $hiragana";
+        }        
         my $maybe-ichidan-verb = $stem ~ $hiragana;
         # So now we need to look this up. First in %defined-verbs
         if %defined-verbs{$maybe-ichidan-verb}:exists or %dictionary{$maybe-ichidan-verb}:exists {
             return $maybe-ichidan-verb
-        } else {
-            # If that fails, try the kanji dictionary
-            # For that we need the last character of the stem
-            my $res = lookup-in-kanji-dict($stem,$hiragana);
-            if $res {return $res }
-        }
+        } 
+        
+        # else {
+        #     # We'd better skip this and keep it as a last resort
+        #     # If that fails, try the kanji dictionary
+        #     # For that we need the last character of the stem
+        #     say "Looking up ichidan VERB via kanji dict: $stem|$hiragana";
+        #     my $res = lookup-in-kanji-dict($stem,$hiragana);
+        #     if $res {
+        #         say "Found ichidan VERB in kanji dict: $res";
+        #         return $res 
+        #         }
+        # }
         # If we are here it means there was no match when assuming the verb was ichidan
         say 'Not ichidan: ' ~ $verb-match.Str if $V;        
         if $verb-match<verb-na> {
+            say "Godan -na form: " ~ $verb-match.Str;
+            my $stem-hiragana = $stem ~ ($vm2<hiragana> // '');
+            if %defined-verbs{ $stem-hiragana }:exists or %dictionary{$stem-hiragana}:exists {
+                say "Found stem as noun in dict: " ~ $stem-hiragana ;
+                return  $stem-hiragana ~ 'する';
+            }
             my $hiragana = $vm2<hiragana> ?? $vm2<hiragana>[*-1] !! '';
             my $verb-ending = $vm2<verb-ending-na>;
-            my $dict-ending = $hiragana ?? %dict-ending-for-a-form{$hiragana} !! $verb-ending.substr(*-1);
+            # say "Godan verb ending: " ~ $verb-ending　~ ' <> ' ~$vm2<hiragana> ~ ' <> ' ~ $hiragana;
+            # Not quite sure about this but worth a try:
+            say  $vm2<hiragana> ~ " ; " ~ $vm2<verb-ending-na>;
+            my $dict-ending = do {
+                if $hiragana {
+                    %dict-ending-for-a-form{$hiragana} 
+                }                
+                else {
+                    my $verb-ending-start =  $verb-ending.substr(0,1);
+                    if %dict-ending-for-a-form{$verb-ending-start}:exists {
+                        say "Verb ending is -a: $verb-ending-start";
+                        %dict-ending-for-a-form{$verb-ending-start}
+                    } 
+                    elsif %dict-ending-for-e-form{$verb-ending-start}:exists {
+                        say "Verb ending is -e: $verb-ending-start";
+                        %dict-ending-for-e-form{$verb-ending-start}
+                    } 
+                    else {                  
+                        say "Fallback: last char of verb ending " ~ $verb-ending.substr(*-1);
+                        $verb-ending.substr(*-1)
+                    }
+                }
+            };
             say "Godan hiragana: " ~ $hiragana ~ ' => ' ~  $dict-ending if $V;
             my $verb-stem-hiragana = $vm2<hiragana>.elems > 1 ??  $vm2<hiragana>[0..*-1].join('') !! '';
             return $stem ~ $verb-stem-hiragana ~ $dict-ending;
         }
         elsif $verb-match<verb-te> {
+            say "Godan -te form: " ~ $vm.Str;
+            
             my $hiragana = $vm1<verb-stem-hiragana> ~ $vm1<verb-ending-te>;
+            if %defined-verbs{$stem}:exists or %dictionary{$stem}:exists {
+                return $stem ~ 'する';
+            }
             my $dict-ending = %dict-ending-for-te-form{$hiragana}//[];
+            
             for |$dict-ending -> $ending {                
                 my $maybe-godan-verb = $stem ~ $ending;
                 if %defined-verbs{$maybe-godan-verb}:exists or %dictionary{$maybe-godan-verb}:exists {
-                    say "Godan -te via dict lookup";
+                    say "Godan -te via dict lookup: " ~ $maybe-godan-verb;
                     return $maybe-godan-verb;
                 } else {                    
                     my $res =  lookup-in-kanji-dict($stem,$ending);
@@ -147,22 +212,40 @@ sub normalise-verb ($verb-match, %defined-verbs) is export {
                         }
                 }
             }            
+            # It is possible that this -te form is a te form of a -nai form
+            if $vm.Str ~~ /ないで/ {
+                say $hiragana;
+                # I guess to be correct it should be 
+                my $dict-ending = %dict-ending-for-a-form{$vm.Str.substr(*-4,1)};
+                # my $dict-ending = %dict-ending-for-a-form{$hiragana.substr(0,1)};
+                return  $stem ~ $dict-ending;
+            } 
             say "Godan -te, not in dicts, take -ru: " ~ $stem ~ 'る';
             # my $verb-stem-hiragana = $vm1<hiragana>.elems > 1 ??  $vm2<hiragana>[0..*-1].join('') !! '';
             return  $stem ~ 'る';
+            
         } 
         elsif $verb-match<verb-ta> {
-            my $hiragana = $vm2<hiragana>.Str // '';
-            my $dict-ending = %dict-ending-for-ta-form{$vm2<verb-ending-ta>};
-            for |$dict-ending -> $ending {                
+            say "Godan -ta form: " ~ $verb-match.Str;
+            my $hiragana-ta = ($vm2<hiragana> ?? $vm2<hiragana>[*-1] !! '') ~ $vm2<verb-ending-ta>;
+            my $hiragana = ($vm2<hiragana> && $vm2<hiragana>.elems > 1) ?? (|$vm2<hiragana>)[0 .. *-2].join('') !! '';
+            say "hiragana: <$hiragana>" ;
+            if %defined-verbs{$stem ~ $hiragana }:exists or %dictionary{$stem ~ $hiragana}:exists {
+                return $stem ~ $hiragana ~ 'する';
+            }
+
+            my $dict-ending = %dict-ending-for-ta-form{$hiragana-ta};
+            say $hiragana-ta ~ ' => ' ~ $dict-ending;
+            for |$dict-ending -> $ending {
+                say "ending: $ending";           
                 my $maybe-godan-verb = $stem ~  $hiragana ~ $ending;
                 if %defined-verbs{$maybe-godan-verb}:exists or %dictionary{$maybe-godan-verb}:exists {
-                    say "Godan -ta via dict lookup";
+                    say "Godan -ta via dict lookup: " ~ $maybe-godan-verb;
                     return $maybe-godan-verb;
-                } else {                    
+                } else {                                        
                     my $res =  lookup-in-kanji-dict($stem,"$hiragana$ending");
                     if $res {return $res;
-                    say "Godan -ta via kanji dict lookup";
+                    say "Godan -ta via kanji dict lookup: $stem,$hiragana|$ending";
                     }
                 }
             }            

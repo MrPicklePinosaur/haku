@@ -45,7 +45,7 @@ class HakuActions {
     }
 
     method verb($/) {
-
+        say "VERB: " ~ $/.Str;
         my $norm-verb = normalise-verb($/,%defined-functions);
         say "NORMALISED VERB: " ~ $norm-verb;
         # So wonderful

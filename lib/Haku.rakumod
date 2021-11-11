@@ -225,9 +225,10 @@ role Auxiliaries {
     token kudasai { [　'下' | 'くだ' ] 'さい' }    
     token masu { 'ま' [ 'す' | 'した' ] }
 
-    token shite-kudasai { 'して' [ '下' | 'くだ' ] 'さい' }
-    token suru { 'する' | '為る' | 'した' }
-    token shimasu { 'しま'  [ 'す' | 'した' ] }
+    token shite-kudasai { 'して' <.kudasai>? }
+    token suru { [ 'す' | 'され' ] 'る' | '為' 'れ'? 'る'  }
+    token shimasu { [ 'し' | 'され' ] 'ま'  [ 'す' | 'した' ] }
+    # token saremasu { 'されま' [ 'す' | 'した' ] }
     token sura {
         <suru> | <shimasu> | <shite-kudasai> 
     }
@@ -263,7 +264,7 @@ role Verbs does Characters does Auxiliaries {
     }
 
     token verb-ending-dict {
-        'る'| 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' 
+        'る'| <!after 'ま'> 'す'| 'む'| 'く'| 'ぐ'| 'つ'| 'ぬ' | 'う' 
     }
     token verb-ending-masu {
         'ま' [　'す'　| 'し' [　'た'| 'ょう'] | 'せん'] 'か'?
@@ -329,7 +330,7 @@ role Verbs does Characters does Auxiliaries {
     token verb-dict { <verb-stem> <verb-stem-hiragana>? <verb-ending-dict> }
     token verb-masu { <verb-stem> <hiragana>*? <verb-ending-masu> }
     token verb-ta { <verb-stem> <hiragana>*? <verb-ending-ta> }
-    token verb-te { <verb-stem> <verb-stem-hiragana>? <verb-ending-te> }
+    token verb-te { <verb-stem> <verb-stem-hiragana>?? <verb-ending-te> }
     token verb-sura { <verb-stem> <verb-stem-hiragana>??  <sura> }
     token verb-tai {<verb-stem> <verb-stem-hiragana>? <verb-ending-tai> }
     token verb-kakeru {<verb-stem> <verb-stem-hiragana>? <verb-ending-kakeru> }
@@ -340,6 +341,9 @@ role Verbs does Characters does Auxiliaries {
 # We should have a rule for a -te after a kanji and before te/ru/masu/ta 
 # su.tete, su.teru <>  ki.te
 # but to complicate it : wasu.rekakete(i)ta
+# It is not possible to say for e.g. 隠して and 関して,
+# which one is -te form of a verb and which one -te form of noun + suru
+# Which means that we should test -suru if -su fails in the dictionary
     token verb { 
         <verb-te> <.after-te-verbs>? #[ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau> | <.imashita>]?
      || <verb-sura>
