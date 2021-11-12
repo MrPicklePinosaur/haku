@@ -45,9 +45,9 @@ class HakuActions {
     }
 
     method verb($/) {
-        say "VERB: " ~ $/.Str;
+        
         my $norm-verb = normalise-verb($/,%defined-functions);
-        say "NORMALISED VERB: " ~ $norm-verb;
+        say "NORMALISED VERB: " ~ $norm-verb if $V;
         # So wonderful
         my $verb-match = $<verb-dict> // $<verb-masu> // $<verb-ta> // $<verb-te> // $<verb-sura> 
                     // $<verb-tai> // $<verb-kakeru> // $/;

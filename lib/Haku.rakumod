@@ -289,7 +289,7 @@ role Verbs does Characters does Auxiliaries {
         # -rarete is parsed as verb-te
         # -rareru is parsed as verb-dict
         # -raremasu is parsed as verb-masu
-        | [　'さ'? 'せ'　| 'ら'? 'れ' ]　[　'ば'　|　'る'　|　<masu>　|　'た'　|　'て'　<.after-te-verbs>? ] 
+        | [　'さ' 'せ'　| 'ら' 'れ' ]　[　'ば'　|　'る'　|　<masu>　|　'た'　|　'て'　<.after-te-verbs>? ] 
     }
 
     token verb-ending-tai {
