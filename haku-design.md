@@ -1253,3 +1253,64 @@ KEKKA  = INORI wo shimu (使む,令む "to make happen")
 YAKUSOKU ha KAZU wo 二倍できる
 YAKUSOKU wo mamoru (守る,護る)
 
+================
+
+The problem is that currently, anything like
+
+ki.kareta
+ki.kasete
+ki.karemashita
+
+is parsed as -ta, -te, -masu whereas it should really be -na
+
+ki.kanakatta is parsed as -na which is correct
+ki.kanai is parsed as -na which is correct
+ki.kanaide is parsed as -te which is wrong
+
+so I guess I should have: 
+
+ichidan-verb-endings {
+    ['る' | 'て' | 'た' | <verb-ending-masu> | <verb-ending-tai> | <verb-ending-na> ]
+}
+
+token godan-u-endings {
+    <[うつるくぐすむぬぶ]>
+}
+
+token godan-a-endings {
+    ['か' | 'た' | 'わ' | 'ら' | 'さ' | 'ま' | 'な' | 'ば' | 'が' ]
+    [ ['せ' | 'れ'] <ichidan-verb-endings> | <verb-ending-na> ]
+}
+    
+token godan-i-ending {
+    ['き' | 'ち' | 'い' | 'り' | 'し' | 'み' | 'に' | 'び' | 'ぎ' ] 
+    [ <verb-ending-masu> | <verb-ending-tai>]
+}
+
+token godan-e-ending {
+    ['け'| 'て'| 'え'| 'れ'| 'せ'| 'め'| 'ね'| 'べ'| 'げ'] 
+    <ichidan-verb-endings>
+}
+
+token godan-o-ending {
+    ['こ'| 'と'| 'お'| 'よ'| 'ろ'| 'そ'| 'も'| 'の'| 'ぼ'| 'ご'] 
+    'う'
+}
+
+token godan-endings {
+    | <godan-a-endings>
+    | <godan-i-endings>
+    | <godan-u-endings>
+    | <godan-e-endings>
+    | <godan-o-endings>
+}
+
+Problem is that these will conflict with e.g.
+
+ta.beru, as this is ichidan
+
+token ichidan-endings {
+    <hiragana> [<ichidan-verb-endings> | ['られ' | 'させ' | 'かけ' ] <ichidan-verb-endings>]
+}
+
+

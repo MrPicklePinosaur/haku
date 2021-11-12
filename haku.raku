@@ -3,6 +3,7 @@ use lib ();
 use lib ('.');
 use Haku;
 use HakuActions;
+use HakuAST;
 use HakuReader;
 use Tategaki;
 use Raku;
@@ -92,7 +93,10 @@ if $parse-only or $subparse {
         ?? Haku.parse($program_str, :actions(HakuActions),:rule($rule)) 
         !! Haku.parse($program_str, :actions(HakuActions));
     if $rule {
-        say $hon_parse.made.raku ;
+        given $hon_parse.made {
+        when Verb {say $hon_parse.made.verb }
+        default { say $hon_parse.made.raku ; }
+        }
         exit;
     }
     my $hon_raku_code =  ppHakuProgram($hon_parse.made);

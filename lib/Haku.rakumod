@@ -345,15 +345,14 @@ role Verbs does Characters does Auxiliaries {
 # which one is -te form of a verb and which one -te form of noun + suru
 # Which means that we should test -suru if -su fails in the dictionary
     token verb { 
-        <verb-te> <.after-te-verbs>? #[ <.kureru> | <.morau> ]? [<.kudasai> | <.shimau> | <.imashita>]?
+        <verb-te> <.after-te-verbs>? 
      || <verb-sura>
      || <verb-na>
      || <verb-kakeru>
      || [
           <verb-dict> 
         | [<verb-masu> | <verb-tai> ]
-        | <verb-ta>    
-        
+        | <verb-ta>            
         ]
     }
 
