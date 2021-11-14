@@ -226,8 +226,8 @@ role Auxiliaries {
     token masu { 'ま' [ 'す' | 'した' ] }
 
     token shite-kudasai { 'して' <.kudasai>? }
-    token suru { [ 'す' | 'され' ] 'る' | '為' 'れ'? 'る'  }
-    token shimasu { [ 'し' | 'され' ] 'ま'  [ 'す' | 'した' ] }
+    token suru { [ 'する' | 'され' [ 'る' | 'ば'] ]  | '為' 'れ'? [ 'る' | 'ば']  }
+    token shimasu { [ 'し' 'られ'? | 'され' ] 'ま'  [ 'す' | 'した' ] }
     # token saremasu { 'されま' [ 'す' | 'した' ] }
     token sura {
         <suru> | <shimasu> | <shite-kudasai> 

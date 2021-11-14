@@ -1269,8 +1269,20 @@ ki.kanaide is parsed as -te which is wrong
 
 so I guess I should have: 
 
-ichidan-verb-endings {
-    ['る' | 'て' | 'た' | <verb-ending-masu> | <verb-ending-tai> | <verb-ending-na> ]
+token ichidan-dict-ending {
+    'る' 
+}
+token ichidan-non-dict-endings {
+    'て' <.after-te-verbs> | 'た' | <verb-ending-masu> | <verb-ending-tai> | <verb-ending-na> 
+}
+token ichidan-verb-endings {
+    <ichidan-dict-ending> | <ichidan-non-dict-endings> 
+}
+
+For suru we have
+token suru-forms {
+'する'　|
+[ 'さ' ['れ'|'せ'] |　'し' 'かけ'? ] <ichidan-verb-endings>
 }
 
 token godan-u-endings {
@@ -1281,7 +1293,17 @@ token godan-a-endings {
     ['か' | 'た' | 'わ' | 'ら' | 'さ' | 'ま' | 'な' | 'ば' | 'が' ]
     [ ['せ' | 'れ'] <ichidan-verb-endings> | <verb-ending-na> ]
 }
-    
+
+token godan-te-endings  {
+    [ 
+    | 'いて' 
+    | 'って' 
+    | 'して'
+    | 'んで'
+    | 'いで'
+    ] <.after-te-verbs>
+}
+
 token godan-i-ending {
     ['き' | 'ち' | 'い' | 'り' | 'し' | 'み' | 'に' | 'び' | 'ぎ' ] 
     [ <verb-ending-masu> | <verb-ending-tai>]
@@ -1289,7 +1311,7 @@ token godan-i-ending {
 
 token godan-e-ending {
     ['け'| 'て'| 'え'| 'れ'| 'せ'| 'め'| 'ね'| 'べ'| 'げ'] 
-    <ichidan-verb-endings>
+    [ <ichidan-verb-endings> | 'ば']
 }
 
 token godan-o-ending {
@@ -1298,9 +1320,10 @@ token godan-o-ending {
 }
 
 token godan-endings {
+    | <godan-te-endings>
     | <godan-a-endings>
     | <godan-i-endings>
-    | <godan-u-endings>
+    | <godan-u-endings> # i.e. dict
     | <godan-e-endings>
     | <godan-o-endings>
 }
@@ -1310,7 +1333,41 @@ Problem is that these will conflict with e.g.
 ta.beru, as this is ichidan
 
 token ichidan-endings {
-    <hiragana> [<ichidan-verb-endings> | ['られ' | 'させ' | 'かけ' ] <ichidan-verb-endings>]
+        | <ichidan-dict-ending>
+        | <ichidan-non-dict-endings> 
+        | 'れば'
+        | ['られ' | 'させ' | 'かけ' ] <ichidan-verb-endings>
 }
 
-Don't forget suru!
+
+I think I want something like 
+
+token ichidan-verb-stem-hiragana {
+        <hiragana>+? <?before <ichidan-endings> >
+}
+
+token godan-verb-stem-hiragana {
+        <hiragana>+? <?before <godan-endings> >
+}
+
+token noun-hiragana {
+        <hiragana>+? <?before <sura> >
+}
+
+token ichidan-verb {
+    <verb-stem> <ichidan-verb-stem-hiragana>? <ichidan-endings>
+}
+
+token godan-verb {
+    <verb-stem> <godan-verb-stem-hiragana>? <godan-endings>
+}
+
+token noun-suru {
+    <verb-stem> <noun-hiragana>? <suru-forms> }
+}
+
+token verb {
+    <ichidan-verb>
+    || <godan-verb>
+    || <noun-suru>
+}
