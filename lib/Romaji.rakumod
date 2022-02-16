@@ -3669,7 +3669,7 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
         %dictionary{$kstr}[0]
     } else {
         if not ($kstr ~~ /て$/) {
-        say "Not in dictionary: " ~ $kstr ;
+        $*ERR.say( "Not in dictionary: " ~ $kstr) ;
         }
     # if $kstr ~~ m:i/ ^ <[a..z]>/ { return $kstr }
     say "KANJI: " ~ $kstr if $V;
@@ -3708,7 +3708,7 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
                     if %dictionary{$kstr3}:exists {
                         return %dictionary{$kstr3}[0]
                     } else {
-                        say "Verb not in dictionary: " ~ $kstr ~ " ($kstr2,$kstr3)";
+                        $*ERR.say( "Verb not in dictionary: " ~ $kstr ~ " ($kstr2,$kstr3)");
                         return hiraganaToRomaji($kstr2);
                     }
                 } else {
@@ -3718,7 +3718,7 @@ sub kanjiToRomaji (Str $kstr, $kun = True --> Str) is export  {
                         if %dictionary{$kstr3}:exists {
                             return %dictionary{$kstr3}[0]
                         } else {
-                            say "Verb not in dictionary: " ~ $kstr ~ " ($kstr2,$kstr3)";
+                            $*ERR.say( "Verb not in dictionary: " ~ $kstr ~ " ($kstr2,$kstr3)");
                             return hiraganaToRomaji($kstr2);
                         }
                     } else {
