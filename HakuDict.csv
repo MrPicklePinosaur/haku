@@ -1,0 +1,6001 @@
+﻿Vocab-expression,Vocab-kana,Vocab-meaning,Vocab-pos
+一つ,ひとつ,one (thing),Noun
+二つ,ふたつ,two (things),Noun
+円,えん,yen,Noun
+金,かね,money,Noun
+これ,これ,"this, this one",Noun
+水曜日,すいようび,Wednesday,Noun
+あれ,あれ,that over there,Noun
+先,さき,"ahead, first",Noun
+八日,ようか,"eight days, 8th of the month",Noun
+そば,そば,"side, vicinity",Noun
+こっち,こっち,here,Pronoun
+右,みぎ,right,Noun
+あげる,あげる,give,Verb
+ここ,ここ,here,Pronoun
+とても,とても,very,Adverb
+七,なな,seven,Noun
+手,て,hand,Noun
+おなか,おなか,stomach,Noun
+空く,すく,be empty,Verb
+一日,ついたち,1st of the month,Noun
+日曜日,にちようび,Sunday,Noun
+七つ,ななつ,seven (things),Noun
+どれ,どれ,"what, which",Noun
+私,わたし,I,Noun
+好き,すき,"favorite, liked",Adjectival Noun
+ゲーム,ゲーム,game,Noun
+一人,ひとり,"one, one person",Noun
+友達,ともだち,"friend, companion",Noun
+帰る,かえる,"return, go back",Verb
+元気,げんき,"healthy, energetic",Adjective
+天気,てんき,weather,Noun
+少ない,すくない,"few, little",Adjective
+晴れる,はれる,"be sunny, clear up",Verb
+上,うえ,"up, above",Noun
+ドア,ドア,door,Noun
+開く,ひらく,open,Verb
+口,くち,mouth,Noun
+閉める,しめる,"shut, close",Verb
+時間,じかん,"time, hour",Noun
+六日,むいか,"six days, 6th of the month",Noun
+後ろ,うしろ,"back, behind",Noun
+十日,とおか,"ten days, 10th of the month",Noun
+午前,ごぜん,"morning, a.m.",Noun
+今晩,こんばん,"this evening, tonight",Noun
+土曜日,どようび,Saturday,Noun
+金曜日,きんようび,Friday,Noun
+月,つき,moon,Noun
+夜,よる,night (from sunset to sunrise),Noun
+食べる,たべる,eat,Verb
+何,なに,"what, which",Noun
+晩,ばん,evening (usually from sunset to bedtime),Noun
+ご飯,ごはん,"cooked rice, meal",Noun
+三つ,みっつ,three (things),Noun
+昼,ひる,"daytime, midday",Noun
+見つかる,みつかる,"be found, be caught",Verb
+それ,それ,"that, that one",Pronoun
+男,おとこ,"man, male",Noun
+今週,こんしゅう,this week,Noun
+こう,こう,"like this, this kind of",Adverb
+会う,あう,meet,Verb
+月曜日,げつようび,Monday,Noun
+昨日,きのう,yesterday,Noun
+休む,やすむ,"take a day off, take a break",Verb
+今日,きょう,today,Noun
+木曜日,もくようび,Thursday,Noun
+場合,ばあい,"situation, case",Noun
+つける,つける,switch on,Verb
+駅,えき,railway station,Noun
+止める,やめる,"stop, give up, abolish",Verb
+歩く,あるく,"walk, go on foot",Verb
+近く,ちかく,"near, close to",Adverb
+もっと,もっと,more,Adverb
+近い,ちかい,"near, soon",Adjective
+近く,ちかく,"vicinity, nearby",Noun
+全部,ぜんぶ,"all, wholly",Adverb
+国,くに,country,Noun
+漢字,かんじ,"character, kanji",Noun
+赤い,あかい,red,Adjective
+どちら,どちら,which,Noun
+米,こめ,rice (grain),Noun
+まずい,まずい,"bad-tasting, bad",Adjective
+無い,ない,to not be,Adjective
+作る,つくる,"make, create",Verb
+使う,つかう,use,Verb
+消す,けす,"switch off, turn off",Verb
+閉まる,しまる,"be shut, be closed",Verb
+前,まえ,"front, before",Noun
+店,みせ,"shop, store",Noun
+部屋,へや,room,Noun
+夏,なつ,summer,Noun
+暑い,あつい,"hot, warm (temperature of the air)",Adjective
+熱い,あつい,"hot (things, touch)",Adjective
+冬,ふゆ,winter,Noun
+入る,はいる,enter,Verb
+寒い,さむい,cold (temperature of the air),Adjective
+春,はる,spring,Noun
+暖かい,あたたかい,warm,Adjective
+見つける,みつける,find,Verb
+テーブル,テーブル,table,Noun
+古い,ふるい,old,Adjective
+悪い,わるい,bad,Adjective
+思う,おもう,think,Verb
+そう,そう,"in such manner, that way",Adverb
+どう,どう,"how, what",Adverb
+考える,かんがえる,"think, consider",Verb
+決める,きめる,"decide, agree upon",Verb
+高い,たかい,"high, tall",Adjective
+多い,おおい,lots of,Adjective
+午後,ごご,"afternoon, p.m.",Noun
+重い,おもい,heavy,Adjective
+九日,ここのか,"nine days, 9th of the month",Noun
+待つ,まつ,"wait, wait for",Verb
+二日,ふつか,"two days, 2nd of the month",Noun
+持つ,もつ,"have, possess",Verb
+朝,あさ,morning,Noun
+先生,せんせい,teacher,Noun
+電車,でんしゃ,train,Noun
+四,し,four,Noun
+遠い,とおい,"far, distant",Adjective
+名前,なまえ,name,Noun
+大学,だいがく,"university, college",Noun
+勉強,べんきょう,study,Verbal Noun
+強い,つよい,strong,Adjective
+弱い,よわい,weak,Adjective
+引く,ひく,"draw, pull",Verb
+質問,しつもん,question,Verbal Noun
+難しい,むずかしい,difficult,Adjective
+取る,とる,"take, get",Verb
+数,かず,number,Noun
+二,に,two,Noun
+四,よん,four,Noun
+八,はち,eight,Noun
+勝つ,かつ,win,Verb
+負ける,まける,lose,Verb
+本当に,ほんとうに,"really, truly",Adverb
+他,ほか,other,Noun
+時計,とけい,"clock, watch",Noun
+八つ,やっつ,eight (things),Noun
+払う,はらう,pay,Verb
+千,せん,thousand,Noun
+四日,よっか,"four days, 4th of the month",Noun
+買う,かう,buy,Verb
+十,じゅう,ten,Noun
+要る,いる,"need, require",Verb
+忘れる,わすれる,"forget, leave behind",Verb
+乗る,のる,"ride, take",Verb
+着る,きる,"wear, put on",Verb
+そこ,そこ,there,Pronoun
+次,つぎ,next,Noun
+週,しゅう,week,Noun
+動く,うごく,move,Verb
+出る,でる,"go out, leave",Verb
+早い,はやい,early,Adjective
+時,とき,time,Noun
+遅い,おそい,"slow, late",Adjective
+始める,はじめる,"begin, start",Verb
+学校,がっこう,school,Noun
+一,いち,one,Noun
+年,とし,"year, age",Noun
+始まる,はじまる,begin,Verb
+ミーティング,ミーティング,meeting,Noun
+終わり,おわり,"end, conclusion",Noun
+去年,きょねん,last year,Noun
+切る,きる,cut,Verb
+三日,みっか,"three days, 3rd of the month",Noun
+見る,みる,"see, look at",Verb
+楽しむ,たのしむ,enjoy,Verb
+飲み物,のみもの,"beverage, drink",Noun
+後,あと,after,Adverb
+見せる,みせる,show,Verb
+色,いろ,color,Noun
+直ぐ,すぐ,"at once, soon",Adverb
+書き直す,かきなおす,rewrite,Verb
+直る,なおる,"be repaired, return to normal",Verb
+道,みち,"road, street",Noun
+線,せん,line,Noun
+曲がる,まがる,turn,Verb
+左,ひだり,left,Noun
+曜日,ようび,day of the week,Noun
+今年,ことし,this year,Noun
+五,ご,five,Noun
+行く,いく,go,Verb
+図書館,としょかん,library,Noun
+未だ,まだ,"yet, more",Adverb
+ところ,ところ,place,Noun
+泊まる,とまる,stay overnight,Verb
+家,うち,"house, home",Noun
+安い,やすい,"inexpensive, cheap",Adjective
+服,ふく,clothes,Noun
+開ける,あける,"open, unlock",Verb
+お父さん,おとうさん,father,Noun
+父,ちち,(speaker's)father,Noun
+話す,はなす,"speak, tell",Verb
+母,はは,(speaker's)mother,Noun
+働く,はたらく,work,Verb
+姉,あね,older sister,Noun
+大学生,だいがくせい,university student,Noun
+お姉さん,おねえさん,older sister,Noun
+上手,じょうず,"good, skilled",Adjectival Noun
+妹,いもうと,younger sister,Noun
+お兄さん,おにいさん,older brother,Noun
+車,くるま,"car, automobile",Noun
+高校生,こうこうせい,high school student,Noun
+娘,むすめ,"daughter, girl",Noun
+九つ,ここのつ,nine (things),Noun
+息子,むすこ,son,Noun
+六つ,むっつ,six (things),Noun
+女,おんな,"woman, girl",Noun
+新しい,あたらしい,new,Adjective
+今,いま,now,Adverb
+もう,もう,"already, yet",Adverb
+学生,がくせい,student,Noun
+よく,よく,often,Adverb
+彼女,かのじょ,"she, one's girlfriend",Pronoun
+聞く,きく,"hear, ask",Verb
+若い,わかい,young,Adjective
+かなり,かなり,"fairly, rather",Adverb
+住む,すむ,"live, reside",Verb
+立つ,たつ,"stand, rise",Verb
+気持ち,きもち,"feeling, sensation",Noun
+広い,ひろい,"wide, big",Adjective
+走る,はしる,run,Verb
+売る,うる,sell,Verb
+教える,おしえる,"teach, tell",Verb
+送る,おくる,send,Verb
+書く,かく,write,Verb
+もらう,もらう,receive,Verb
+足,あし,"leg, foot",Noun
+出来る,できる,"can do, be good at",Verb
+短い,みじかい,"short, brief",Adjective
+いつも,いつも,always,Adverb
+読む,よむ,read,Verb
+いつ,いつ,when,Noun
+速い,はやい,fast,Adjective
+耳,みみ,"ear, hearing",Noun
+上げる,あげる,"raise, improve",Verb
+楽しい,たのしい,"fun, enjoyable",Adjective
+しゃべる,しゃべる,"chat, talk",Verb
+三,さん,three,Noun
+来る,くる,come,Verb
+良い,いい,good,Adjective
+方,ほう,"direction, side",Noun
+目,め,eye,Noun
+六,ろく,six,Noun
+秋,あき,"autumn, fall",Noun
+結婚,けっこん,marriage,Verbal Noun
+日,にち,day,Noun
+自転車,じてんしゃ,bicycle,Noun
+自分,じぶん,"self, oneself",Noun
+ご主人,ごしゅじん,(your) husband,Noun
+終わる,おわる,"finish, end",Verb
+火曜日,かようび,Tuesday,Noun
+違う,ちがう,"differ, be wrong",Verb
+答える,こたえる,"answer, reply",Verb
+別,べつ,"another, different",Adjectival Noun
+なる,なる,become,Verb
+ため,ため,"sake, purpose",Noun
+白い,しろい,"white, blank",Adjective
+閉じる,とじる,close,Verb
+出す,だす,take out,Verb
+仕事,しごと,"work, job",Noun
+今月,こんげつ,this month,Noun
+少し,すこし,"a bit, a little while",Adverb
+酒,さけ,"alcoholic drink, Japanese rice wine",Noun
+飲む,のむ,drink,Verb
+大人,おとな,adult,Noun
+水,みず,water,Noun
+一杯,いっぱい,full,Adverb
+気,き,"spirit, temperament",Noun
+分かる,わかる,understand,Verb
+遊ぶ,あそぶ,play,Verb
+飛行機,ひこうき,airplane,Noun
+お願い,おねがい,favor,Verbal Noun
+続く,つづく,"continue, follow",Verb
+首,くび,neck,Noun
+頭,あたま,head,Noun
+痛い,いたい,painful,Adjective
+探す,さがす,"search for, look for",Verb
+お手洗い,おてあらい,"toilet, bathroom",Noun
+冷たい,つめたい,"cold (things, touch)",Adjective
+汚い,きたない,dirty,Adjective
+太い,ふとい,"thick, fat",Adjective
+九,きゅう,nine,Noun
+弟,おとうと,younger brother,Noun
+神,かみ,"god, spirit",Noun
+建てる,たてる,"build, erect",Verb
+大きい,おおきい,big,Adjective
+同じ,おなじ,"same, identical",Adjectival Noun
+どこ,どこ,where,Noun
+置く,おく,"put, leave",Verb
+あそこ,あそこ,over there,Pronoun
+辺,へん,"vicinity, part",Noun
+黄色い,きいろい,yellow,Adjective
+する,する,"do, make",Verb
+やる,やる,do,Verb
+一緒に,いっしょに,"together, at the same time",Adverb
+来年,らいねん,next year,Noun
+緑,みどり,"green, foliage",Noun
+易しい,やさしい,"easy, simple",Adjective
+留学生,りゅうがくせい,student studying abroad,Noun
+戻る,もどる,"return, turn back",Verb
+起きる,おきる,"get up, get out of bed",Verb
+起こる,おこる,happen,Verb
+起こす,おこす,wake up,Verb
+起きる,おきる,occur,Verb
+寝る,ねる,"sleep, go to sleep",Verb
+多分,たぶん,"probably, perhaps",Adverb
+座る,すわる,"sit, sit down",Verb
+本,ほん,"book, volume",Noun
+細い,ほそい,"thin, slender, narrow",Adjective
+日記,にっき,diary,Noun
+時々,ときどき,sometimes,Adverb
+締める,しめる,"tighten, fasten",Verb
+甘い,あまい,sweet,Adjective
+辛い,からい,"spicy, salty",Adjective
+変える,かえる,change,Verb
+決まる,きまる,be decided,Verb
+優しい,やさしい,"gentle, kind",Adjective
+人,ひと,person,Noun
+夫,おっと,husband,Noun
+知る,しる,know,Verb
+誰,だれ,"who, whom",Noun
+親,おや,parent,Noun
+愛する,あいする,"love, care for",Verb
+くれる,くれる,be given,Verb
+二十日,はつか,"20 days, 20th of the month",Noun
+妻,つま,wife,Noun
+五日,いつか,"five days, 5th of the month",Noun
+どうして,どうして,why,Adverb
+見える,みえる,be visible,Verb
+兄,あに,older brother,Noun
+酸っぱい,すっぱい,sour,Adjective
+小さい,ちいさい,small,Adjective
+言葉,ことば,"word, language",Noun
+おいしい,おいしい,tasty,Adjective
+呼ぶ,よぶ,"call, name",Verb
+胸,むね,chest,Noun
+腰,こし,"hip, lower back",Noun
+載せる,のせる,"place, put on",Verb
+低い,ひくい,"low, short",Adjective
+一番,いちばん,most,Adverb
+背,せ,"height, stature",Noun
+円,えん,circle,Noun
+覚える,おぼえる,"memorize, learn",Verb
+片仮名,かたかな,katakana,Noun
+平仮名,ひらがな,hiragana,Noun
+悲しい,かなしい,sad,Adjective
+美しい,うつくしい,beautiful,Adjective
+食べ物,たべもの,food,Noun
+言う,いう,"say, tell",Verb
+彼,かれ,"he, one's boyfriend",Noun
+授業,じゅぎょう,"class, lesson",Verbal Noun
+お母さん,おかあさん,mother,Noun
+手伝う,てつだう,"help, assist",Verb
+飛ぶ,とぶ,fly,Verb
+歌う,うたう,sing,Verb
+死ぬ,しぬ,die,Verb
+大好き,だいすき,love,Adjective
+子供,こども,"child, kid",Noun
+狭い,せまい,"narrow, restricted",Adjective
+触る,さわる,"touch, feel",Verb
+嫌い,きらい,dislike,Adjective
+七日,なのか,"seven days, 7th of the month",Noun
+有る,ある,"exist, possess",Verb
+浴びる,あびる,take (a shower),Verb
+生きる,いきる,live (one's life),Verb
+長い,ながい,long,Adjective
+髪の毛,かみのけ,hair,Noun
+鼻,はな,nose,Noun
+腕,うで,arm,Noun
+四つ,よっつ,four (things),Noun
+みんな,みんな,"all, everybody",Noun
+笑う,わらう,"laugh, smile",Verb
+紙,かみ,paper,Noun
+下,した,"under, below",Noun
+入れる,いれる,put in,Verb
+よう,よう,"way, like, kind",Noun
+掛ける,かける,"hang, put on",Verb
+肩,かた,shoulder,Noun
+僕,ぼく,I (young male),Noun
+曇る,くもる,become cloudy,Verb
+駄目,だめ,no good,Adjectival Noun
+上る,のぼる,go up,Verb
+落ちる,おちる,"fall, sink",Verb
+体,からだ,"body, health",Noun
+大丈夫,だいじょうぶ,"alright, OK",Adjectival Noun
+病気,びょうき,illness,Verbal Noun
+百,ひゃく,hundred,Noun
+風邪,かぜ,cold (illness),Noun
+五つ,いつつ,five (things),Noun
+顔,かお,face,Noun
+軽い,かるい,"light, light weight",Adjective
+茶色,ちゃいろ,light brown,Noun
+欲しい,ほしい,"want, desire",Adjective
+万,まん,ten thousand,Noun
+奇麗,きれい,beautiful,Adjectival Noun
+渇く,かわく,be thirsty,Verb
+嬉しい,うれしい,"happy, glad",Adjective
+感じる,かんじる,"feel, sense",Verb
+なる,なる,become,Verb
+りんご,りんご,apple,Noun
+ほとんど,ほとんど,"almost, hardly",Adverb
+十分,じゅうぶん,"full, plentiful",Adjectival Noun
+分,ぶん,"amount, part, share",Noun
+スポーツ,スポーツ,sport,Noun
+今まで,いままで,"until now, so far",Adverb
+ごみ,ごみ,"rubbish, trash",Noun
+なぜ,なぜ,"why, for what reason",Adverb
+いつでも,いつでも,"always, at all times",Adverb
+バス,バス,bus,Noun
+ピクニック,ピクニック,picnic,Noun
+あちら,あちら,way over there,Noun
+少年,しょうねん,boy,Noun
+きつい,きつい,"tight, difficult",Adjective
+キャッシュカード,キャッシュカード,cash card,Noun
+あんなに,あんなに,"that, so",Adverb
+カップ,カップ,cup,Noun
+ノック,ノック,knock,Verbal Noun
+クリーニング,クリーニング,"cleaning, laundry",Verbal Noun
+あなた,あなた,you,Noun
+ようこそ,ようこそ,welcome,Adverb
+しばらく,しばらく,"awhile, long time, for the time being",Adverb
+出口,でぐち,"exit, exit ramp",Noun
+大分,だいぶ,"very, greatly",Adverb
+ハンカチ,ハンカチ,handkerchief,Noun
+先週,せんしゅう,last week,Noun
+男の子,おとこのこ,"boy, baby boy",Noun
+おしゃれ,おしゃれ,"dressing up smartly, trendy",Verbal Noun
+カレーライス,カレーライス,curried rice,Noun
+いたずら,いたずら,"mischief, prank",Verbal Noun
+石,いし,"stone, small rock",Noun
+林,はやし,"woods, grove",Noun
+ぶどう,ぶどう,grapes,Noun
+オレンジ,オレンジ,orange,Noun
+トマト,トマト,tomato,Noun
+アナウンサー,アナウンサー,"news reader, announcer",Noun
+ボーイフレンド,ボーイフレンド,boyfriend,Noun
+ぺこぺこ,ぺこぺこ,"hungry, starving",Adjective
+シャープペンシル,シャープペンシル,mechanical pencil,Noun
+てんぷら,てんぷら,"tempura, Japanese deep-fried breaded food",Noun
+キャンプ,キャンプ,"camping, camp",Verbal Noun
+家,いえ,"house, home",Noun
+空気,くうき,"air, atmosphere",Noun
+人気,にんき,"popularity, temperament of the people, business conditions",Noun
+山,やま,mountain,Noun
+青い,あおい,blue,Adjective
+晴れ,はれ,"fine weather, clear sky",Noun
+又,また,"again, also, or",Adverb
+ハイキング,ハイキング,hiking,Verbal Noun
+暗い,くらい,"dark, dreary, shadowy",Adjective
+東,ひがし,"east, eastern",Noun
+北,きた,north,Noun
+向こう,むこう,"the other side, the other party, opponent",Noun
+向く,むく,"turn, face, look",Verb
+入り口,いりぐち,entrance,Noun
+パーティー,パーティー,party,Verbal Noun
+ページ,ページ,page,Noun
+ノート,ノート,"note book, laptop",Noun
+ふすま,ふすま,"sliding door, fusuma",Noun
+スーツ,スーツ,suit,Noun
+初め,はじめ,beginning,Noun
+明後日,あさって,day after tomorrow,Noun
+半年,はんとし,half a year,Noun
+半月,はんつき,half a month,Noun
+カーテン,カーテン,curtain,Noun
+毎朝,まいあさ,every morning,Noun
+サンドイッチ,サンドイッチ,sandwich,Noun
+今夜,こんや,"tonight, this evening",Noun
+ピンポン,ピンポン,"table tennis, ping pong",Verbal Noun
+クリスマス,クリスマス,Christmas,Noun
+バナナ,バナナ,banana,Noun
+バター,バター,butter,Noun
+サラダ,サラダ,salad,Noun
+ラーメン,ラーメン,ramen (Chinese noodles),Noun
+うどん,うどん,"noodles, Japanese wheat noodles",Noun
+スプーン,スプーン,spoon,Noun
+そば,そば,"buckwheat noodles, soba",Noun
+ごちそうする,ごちそうする,treat,Verb
+夕食,ゆうしょく,supper,Noun
+ワイン,ワイン,wine,Noun
+コーヒー,コーヒー,coffee,Noun
+パン,パン,bread,Noun
+ハンバーガー,ハンバーガー,hamburger,Noun
+おかず,おかず,side dish,Noun
+足りる,たりる,"suffice, serve, be satisfied",Verb
+ラケット,ラケット,racket,Noun
+インク,インク,ink,Noun
+テレビ,テレビ,television,Noun
+最初,さいしょ,"first, outset",Noun
+はっきり,はっきり,clearly,Adverb
+ニュース,ニュース,news,Noun
+休日,きゅうじつ,"holiday, day off",Noun
+ドラマ,ドラマ,"drama, theater, soap opera",Noun
+パスポート,パスポート,passport,Noun
+花見,はなみ,flower viewing,Noun
+言い方,いいかた,"way of speaking, expression",Noun
+ゆっくり,ゆっくり,slowly,Adverb
+テキスト,テキスト,"textbook, text, text file",Noun
+語る,かたる,"tell, talk",Verb
+子,こ,"child, kid",Noun
+英語,えいご,English,Noun
+右手,みぎて,right hand,Noun
+字,じ,"character, letter",Noun
+覚める,さめる,"awake, wake up",Verb
+覚ます,さます,"awaken, wake up",Verb
+いずれ,いずれ,"eventually, sometime",Adverb
+おじさん,おじさん,uncle,Noun
+話し合う,はなしあう,"discuss, talk over",Verb
+行う,おこなう,"do, carry out",Verb
+向かう,むかう,"face, confront, head toward",Verb
+明日,あした,tomorrow,Noun
+仕方,しかた,"way, method",Noun
+休み,やすみ,"rest, holiday, absence",Noun
+帰り,かえり,"return, going home",Noun
+大事,だいじ,importance,Adjectival Noun
+半日,はんにち,half a day,Noun
+まま,まま,"as is, still (in the current state)",Noun
+電話,でんわ,"telephone, phone call",Verbal Noun
+電気,でんき,"electricity, electric light",Noun
+夜中,よなか,"midnight, dead of night",Noun
+開く,あく,open,Verb
+ホーム,ホーム,platform,Noun
+上り,のぼり,"going up, ascent",Noun
+駅員,えきいん,station employee,Noun
+一方,いっぽう,one way,Noun
+通り,とおり,"passage, street",Noun
+通う,かよう,"go to and from, frequent a place",Verb
+ゼロ,ゼロ,zero,Noun
+車,くるま,car,Noun
+通る,とおる,"pass, take, go through",Verb
+道路,どうろ,"road, street",Noun
+地図,ちず,"map, atlas",Noun
+なお,なお,"still, in addition",Adverb
+つもり,つもり,"intention, purpose",Noun
+止める,とめる,"stop, turn off",Verb
+止まる,とまる,"come to a stop, cease",Verb
+止む,やむ,"stop, abate",Verb
+森,もり,"thick woods, forest",Noun
+歩道,ほどう,"sidewalk, footpath",Noun
+川,かわ,"river, stream",Noun
+今度,こんど,"this time, next time",Noun
+そんなに,そんなに,"that, so",Adverb
+ガソリンスタンド,ガソリンスタンド,gas station,Noun
+社長,しゃちょう,president (of a company),Noun
+長さ,ながさ,length,Noun
+海,うみ,"sea, ocean",Noun
+全く,まったく,"entirely, truly, indeed",Adverb
+七,しち,seven,Noun
+人口,じんこう,population,Noun
+億,おく,hundred million,Noun
+黒,くろ,black,Noun
+ミルク,ミルク,"milk, baby milk",Noun
+銀行,ぎんこう,bank,Noun
+牛肉,ぎゅうにく,beef,Noun
+グラム,グラム,gram,Noun
+魚,さかな,fish,Noun
+野菜,やさい,vegetable,Noun
+本屋,ほんや,"bookstore, bookseller",Noun
+八百屋,やおや,"vegetable store, greengrocer",Noun
+そっち,そっち,"there, thou",Noun
+そば屋,そばや,soba restaurant,Noun
+たばこ屋,たばこや,"cigarette shop, tobacco store",Noun
+つく,つく,"be on, switched on",Verb
+茶,ちゃ,tea (plain form),Noun
+お茶,おちゃ,tea (polite),Noun
+茶わん,ちゃわん,"tea cup, rice bowl",Noun
+週末,しゅうまつ,weekend,Noun
+レストラン,レストラン,restaurant,Noun
+無理,むり,"unreasonable, impossible, forced",Adjectival Noun
+無くなる,なくなる,"disappear, run short, get lost",Verb
+作文,さくぶん,"composition, essay",Noun
+ジャム,ジャム,jam,Noun
+ジャガイモ,ジャガイモ,potato,Noun
+ストーブ,ストーブ,"paraffin heater, stove",Noun
+交通費,こうつうひ,"traveling expense, transportation cost",Noun
+火,ひ,fire,Noun
+売り場,うりば,"sales floor, department",Noun
+サービス,サービス,"service, on the house",Verbal Noun
+何度,なんど,"how many degrees, how many times",Noun
+商品,しょうひん,"goods, commodities",Noun
+上がる,あがる,"go up, rise",Verb
+ビル,ビル,building,Noun
+エスカレーター,エスカレーター,escalator,Noun
+階段,かいだん,"steps, flight of stairs",Noun
+下りる,おりる,"go down, come down",Verb
+値段,ねだん,price,Noun
+ちょうど,ちょうど,"just, as if",Adverb
+価格,かかく,"price, cost",Noun
+最後,さいご,"last, final",Noun
+売れる,うれる,"sell, be in demand",Verb
+夏休み,なつやすみ,summer vacation,Noun
+プール,プール,pool,Noun
+日,ひ,"sun, sunlight, day",Noun
+スキー,スキー,"ski, skiing",Noun
+四季,しき,the four seasons,Noun
+クーラー,クーラー,"air conditioning, cooler",Noun
+アイス,アイス,"popsicle, ice lolly",Noun
+外,そと,"outside, open air",Noun
+熱,ねつ,"heat, fever",Noun
+下がる,さがる,"come down, hang down, fall",Verb
+ウール,ウール,wool,Noun
+暖める,あたためる,"warm, warm up, heat up",Verb
+暖まる,あたたまる,get warm,Verb
+達する,たっする,"attain, reach",Verb
+温度,おんど,temperature,Noun
+気温,きおん,temperature,Noun
+台風,たいふう,typhoon,Noun
+事情,じじょう,"circumstances, conditions",Noun
+コンピューター,コンピューター,computer,Noun
+コート,コート,court,Noun
+新年,しんねん,New Year,Noun
+寺,てら,buddhist temple,Noun
+カセットテープ,カセットテープ,cassette tape,Noun
+台,だい,"stand, platform",Noun
+少しも,すこしも,at all,Adverb
+安心,あんしん,"peace of mind, relief",Verbal Noun
+ハンドバッグ,ハンドバッグ,handbag,Noun
+ライター,ライター,lighter,Noun
+考え,かんがえ,"thought, view, idea",Noun
+解決,かいけつ,"solution, settlement",Verbal Noun
+つまり,つまり,"in short, basically",Adverb
+女の子,おんなのこ,"girl, daughter",Noun
+可能,かのう,"possible, potential",Adjectival Noun
+不便,ふべん,inconvenient,Adjectival Noun
+郵便屋さん,ゆうびんやさん,mailman,Noun
+あっち,あっち,"other side, there",Noun
+火事,かじ,fire,Noun
+交番,こうばん,police box,Noun
+番号,ばんごう,"number, serial number",Noun
+近所,きんじょ,neighborhood,Noun
+住所,じゅうしょ,"one's dwelling, address",Noun
+ぶらぶら,ぶらぶら,"wander aimlessly, hang about",Adverb
+便所,べんじょ,"lavatory, bathroom",Noun
+ボールペン,ボールペン,ballpoint pen,Noun
+名字,みょうじ,"surname, family name",Noun
+ローマ字,ろーまじ,Roman alphabet,Noun
+氏名,しめい,name,Noun
+外人,がいじん,"foreigner, alien",Noun
+南,みなみ,south,Noun
+初めて,はじめて,for the first time,Adverb
+水道,すいどう,"water service, channel",Noun
+都市,とし,"cities, urban community",Noun
+都合,つごう,circumstances,Noun
+朝御飯,あさごはん,breakfast,Noun
+心配,しんぱい,"anxiety, worry, good offices",Verbal Noun
+見送り,みおくり,seeing someone off,Verbal Noun
+コース,コース,"course, route",Noun
+メモ,メモ,"memorandum, memo pad",Noun
+取れる,とれる,"come off, be removed",Verb
+ティッシュ,ティッシュ,tissue,Noun
+いつごろ,いつごろ,"about when, about what time",Noun
+書き取る,かきとる,"write down, note down",Verb
+なかなか,なかなか,"not at all, hardly",Adverb
+郵便,ゆうびん,"mail service, postal matter",Noun
+そのまま,そのまま,"like that, unchanged",Adverb
+持つ,もつ,"maintain, last long",Verb
+バッグ,バッグ,bag,Noun
+マッチ,マッチ,"match, matchbox",Noun
+ビデオテープ,ビデオテープ,videotape,Noun
+持って行く,もっていく,take,Verb
+持って来る,もってくる,bring,Verb
+ソファー,ソファー,"sofa, sofa bed",Noun
+投げる,なげる,"throw, abandon",Verb
+女性,じょせい,"woman, female",Noun
+生産,せいさん,production,Verbal Noun
+有名,ゆうめい,famous,Adjectival Noun
+生徒,せいと,"pupil, student",Noun
+グループ,グループ,group,Noun
+来月,らいげつ,next month,Noun
+見学,けんがく,"observation tour, study tour, field trip",Verbal Noun
+通学,つうがく,"attending school, going to school",Verbal Noun
+ビザ,ビザ,visa,Noun
+可,か,"permitted, OK",Noun
+小学校,しょうがっこう,elementary school,Noun
+クラス,クラス,class,Noun
+校長,こうちょう,"principal, schoolmaster",Noun
+休校,きゅうこう,temporary closure of school,Verbal Noun
+忘れ物,わすれもの,"something left behind, lost item",Noun
+場所,ばしょ,"place, space",Noun
+読み方,よみかた,"way of reading, reading",Noun
+育つ,そだつ,"be brought up, grow",Verb
+ソフト,ソフト,"software, programme",Noun
+風,かぜ,wind,Noun
+ウィスキー,ウィスキー,whisky,Noun
+取引,とりひき,"transaction, dealings",Verbal Noun
+ボタン,ボタン,button,Noun
+押さえる,おさえる,hold down,Verb
+ピアノ,ピアノ,piano,Noun
+慣れる,なれる,grow accustomed to,Verb
+習慣,しゅうかん,"custom, habit",None
+何,なん,"what, which",Noun
+問題,もんだい,"problem, question",Noun
+最近,さいきん,"late, recent",Noun
+社会,しゃかい,society,Noun
+部分,ぶぶん,"part, section",Noun
+これら,これら,these,Noun
+簡単,かんたん,"simple, easy",Adjectival Noun
+複雑,ふくざつ,"complicated, intricate",Adjectival Noun
+人間,にんげん,"human being, people",Noun
+外国語,がいこくご,foreign language,Noun
+数える,かぞえる,"count, calculate",Verb
+回す,まわす,"turn, rotate",Verb
+担当,たんとう,person in charge,Verbal Noun
+本当,ほんとう,"truth, reality",Noun
+方法,ほうほう,"method, procedure",Noun
+法律,ほうりつ,law,Noun
+経験,けいけん,experience,Verbal Noun
+経つ,たつ,"pass, elapse",Verb
+経済,けいざい,"economy, economics",Noun
+工業,こうぎょう,"industry, manufacturing industry",Noun
+便利,べんり,"convenience, handiness",Adjectival Noun
+製造,せいぞう,"production, manufacture",Verbal Noun
+必要,ひつよう,"need, necessity",Adjectival Noun
+作業,さぎょう,"work, operation",Verbal Noun
+協力,きょうりょく,"cooperation, collaboration",Verbal Noun
+シャツ,シャツ,shirt,Noun
+重さ,おもさ,weight,Noun
+割り算,わりざん,division,Verbal Noun
+残る,のこる,"remain, be left over",Verb
+ペン,ペン,pen,Noun
+貸し出す,かしだす,"lend, lend out",Verb
+消しゴム,けしごむ,eraser,Noun
+混む・込む,こむ・こむ,"be crowded, be congested",Verb
+期待,きたい,"expectation, anticipation",Verbal Noun
+期間,きかん,"term, period",Noun
+時期,じき,"time, season",Noun
+限る,かぎる,be limited to,Verb
+急ぐ,いそぐ,"hurry, hasten",Verb
+急に,きゅうに,"suddenly, unexpectedly",Adverb
+急行,きゅうこう,"express train, going in a hurry",Noun
+思い出す,おもいだす,"recollect, recall",Verb
+切れる,きれる,"run out, expire, can cut",Verb
+郵便局,ゆうびんきょく,post office,Noun
+ナイフ,ナイフ,knife,Noun
+切手,きって,postage stamp,Noun
+チーズ,チーズ,cheese,Noun
+売り切れ,うりきれ,"sellout, sold out",Noun
+切符,きっぷ,ticket,Noun
+入場券,にゅうじょうけん,entrance ticket,Noun
+家賃,やちん,rent,Noun
+時代,じだい,"age, antiquity",Noun
+定期券,ていきけん,commuter's pass,Noun
+予定,よてい,"schedule, plan",Verbal Noun
+天気予報,てんきよほう,weather forecast,Noun
+カレンダー,カレンダー,calendar,Noun
+予習,よしゅう,"preparation, previewing (a lesson)",Verbal Noun
+九,く,nine,Noun
+予約,よやく,"reservation, subscription",Verbal Noun
+チャンネル,チャンネル,channel,Noun
+変化,へんか,change,Verbal Noun
+強化,きょうか,strengthening,Verbal Noun
+文化,ぶんか,culture,Noun
+増える,ふえる,"increase, accrue",Verb
+外国人,がいこくじん,foreigner,Noun
+減る,へる,"decrease, diminish",Verb
+減らす,へらす,"decrease, reduce",Verb
+雨,あめ,rain,Noun
+雪,ゆき,"snow, snowfall",Noun
+もし,もし,"if, in case of",Adverb
+エレベーター,エレベーター,elevator,Noun
+きっと,きっと,"surely, certainly",Adverb
+ざあざあ,ざあざあ,"heavily, pouring",Adverb
+ホテル,ホテル,hotel,Noun
+必ず,かならず,"without fail, certainly",Adverb
+夕方,ゆうがた,evening,Noun
+コート,コート,"coat, jacket",Noun
+パジャマ,パジャマ,pajamas,Noun
+そちら,そちら,"there, that way",Noun
+レインコート,レインコート,raincoat,Noun
+上着,うわぎ,"coat, jacket",Noun
+役に立つ,やくにたつ,"be useful, be helpful",Verb
+席,せき,"seat, one's place",Noun
+空く,あく,become available or vacant,Verb
+代える,かえる,"substitute, use in place of",Verb
+全国,ぜんこく,the whole country,Noun
+降りる,おりる,"get off, land",Verb
+次男,じなん,second son,Noun
+次女,じじょ,second daughter,Noun
+方,かた,person　（polite form),Noun
+運ぶ,はこぶ,"carry, transport",Verb
+ウェーター,ウェーター,waiter,Noun
+打つ,うつ,"hit, strike",Verb
+トラック,トラック,"truck, lorry",Noun
+動物,どうぶつ,animal,Noun
+早く,はやく,"early, soon",Adverb
+速達,そくたつ,"special delivery, express mail",Noun
+開始,かいし,beginning,Verbal Noun
+制度,せいど,"system, organization",Noun
+株,かぶ,"stocks, shares",Noun
+テスト,テスト,"test, exam",Verbal Noun
+そろそろ,そろそろ,"soon, quietly",Adverb
+車道,しゃどう,"road, roadway",Noun
+始めに,はじめに,"in the beginning, early in",Adverb
+ほぼ,ほぼ,"almost, nearly",Adverb
+やっと,やっと,"at last, finally",Adverb
+現在,げんざい,"the present, present time",Noun
+実施,じっし,"enforcement, implementation",Verbal Noun
+事実,じじつ,"fact, truth",Noun
+通過,つうか,"passing, passage",Verbal Noun
+過ぎる,すぎる,"pass by, exceed",Verb
+過去,かこ,the past,Noun
+発生,はっせい,"occurrence, happening",Verbal Noun
+出発,しゅっぱつ,"departure, starting",Verbal Noun
+発車,はっしゃ,"start, leave",Verbal Noun
+下り,くだり,"downhill, going down",Noun
+表,おもて,"front side, face, outside",Noun
+表,ひょう,"table, list",Noun
+手紙,てがみ,letter,Noun
+ポスト,ポスト,"post box, letter box",Noun
+返事,へんじ,"answer, reply",Verbal Noun
+作品,さくひん,"work of art, piece",Noun
+雑誌,ざっし,"magazine, journal",Noun
+売店,ばいてん,"booth, store",Noun
+音,おと,"sound, noise",Noun
+工事,こうじ,construction,Verbal Noun
+下げる,さげる,"lower, turn down",Verb
+びっくりする,びっくりする,surprised,Verb
+うるさい,うるさい,"noisy, annoying, pesky",Adjective
+変,へん,"strange, weird, funny",Adjectival Noun
+音,おと,"sound, speech sound, Chinese pronunciation of a character",Noun
+生活,せいかつ,"life, living",Verbal Noun
+音楽,おんがく,music,Noun
+段々,だんだん,"gradually, one after another",Adverb
+薬,くすり,"drug, remedy, chemical",Noun
+歌,うた,song,Noun
+歌手,かしゅ,singer,Noun
+下手,へた,not good at,Adjectival Noun
+欲しがる,ほしがる,"desire, wish for, covet",Verb
+一部,いちぶ,part,Noun
+絵,え,"picture, painting, drawing",Noun
+一人で,ひとりで,by oneself,Adverb
+話,はなし,"talk, story",Noun
+面白い,おもしろい,"interesting, amusing",Adjective
+全然,ぜんぜん,"wholly, at all",Adverb
+こんなに,こんなに,"this, so, such",Adverb
+写る,うつる,"be taken, be seen through",Verb
+写真,しゃしん,photograph,Noun
+真ん中,まんなか,"center, middle",Noun
+真っ白,まっしろ,pure-white,Adjectival Noun
+真っ暗,まっくら,pitch-dark,Adjectival Noun
+真っ黒,まっくろ,"deep-black, jet-black",Adjectival Noun
+真っ青,まっさお,"deep-blue, pale (skin)",Adjectival Noun
+空,そら,"sky, weather",Noun
+品物,しなもの,"article, thing",Noun
+青,あお,"blue, green, green light",Noun
+どっち,どっち,which,Noun
+白,しろ,white,Noun
+大型,おおがた,"large, large scale",Noun
+重要,じゅうよう,"important, essential",Adjectival Noun
+種類,しゅるい,"kind, species",Noun
+直す,なおす,"repair, cure, alter",Verb
+真っ直ぐ,まっすぐ,"dead straight, honestly",Adverb
+売り切れる,うりきれる,"be sold out, go out of stock",Verb
+三角,さんかく,triangle,Noun
+四角,しかく,"square, quadrilateral",Adjectival Noun
+四角い,しかくい,"square, four-sided",Adjective
+曲,きょく,"song, melody, tune",Noun
+曲げる,まげる,"bend, curve",Verb
+交差点,こうさてん,"crossing, intersection",Noun
+角,かど,"corner, edge, angle",Noun
+四つ角,よつかど,"street corner, intersection",Noun
+曲がり角,まがりかど,corner,Noun
+計算,けいさん,calculation,Verbal Noun
+年度,ねんど,"year, school year",Noun
+間違い,まちがい,"mistake, error",Noun
+間違える,まちがえる,"mistake, confuse",Verb
+間違う,まちがう,"be mistaken, be incorrect",Verb
+世界,せかい,world,Noun
+多く,おおく,"much, largely",Adverb
+毎年,まいとし,every year,Noun
+フィルム,フィルム,film,Noun
+思い出,おもいで,"recollections, memory",Noun
+一昨年,おととし,the year before last,Noun
+やっぱり,やっぱり,"just as I thought, after all",Adverb
+利用,りよう,"utilization, usage",Verbal Noun
+返す,かえす,"return, repay",Verb
+がらがら,がらがら,empty,Adjective
+旅館,りょかん,Japanese inn,Noun
+泊める,とめる,"lodge, give shelter",Verb
+トランプ,トランプ,"(a pack of) cards, (playing) cards",Verbal Noun
+おばさん,おばさん,aunt,Noun
+ドル,ドル,dollar,Noun
+洋服,ようふく,clothes,Noun
+教室,きょうしつ,"classroom, class",Noun
+図書室,としょしつ,library,Noun
+販売,はんばい,"sale, selling",Verbal Noun
+窓,まど,"window, windowpane",Noun
+土地,とち,land,Noun
+届く,とどく,"reach, be received",Verb
+ずっと,ずっと,"all day, from start to finish",Adverb
+運転,うんてん,drive,Verbal Noun
+サラリーマン,サラリーマン,"office worker, salaried worker, company employee",Noun
+ネクタイ,ネクタイ,"tie, necktie",Noun
+ひげ,ひげ,"moustache, beard",Noun
+あくび,あくび,yawn,Verbal Noun
+不動産屋,ふどうさんや,"real estate agent, realtor",Noun
+外国,がいこく,foreign country,Noun
+買い物,かいもの,"shopping, purchase",Verbal Noun
+台所,だいどころ,kitchen,Noun
+毎週,まいしゅう,every week,Noun
+読み,よみ,"reading, judgment, foresight",Noun
+スープ,スープ,"soup, broth",Noun
+タイプライター,タイプライター,typewriter,Noun
+レコード,レコード,record,Noun
+似ている,にている,"look like, resemble",Verb
+どんどん,どんどん,knock,Adverb
+親切,しんせつ,"kind, friendly",Adjectival Noun
+店員,てんいん,"clerk, salesperson",Noun
+会話,かいわ,conversation,Verbal Noun
+不親切,ふしんせつ,"unkind, inattentive",Adjectival Noun
+人々,ひとびと,people,Noun
+家族,かぞく,"family, household",Noun
+万歳,ばんざい,Banzai! Hurrah! Long live...!,Verbal Noun
+長女,ちょうじょ,eldest daughter,Noun
+姉さん,ねえさん,"older sister, girl, miss",Noun
+高校,こうこう,high school,Noun
+入学,にゅうがく,"enter a school, matriculate",Verbal Noun
+おしゃべり,おしゃべり,"chatter, talkative",Verbal Noun
+チョコレート,チョコレート,chocolate,Noun
+二十歳,はたち,20 years old,Noun
+数学,すうがく,mathematics,Noun
+ゴルフ,ゴルフ,golf,Noun
+アルバイト,アルバイト,"casual job, student job, part-time job",Verbal Noun
+バイク,バイク,"motorbike, motor cycle",Noun
+コーラ,コーラ,"cola, coke",Noun
+二階,にかい,"second floor, upstairs",Noun
+兄さん,にいさん,older brother,Noun
+アイスクリーム,アイスクリーム,ice cream,Noun
+安全,あんぜん,"safety, security",Adjectival Noun
+合格,ごうかく,"passing an examination, eligibility",Verbal Noun
+練習,れんしゅう,"practice, training",Verbal Noun
+ピンク,ピンク,pink,Noun
+引き算,ひきざん,subtraction,Verbal Noun
+足し算,たしざん,addition,Verbal Noun
+中学,ちゅうがく,junior high school,Noun
+中学生,ちゅうがくせい,junior high school student,Noun
+中学校,ちゅうがっこう,junior high school,Noun
+小学生,しょうがくせい,"schoolchildren, schoolboy",Noun
+客,きゃく,"visitor, customer",Noun
+発表,はっぴょう,announcement,Verbal Noun
+若者,わかもの,"young person, youth",Noun
+企業,きぎょう,"corporation, business",Noun
+計画,けいかく,"plan, project",Verbal Noun
+ロボット,ロボット,robot,Noun
+パソコン,パソコン,personal computer,Noun
+明らか,あきらか,"clear, obvious",Adjective
+工場,こうじょう,"factory, plant",Noun
+代表,だいひょう,representative,Verbal Noun
+能力,のうりょく,"ability, capacity",Noun
+運動,うんどう,"movement, exercise",Verbal Noun
+要求,ようきゅう,"requirement, demand",Verbal Noun
+実行,じっこう,"practice, execution",Verbal Noun
+まとめる,まとめる,"gather together, put in order",Verb
+残す,のこす,"leave, reserve, leave undone",Verb
+言語,げんご,"language, speech",Noun
+教育,きょういく,education,Verbal Noun
+同様,どうよう,similar,Adjectival Noun
+当時,とうじ,"at that time, at the present time",Noun
+海外,かいがい,"overseas, abroad",Noun
+映画,えいが,movie,Noun
+帰国,きこく,return to one's country,Verbal Noun
+遅れる,おくれる,be late,Verb
+移る,うつる,"move, shift",Verb
+旅行,りょこう,"travel, trip",Verbal Noun
+マンション,マンション,"apartment, apartment block, condominium",Noun
+育てる,そだてる,"bring up, breed",Verb
+明るい,あかるい,"bright, cheerful",Adjective
+借りる,かりる,borrow,Verb
+立てる,たてる,"stand, set up, establish",Verb
+アパート,アパート,"apartment, flat, apartment house",Noun
+長男,ちょうなん,eldest son,Noun
+黒い,くろい,"black, dark",Adjective
+受け取る,うけとる,"receive, understand",Verb
+渡す,わたす,"carry across, hand over",Verb
+グラフ,グラフ,"chart, graph",Noun
+ラジオ,ラジオ,radio,Noun
+兄弟,きょうだい,sibling,Noun
+運転手,うんてんしゅ,driver,Noun
+見送る,みおくる,see (someone) off,Verb
+おかしい,おかしい,"strange, peculiar, suspicious",Adjective
+荷物,にもつ,"baggage, load",Noun
+貸す,かす,"lend, lease",Verb
+人形,にんぎょう,doll,Noun
+銀,ぎん,silver,Noun
+届ける,とどける,"deliver, give notice",Verb
+金持ち,かねもち,wealthy person,Noun
+ボール,ボール,ball,Noun
+オートバイ,オートバイ,"motorbike, motorcycle",Noun
+習う,ならう,"learn, practice",Verb
+左手,ひだりて,left hand,Noun
+着物,きもの,"clothes, kimono",Noun
+映画館,えいがかん,movie theater,Noun
+スイッチ,スイッチ,switch,Noun
+テニス,テニス,tennis,Verbal Noun
+おかしい,おかしい,"funny, amusing, comical",Adjective
+真面目,まじめ,"serious, sober, earnest",Adjectival Noun
+申し込む,もうしこむ,"apply, make a proposal",Verb
+バイオリン,バイオリン,violin,Noun
+配達,はいたつ,delivery,Verbal Noun
+アルバム,アルバム,album,Noun
+スカート,スカート,skirt,Noun
+物,もの,"thing, object",Noun
+この間,このあいだ,"the other day, recently",Noun
+ダンス,ダンス,"dance, dancing",Verbal Noun
+パチンコ,パチンコ,pachinko (vertical pinball),Noun
+つまらない,つまらない,"boring, dull",Adjective
+書き方,かきかた,"how to write, way of writing",Noun
+スチュワーデス,スチュワーデス,flight attendant,Noun
+ワイシャツ,ワイシャツ,"(business) shirt, (white) shirt",Noun
+ブラウス,ブラウス,blouse,Noun
+ステレオ,ステレオ,stereo,Noun
+早口,はやくち,fast talking,Noun
+色々,いろいろ,in various ways,Adjectival Noun
+降ろす,おろす,"unload, set down",Verb
+にこにこ,にこにこ,smile,Adverb
+アイロン,アイロン,iron,Noun
+イヤリング,イヤリング,earrings,Noun
+ガールフレンド,ガールフレンド,girlfriend,Noun
+どきどき,どきどき,"feel excited, feel nervous",Adverb
+一昨日,おととい,day before yesterday,Noun
+ぺらぺら,ぺらぺら,fluently,Adjectival Noun
+エアメール,エアメール,airmail,Noun
+やけど,やけど,burn,Verbal Noun
+大人しい,おとなしい,"gentle, quiet, subdued",Adjective
+上がる,あがる,"get nervous, get stage fright",Verb
+空手,からて,"karate, empty hand",Noun
+金,きん,"gold, sum of money, Friday",Noun
+年上,としうえ,"older, senior",Noun
+昼過ぎ,ひるすぎ,early afternoon,Noun
+結合,けつごう,"combination, joining",Verbal Noun
+私たち,わたしたち,we,Noun
+教会,きょうかい,church,Noun
+先月,せんげつ,last month,Noun
+結果,けっか,"result, outcome",Noun
+果物,くだもの,fruit,Noun
+課題,かだい,"task, problem",Noun
+課,か,"section, division, lesson",Noun
+表現,ひょうげん,expression,Verbal Noun
+立場,たちば,"standpoint, position",Noun
+おもちゃ,おもちゃ,"toy, plaything",Noun
+乗り物,のりもの,"vehicle, conveyance",Noun
+自習,じしゅう,"self-study, self-teaching",Verbal Noun
+理由,りゆう,"reason, cause",Noun
+自由,じゆう,freedom,Adjectival Noun
+変わる,かわる,change,Verb
+信じる,しんじる,"believe, trust, have faith in",Verb
+信号,しんごう,"signal, traffic light",Noun
+赤,あか,"red, crimson",Noun
+頼む,たのむ,"ask, request",Verb
+市民,しみん,"citizens, townsmen",Noun
+決定,けってい,"decision, settlement",Verbal Noun
+報告,ほうこく,report,Verbal Noun
+議員,ぎいん,legislator,Noun
+会議,かいぎ,"conference, meeting",Verbal Noun
+発言,はつげん,"utterance, speech",Verbal Noun
+出席,しゅっせき,"attendance, presence",Verbal Noun
+コピー,コピー,"copy, photocopy",Verbal Noun
+配る,くばる,"hand out, distribute, allot",Verb
+昼前,ひるまえ,"in the morning, before noon",Noun
+開発,かいはつ,development,Verbal Noun
+対立,たいりつ,"opposition, antagonism",Verbal Noun
+見方,みかた,"view, way of looking",Noun
+反対,はんたい,"oppose, object",Verbal Noun
+対する,たいする,"face, be in response to",Verb
+よく,よく,well,Adverb
+写す,うつす,"copy, photograph",Verb
+答え,こたえ,"answer, solution",Noun
+特に,とくに,"specially, particularly",Adverb
+特急,とっきゅう,super-express,Noun
+特別,とくべつ,"special, extraordinary",Adjectival Noun
+別々,べつべつ,separately,Adjectival Noun
+別れる,わかれる,"separate, part from",Verb
+一般,いっぱん,"general, common",Noun
+目的,もくてき,"object, purpose",Noun
+産業,さんぎょう,industry,Noun
+普通,ふつう,"normal, regular",Adjectival Noun
+並ぶ,ならぶ,"line up, be parallel",Verb
+並べる,ならべる,"line up, display, set up",Verb
+ごちそう,ごちそう,"feast, treat",Noun
+平和,へいわ,"peace, harmony",Adjectival Noun
+病院,びょういん,hospital,Noun
+入院,にゅういん,be hospitalized,Verbal Noun
+お医者さん,おいしゃさん,doctor,Noun
+歯ブラシ,はぶらし,toothbrush,Noun
+教科書,きょうかしょ,"textbook, schoolbook",Noun
+亡くなる,なくなる,"die, pass away",Verb
+昼間,ひるま,"daytime, day",Noun
+疲れる,つかれる,"get tired, become fatigued",Verb
+ふらふら,ふらふら,weak,Adverb
+禁煙,きんえん,"no smoking, giving up smoking",Verbal Noun
+酔っ払い,よっぱらい,"drunkard, boozer",Noun
+酔っ払う,よっぱらう,get drunk,Verb
+もう,もう,"another, again",Adverb
+コップ,コップ,"cup, glass",Noun
+危ない,あぶない,"dangerous, uncertain",Adjective
+プラスチック,プラスチック,plastic,Noun
+注目,ちゅうもく,"attention, notice",Verbal Noun
+注文,ちゅうもん,"order, request",Verbal Noun
+意味,いみ,"meaning, significance",Noun
+意見,いけん,opinion,Noun
+個人,こじん,individual,Noun
+注意,ちゅうい,"attention, care, watch out",Verbal Noun
+用意,ようい,"prepare, ready oneself",Verbal Noun
+分かれる,わかれる,"be divided, disperse, branch off",Verb
+確認,かくにん,confirmation,Verbal Noun
+機能,きのう,"function, feature",Verbal Noun
+材料,ざいりょう,"material, factor",Noun
+動かす,うごかす,"move, operate",Verb
+基づく,もとづく,be based on,Verb
+基本,きほん,"basis, foundation",Noun
+準備,じゅんび,"provide for, prepare for",Verbal Noun
+施設,しせつ,"facilities, institution",Noun
+説明,せつめい,"explanation, description",Verbal Noun
+公開,こうかい,opening (to the public),Verbal Noun
+公園,こうえん,"park, public garden",Noun
+動物園,どうぶつえん,zoo,Noun
+チケット,チケット,ticket,Noun
+デート,デート,date,Verbal Noun
+昼休み,ひるやすみ,"noon recess, lunch break",Noun
+祭り,まつり,festival,Noun
+国際,こくさい,international,Noun
+以上,いじょう,"not less than, more than",Noun
+飛行場,ひこうじょう,"airport, airfield",Noun
+ジェット機,ジェットき,jet airplane,Noun
+航空便,こうくうびん,airmail,Noun
+最大,さいだい,"biggest, largest",Noun
+設計,せっけい,"design, plan",Verbal Noun
+遠く,とおく,great distance,Adverb
+下る,くだる,"go down, go down or away from a central place",Verb
+船便,ふなびん,"surface mail, shipping service",Noun
+船,ふね,"ship, boat, vessel",Noun
+空港,くうこう,airport,Noun
+港,みなと,"port, harbor",Noun
+島,しま,"island, isle",Noun
+完成,かんせい,"completion, finish",Verbal Noun
+全体,ぜんたい,"whole, total",Noun
+平成,へいせい,Heisei era,Noun
+成功,せいこう,success,Verbal Noun
+原因,げんいん,"cause, origin",Noun
+投資,とうし,investment,Verbal Noun
+一定,いってい,"constant, standard",Verbal Noun
+今後,こんご,"after this, in the future",Noun
+願う,ねがう,"wish, ask a favor, apply for",Verb
+直接,ちょくせつ,directly,Adverb
+カード,カード,"card, credit card",Noun
+よろしく,よろしく,"properly, one's regards",Adverb
+正確,せいかく,"accurate, precise",Adjectival Noun
+正しい,ただしい,"correct, righteous, lawful",Adjective
+遊び,あそび,"play, amusement",Noun
+正直,しょうじき,"honest, upright",Adjectival Noun
+異なる,ことなる,differ,Verb
+通常,つうじょう,"common, ordinary",Noun
+技術,ぎじゅつ,"skill, technology",Noun
+非常に,ひじょうに,"very, extremely",Adverb
+強調,きょうちょう,"emphasis, stress",Verbal Noun
+良い,よい,"good, suitable, preferable",Adjective
+季節,きせつ,season,Noun
+調査,ちょうさ,"investigation, inquiry",Verbal Noun
+提供,ていきょう,"offer, provide",Verbal Noun
+提案,ていあん,"proposition, proposal",Verbal Noun
+案内,あんない,"guide, inform",Verbal Noun
+連れて行く,つれていく,take (a person) along,Verb
+連れて来る,つれてくる,bring (a person),Verb
+続ける,つづける,"continue, keep up",Verb
+さっき,さっき,"some time ago, only a moment ago",Adverb
+来週,らいしゅう,next week,Noun
+動き,うごき,"movement, motion",Noun
+相談,そうだん,"consultation, advice",Verbal Noun
+医者,いしゃ,doctor,Noun
+記者,きしゃ,"journalist, reporter",Noun
+毎晩,まいばん,every evening,Noun
+記録,きろく,"record, documentation",Verbal Noun
+テープ,テープ,"tape, cassette",Noun
+関する,かんする,"concern, relate to",Verb
+関連,かんれん,"connection, relation",Verbal Noun
+状況,じょうきょう,"state of affairs, conditions",Noun
+状態,じょうたい,"state, appearance",Noun
+治る,なおる,"be cured, get well",Verb
+政治,せいじ,politics,Noun
+政府,せいふ,"government, administration",Noun
+党,とう,political party,Noun
+政策,せいさく,"policy, political measures",Noun
+選ぶ,えらぶ,"choose, elect",Verb
+選手,せんしゅ,representative athlete,Noun
+彼ら,かれら,they,Noun
+サッカー,サッカー,"soccer, football",Noun
+バスケットボール,バスケットボール,basketball,Noun
+選挙,せんきょ,election,Verbal Noun
+候補,こうほ,"candidacy, candidate",Noun
+首相,しゅしょう,prime minister,Noun
+首都,しゅと,capital,Noun
+マフラー,マフラー,"scarf, muffler",Noun
+当たる,あたる,"hit, strike",Verb
+今朝,けさ,this morning,Noun
+真っ赤,まっか,deep red,Adjectival Noun
+タオル,タオル,towel,Noun
+改革,かいかく,reform,Verbal Noun
+革,かわ,leather,Noun
+番組,ばんぐみ,program,Noun
+録音,ろくおん,sound recording,Verbal Noun
+組織,そしき,"organization, constitution, tissue",Verbal Noun
+進む,すすむ,"advance, move forward",Verb
+科学,かがく,science,Noun
+進学,しんがく,entering a school of higher grade,Verbal Noun
+大学院,だいがくいん,graduate school,Noun
+拡大,かくだい,"magnification, enlargement",Verbal Noun
+調べる,しらべる,"investigate, check",Verb
+責任,せきにん,"responsibility, liability",Noun
+辞める,やめる,"resign, retire",Verb
+辞書,じしょ,dictionary,Noun
+会社,かいしゃ,"company, corporation",Noun
+大使館,たいしかん,embassy,Noun
+地下鉄,ちかてつ,subway,Noun
+通勤,つうきん,"commuting, commutation",Verbal Noun
+おじ,おじ,uncle,Noun
+勤める,つとめる,"serve, hold a job",Verb
+事務所,じむしょ,"office, one's place of business",Noun
+事務室,じむしつ,office,Noun
+従来,じゅうらい,"former, old",Noun
+命令,めいれい,"command, order",Verbal Noun
+従兄弟,いとこ,cousin,Noun
+成績,せいせき,"results, record",Noun
+まあまあ,まあまあ,"OK, not bad, average",Adjective
+情報,じょうほう,information,Noun
+集める,あつめる,"collect, gather",Verb
+集まる,あつまる,"gather, be collected",Verb
+各国,かっこく,every country,Noun
+正月,しょうがつ,New Year,Noun
+採用,さいよう,employment,Verbal Noun
+給料,きゅうりょう,"salary, pay",Noun
+毎年,まいねん,every year,Noun
+卒業,そつぎょう,graduation,Verbal Noun
+高等学校,こうとうがっこう,senior high school,Noun
+受ける,うける,"receive, accept",Verb
+自動車,じどうしゃ,automobile,Noun
+就職,しゅうしょく,finding employment,Verbal Noun
+退院,たいいん,discharge from a hospital,Verbal Noun
+契約,けいやく,"contract, agreement",Verbal Noun
+交渉,こうしょう,"negotiation, bargaining",Verbal Noun
+関係,かんけい,"relation, relationship",Verbal Noun
+スーパーマーケット,スーパーマーケット,supermarket,Noun
+参加,さんか,participation,Verbal Noun
+増加,ぞうか,"increase, gain",Verbal Noun
+加工,かこう,"processing, manufacturing",Verbal Noun
+いかが,いかが,"how, what",Adverb
+比べる,くらべる,"compare, contrast",Verb
+評価,ひょうか,"evaluation, appraisal",Verbal Noun
+対象,たいしょう,"target, object",Noun
+修理,しゅうり,"repair, mending",Verbal Noun
+乗り換える,のりかえる,"change, transfer",Verb
+トイレットペーパー,トイレットペーパー,toilet paper,Noun
+乗り換え,のりかえ,"change, transfer",Verbal Noun
+換える,かえる,"exchange, convert",Verb
+着替える,きがえる,change clothes,Verb
+備える,そなえる,"provide for, furnish",Verb
+破る,やぶる,"tear, break through, breach",Verb
+破れる,やぶれる,"tear, rip open",Verb
+機械,きかい,machine,Noun
+カメラ,カメラ,camera,Noun
+壊す,こわす,"break, destroy, smash",Verb
+壊れる,こわれる,"break, break down, get out of order",Verb
+立派,りっぱ,"fine, excellent",Adjectival Noun
+管理,かんり,"management, administration",Verbal Noun
+事件,じけん,"affair, case",Noun
+逮捕,たいほ,"arrest, capture",Verbal Noun
+戦争,せんそう,"war, battle",Verbal Noun
+捨てる,すてる,"discard, abandon",Verb
+スケート,スケート,"skate, skates",Noun
+ボート,ボート,boat,Noun
+電池,でんち,"electric cell, battery",Noun
+深い,ふかい,"deep, profound, intimate",Adjective
+深さ,ふかさ,"depth, profundity",Noun
+浅い,あさい,"shallow, superficial",Adjective
+何か,なにか,"something, some",Noun
+割れる,われる,"crack, be divided, split",Verb
+泳ぐ,およぐ,swim,Verb
+たくさん,たくさん,"in large quantity, plenty",Adverb
+流行る,はやる,"be in fashion, be popular",Verb
+先ず,まず,first,Adverb
+洗う,あらう,wash,Verb
+下着,したぎ,underwear,Noun
+洗面所,せんめんじょ,"washroom, bathroom",Noun
+油,あぶら,"oil, animal oil",Noun
+沈む,しずむ,"sink, set",Verb
+久しぶり,ひさしぶり,after a long time,Adjectival Noun
+氷,こおり,ice,Noun
+冷える,ひえる,"cool down, feel chilly",Verb
+冷やす,ひやす,"cool, chill",Verb
+冷める,さめる,"cool off, subside",Verb
+凍る,こおる,"freeze, congeal",Verb
+故障,こしょう,"malfunction, fault, breakdown",Verbal Noun
+セーター,セーター,"sweater, pullover",Noun
+冷蔵庫,れいぞうこ,refrigerator,Noun
+涼しい,すずしい,"cool, refreshing",Adjective
+ズボン,ズボン,"trousers, pants",Noun
+汚す,よごす,"make dirty, soil",Verb
+汚れる,よごれる,"become dirty, become defiled",Verb
+景色,けしき,"scenery, landscape",Noun
+影響,えいきょう,"influence, effect",Verbal Noun
+光る,ひかる,"shine, emit light",Verb
+太る,ふとる,"grow fat, fatten",Verb
+指,ゆび,"finger, toe",Noun
+西,にし,"west, western",Noun
+ぎらぎら,ぎらぎら,"dazzling, glaring, blinding",Adverb
+存在,そんざい,"existence, being",Verbal Noun
+発見,はっけん,"discovery, revelation",Verbal Noun
+きらきら,きらきら,"shining, sparkling",Adverb
+星,ほし,"star, planet, spot",Noun
+昨夜,ゆうべ,"last night, last evening",Noun
+回る,まわる,"turn round, go round, detour",Verb
+うまい,うまい,good at,Adjective
+野球,やきゅう,baseball,Noun
+間,あいだ,interval,Noun
+雲,くも,cloud,Noun
+曇り,くもり,"cloudiness, cloudy weather",Noun
+昨年,さくねん,last year,Noun
+研究,けんきゅう,"research, study",Verbal Noun
+地震,じしん,earthquake,Noun
+ガス,ガス,gas,Noun
+震える,ふるえる,"tremble, quiver, shake",Verb
+揺れる,ゆれる,"shake, sway, rock",Verb
+ぐらぐら,ぐらぐら,wobble,Adverb
+神社,じんじゃ,Shinto shrine,Noun
+秘密,ひみつ,"secret, privacy",Adjectival Noun
+条件,じょうけん,"condition, item",Noun
+規則,きそく,"rule, regulation",Noun
+暑さ,あつさ,"heat, summer heat",Noun
+寒さ,さむさ,"coldness, cold",Noun
+年寄り,としより,"old person, older councilor",Noun
+世紀,せいき,century,Noun
+建設,けんせつ,"construction, building",Verbal Noun
+中心,ちゅうしん,"center, middle",Noun
+建物,たてもの,"building, structure",Noun
+建つ,たつ,"be built, be erected",Verb
+番地,ばんち,"lot number, address",Noun
+構成,こうせい,organization,Verbal Noun
+構造,こうぞう,"construction, structure",Noun
+渡る,わたる,"cross, ford, go across",Verb
+橋,はし,bridge,Noun
+ぶつかる,ぶつかる,"hit, bump into",Verb
+柱,はしら,"pillar, prop",Noun
+広さ,ひろさ,"area, extent",Noun
+新聞,しんぶん,newspaper,Noun
+位置,いち,"position, place",Verbal Noun
+離婚,りこん,divorce,Verbal Noun
+システム,システム,system,Noun
+バス停,ばすてい,bus stop,Noun
+大会,たいかい,"mass meeting, tournament",Noun
+周辺,しゅうへん,"environs, circumference",Noun
+田んぼ,たんぼ,rice field,Noun
+聞こえる,きこえる,"hear, be heard",Verb
+黄色,きいろ,yellow,Noun
+横,よこ,"side, width across",Noun
+横書き,よこがき,horizontal writing,Noun
+段階,だんかい,stage,Noun
+判断,はんだん,"judgment, decision",Verbal Noun
+基準,きじゅん,"standard, criterion",Noun
+断る,ことわる,"refuse, turn down",Verb
+横断歩道,おうだんほどう,"pedestrian crossing, crosswalk",Noun
+大幅,おおはば,"drastically, substantially",Adverb
+年間,ねんかん,period of one year,Noun
+訪れる,おとずれる,"visit, call on",Verb
+訪ねる,たずねる,"visit, call on",Verb
+冷房,れいぼう,air conditioning,Verbal Noun
+暖房,だんぼう,heating,Verbal Noun
+文房具,ぶんぼうぐ,"stationery, writing materials",Noun
+メニュー,メニュー,"menu, bill of fare",Noun
+諸国,しょこく,various countries,Noun
+対策,たいさく,"measure, action",Noun
+もちろん,もちろん,"of course, no doubt",Adverb
+宿題,しゅくだい,homework,Noun
+ランチ,ランチ,lunch,Noun
+増やす,ふやす,"increase, add",Verb
+緑色,みどりいろ,green,Noun
+町,まち,"town, machi, city quarter",Noun
+貿易,ぼうえき,"trade, commerce",Verbal Noun
+輸入,ゆにゅう,import,Verbal Noun
+輸出,ゆしゅつ,export,Verbal Noun
+指輪,ゆびわ,ring,Noun
+大切,たいせつ,"important, valuable",Adjectival Noun
+往復,おうふく,"going and returning, round trip",Noun
+復習,ふくしゅう,review,Verbal Noun
+繰り返す,くりかえす,repeat,Verb
+国内,こくない,"domestic, internal",Noun
+広がる,ひろがる,"spread out, reach",Verb
+他,た,"others, other things",Noun
+グラス,グラス,glass,Noun
+留学,りゅうがく,studying abroad,Verbal Noun
+停留所,ていりゅうじょ,"stop, station",Noun
+書留,かきとめ,registered mail,Noun
+自然,しぜん,nature,Noun
+守る,まもる,"protect, observe",Verb
+自然,しぜん,"natural, naturally",Adjectival Noun
+約束,やくそく,"promise, vow",Verbal Noun
+留守,るす,not at home,Noun
+主人,しゅじん,"master, husband",Noun
+自宅,じたく,"one's house, one's home",Noun
+お宅,おたく,"your home, you, fan, geek",Noun
+大変,たいへん,"awful, serious",Adjectival Noun
+交通事故,こうつうじこ,traffic accident,Noun
+ベッド,ベッド,bed,Noun
+ぐっすり,ぐっすり,soundly,Adverb
+昼寝,ひるね,"siesta, nap",Verbal Noun
+住宅,じゅうたく,"housing, residence",Noun
+静か,しずか,"quiet, tranquil",Adjectival Noun
+暇,ひま,"free time, spare time",Noun
+趣味,しゅみ,"hobby, interest",Noun
+両方,りょうほう,both,Noun
+両替,りょうがえ,"money changing, exchange of money",Verbal Noun
+片道,かたみち,one way,Noun
+内側,うちがわ,"inside, interior",Noun
+パトカー,パトカー,"police car, patrol car",Noun
+向こう側,むこうがわ,other side,Noun
+外側,そとがわ,"exterior, outside",Noun
+左側,ひだりがわ,left side,Noun
+右側,みぎがわ,right side,Noun
+裏,うら,"rear, reverse, inside",Noun
+裏返す,うらがえす,"turn over, turn inside out",Verb
+週刊誌,しゅうかんし,weekly magazine,Noun
+朝刊,ちょうかん,morning edition,Noun
+夕刊,ゆうかん,evening edition,Noun
+小説,しょうせつ,"novel, story",Noun
+詳しい,くわしい,"detailed, complete",Adjective
+細かい,こまかい,"minute, elaborate",Adjective
+みかん,みかん,"tangerine, mandarin orange",Noun
+細か,こまか,"minute, elaborate",Adjectival Noun
+積もる,つもる,"accumulate, get accumulated",Verb
+訳,やく,"translation, rendering",Noun
+訳す,やくす,translate,Verb
+検討,けんとう,"consideration, inspection",Verbal Noun
+プログラム,プログラム,program,Noun
+付ける,つける,"attach, set, apply",Verb
+ナイロン,ナイロン,nylon,Noun
+こちら,こちら,"here, this way",Noun
+受け付ける,うけつける,"receive, accept",Verb
+片付ける,かたづける,"put in order, dispose of, do away with",Verb
+受付,うけつけ,"receptionist, information office",Noun
+近付く,ちかづく,"approach, get acquainted",Verb
+リボン,リボン,ribbon,Noun
+片付く,かたづく,"be put in order, be settled",Verb
+気を付ける,きをつける,"take care of, pay attention to",Verb
+記念日,きねんび,"memorial day, anniversary",Noun
+残念,ざんねん,"regretful, disappointing",Adjectival Noun
+行き,ゆき,going,Noun
+具体的,ぐたいてき,"concrete, specific",Adjectival Noun
+例えば,たとえば,for example,Adverb
+例文,れいぶん,"illustrative sentence, example",Noun
+例,れい,"example, precedent",Noun
+余る,あまる,"remain over, be in excess",Verb
+除く,のぞく,"rid of, exclude",Verb
+削る,けずる,"grind down, trim, scale back",Verb
+やはり,やはり,"as expected, also, still",Adverb
+遅刻,ちこく,"tardiness, lateness",Verbal Noun
+緩い,ゆるい,"slack, loose",Adjective
+数字,すうじ,"figure, numeral",Noun
+苦しい,くるしい,"painful, difficult",Adjective
+苦い,にがい,"bitter, sour",Adjective
+苦手,にがて,"person that is hard to deal with, weak point",Adjectival Noun
+困る,こまる,"be at a loss, in a jam, in trouble",Verb
+貧乏,びんぼう,"poverty, destitution",Adjectival Noun
+ジュース,ジュース,"juice, soft drink",Noun
+不幸,ふこう,"unhappiness, misfortune, bereavement",Adjectival Noun
+幸せ,しあわせ,"happiness, good fortune",Adjectival Noun
+加える,くわえる,"add, include",Verb
+少々,しょうしょう,"a little, a few",Adverb
+塩,しお,salt,Noun
+塩辛い,しおからい,salty,Adjective
+ちょっと,ちょっと,"just a moment, just a little, easily",Adverb
+砂糖,さとう,sugar,Noun
+規模,きぼ,"scale, scope",Noun
+農業,のうぎょう,agriculture,Noun
+濃い,こい,"thick, concentrated, dark-colored",Adjective
+薄い,うすい,"thin, weak, pale",Adjective
+味,あじ,"taste, flavor",Noun
+厚い,あつい,"thick, bulky",Adjective
+迫る,せまる,"press, close in on, be imminent",Verb
+ゴム,ゴム,elastic,Noun
+業者,ぎょうしゃ,businessman,Noun
+越える,こえる,"go over, go across, go beyond",Verb
+引っ越し,ひっこし,moving,Verbal Noun
+追い越す,おいこす,"outrun, overtake",Verb
+上昇,じょうしょう,"ascension, rising",Verbal Noun
+確か,たしか,"for sure, for certain",Adjectival Noun
+改札口,かいさつぐち,"ticket barrier, wicket",Noun
+失礼,しつれい,"impoliteness, bad manners, I beg your parden/Goodbye",Verbal Noun
+お礼,おれい,"thanks, reward, return present",Verbal Noun
+どなた,どなた,who,Noun
+謝る,あやまる,apologize,Verb
+注射,ちゅうしゃ,"injection, shot",Verbal Noun
+社員,しゃいん,"staff member, employee",Noun
+誘う,さそう,"invite, ask out",Verb
+導入,どうにゅう,introduction,Verbal Noun
+努力,どりょく,"endeavor, effort",Verbal Noun
+当然,とうぜん,"natural, as a matter of course",Adjectival Noun
+めったに,めったに,rarely,Adverb
+独身,どくしん,"single life, celibacy",Noun
+家内,かない,my wife,Noun
+処理,しょり,"management, process",Verbal Noun
+紹介,しょうかい,"introduction, presentation",Verbal Noun
+招く,まねく,"invite, beckon, engage",Verb
+ソース,ソース,"sauce, Worcestershire sauce",Noun
+招待,しょうたい,invitation,Verbal Noun
+生まれる,うまれる,"be born, come into existence",Verb
+夫婦,ふうふ,"husband and wife, married couple",Noun
+ネックレス,ネックレス,necklace,Noun
+二人,ふたり,two persons,Noun
+奥さん,おくさん,"married lady, your wife",Noun
+年下,としした,"younger, junior",Noun
+競争,きょうそう,competition,Verbal Noun
+方向,ほうこう,"direction, course",Noun
+見物,けんぶつ,"sightseeing, visit",Verbal Noun
+知らせる,しらせる,"let know, inform",Verb
+皆さん,みなさん,"everybody, ladies and gentlemen",Noun
+皆様,みなさま,"everyone, ladies and gentlemen",Noun
+経営,けいえい,"management, operation",Verbal Noun
+大統領,だいとうりょう,president (of a country),Noun
+相手,あいて,opponent,Noun
+未来,みらい,future,Noun
+盗む,ぬすむ,"steal, rob",Verb
+誰か,だれか,someone,Noun
+国籍,こくせき,"nationality, citizenship",Noun
+愛,あい,love,Verbal Noun
+可愛い,かわいい,"cute, charming, sweet",Adjective
+着せる,きせる,"dress, put on clothes",Verb
+恋人,こいびと,"lover, sweetheart",Noun
+プレゼント,プレゼント,"present, gift",Verbal Noun
+誕生日,たんじょうび,birthday,Noun
+ケーキ,ケーキ,cake,Noun
+祝日,しゅくじつ,"holiday, festival day",Noun
+お祝い,おいわい,celebrate,Verbal Noun
+実現,じつげん,"implementation, realization",Verbal Noun
+泣く,なく,"cry, weep",Verb
+涙,なみだ,tear,Noun
+こぼれる,こぼれる,"spill, overflow",Verb
+喜ぶ,よろこぶ,"be happy, be delighted",Verb
+恥ずかしい,はずかしい,"shy, ashamed, disgraceful",Adjective
+弁当,べんとう,"box lunch, picnic lunch",Noun
+高さ,たかさ,height,Noun
+登る,のぼる,"climb, mount, go up",Verb
+看護婦,かんごふ,female nurse,Noun
+訴える,うったえる,sue,Verb
+迷う,まよう,"be perplexed, hesitate, get lost",Verb
+占める,しめる,"occupy, hold",Verb
+ベルト,ベルト,belt,Noun
+迷惑,めいわく,"trouble, annoyance",Verbal Noun
+地域,ちいき,"region, area",Noun
+活動,かつどう,activity,Verbal Noun
+住民,じゅうみん,"residents, dwellers",Noun
+危険,きけん,"danger, dangerous",Adjectival Noun
+政権,せいけん,political power,Noun
+贈る,おくる,"offer, give",Verb
+贈り物,おくりもの,"present, gift",Noun
+与える,あたえる,give,Verb
+資金,しきん,"funds, capital",Noun
+貯金,ちょきん,"savings, deposit",Verbal Noun
+毎月,まいつき,every month,Noun
+預かる,あずかる,"receive on deposit, take charge of",Verb
+分野,ぶんや,"field, sphere",Noun
+料理,りょうり,"cooking, handling",Verbal Noun
+得意,とくい,"one's forte, pride, customer",Adjectival Noun
+ギター,ギター,guitar,Noun
+理科,りか,science,Noun
+バレーボール,バレーボール,volleyball,Noun
+燃える,もえる,"burn, undergo combustion",Verb
+焼ける,やける,"burn, be scorched, be baked",Verb
+すき焼き,すきやき,sukiyaki,Noun
+肉,にく,"flesh, meat",Noun
+焼く,やく,"burn, bake, be envious",Verb
+乾杯,かんぱい,a toast,Verbal Noun
+乾かす,かわかす,dry,Verb
+新幹線,しんかんせん,"Shinkansen, Bullet Train",Noun
+速さ,はやさ,speed,Noun
+行き,いき,going,Noun
+素晴らしい,すばらしい,"splendid, excellent",Adjective
+家庭,かてい,"home, family",Noun
+花,はな,flower,Noun
+咲く,さく,"bloom, blossom",Verb
+桜,さくら,"cherry tree, cherry blossom",Noun
+吹く,ふく,"blow, play on a wind instrument",Verb
+毎日,まいにち,every day,Noun
+海岸,かいがん,"seashore, coast",Noun
+あちこち,あちこち,all over,Noun
+植える,うえる,"plant, raise",Verb
+庭,にわ,"garden, court",Noun
+屋根,やね,roof,Noun
+厚さ,あつさ,thickness,Noun
+黒板,こくばん,blackboard,Noun
+掲示板,けいじばん,"notice board, bulletin board",Noun
+チョーク,チョーク,chalk,Noun
+フォーク,フォーク,fork,Noun
+牛,うし,"cattle, cow",Noun
+草,くさ,"grass, weed",Noun
+葉,は,"leaf, needle",Noun
+絵葉書,えはがき,picture postcard,Noun
+葉書,はがき,postcard,Noun
+警察,けいさつ,police,Noun
+どうぞ,どうぞ,please,Adverb
+タクシー,タクシー,"taxi, cab",Noun
+親しい,したしい,"intimate, familiar",Adjective
+救急車,きゅうきゅうしゃ,ambulance,Noun
+ウェートレス,ウェートレス,waitress,Noun
+吸う,すう,"inhale, suck",Verb
+たばこ,たばこ,"tobacco, cigarette",Noun
+普及,ふきゅう,"diffusion, spread",Verbal Noun
+手術,しゅじゅつ,surgical operation,Verbal Noun
+効果,こうか,"effect, result",Noun
+胃,い,stomach,Noun
+割る,わる,"divide, crack, split",Verb
+皿,さら,"plate, counter for plates or helpings",Noun
+血,ち,blood,Noun
+内容,ないよう,contents,Noun
+会談,かいだん,"conversation, meeting",Verbal Noun
+背景,はいけい,"background, scenery, setting",Noun
+実際,じっさい,"truth, actual state",Adverb
+かゆい,かゆい,itchy,Adjective
+滑る,すべる,"slide, slip, flunk an examination",Verb
+骨,ほね,"bone, frame, spirit",Noun
+健康,けんこう,healthy,Adjectival Noun
+水泳,すいえい,swimming,Verbal Noun
+珍しい,めずらしい,"rare, precious",Adjective
+ビデオ,ビデオ,video,Noun
+撮る,とる,"photograph, shoot, film",Verb
+国会,こっかい,"National Diet, parliament",Noun
+再び,ふたたび,"again, a second time",Adverb
+再来年,さらいねん,the year after next,Noun
+再来月,さらいげつ,the month after next,Noun
+再来週,さらいしゅう,the week after next,Noun
+放送,ほうそう,broadcasting,Verbal Noun
+装置,そうち,"equipment, device",Noun
+仮名,かな,"kana, Japanese syllabary",Noun
+送り仮名,おくりがな,kana suffix,Noun
+悲しむ,かなしむ,"feel sad, lament",Verb
+あまり,あまり,(not) much,Adverb
+流れる,ながれる,"flow, pass, drift away",Verb
+ビール,ビール,"beer, lager",Noun
+美術館,びじゅつかん,art museum,Noun
+美人,びじん,beautiful woman,Noun
+すいか,すいか,watermelon,Noun
+博物館,はくぶつかん,museum,Noun
+ハム,ハム,ham,Noun
+開催,かいさい,"holding (of an event), opening",Verbal Noun
+特徴,とくちょう,"distinctive feature, characteristic",Noun
+今回,こんかい,this time,Noun
+許す,ゆるす,"permit, license, forgive",Verb
+免許証,めんきょしょう,license,Noun
+述べる,のべる,"state orally, expound, mention",Verb
+食事,しょくじ,"meal, dinner",Verbal Noun
+代わる,かわる,"substitute, be substituted for",Verb
+固い,かたい,"stiff, tight",Adjective
+厳しい,きびしい,"strict, severe, intense",Adjective
+教師,きょうし,"teacher, instructor",Noun
+進める,すすめる,"advance, promote",Verb
+設ける,もうける,"set up, establish",Verb
+実験,じっけん,experiment,Verbal Noun
+教授,きょうじゅ,professor,Noun
+間に合う,まにあう,"be in time, answer the purpose, can do without",Verb
+伝える,つたえる,"convey, transmit, hand down",Verb
+忙しい,いそがしい,"busy, occupied",Adjective
+逃げる,にげる,"escape, run away",Verb
+鳥,とり,"bird, poultry",Noun
+鳴る,なる,"sound, ring, roar",Verb
+鳴く,なく,"cry, chirp, meow",Verb
+目覚まし時計,めざましどけい,alarm clock,Noun
+声,こえ,"voice, sound",Noun
+テープレコーダー,テープレコーダー,"tape recorder, cassette recorder",Noun
+卵,たまご,egg,Noun
+やる,やる,give (to an inferior),Verb
+隣,となり,"neighboring house, next seat",Noun
+振る,ふる,"wave, shake, brandish",Verb
+助ける,たすける,"help, save",Verb
+駐車場,ちゅうしゃじょう,parking area,Noun
+騒ぐ,さわぐ,"make a racket, mess around, make a fuss",Verb
+刺身,さしみ,"sashimi, sliced raw meat",Noun
+激しい,はげしい,"violent, intense",Adjective
+スリッパ,スリッパ,slippers,Noun
+降る,ふる,"fall, come down",Verb
+示す,しめす,"show, indicate",Verb
+歴史,れきし,history,Noun
+驚く,おどろく,"be surprised, be startled",Verb
+強さ,つよさ,"strength, power",Noun
+停車,ていしゃ,stoppage,Verbal Noun
+木,き,"tree, wood",Noun
+倒れる,たおれる,"fall over, succumb",Verb
+倒す,たおす,"bring down, overthrow, defeat",Verb
+傾向,けいこう,"tendency, disposition",Noun
+急,きゅう,"urgent, dire, pressing",Adjectival Noun
+よろしい,よろしい,all right,Adjective
+柔道,じゅうどう,judo,Noun
+柔らか,やわらか,"soft, tender, gentle",Adjectival Noun
+主張,しゅちょう,"insistence, assertion",Verbal Noun
+テント,テント,tent,Noun
+引っ張る,ひっぱる,"pull, drag",Verb
+消える,きえる,"be extinguished, disappear",Verb
+突き当たる,つきあたる,"hit against, come to the end of",Verb
+突き当たり,つきあたり,end of a street,Noun
+文字,もじ,"character, letter",Noun
+塗る,ぬる,"spread on, paint",Verb
+弾く,ひく,play on,Verb
+地球,ちきゅう,the Earth,Noun
+丸い,まるい,round,Adjective
+丸,まる,"circle or sphere, wholeness",Noun
+攻撃,こうげき,"attack, criticism",Verbal Noun
+消防車,しょうぼうしゃ,fire engine,Noun
+殺す,ころす,"kill, smother",Verb
+嫌,いや,"dislike, have a dislike for",Adjectival Noun
+歯医者,はいしゃ,dentist,Noun
+大嫌い,だいきらい,hate,Adjectival Noun
+ラッシュアワー,ラッシュアワー,rush hour,Noun
+にんじん,にんじん,carrot,Noun
+アクセサリー,アクセサリー,"accessories, jewelry",Noun
+大勢,おおぜい,"large numbers, a lot of",Noun
+姿,すがた,"figure, appearance",Noun
+姿勢,しせい,"posture, attitude",Noun
+夢,ゆめ,dream,Noun
+恐ろしい,おそろしい,"terrible, awful",Adjective
+怖い,こわい,"fearful, be afraid",Adjective
+孫,まご,grandchild,Noun
+木綿,もめん,cotton,Noun
+偉い,えらい,"great, famous, eminent",Adjective
+爪,つめ,"nail, claw",Noun
+奥,おく,"inner part, the back, inner chamber",Noun
+机,つくえ,"desk, table",Noun
+貼る,はる,"stick, paste",Verb
+組み立てる,くみたてる,"build, set up, construct",Verb
+棚,たな,"cupboard, shelf, rack",Noun
+本棚,ほんだな,bookshelf,Noun
+折れる,おれる,"snap, be folded, give in",Verb
+用いる,もちいる,"use, make use of",Verb
+商業,しょうぎょう,"commerce, trade",Noun
+方針,ほうしん,"course, policy",Noun
+糸,いと,"thread, yarn",Noun
+釣る,つる,"angle, fish",Verb
+お釣り,おつり,change,Noun
+預ける,あずける,"deposit, entrust",Verb
+無くす,なくす,"lose, get rid of",Verb
+鍋,なべ,"pan, saucepan",Noun
+うまい,うまい,"delicious, tasty",Adjective
+こぼす,こぼす,spill,Verb
+寿司,すし,sushi,Noun
+夕飯,ゆうはん,"evening meal, supper",Noun
+昼食,ちゅうしょく,lunch,Noun
+シャワー,シャワー,shower,Noun
+ただ,ただ,free,Noun
+泥棒,どろぼう,"thief, crook",Verbal Noun
+沸かす,わかす,"boil, excite",Verb
+やかん,やかん,kettle,Noun
+乾く,かわく,"dry, run dry",Verb
+洗濯機,せんたくき,washing machine,Noun
+洗濯,せんたく,"laundering, washing",Verbal Noun
+濡れる,ぬれる,get wet,Verb
+喫茶店,きっさてん,"coffee shop, tea house, café",Noun
+怠ける,なまける,"be lazy, neglect",Verb
+一生懸命,いっしょうけんめい,"for life, with all one's might",Adverb
+休憩,きゅうけい,"rest, repose",Verbal Noun
+天井,てんじょう,ceiling,Noun
+納豆,なっとう,natto (fermented soybeans),Noun
+朝食,ちょうしょく,breakfast,Noun
+まく,まく,"scatter, plant",Verb
+化粧,けしょう,"make up, put on makeup",Verbal Noun
+畑,はたけ,"field, vegetable garden",Noun
+炊く,たく,"cook, boil",Verb
+自炊,じすい,cooking food for oneself,Verbal Noun
+灰皿,はいざら,ashtray,Noun
+灰,はい,ashes,Noun
+灰色,はいいろ,"ash color, gray",Noun
+西暦,せいれき,"Christian Era, A.D.",Noun
+伸びる,のびる,"stretch, grow",Verb
+髪,かみ,"hair, hairstyle",Noun
+鏡,かがみ,mirror,Noun
+美容院,びよういん,beauty shop,Noun
+くし,くし,comb,Noun
+とんとん,とんとん,tapping,Adverb
+舌,した,tongue,Noun
+臭い,くさい,"ill-smelling, stinking",Adjective
+匂い,におい,"smell, odor",Noun
+居る,いる,be present,Verb
+より,より,"more, further",Adverb
+履く,はく,"put on footwear, wear",Verb
+戸,と,"door, shutter",Noun
+扇風機,せんぷうき,electric fan,Noun
+ドライブ,ドライブ,drive,Verbal Noun
+豚,ぶた,"pig, pork",Noun
+豚肉,ぶたにく,"pork, hog meat",Noun
+鶏,にわとり,"chicken, hen",Noun
+刺す,さす,"stab, prick, sting",Verb
+腕時計,うでどけい,wrist watch,Noun
+分ける,わける,"divide into parts, sort, share",Verb
+半分,はんぶん,half,Noun
+お菓子,おかし,"sweets, snacks",Noun
+お土産,おみやげ,souvenir,Noun
+お辞儀,おじぎ,bow,Verbal Noun
+寝坊,ねぼう,"late riser, oversleeping",Verbal Noun
+旗,はた,"flag, banner",Noun
+鉛筆,えんぴつ,pencil,Noun
+万年筆,まんねんひつ,fountain pen,Noun
+箱,はこ,"box, case",Noun
+セロテープ,セロテープ,"cellophane tape, Scotch tape, Sellotape",Noun
+下ろす,おろす,"bring down, take down, pull down",Verb
+本箱,ほんばこ,bookcase,Noun
+ビニール,ビニール,plastic bag,Noun
+手袋,てぶくろ,gloves,Noun
+袋,ふくろ,"bag, sack",Noun
+落とす,おとす,"drop, omit",Verb
+拾う,ひろう,"pick up, find",Verb
+ポケット,ポケット,pocket,Noun
+財布,さいふ,"purse, wallet",Noun
+柔らかい,やわらかい,soft,Adjective
+毛布,もうふ,blanket,Noun
+押し入れ,おしいれ,closet,Noun
+引き出し,ひきだし,"drawer, withdrawal",Noun
+中,なか,"inside, middle",Noun
+レシート,レシート,receipt,Noun
+アイスコーヒー,アイスコーヒー,iced coffee,Noun
+小包,こづつみ,"parcel, package",Noun
+包む,つつむ,"wrap, pack",Verb
+飾る,かざる,"decorate, exhibit",Verb
+手帳,てちょう,"pocketbook, memo",Noun
+電話帳,でんわちょう,telephone book,Noun
+牛乳,ぎゅうにゅう,milk,Noun
+玄関,げんかん,"entrance, door",Noun
+ベル,ベル,bell,Noun
+眼鏡,めがね,"glasses, judgment",Noun
+患者,かんじゃ,patient,Noun
+赤ちゃん,あかちゃん,baby,Noun
+眠い,ねむい,sleepy,Adjective
+眠る,ねむる,sleep,Verb
+大きさ,おおきさ,"size, dimensions",Noun
+封筒,ふうとう,envelope,Noun
+壁,かべ,"wall, partition",Noun
+鍵,かぎ,"key, lock",Noun
+出掛ける,でかける,"go out, be about to go out",Verb
+用事,ようじ,"things to do, errand, business",Noun
+掛かる,かかる,"hang, splash, require",Verb
+掛け算,かけざん,multiplication,Verbal Noun
+拍手,はくしゅ,"applause, clapping",Verbal Noun
+トイレ,トイレ,toilet,Noun
+掃除,そうじ,cleaning,Verbal Noun
+掃除機,そうじき,vacuum cleaner,Noun
+握る,にぎる,"grasp, make hand-rolled sushi balls",Verb
+握手,あくしゅ,"handshake, handshaking",Verbal Noun
+迎える,むかえる,"welcome, go out to meet, invite",Verb
+お巡りさん,おまわりさん,policeman,Noun
+カラー,カラー,color,Noun
+幾つ,いくつ,"how many, how old",Noun
+移す,うつす,"move, shift, transfer",Verb
+いつか,いつか,"some time, some day",Adverb
+力,ちから,"strength, power",Noun
+批判,ひはん,"criticism, comment",Verbal Noun
+冗談,じょうだん,joke,Noun
+寂しい,さびしい,"lonely, desolate, sad",Adjective
+丁寧,ていねい,"polite, courteous, careful",Adjectival Noun
+後,のち,"after, afterwards",Noun
+可哀相,かわいそう,"poor, pitiable",Adjectival Noun
+事故,じこ,"accident, incident",Noun
+怪我,けが,injury,Verbal Noun
+ひざ,ひざ,knee,Noun
+ひじ,ひじ,elbow,Noun
+我慢,がまん,"patience, self-restraint",Verbal Noun
+幼稚園,ようちえん,kindergarten,Noun
+太陽,たいよう,sun,Noun
+隠れる,かくれる,"hide, disappear",Verb
+日陰,ひかげ,the shade,Noun
+随分,ずいぶん,"extremely, considerably",Adverb
+犬,いぬ,dog,Noun
+試験,しけん,"test, examination",Verbal Noun
+頑張る,がんばる,"persist, be tenacious",Verb
+頃,ころ,time,Noun
+かつて,かつて,"once, formerly",Adverb
+大抵,たいてい,"generally, mostly",Adverb
+この頃,このごろ,"now, these days, recently",Noun
+消防署,しょうぼうしょ,fire station,Noun
+尋ねる,たずねる,"inquire, search for",Verb
+パーセント,パーセント,percent,Noun
+絶対に,ぜったいに,"absolutely, unconditionally",Adverb
+缶詰,かんづめ,"canned goods, cooping-up",Noun
+缶,かん,"can, tin",Noun
+腐る,くさる,"rot, corrode",Verb
+豆腐,とうふ,tofu,Noun
+床,ゆか,floor,Noun
+床屋,とこや,"barber, barbershop",Noun
+掃く,はく,"sweep, brush",Verb
+畳,たたみ,"tatami, mat",Noun
+畳む,たたむ,"fold, shut",Verb
+布団,ふとん,"futon, bedquilt",Noun
+干す,ほす,"dry, desiccate",Verb
+目立つ,めだつ,"stand out, be conspicuous",Verb
+帽子,ぼうし,"cap, hat",Noun
+被る,かぶる,"wear, put on",Verb
+是非,ぜひ,"by all means, at any cost",Adverb
+敬語,けいご,"honorific language, polite speech",Noun
+敷く,しく,"lay, spread",Verb
+馬,うま,horse,Noun
+雷,かみなり,"thunder, lightning",Noun
+零,れい,"zero, naught",Noun
+仕舞う,しまう,put away,Verb
+踊る,おどる,dance,Verb
+踊り,おどり,"dance, dancing",Noun
+踏む,ふむ,"step on, tread on",Verb
+踏切,ふみきり,railroad crossing,Noun
+蹴る,ける,kick,Verb
+食堂,しょくどう,"dining hall, restaurant",Noun
+生む,うむ,have children,Verb
+猫,ねこ,"cat, feline",Noun
+毛,け,"hair, wool",Noun
+文章,ぶんしょう,"writing, prose",Noun
+程度,ていど,"degree, extent",Noun
+歯,は,"tooth, cog",Noun
+散歩,さんぽ,"walk, stroll",Verbal Noun
+尊敬,そんけい,"respect, esteem, honor",Verbal Noun
+お祖父さん,おじいさん,grandfather,Noun
+折る,おる,"break off, fold, bend",Verb
+早起き,はやおき,early rising,Verbal Noun
+冬休み,ふゆやすみ,winter vacation,Noun
+お祖母さん,おばあさん,grandmother,Noun
+丈夫,じょうぶ,"healthy, stout",Adjectival Noun
+祖父,そふ,grandfather,Noun
+祖母,そぼ,grandmother,Noun
+欠席,けっせき,"absence, nonattendance",Verbal Noun
+邪魔,じゃま,disturbing,Adjectival Noun
+治す,なおす,"cure, heal",Verb
+風邪薬,かぜぐすり,remedy for a cold,Noun
+沸く,わく,"boil, be excited",Verb
+転ぶ,ころぶ,"tumble down, fall over",Verb
+風呂屋,ふろや,"bathhouse, public bath",Noun
+ぬるい,ぬるい,"tepid, lukewarm",Adjective
+風呂,ふろ,bath,Noun
+湯,ゆ,"hot water, hot bath, bathhouse",Noun
+昭和,しょうわ,Showa era,Noun
+紫,むらさき,purple,Noun
+レモン,レモン,lemon,Noun
+紅茶,こうちゃ,black tea,Noun
+梅雨,つゆ,rainy season,Noun
+桃,もも,"peach, peach tree",Noun
+遭う,あう,"meet with, encounter",Verb
+枕,まくら,pillow,Noun
+嘘,うそ,lie,Noun
+怒る,おこる,"get angry, scold",Verb
+遠慮,えんりょ,"reserve, hesitation, forethought",Verbal Noun
+叱る,しかる,"scold, tell off, reprimand",Verb
+傘,かさ,"umbrella, parasol",Noun
+お嬢さん,おじょうさん,"young lady, your daughter",Noun
+年賀状,ねんがじょう,New Year's card,Noun
+賑やか,にぎやか,"lively, exciting",Adjectival Noun
+蚊,か,mosquito,Noun
+拭く,ふく,"wipe, dry",Verb
+会長,かいちょう,"president, chairperson",Noun
+挨拶,あいさつ,"greet, greeting",Verbal Noun
+伴う,ともなう,"accompany, go with",Verb
+巻く,まく,"roll up, wind, wrap",Verb
+着く,つく,"arrive, make contact, settle",Verb
+引っ越す,ひっこす,"move, change quarters",Verb
+おば,おば,aunt,Noun
+両親,りょうしん,parents,Noun
+合う,あう,fit,Verb
+穴,あな,"hole, cavity",Noun
+デパート,デパート,"department store, department",Noun
+靴,くつ,"shoes, boots",Noun
+付く,つく,"attach itself to, be connected with, come in contact with",Verb
+気に入る,きにいる,"like, be pleased with",Verb
+脱ぐ,ぬぐ,"remove clothes, take off",Verb
+靴下,くつした,"socks, stockings",Noun
+幾ら,いくら,how much,Noun
+汚れ,よごれ,"dirt, filth",Noun
+ひも,ひも,"laces, string, rope",Noun
+磨く,みがく,"polish, grind",Verb
+歯磨き,はみがき,"toothpaste, brushing one's teeth",Noun
+廊下,ろうか,"hallway, corridor",Noun
+ガラス,ガラス,glass,Noun
+瓶,びん,"bottle, flask",Noun
+褒める,ほめる,"praise, commend",Verb
+元旦,がんたん,New Year's Day,Noun
+池,いけ,pond,Noun
+袖,そで,sleeve,Noun
+長袖,ながそで,clothes with long sleeves,Noun
+半袖,はんそで,short-sleeved shirt,Noun
+馬鹿,ばか,"fool, nonsense",Adjectival Noun
+凄い,すごい,"wonderful, great, incredible",Adjective
+剃る,そる,shave,Verb
+ひどい,ひどい,"cruel, severe",Adjective
+喧嘩,けんか,"fight, quarrel, argument",Verbal Noun
+からから,からから,"thirsty, dry",Adjective
+叩く,たたく,"tap, hit",Verb
+噛む,かむ,"bite, chew",Verb
+足す,たす,"add, supplement",Verb
+味噌汁,みそしる,miso soup,Noun
+姪,めい,niece,Noun
+苺,いちご,strawberry,Noun
+茄子,なす,eggplant,Noun
+逢う,あう,meet,Verb
+椅子,いす,chair,Noun
+形,かたち,"shape, form",Noun
+痩せる,やせる,"lose weight, become thin",Verb
+箸,はし,chopsticks,Noun
+糊,のり,"glue, starch",Noun
+醤油,しょうゆ,soy sauce,Noun
+鋏,はさみ,"scissors, pincers, tongs",Noun
+鞄,かばん,"bag, handbag, briefcase",Noun
+顎,あご,"jaw, chin",Noun
+飴,あめ,"candy, sweets",Noun
+石鹸,せっけん,soap,Noun
+なるほど,なるほど,"I see, really",Adverb
+ヒント,ヒント,"hint, clue",Noun
+おやつ,おやつ,"snack, refreshment",Noun
+今に,いまに,"before long, someday",Adverb
+バイト,バイト,part-time job,Verbal Noun
+もうけ,もうけ,"profits, earnings",Noun
+わざわざ,わざわざ,go to a lot of trouble,Adverb
+やって来る,やってくる,"come, turn up",Verb
+せっかく,せっかく,"with much trouble, specially",Adverb
+ばからしい,ばからしい,"stupid, useless",Adjective
+ダム,ダム,dam,Noun
+ボリューム,ボリューム,volume,Noun
+大,だい,"bigness, large size",Noun
+ずるい,ずるい,"cunning, sneaky",Adjective
+ずうずうしい,ずうずうしい,"cheeky, impudent",Adjective
+大人,おとな,adult,Adjective
+メンバー,メンバー,member,Noun
+何て,なんて,"what, how",Adverb
+よす,よす,"quit, stop",Verb
+コンクリート,コンクリート,concrete,Noun
+大金,たいきん,large sum of money,Noun
+ボーナス,ボーナス,bonus,Noun
+日の出,ひので,sunrise,Noun
+外れる,はずれる,come off,Verb
+外れ,はずれ,blank,Noun
+本日,ほんじつ,today,Noun
+一休み,ひとやすみ,rest,Verbal Noun
+なぜか,なぜか,for some reason,Adverb
+つぶる,つぶる,close,Verb
+ぞんざい,ぞんざい,"rough, rude",Adjective
+しびれる,しびれる,"become numb, get pins and needles",Verb
+たこ,たこ,octopus,Noun
+ビタミン,ビタミン,vitamin,Noun
+つまずく,つまずく,"stumble, trip",Verb
+つぼみ,つぼみ,bud,Noun
+うろうろ,うろうろ,wander,Adverb
+女子,じょし,"woman, girl",Noun
+あんまり,あんまり,"(not) that much, (not) so much",Adverb
+ジョギング,ジョギング,jogging,Verbal Noun
+えび,えび,"lobster, shrimp",Noun
+コンサート,コンサート,concert,Noun
+ビーチ,ビーチ,beach,Noun
+出来上がる,できあがる,"be completed, be finished",Verb
+カーブ,カーブ,"curve, bend",Verbal Noun
+スタート,スタート,"start, begin",Verbal Noun
+どうやら,どうやら,"seems, looks like",Adverb
+にわかに,にわかに,rapidly,Adverb
+昨日,さくじつ,yesterday,Noun
+ひとりでに,ひとりでに,"automatically, by oneself",Adverb
+本人,ほんにん,"the person himself, the said person",Noun
+メロディー,メロディー,melody,Noun
+ママ,ママ,"mommy, mummy",Noun
+安っぽい,やすっぽい,"cheap, tacky",Adjective
+気分,きぶん,"feeling, mood",Noun
+開き,あき,"gap, vacancy",Noun
+日の入り,ひのいり,sunset,Noun
+半年,はんとし,half a year,Noun
+はれる,はれる,"swell, swell up",Verb
+明ける,あける,to dawn,Verb
+いつのまにか,いつのまにか,before it is noticed,Adverb
+夜,よ,"night, evening",Noun
+七夕,たなばた,"Tanabata Festival, Star Festival",Noun
+外食,がいしょく,"eating out, dining out",Verbal Noun
+おにぎり,おにぎり,rice ball,Noun
+よそ,よそ,somewhere else,Noun
+ちゃんと,ちゃんと,"regularly, properly",Adverb
+デザート,デザート,dessert,Noun
+とんかつ,とんかつ,pork cutlet,Noun
+飯,めし,"cooked rice, meal",Noun
+コーナー,コーナー,corner,Noun
+バーゲン,バーゲン,bargain sale,Noun
+たんす,たんす,"chest of drawers, wardrobe",Noun
+天の川,あまのがわ,Milky Way,Noun
+じろじろ,じろじろ,stare,Adverb
+ようやく,ようやく,"at last, at length",Adverb
+前方,ぜんぽう,front,Noun
+見上げる,みあげる,look up,Verb
+夜空,よぞら,night sky,Noun
+花火,はなび,"fireworks, firecrackers",Noun
+見本,みほん,"sample, model",Noun
+三日月,みかづき,"new moon, crescent moon",Noun
+見晴らし,みはらし,"view, outlook",Noun
+よる,よる,be caused by,Verb
+あっさり,あっさり,"plainly, matter-of-factly",Adverb
+うるさい,うるさい,"noisy, bothersome",Adjective
+今ごろ,いまごろ,about this time,Noun
+シリーズ,シリーズ,series,Noun
+つながり,つながり,"connection, relation",Noun
+漢語,かんご,Chinese-character compounds,Noun
+後書き,あとがき,"postscript, afterword",Noun
+見覚え,みおぼえ,"recognition, remembrance",Noun
+目覚まし,めざまし,waking up,Noun
+話し合い,はなしあい,"talk, discussion",Noun
+どうせ,どうせ,anyway,Adverb
+間に合わせる,まにあわせる,make do,Verb
+週休,しゅうきゅう,weekend,Noun
+満ちる,みちる,"be filled, expire",Verb
+満員,まんいん,full to capacity,Noun
+満月,まんげつ,full moon,Noun
+一体,いったい,"what on earth, what the…",Adverb
+事,こと,"thing, incident",Noun
+サボる,サボる,"blow off, play truant",Verb
+とんでもない,とんでもない,"unthinkable, outrageous",Adjective
+出場,しゅつじょう,participation,Verbal Noun
+コンクール,コンクール,"contest, competition",Noun
+きょろきょろ,きょろきょろ,look around,Adverb
+最中,さいちゅう,"in the middle of, during",Noun
+つながる,つながる,"connect, join",Verb
+ガソリン,ガソリン,gasoline,Noun
+ハンドル,ハンドル,steering wheel,Noun
+バック,バック,back,Verbal Noun
+ナンバー,ナンバー,number,Noun
+ひく,ひく,run over,Verb
+およそ,およそ,just about,Adverb
+交ぜる,まぜる,include,Verb
+おっしゃる,おっしゃる,say,Verb
+客間,きゃくま,"guest room, parlor",Noun
+見通し,みとおし,"perspective, prospect",Noun
+下水,げすい,"sewerage, drainage",Noun
+通行,つうこう,"passage, traffic",Noun
+たまたま,たまたま,"by chance, accidentally",Adverb
+でこぼこ,でこぼこ,"unevenness, bumpiness",Verbal Noun
+東西,とうざい,east and west,Noun
+地下道,ちかどう,"underpass, underground passage",Noun
+地下,ちか,underground,Noun
+行き止まり,いきどまり,dead end,Noun
+やがて,やがて,"soon, before long",Adverb
+ふざける,ふざける,"mess around, fool around",Verb
+通行止め,つうこうどめ,road closed,Noun
+くたびれる,くたびれる,"get tired, be worn out",Verb
+くたくた,くたくた,exhausted,Adjective
+地上,ちじょう,above ground,Noun
+のろのろ,のろのろ,"slowly, easy",Adverb
+二度と,にどと,never again,Adverb
+もしかすると,もしかすると,"possibly, perhaps",Adverb
+毎度,まいど,"every time, always",Noun
+ハード,ハード,hard,Adjective
+近道,ちかみち,shortcut,Noun
+手足,てあし,"hands and feet, limbs",Noun
+上達,じょうたつ,"progress, proficiency",Verbal Noun
+四方,しほう,"all directions, far and wide",Noun
+南北,なんぼく,north and south,Noun
+全力,ぜんりょく,"all one's might, full capacity",Noun
+アルファベット,アルファベット,alphabet,Noun
+出国,しゅっこく,"departure, emigration",Verbal Noun
+国土,こくど,"country, territory",Noun
+国語,こくご,"national language, Japanese",Noun
+国交,こっこう,"diplomatic relations, national friendship",Noun
+通じる,つうじる,"pass, communicate with",Verb
+交わる,まじわる,cross,Verb
+世の中,よのなか,"the world, society",Noun
+最小,さいしょう,"the smallest, minimum",Noun
+つなぐ,つなぐ,"connect, join",Verb
+パンティー,パンティー,panties,Noun
+黒字,くろじ,"the black, surplus",Noun
+赤字,あかじ,"deficit, in the red",Noun
+ゆでる,ゆでる,boil,Verb
+おまけ,おまけ,free gift,Verbal Noun
+空き,あき,"vacancy, free time",Noun
+ムード,ムード,mood,Noun
+ほこり,ほこり,dust,Noun
+末,まつ,"last part, end",Noun
+手間,てま,"trouble, time",Noun
+見解,けんかい,"opinion, view",Noun
+理解,りかい,"understanding, comprehension",Verbal Noun
+有りのまま,ありのまま,"as it is, unchanged",Adjectival Noun
+有料,ゆうりょう,"fee-charging, pay",Noun
+無理,むり,impossibility,Noun
+何より,なにより,"above all, before everything else",Noun
+無茶,むちゃ,"reckless, excessive",Adjectival Noun
+作り話,つくりばなし,"fable, fiction",Noun
+電力,でんりょく,"electric power, electricity",Noun
+はかり,はかり,scales,Noun
+シューズ,シューズ,"shoes, sports shoes",Noun
+私用,しよう,"private business, private use",Noun
+用,よう,things to do,Noun
+会費,かいひ,"fee, membership fee",Noun
+食費,しょくひ,"food expenses, board",Noun
+消費,しょうひ,"consumption, spending",Verbal Noun
+消火,しょうか,fire fighting,Verbal Noun
+うっかり,うっかり,"carelessly, accidentally",Adverb
+開店,かいてん,"opening of a store, setting up",Verbal Noun
+安売り,やすうり,sale,Verbal Noun
+閉店,へいてん,shop closing,Verbal Noun
+本店,ほんてん,head office,Noun
+商店,しょうてん,"shop, store",Noun
+食品,しょくひん,"food, foodstuff",Noun
+上品,じょうひん,"elegance, refinement",Adjectival Noun
+小売店,こうりてん,"retail store, outlet",Noun
+出来上がり,できあがり,"completion, finish",Noun
+世,よ,"world, public,",Noun
+段,だん,"step, grade",Noun
+値上がり,ねあがり,price rise,Verbal Noun
+値下がり,ねさがり,fall in price,Verbal Noun
+値下げ,ねさげ,price reduction,Verbal Noun
+価値,かち,"value, merit",Noun
+ダイヤモンド,ダイヤモンド,diamond,Noun
+格好,かっこう,"shape, appearance",Verbal Noun
+だらしない,だらしない,"slovenly, untidy",Adjective
+うきうき,うきうき,feel excited,Adverb
+うがい,うがい,gargling,Verbal Noun
+寒気,さむけ,chill,Noun
+こたつ,こたつ,"kotatsu, heated table with a coverlet",Noun
+暖か,あたたか,"warm, warmhearted",Adjective
+ぽかぽか,ぽかぽか,pleasantly warm,Adverb
+マイナス,マイナス,"minus, below zero",Verbal Noun
+体温,たいおん,body temperature,Noun
+ぴたりと,ぴたりと,suddenly,Adverb
+報道,ほうどう,"news, report",Verbal Noun
+マネー,マネー,"money, finance",Noun
+広告,こうこく,"public notice, advertisement",Verbal Noun
+売り出す,うりだす,put on sale,Verb
+新聞社,しんぶんしゃ,newspaper office,Noun
+書店,しょてん,bookstore,Noun
+広げる,ひろげる,"spread, unfold",Verb
+ぴかぴか,ぴかぴか,"new, shiny",Adverb
+中古,ちゅうこ,secondhand goods,Noun
+聞かす,きかす,"tell, read aloud",Verb
+ディスコ,ディスコ,disco,Noun
+飲み水,のみみず,drinking water,Noun
+内,うち,inside,Noun
+用心,ようじん,"care, caution",Verbal Noun
+ふと,ふと,"suddenly, unexpectedly",Adverb
+つくづく,つくづく,"truly, deeply",Adverb
+いつまでも,いつまでも,forever,Adverb
+忘年会,ぼうねんかい,year-end party,Noun
+上,かみ,"superiors, people in authority",Noun
+使い道,つかいみち,"use, application",Noun
+決して,けっして,"never, by no means",Adverb
+決心,けっしん,"determination, resolve",Verbal Noun
+知り合う,しりあう,get acquainted with,Verb
+知れる,しれる,"become known, be found out",Verb
+知らせ,しらせ,"information, notice",Noun
+ウサギ,ウサギ,"rabbit, hare",Noun
+ことわざ,ことわざ,"proverb, common saying",Noun
+情けない,なさけない,"pitiful, shameful",Adjective
+知能,ちのう,"intelligence, mental capacity",Noun
+能,のう,noh play,Noun
+不足,ふそく,"insufficiency, lack",Verbal Noun
+不可能,ふかのう,impossible,Adjectival Noun
+交通,こうつう,"traffic, transportation",Verbal Noun
+小便,しょうべん,"urine, pee",Verbal Noun
+手前,てまえ,in front,Noun
+駅前,えきまえ,in front of the station,Noun
+大家,おおや,landlord,Noun
+ねずみ,ねずみ,"rat, mouse",Noun
+人名,じんめい,"personal name, name",Noun
+国名,こくめい,country name,Noun
+間近,まぢか,"nearby, close at hand",Adjectival Noun
+地名,ちめい,place name,Noun
+来日,らいにち,coming to Japan,Verbal Noun
+カット,かっと,cut,Verbal Noun
+北東,ほくとう,northeast,Noun
+人情,にんじょう,"human feelings, humanity",Noun
+区,く,ward,Noun
+住まい,すまい,"dwelling, residence",Noun
+合わせる,あわせる,"adjust, match",Verb
+日帰り,ひがえり,a day trip,Verbal Noun
+都,みやこ,"capital, city",Noun
+いらっしゃる,いらっしゃる,"come, go",Verb
+目方,めかた,weight,Noun
+すっかり,すっかり,"all, completely",Adverb
+セット,セット,set,Verbal Noun
+車内,しゃない,inside a vehicle,Noun
+物価,ぶっか,prices,Noun
+無料,むりょう,"no charge, free",Noun
+本物,ほんもの,"real thing, genuine article",Noun
+ロッカー,ロッカー,locker,Noun
+名物,めいぶつ,"specialty, noted product",Noun
+日用品,にちようひん,"groceries, daily necessities",Noun
+チキン,チキン,"chicken, fried chicken",Noun
+重ねる,かさねる,"pile up, repeat",Verb
+ちぎれる,ちぎれる,"be torn off, come off",Verb
+重量,じゅうりょう,weight,Noun
+大量,たいりょう,"large quantity, great volume",Noun
+明日,あす,tomorrow,Noun
+無用,むよう,"useless, unnecessary",Adjectival Noun
+最上,さいじょう,"best, highest",Noun
+取り決め,とりきめ,"decision, agreement",Noun
+コード,コード,cord,Noun
+お中元,おちゅうげん,"mid-year gift, summer gift",Noun
+プラットホーム,プラットホーム,platform,Noun
+待ち合わせ,まちあわせ,"waiting, rendez-vous",Verbal Noun
+長らく,ながらく,for a long time,Adverb
+秋風,あきかぜ,autumn breeze,Noun
+友,とも,"friend, companion",Noun
+持ち物,もちもの,"one's property, one's baggage",Noun
+長持ち,ながもち,"endurance, lasting long",Verbal Noun
+打ち合わせ,うちあわせ,"meeting, arrangement",Verbal Noun
+ワープロ,ワープロ,word processor,Noun
+受け持つ,うけもつ,have charge of,Verb
+長生き,ながいき,"long life, longevity",Verbal Noun
+性能,せいのう,"performance, capacity",Noun
+国産,こくさん,domestically produced,Noun
+産地,さんち,production center,Noun
+活字,かつじ,printed type,Noun
+ゆとり,ゆとり,"room, leeway",Noun
+じっと,じっと,"without moving, still",Adverb
+徒歩,とほ,"walking, going on foot",Noun
+きっかけ,きっかけ,"chance, opportunity",Noun
+休学,きゅうがく,"leave of absence, absence",Verbal Noun
+交わる,まじわる,"associate with, socialize",Verb
+行事,ぎょうじ,"event, function",Noun
+帰す,かえす,"send home, see out",Verb
+いやいや,いやいや,reluctantly,Adverb
+門,もん,"gate, entrance",Noun
+キリスト教,きりすときょう,Christianity,Noun
+やり方,やりかた,way of doing,Noun
+手軽,てがる,"easy, light",Adjective
+他人,たにん,"another person, stranger",Noun
+下町,したまち,old part of town,Noun
+低下,ていか,"falling, lowering",Verbal Noun
+語学,ごがく,language study,Noun
+初歩,しょほ,"first steps, beginning",Noun
+強まる,つよまる,"become strong, gain strength",Verb
+強める,つよめる,"strengthen, emphasize",Verb
+費やす,ついやす,"expend, waste",Verb
+火力,かりょく,"heating power, heat",Noun
+弱まる,よわまる,"weaken, abate",Verb
+弱める,よわめる,"weaken, lower",Verb
+字引,じびき,dictionary,Noun
+引き受ける,ひきうける,undertake,Verb
+引き出す,ひきだす,"draw out, lure out",Verb
+値引き,ねびき,discount,Verbal Noun
+引き止める,ひきとめる,"detain, keep",Verb
+学習,がくしゅう,"study, learning",Verbal Noun
+手本,てほん,"model, example",Noun
+雨天,うてん,rainy weather,Noun
+入試,にゅうし,entrance examination,Noun
+受験,じゅけん,take an examination,Verbal Noun
+聞き取り,ききとり,"listening comprehension, dictation",Noun
+質,しつ,"quality, nature",Noun
+何か,なにか,"something, some",Adverb
+エイズ,エイズ,AIDS,Noun
+きちんと,きちんと,"properly, neatly",Adverb
+話題,わだい,topic of conversation,Noun
+解く,とく,solve,Verb
+多少,たしょう,"a little, somewhat",Adverb
+単語,たんご,word,Noun
+ルール,ルール,rule,Noun
+すらすら,すらすら,"unhesitantly, confidently",Adverb
+解ける,とける,"solve, resolve",Verb
+明かり,あかり,light,Noun
+カンニング,カンニング,cheating,Verbal Noun
+満点,まんてん,"full marks, perfect score",Noun
+点,てん,"point, issue",Noun
+バツ,バツ,"cross, x-mark",Noun
+商人,しょうにん,"merchant, trader",Noun
+複数,ふくすう,plural,Noun
+単数,たんすう,singular,Noun
+後回し,あとまわし,"deferment, postponement",Noun
+点数,てんすう,"points, score",Noun
+回り道,まわりみち,"roundabout way, detour",Noun
+個々,ここ,"individually, one at a time",Noun
+ケース,ケース,case,Noun
+食パン,しょくぱん,"bread, loaf of bread",Noun
+枚数,まいすう,number of flat things,Noun
+トースト,トースト,toast,Noun
+勝手,かって,"selfish, self-centered",Adjective
+負け,まけ,"defeat, loss",Noun
+引き分け,ひきわけ,"draw, drawn game",Noun
+負担,ふたん,"burden, charge",Verbal Noun
+まさか,まさか,never in a million years,Adverb
+日当たり,ひあたり,exposure to the sun,Noun
+のろい,のろい,"slow, sluggish",Adjective
+文法,ぶんぽう,grammar,Noun
+不規則,ふきそく,irregular,Adjectival Noun
+プラス,プラス,"plus, advantage",Verbal Noun
+年月,としつき,"time, years",Noun
+済ませる,すませる,"finish off, get done with",Verb
+大国,たいこく,"world power, large country",Noun
+送金,そうきん,"money transfer, remittance",Verbal Noun
+もうける,もうける,make a profit,Verb
+待ち遠しい,まちどおしい,"just can't wait for, long for",Adjective
+一時,いちじ,temporarily,Adverb
+金利,きんり,"interest, interest rate",Noun
+法則,ほうそく,"law, rule",Noun
+利益,りえき,"profit, benefit",Noun
+有益,ゆうえき,"beneficial, profitable",Adjectival Noun
+品質,ひんしつ,quality,Noun
+家屋,かおく,"house, building",Noun
+少なくとも,すくなくとも,at least,Adverb
+あらかじめ,あらかじめ,in advance,Adverb
+見当,けんとう,"estimate, aim",Noun
+入れ物,いれもの,"receptacle, container",Noun
+要点,ようてん,"main point, gist",Noun
+慣れ,なれ,"getting used to, habituation",Noun
+値,あたい,"value, worth",Noun
+品,しな,"article, item",Noun
+会計,かいけい,"account, finance",Noun
+計る,はかる,"compute, measure",Verb
+合計,ごうけい,sum total,Verbal Noun
+差,さ,difference,Noun
+時差,じさ,time difference,Noun
+差し上げる,さしあげる,respectfully give,Verb
+一昨日,いっさくじつ,the day before yesterday,Noun
+まぶしい,まぶしい,"dazzling, glaring",Adjective
+日差し,ひざし,"rays of the sun, sunlight",Noun
+物差し,ものさし,ruler,Noun
+学割,がくわり,student discount,Noun
+役割,やくわり,"role, part",Noun
+割り当て,わりあて,"assignment, allotment",Noun
+割り当てる,わりあてる,"assign, allot",Verb
+割り引き,わりびき,"discount, reduction",Verbal Noun
+割合に,わりあいに,"relatively, rather",Adverb
+残り,のこり,"remainder, leftover",Noun
+もったいない,もったいない,"wasteful, a shame",Adjective
+支出,ししゅつ,"expenditure, disbursement",Verbal Noun
+収支,しゅうし,earnings and expenses,Noun
+支度,したく,"arrangement, preparation",Verbal Noun
+支払う,しはらう,pay,Verb
+支払い,しはらい,"payment, payout",Verbal Noun
+料金,りょうきん,"charge, fee",Noun
+めいめい,めいめい,"each, individual",Adverb
+払い,はらい,"payment, account",Noun
+不良,ふりょう,"bad, defective",Adjectival Noun
+引き返す,ひきかえす,"turn back, retrace one's steps",Verb
+借り,かり,"borrowing, debt",Noun
+利子,りし,interest,Noun
+貸し出し,かしだし,"lending service, checking out",Verbal Noun
+申請,しんせい,"application, petition",Verbal Noun
+月末,げつまつ,end of the month,Noun
+ぎゅうぎゅう,ぎゅうぎゅう,"packed, crammed",Adverb
+年末,ねんまつ,end of year,Noun
+申し込み,もうしこみ,"application, proposal",Noun
+割り込む,わりこむ,cut in,Verb
+人込み,ひとごみ,crowd,Noun
+前期,ぜんき,"previous term, last semester",Noun
+短期,たんき,short-term,Noun
+期限,きげん,"time limit, term",Noun
+限度,げんど,"limit, bounds",Noun
+大急ぎ,おおいそぎ,in a great hurry,Adjectival Noun
+区切る,くぎる,"punctuate, divide",Verb
+生き物,いきもの,living creature,Noun
+作物,さくもつ,crop,Noun
+食物,しょくもつ,food,Noun
+一人一人,ひとりひとり,each and every person,Noun
+ぱいなっぷる,ぱいなっぷる,pineapple,Noun
+券,けん,"voucher, ticket",Noun
+回数券,かいすうけん,book of tickets,Noun
+当日,とうじつ,that day,Noun
+前売り券,まえうりけん,advance ticket,Noun
+計,けい,total,Noun
+期日,きじつ,"date, due date",Noun
+値上げ,ねあげ,price hike,Verbal Noun
+代金,だいきん,"charge, fee",Noun
+指す,さす,"point to, aim at",Verb
+小指,こゆび,"little finger, little toe",Noun
+目指す,めざす,"aim for, have an eye on",Verb
+氏,し,Mr.,Noun
+定価,ていか,fixed price,Noun
+割り引く,わりびく,"give a discount, make a reduction",Verb
+定休日,ていきゅうび,regular holiday,Noun
+外出,がいしゅつ,outing,Verbal Noun
+打ち合わせる,うちあわせる,"arrange, discuss",Verb
+予算,よさん,budget,Noun
+予報,よほう,"forecast, prediction",Verbal Noun
+キャンセル,キャンセル,cancellation,Verbal Noun
+取り消す,とりけす,"cancel, nullify",Verb
+せめて,せめて,at least,Adverb
+束,たば,"bundle, counter for bundles",Noun
+図る,はかる,"strive for, attempt",Verb
+変更,へんこう,"alteration, change",Verbal Noun
+夜更かし,よふかし,sitting up late at night,Verbal Noun
+急増,きゅうぞう,sudden increase,Verbal Noun
+増す,ます,"increase, augment",Verb
+増大,ぞうだい,"increase, enlargement",Verbal Noun
+年々,ねんねん,"year by year, annually",Adverb
+減少,げんしょう,"decrease, reduction",Verbal Noun
+回数,かいすう,"frequency, number of times",Noun
+増減,ぞうげん,"increase and decrease, rise and fall",Verbal Noun
+量,りょう,"quantity, volume",Noun
+乗車券,じょうしゃけん,"railway ticket, bus ticket",Noun
+乗り込む,のりこむ,"board, march into",Verb
+ラッシュ,ラッシュ,"rush, rush hour",Noun
+各地,かくち,"every place, various parts",Noun
+大雨,おおあめ,heavy rain,Noun
+今にも,いまにも,at any moment,Adverb
+雨降り,あめふり,"rainfall, rainy weather",Noun
+定員,ていいん,"fixed staff number, capacity",Noun
+乗り降り,のりおり,getting on and off,Verbal Noun
+前後,ぜんご,"before and after, order",Noun
+無事,ぶじ,"safely, peacefully",Adverb
+ほっと,ほっと,feel relieved,Adverb
+年収,ねんしゅう,annual income,Noun
+アンテナ,アンテナ,antenna,Noun
+かえって,かえって,"on the contrary, rather",Adverb
+私立,しりつ,private,Noun
+役立つ,やくだつ,"be of use, serve a purpose",Verb
+中立,ちゅうりつ,neutrality,Verbal Noun
+立ち止まる,たちどまる,"stop, halt",Verb
+ろうそく,ろうそく,candle,Noun
+ストップ,ストップ,stop,Verbal Noun
+指定,してい,"designation, appointment",Verbal Noun
+客席,きゃくせき,"seat, passenger seat",Noun
+着席,ちゃくせき,taking a seat,Verbal Noun
+向かい,むかい,opposite side,Noun
+欠点,けってん,"weak point, defect",Noun
+欠ける,かける,"be chipped, be missing",Verb
+冬季,とうき,winter season,Noun
+取り次ぐ,とりつぐ,"relay a message, transfer a call",Verb
+運営,うんえい,"operation, management",Verbal Noun
+運賃,うんちん,passenger fare,Noun
+乗車,じょうしゃ,"boarding, getting on board",Verbal Noun
+ボーイ,ボーイ,waiter,Noun
+よそ見,よそみ,look around,Verbal Noun
+春夏秋冬,しゅんかしゅうとう,"four seasons, all year round",Noun
+移動,いどう,"movement, shift",Verbal Noun
+青年,せいねん,"youth, young man",Noun
+開会,かいかい,"opening, start a meeting",Verbal Noun
+運動場,うんどうじょう,"playground, sports field",Noun
+運動場,うんどうじょう,"playground, sports field",Noun
+動向,どうこう,"trend, tendency",Noun
+中止,ちゅうし,"suspension, stopping",Verbal Noun
+動力,どうりょく,power,Noun
+本能,ほんのう,instinct,Noun
+理性,りせい,"reason, reasoning power",Noun
+まねる,まねる,"imitate, mimic",Verb
+業界,ぎょうかい,"industry, business world",Noun
+上がる,あがる,be completed,None
+覚え,おぼえ,"recollection, memory",Noun
+早まる,はやまる,"make a hasty decision, jump the gun",Verb
+月日,つきひ,"time, days",Noun
+出来るだけ,できるだけ,as much as possible,Adverb
+高速,こうそく,high speed,Noun
+重なる,かさなる,"be piled up, come one after another",Verb
+速達便,そくたつびん,"special delivery, express mail",Noun
+残業,ざんぎょう,overtime,Verbal Noun
+ぐずぐず,ぐずぐず,"drag one's feet, waste time",Adverb
+勝負,しょうぶ,match,Verbal Noun
+学期,がっき,school term,Noun
+空き地,あきち,"unoccupied ground, vacant lot",Noun
+ぎりぎり,ぎりぎり,"just in time, barely",Adverb
+大通り,おおどおり,main street,Noun
+明け方,あけがた,"dawn, near daybreak",Noun
+生理,せいり,"period, menstruation",Noun
+新学期,しんがっき,"new term, new semester",Noun
+文明,ぶんめい,"civilization, culture",Noun
+最終,さいしゅう,"last, final",Noun
+終点,しゅうてん,"last stop, terminus",Noun
+始終,しじゅう,"from beginning to end, at all times",Adverb
+終電,しゅうでん,last train,Noun
+会,かい,"meeting, association",Noun
+なるべく,なるべく,"as...as possible, if possible",Adverb
+役目,やくめ,"duty, role",Noun
+現地,げんち,"actual site, in the field",Noun
+現場,げんば,"actual spot, job site",Noun
+現住所,げんじゅうしょ,present address,Noun
+とにかく,とにかく,"in any case, anyway",Adverb
+実習,じっしゅう,"practice, training",Verbal Noun
+受け止める,うけとめる,"catch, receive",Verb
+生,せい,life,Noun
+のんびり,のんびり,take it easy,Adverb
+データ,データ,data,Noun
+いよいよ,いよいよ,"finally, any moment",Adverb
+先に,さきに,"before, ahead",Adverb
+始発,しはつ,first departure,Noun
+遅らす,おくらす,"delay, put off",Verb
+発売,はつばい,"sale, selling",Verbal Noun
+鉄道,てつどう,railway,Noun
+発電所,はつでんしょ,"power plant, generating station",Noun
+重大,じゅうだい,"important, serious",Adjective
+言い表わす,いいあらわす,"express, say",Verb
+県,けん,prefecture,Noun
+下さる,くださる,"give, favor with",Verb
+用紙,ようし,"blank form, stationery",Noun
+表紙,ひょうし,"cover, binding",Noun
+白紙,はくし,"blank sheet, clean slate",Noun
+値する,あたいする,"be worth, deserve",Verb
+絵本,えほん,picture book,Noun
+値打ち,ねうち,"value, worth",Noun
+発行,はっこう,"publication, issue",Verbal Noun
+スピーカー,スピーカー,speaker,Noun
+音読み,おんよみ,Chinese-derived kanji reading,Verbal Noun
+発音,はつおん,pronunciation,Verbal Noun
+物音,ものおと,"noise, sound",Noun
+やかましい,やかましい,"noisy, clamorous",Adjective
+ヨット,ヨット,"sailboat, yacht",Noun
+よほど,よほど,"very, by far",Adverb
+無制限,むせいげん,"unlimited, free",Adjectival Noun
+月見,つきみ,moon viewing,Noun
+わくわく,わくわく,feel excited,Adverb
+ごくんと,ごくんと,in one gulp,Adverb
+薬局,やっきょく,"drugstore, pharmacy",Noun
+カラオケ,カラオケ,karaoke,Noun
+思い切り,おもいきり,"to one's heart's content, with all one's might",Adverb
+食欲,しょくよく,appetite,Noun
+欲,よく,"desire, greed",Noun
+区画,くかく,"division, section",Noun
+ウィークエンド,ウィークエンド,weekend,Noun
+当初,とうしょ,"original, initial",Noun
+大体,だいたい,"outline, generally",Adverb
+画面,がめん,screen,Noun
+映る,うつる,"be reflected, appear",Verb
+表面,ひょうめん,"surface, appearance",Noun
+場面,ばめん,"scene, situation",Noun
+出来事,できごと,"occurrence, incident",Noun
+面する,めんする,face,Verb
+半面,はんめん,"profile, one side",Noun
+割に,わりに,"comparatively, rather",Adverb
+ばかばかしい,ばかばかしい,"stupid, absurd",Adjective
+日時,にちじ,"date, time",Noun
+出力,しゅつりょく,output,Verbal Noun
+真実,しんじつ,"truth, reality",Noun
+真夏,まなつ,midsummer,Noun
+真っ最中,まっさいちゅう,midst,Noun
+無色,むしょく,"colorless, neutral",Noun
+長方形,ちょうほうけい,rectangle,Noun
+地形,ちけい,"geographical features, topography",Noun
+小型,こがた,small-sized,Noun
+型,かた,"type, mold",Noun
+人種,じんしゅ,race,Noun
+種,たね,seed,Noun
+人類,じんるい,"mankind, humankind",Noun
+早速,さっそく,immediately,Adverb
+市役所,しやくしょ,"municipal office, city hall",Noun
+書類,しょるい,"documents, papers",Noun
+区役所,くやくしょ,ward office,Noun
+分類,ぶんるい,classification,Verbal Noun
+郵送,ゆうそう,mailing,Verbal Noun
+定食,ていしょく,"day's special, set menu",Noun
+とじる,とじる,"bind, file",Verb
+ともかく,ともかく,"at least, at any rate",Adverb
+やり直し,やりなおし,"doing over, redoing",Noun
+やり直す,やりなおす,do over again,Verb
+直通,ちょくつう,direct link,Verbal Noun
+接近,せっきん,"approach, proximity",Verbal Noun
+接する,せっする,"come in contact, adjoin",Verb
+面接,めんせつ,interview,Verbal Noun
+無線,むせん,"radio, wireless",Noun
+角度,かくど,angle,Noun
+南東,なんとう,southeast,Noun
+町角,まちかど,street corner,Noun
+テンポ,テンポ,"tempo, pace",Noun
+直角,ちょっかく,right angle,Noun
+題,だい,"title, topic",Noun
+熱する,ねっする,"heat, become hot",Verb
+共通語,きょうつうご,"common language, lingua franca",Noun
+共に,ともに,"together, both",Adverb
+夜明け,よあけ,"dawn, daybreak",Noun
+共同,きょうどう,"joint, commonality",Verbal Noun
+合同,ごうどう,"combination, joint",Verbal Noun
+同一,どういつ,"sameness, identity",Adjectival Noun
+同情,どうじょう,"sympathy, compassion",Verbal Noun
+アクセント,アクセント,"accent, stress",Noun
+これまで,これまで,"until now, until here",Noun
+それぞれ,それぞれ,"each, respective",Adverb
+タイプ,タイプ,type,Noun
+人違い,ひとちがい,mistaken identity,Verbal Noun
+違い,ちがい,"difference, mistake",Noun
+日日,ひにち,"date, number of days",Noun
+以降,いこう,hereafter,Noun
+税,ぜい,"tax, duty",Noun
+セールスマン,セールスマン,"sales representative, salesperson",Noun
+リットル,リットル,"liter, litre",Noun
+ガイド,ガイド,guide,Verbal Noun
+ゴールデンウィーク,ゴールデンウィーク,golden week,Noun
+費用,ひよう,expenses,Noun
+始め,はじめ,"beginning, origin",Noun
+旅客,りょかく,"traveler, passenger",Noun
+海苔,のり,laver,Noun
+終える,おえる,"end, finish",Verb
+大いに,おおいに,"very, greatly",Adverb
+気軽,きがる,"lighthearted, easy",Adjectival Noun
+済ます,すます,"settle, complete",Verb
+生き生きと,いきいきと,"lively, vividly",Adverb
+交ざる,まざる,"mix, socialize with",Verb
+和風,わふう,Japanese style,Noun
+和食,わしょく,Japanese-style food,Noun
+和らぐ,やわらぐ,"soften, calm down",Verb
+和式,わしき,Japanese style,Noun
+洋風,ようふう,Western style,Noun
+洋画,ようが,foreign film,Noun
+洋食,ようしょく,"Western cooking, European dish",Noun
+制服,せいふく,uniform,Noun
+上下,じょうげ,top and bottom,Verbal Noun
+やや,やや,"little, somewhat",Adverb
+ぴったり,ぴったり,"exactly right, perfect",Adjectival Noun
+びしょびしょ,びしょびしょ,soaked,Adjectival Noun
+だぶだぶ,だぶだぶ,"baggy, too big",Adjective
+室内,しつない,indoors,Noun
+待合室,まちあいしつ,waiting room,Noun
+洋室,ようしつ,Western-style room,Noun
+水田,すいでん,"paddy field, rice field",Noun
+ひび,ひび,crack,Noun
+済む,すむ,"be settled, complete",Verb
+情熱,じょうねつ,"passion, enthusiasm",Noun
+いびき,いびき,snoring,Noun
+大工,だいく,carpenter,Noun
+旅費,りょひ,traveling expenses,Noun
+よこす,よこす,"send, hand over",Verb
+味わう,あじわう,"taste, appreciate",Verb
+家事,かじ,"housework, domestic duties",Noun
+便り,たより,"news, correspondence",Noun
+電報,でんぽう,telegram,Noun
+長話,ながばなし,"long conversation, talk for a long time",Verbal Noun
+味方,みかた,"friend, ally",Noun
+親切,しんせつ,kindness,Noun
+下宿,げしゅく,"lodging, boarding house",Verbal Noun
+キリスト,キリスト,"Christ, Christianity",Noun
+似る,にる,"resemble, be alike",Verb
+そっくり,そっくり,"identical, look alike",Adjective
+水族館,すいぞくかん,aquarium,Noun
+歳末,さいまつ,year end,Noun
+パパ,パパ,"dad, father",Noun
+好み,このみ,"taste, preference",Noun
+在学,ざいがく,attendance at school,Verbal Noun
+スタンド,スタンド,"table lamp, desk lamp",Noun
+旅,たび,"journey, travel",Verbal Noun
+姉妹,しまい,sisters,Noun
+父兄,ふけい,"parents, legal guardians",Noun
+口げんか,くちげんか,quarrel,Verbal Noun
+第一,だいいち,"number one, the best",Noun
+市立,しりつ,"municipal, city",Noun
+まね,まね,"imitation, mimicry",Verbal Noun
+休息,きゅうそく,"rest, break",Verbal Noun
+読み書き,よみかき,reading and writing,Noun
+目下,もっか,"now, at present",Noun
+左利き,ひだりきき,"left-handedness, left-hander",Noun
+エネルギー,エネルギー,energy,Noun
+同時,どうじ,simultaneous,Noun
+次々に,つぎつぎに,"one after another, in succession",Adverb
+体力,たいりょく,physical strength,Noun
+歩行者天国,ほこうしゃてんごく,vehicle-free promenade,Noun
+者,もの,"person, fellow",Noun
+活用,かつよう,"utilization, conjugation",Verbal Noun
+行動,こうどう,"action, conduct",Verbal Noun
+営業,えいぎょう,"business, sales",Verbal Noun
+以前,いぜん,"before, ago",Noun
+人物,じんぶつ,"character, person",Noun
+人事,じんじ,"human affairs, personnel affairs",Noun
+会員,かいいん,member,Noun
+世代,せだい,generation,Noun
+制限,せいげん,"restriction, limit",Verbal Noun
+いつも,いつも,"always, usually",Noun
+移転,いてん,"transfer, change of address",Verbal Noun
+学者,がくしゃ,scholar,Noun
+以来,いらい,since,Noun
+作家,さっか,"writer, novelist",Noun
+元気,げんき,"vigor, spirits",Noun
+試みる,こころみる,"try, attempt",Verb
+生まれ,うまれ,"birth, origin",Noun
+クラス,クラス,"class, lesson",Noun
+いかに,いかに,"how, in what way",Adverb
+ショック,ショック,"shock, surprise",Adjectival Noun
+ジャーナリスト,ジャーナリスト,journalist,Noun
+スタイル,スタイル,style,Noun
+個性,こせい,individuality,Noun
+局,きょく,"bureau, public service office",Noun
+教員,きょういん,"teacher, teaching staff",Noun
+生み出す,うみだす,"generate, produce",Verb
+アイデア,アイデア,idea,Noun
+いかにも,いかにも,"indeed, as if",Adverb
+一見,いっけん,at a glance,Adverb
+しっかり,しっかり,"mature, reliable",Adverb
+新人,しんじん,"newcomer, freshman",Noun
+求人,きゅうじん,recruiting,Verbal Noun
+出産,しゅっさん,"birth, delivery",Verbal Noun
+スター,スター,star,Noun
+アルコール,アルコール,"alcohol, alcoholic beverage",Noun
+学年,がくねん,"school year, grade",Noun
+弱点,じゃくてん,weak point,Noun
+工学,こうがく,engineering,Noun
+仕上げる,しあげる,"finish, complete",Verb
+ステージ,ステージ,stage,Noun
+アドバイス,アドバイス,advice,Verbal Noun
+親友,しんゆう,close friend,Noun
+アマチュア,アマチュア,amateur,Noun
+生かす,いかす,"take advantage of, make use of",Verb
+きつい,きつい,"severe, hard, strict",Adjective
+打ち込む,うちこむ,devote oneself,Verb
+後方,こうほう,"back, rear",Noun
+英文,えいぶん,"English, English writing",Noun
+さっぱり,さっぱり,"completely, not at all",Adverb
+元来,がんらい,"originally, essentially",Adverb
+出世,しゅっせ,"success, promotion",Verbal Noun
+こっそり,こっそり,"stealthily, secretly",Adverb
+社会人,しゃかいじん,"member of society, working person",Noun
+思いがけない,おもいがけない,"unexpected, accidental",Adjective
+せっせと,せっせと,"hard, diligently",Adverb
+気力,きりょく,"energy, vitality",Noun
+いちいち,いちいち,"one by one, in detail",Adverb
+運,うん,"fortune, fate",Noun
+利く,きく,"work, function",Verb
+県立,けんりつ,prefectural,Noun
+オーバー,オーバー,exaggerate,Verbal Noun
+真理,しんり,truth,Noun
+クラシック,クラシック,"classical music, the classics",Adjectival Noun
+大げさ,おおげさ,exaggerate,Adjective
+学部,がくぶ,"faculty, department",Noun
+家出,いえで,running away from home,Verbal Noun
+生け花,いけばな,flower arrangement,Noun
+かかる,かかる,"catch, get",Verb
+ジーパン,ジーパン,jeans,Noun
+担ぐ,かつぐ,"shoulder, carry",Verb
+コマーシャル,コマーシャル,"commercial, advertising",Noun
+最強,さいきょう,strongest,Noun
+アイドル,アイドル,"idol, pop singer",Noun
+からかう,からかう,"make fun of, tease",Verb
+貸し,かし,"loan, renting",Noun
+末っ子,すえっこ,youngest child,Noun
+駅長,えきちょう,stationmaster,Noun
+おごる,おごる,treat,Verb
+ショッピング,ショッピング,shopping,Verbal Noun
+スマート,スマート,"sophisticated, skillful",Adjective
+聞き手,ききて,"listener, audience",Noun
+サングラス,サングラス,sunglasses,Noun
+きっちり,きっちり,exactly,Adverb
+言い返す,いいかえす,"talk back, retort",Verb
+いやらしい,いやらしい,"disgusting, nasty",Adjective
+あぐら,あぐら,sit cross legged,Noun
+きっちん,きっちん,kitchen,Noun
+けち,けち,"stingy, miser",Adjectival Noun
+女らしい,おんならしい,"womanly, feminine",Adjective
+急用,きゅうよう,urgent business,Noun
+いらいら,いらいら,be irritated,Adjective
+あいづち,あいづち,"responsive sounds, chiming in",Noun
+現れ,あらわれ,"embodiment, manifestation",Noun
+打ち消し,うちけし,"negation, denial",Noun
+あだな,あだな,nickname,Noun
+行き来,いきき,"comings and goings, communication",Verbal Noun
+いつのまに,いつのまに,when,Adverb
+上下,うえした,above and below,Noun
+うつむく,うつむく,face downward,Verb
+おだてる,おだてる,flatter,Verb
+がぶがぶ,がぶがぶ,(the sound of) guzzling,Adverb
+借金,しゃっきん,"borrowing money, debt",Verbal Noun
+ただ,ただ,"simply, merely",Adverb
+入力,にゅうりょく,"input, power input",Verbal Noun
+母親,ははおや,mother,Noun
+発つ,たつ,"start, leave",Verb
+様子,ようす,"appearance, aspect",Noun
+友人,ゆうじん,friend,Noun
+父親,ちちおや,father,Noun
+不満,ふまん,"dissatisfaction, discontent",Adjectival Noun
+チーム,チーム,team,Noun
+ビジネス,ビジネス,business,Noun
+直前,ちょくぜん,"just before, immediately prior",Noun
+知事,ちじ,governor,Noun
+まるで,まるで,"just like, completely",Adverb
+年代,ねんだい,"age, date",Noun
+都心,としん,heart of a city,Noun
+熱心,ねっしん,"enthusiasm, zeal",Adjectival Noun
+ファン,ファン,"fan, lover",Noun
+大使,たいし,ambassador,Noun
+長年,ながねん,"many years, long time",Noun
+見直す,みなおす,"reconsider, change one's opinion for the better",Verb
+都会,とかい,"city, town",Noun
+半ば,なかば,"middle, halfway",Noun
+買収,ばいしゅう,"buying up, bribing",Verbal Noun
+プロ,プロ,"pro, professional",Noun
+入社,にゅうしゃ,entering a company,Verbal Noun
+取り入れる,とりいれる,"take in, adopt",Verb
+外す,はずす,remove,Verb
+立ち上がる,たちあがる,"stand up, take action",Verb
+中世,ちゅうせい,Middle Ages,Noun
+見事,みごと,"splendid, admirable",Adjectival Noun
+なかなか,なかなか,"rather, pretty",Adverb
+日ごろ,ひごろ,"routinely, daily",Adverb
+パイロット,パイロット,pilot,Noun
+出入り,でいり,coming and going,Verbal Noun
+ベテラン,ベテラン,veteran,Noun
+不利,ふり,disadvantage,Adjectival Noun
+本質,ほんしつ,"essence, reality",Noun
+ペース,ペース,pace,Noun
+マラソン,マラソン,marathon,Noun
+本国,ほんごく,one's native country,Noun
+トレーニング,トレーニング,"training, workout",Verbal Noun
+方言,ほうげん,dialect,Noun
+当分,とうぶん,"for some time, for the present",Adverb
+プラン,プラン,plan,Noun
+マイク,マイク,"mic, microphone",Noun
+引き取る,ひきとる,"take over, take custody",Verb
+ぼんやり,ぼんやり,"vaguely, absent-mindedly",Adjective
+東洋,とうよう,Orient,Noun
+交じる,まじる,"be mingled, be mixed",Verb
+試す,ためす,"try, test",Verb
+方角,ほうがく,direction,Noun
+法学部,ほうがくぶ,law department,Noun
+ゆったり,ゆったり,comfortable,Adverb
+見出し,みだし,"headline, heading",Noun
+ユーモア,ユーモア,humor,Noun
+無口,むくち,"not speaking much, reticence",Adjectival Noun
+タレント,タレント,"celebrity, talent",Noun
+たまに,たまに,"occasionally, by chance",Adverb
+和服,わふく,"Japanese clothes, kimono",Noun
+内心,ないしん,"back of one's mind, one's real intention",Noun
+有能,ゆうのう,"able, competent",Adjectival Noun
+体格,たいかく,"physique, build",Noun
+わざと,わざと,on purpose,Adverb
+とっくに,とっくに,long ago,Adverb
+ワンピース,ワンピース,dress,Noun
+作り上げる,つくりあげる,"make up, build up",Verb
+度々,たびたび,often,Adverb
+プライド,プライド,pride,Noun
+一口,ひとくち,"mouthful, bite",Noun
+まずい,まずい,"bad, no good",Adjective
+短所,たんしょ,"shortcoming, defect",Noun
+飲み込む,のみこむ,"swallow, grasp",Verb
+生やす,はやす,"grow, cultivate",Verb
+文学者,ぶんがくしゃ,"literary person, literati",Noun
+弱気,よわき,"timid, weak-spirited",Adjectival Noun
+ぱっと,ぱっと,"suddenly, quickly",Adverb
+必然,ひつぜん,"inevitable, necessary",Noun
+ひょっとしたら,ひょっとしたら,perhaps,Adverb
+見つめる,みつめる,stare,Verb
+目上,めうえ,"one's superiors, one's elders",Noun
+年長,ねんちょう,seniority,Adjectival Noun
+見習う,みならう,"learn, follow someone's example",Verb
+無能,むのう,"inefficiency, incompetence",Adjectival Noun
+パンツ,パンツ,"pants, trousers",Noun
+真夜中,まよなか,"midnight, middle of the night",Noun
+似合う,にあう,"suit, match well",Verb
+洋式,ようしき,Western style,Noun
+若々しい,わかわかしい,"youthful, young-looking",Adjective
+短気,たんき,short temper,Adjectival Noun
+取り返す,とりかえす,"take back, regain",Verb
+和やか,なごやか,"peaceful, mild",Adjective
+似せる,にせる,"imitate, forge",Verb
+にっこり,にっこり,"smiling, grinning",Adverb
+待ち合わせる,まちあわせる,"wait for, meet by appointment",Verb
+何で,なんで,"why, what for",Adverb
+値切る,ねぎる,"bargain, haggle",Verb
+元々,もともと,"originally, by nature",Adverb
+指差す,ゆびさす,point to,Verb
+とっさに,とっさに,at once,Adverb
+割り,わり,rate,Noun
+売買,ばいばい,"buying and selling, trade",Verbal Noun
+町外れ,まちはずれ,outskirts of a town,Noun
+洋間,ようま,Western-style room,Noun
+ミュージック,ミュージック,music,Noun
+ロマンチック,ロマンチック,romantic,Adjective
+短期大学,たんきだいがく,junior college,Noun
+月初め,つきはじめ,at the beginning of the month,Noun
+度忘れ,どわすれ,"memory lapse, mental block",Verbal Noun
+にやにや,にやにや,grin to oneself,Adverb
+真四角,ましかく,square,Adjectival Noun
+物覚え,ものおぼえ,memory,Noun
+その内,そのうち,"before long, sooner or later",Adverb
+知人,ちじん,"acquaintance, friend",Noun
+つぶやく,つぶやく,"mutter, murmur",Verb
+強気,つよき,"tough, bullish",Adjectival Noun
+出会う,であう,meet,Verb
+低,てい,low,Noun
+何しろ,なにしろ,"anyhow, as you know",Adverb
+生,なま,"raw, fresh",Adjectival Noun
+にらむ,にらむ,"glare, stare",Verb
+能,のう,"ability, capability",Noun
+のんき,のんき,"carefree, easy-going",Adjectival Noun
+はねる,はねる,"run over, hit",Verb
+ばら色,ばらいろ,rose color,Noun
+ふもと,ふもと,foot of the mountain,Noun
+ほほ,ほほ,cheek,Noun
+ほほえむ,ほほえむ,smile,Verb
+真心,まごころ,"sincerity, true heart",Noun
+町中,まちなか,"the downtown area, the central area of a town",Noun
+まれ,まれ,rarely,Adjective
+無言,むごん,"silence, muteness",Noun
+めくる,めくる,turn over,Verb
+もうかる,もうかる,"make a profit, be profitable",Verb
+最も,もっとも,the most,Adverb
+行方,ゆくえ,one's whereabouts,Noun
+予言,よげん,"prediction, forecast",Verbal Noun
+悪口,わるくち,"slander, abuse",Noun
+もうじき,もうじき,soon,Adverb
+やたらに,やたらに,"frequently, persistently",Adverb
+結局,けっきょく,"after all, finally",Adverb
+友情,ゆうじょう,friendship,Noun
+結び,むすび,"end, close",Noun
+婚約,こんやく,"engagement, betrothal",Verbal Noun
+何と,なんと,"what, how",Adverb
+ちっとも,ちっとも,nothing at all,Adverb
+未婚,みこん,unmarried,Noun
+この度,このたび,on this occasion,Noun
+一種,いっしゅ,"a kind of, a sort of",Noun
+最高,さいこう,"maximum, supreme",Noun
+試合,しあい,"match, game",Verbal Noun
+満足,まんぞく,"satisfaction, contentment",Verbal Noun
+果たして,はたして,"as was expected, really",Adverb
+申し上げる,もうしあげる,"speak humbly, do",Verb
+早朝,そうちょう,early morning,Noun
+効く,きく,be effective,Verb
+効力,こうりょく,"effect, validity",Noun
+無効,むこう,"invalidity, ineffectiveness",Adjectival Noun
+自動,じどう,automatic operation,Noun
+自国,じこく,one's own country,Noun
+生き方,いきかた,"way of life, lifestyle",Noun
+各自,かくじ,"each one, every individual",Noun
+高める,たかめる,"raise, enhance",Verb
+パンク,パンク,puncture,Verbal Noun
+経由,けいゆ,"via, through",Verbal Noun
+信用,しんよう,"trust, credit",Verbal Noun
+お前,おまえ,"you, darling",Noun
+発達,はったつ,"development, growth",Verbal Noun
+通信,つうしん,"correspondence, communication",Verbal Noun
+信頼,しんらい,"reliance, confidence",Verbal Noun
+依頼,いらい,"request, commission",Verbal Noun
+頼る,たよる,"rely on, depend on",Verb
+頼み,たのみ,"request, favor",Noun
+頼もしい,たのもしい,"reliable, dependable",Adjective
+国民,こくみん,"the people, nation",Noun
+主要,しゅよう,"main, principal",Adjectival Noun
+主に,おもに,"mainly, mostly",Adverb
+主食,しゅしょく,staple food,Noun
+主,おも,"main, chief",Adjective
+使い,つかい,errand,Noun
+家主,やぬし,landlord,Noun
+主義,しゅぎ,"principle, -ism",Noun
+共産主義,きょうさんしゅぎ,Communism,Noun
+義理,ぎり,"sense of duty, justice",Noun
+民主,みんしゅ,democracy,Noun
+議会,ぎかい,"assembly, council",Noun
+議題,ぎだい,"topic for discussion, agenda",Noun
+初日,しょにち,"first day, opening day",Noun
+次回,じかい,next time,Noun
+重役,じゅうやく,executive,Noun
+本社,ほんしゃ,head office,Noun
+不思議,ふしぎ,"mystery, wonder",Adjectival Noun
+つい,つい,"inadvertently, accidentally",Adverb
+明日,みょうにち,tomorrow,Noun
+長引く,ながびく,"be prolonged, drag on",Verb
+明朝,みょうちょう,tomorrow morning,Noun
+議論,ぎろん,"argument, discussion",Verbal Noun
+結論,けつろん,conclusion,Verbal Noun
+学会,がっかい,"academic association, academic conference",Noun
+仕上げ,しあげ,"completion, finishing",Verbal Noun
+引用,いんよう,"quotation, citation",Verbal Noun
+下書き,したがき,draft,Verbal Noun
+世論,せろん,public opinion,Noun
+理論,りろん,theory,Noun
+まとめ,まとめ,summary,Noun
+違反,いはん,"violation, breach",Verbal Noun
+反発,はんぱつ,"reaction, backlash",Verbal Noun
+反論,はんろん,"objection, counterargument",Verbal Noun
+反する,はんする,"oppose, act contrary to",Verb
+少数,しょうすう,"small number, minority",Noun
+対話,たいわ,"dialogue, conversation",Verbal Noun
+対,つい,pair,Noun
+世論,よろん,public opinion,Noun
+応用,おうよう,application,Verbal Noun
+一応,いちおう,tentatively,Adverb
+回答,かいとう,"reply, answer",Verbal Noun
+インタビュー,インタビュー,interview,Verbal Noun
+アンケート,アンケート,questionnaire,Noun
+ごまかす,ごまかす,"deceive, evade",Verb
+行,ぎょう,"line, row",Noun
+本文,ほんぶん,"text, this text",Noun
+問い,とい,"question, inquiry",Noun
+まずい,まずい,"problematic, troublesome",Adjective
+特色,とくしょく,characteristic,Noun
+区別,くべつ,"distinction, classification",Verbal Noun
+差別,さべつ,discrimination,Verbal Noun
+性別,せいべつ,"sex, gender",Noun
+性,せい,"sex, nature",Noun
+別に,べつに,"especially, particularly",Adverb
+送別会,そうべつかい,farewell party,Noun
+専門,せんもん,"specialty, profession",Noun
+ファッション,ファッション,fashion,Noun
+外来語,がいらいご,"loanword, foreign word",Noun
+実用,じつよう,"practical use, utility",Noun
+経済的,けいざいてき,"economical, economic",Adjective
+才能,さいのう,"talent, ability",Noun
+自主的,じしゅてき,"autonomous, voluntary",Adjective
+合理的,ごうりてき,"rational, logical",Adjective
+形式的,けいしきてき,formal,Adjective
+実用的,じつようてき,practical,Adjective
+本格的,ほんかくてき,"full-scale, authentic",Adjective
+全面的,ぜんめんてき,"all-out, overall",Adjective
+論理的,ろんりてき,logical,Adjective
+知的,ちてき,"intellectual, mental",Adjective
+目的地,もくてきち,"destination, goal",Noun
+文化的,ぶんかてき,cultural,Adjective
+通り過ぎる,とおりすぎる,"go past, pass",Verb
+男性的,だんせいてき,"masculine, manly",Adjective
+普段,ふだん,"usual, ordinary",Adverb
+なさる,なさる,do,Verb
+並み,なみ,"ordinary, average",Noun
+男子,だんし,"boy, young man",Noun
+もたらす,もたらす,"bring about, lead to",Verb
+平面,へいめん,"level surface, plain",Noun
+平行,へいこう,"parallel, side by side",Verbal Noun
+平野,へいや,"plain, open field",Noun
+平日,へいじつ,weekday,Noun
+以下,いか,below,Noun
+平均,へいきん,"average, equilibrium",Verbal Noun
+高等,こうとう,"higher, high-grade",Adjectival Noun
+上等,じょうとう,"first-class, premium",Adjectival Noun
+同等,どうとう,equality,Noun
+対等,たいとう,"equality, parity",Adjectival Noun
+ストレス,ストレス,stress,Noun
+特有,とくゆう,"characteristic, special",Adjective
+病室,びょうしつ,"patient room, ward",Noun
+病人,びょうにん,"sick person, patient",Noun
+弱る,よわる,"weaken, be debilitated",Verb
+サイン,サイン,"signature, autograph",Verbal Noun
+イスラム教,イスラムきょう,"Islam, Muslim religion",Noun
+都立,とりつ,"metropolitan, Tokyo metropolitan",Noun
+医学,いがく,"medical science, medicine",Noun
+生える,はえる,"grow, spring up",Verb
+科学者,かがくしゃ,scientist,Noun
+科目,かもく,subject,Noun
+自然科学,しぜんかがく,natural science,Noun
+思い,おもい,"thoughts, feelings",Noun
+死者,ししゃ,"dead person, the deceased",Noun
+生死,せいし,life and death,Noun
+病死,びょうし,death from sickness,Verbal Noun
+天国,てんごく,paradise,Noun
+死亡,しぼう,death,Verbal Noun
+亡くす,なくす,lose (in death),Verb
+人手,ひとで,"hand, manpower",Noun
+多忙,たぼう,very busy,Adjectival Noun
+知らず知らず,しらずしらず,"unawares, without knowing it",Adverb
+疲れ,つかれ,"fatigue, exhaustion",Noun
+休める,やすめる,"give a rest, set at ease",Verb
+目薬,めぐすり,eye drops,Noun
+禁じる,きんじる,"prohibit, forbid",Verb
+立ち入り禁止,たちいりきんし,no trespassing,Noun
+酒屋,さかや,liquor store,Noun
+禁酒,きんしゅ,abstention from alcohol,Verbal Noun
+つぐ,つぐ,"pour, pour into",Verb
+土産,みやげ,souvenir,Noun
+酔う,よう,get drunk,Verb
+会場,かいじょう,"venue, meeting place",Noun
+取り上げる,とりあげる,"take up, confiscate",Verb
+険しい,けわしい,"steep, craggy",Adjective
+保つ,たもつ,"preserve, sustain",Verb
+万一,まんいち,if by any chance,Adverb
+問い合わせる,といあわせる,"inquire, contact",Verb
+保証,ほしょう,"guarantee, warranty",Verbal Noun
+保証人,ほしょうにん,guarantor,Noun
+生存,せいぞん,"existence, survival",Verbal Noun
+ご存じ,ごぞんじ,know,Noun
+保存,ほぞん,"preservation, conservation",Verbal Noun
+低温,ていおん,low temperature,Noun
+存じる,ぞんじる,"think, know",Verb
+カタログ,カタログ,catalogue,Noun
+注ぐ,そそぐ,"pour into, concentrate",Verb
+受け入れる,うけいれる,"accept, accommodate",Verb
+意向,いこう,"intention, inclination",Noun
+意図,いと,"intention, aim",Verbal Noun
+意義,いぎ,"meaning, significance",Noun
+活発,かっぱつ,"lively, active",Adjectival Noun
+好意,こうい,"favor, affection",Noun
+意地悪,いじわる,"nastiness, ill-natured person",Verbal Noun
+もっとも,もっとも,quite right,Adjective
+まとまる,まとまる,be collected,Verb
+同意,どうい,"consent, approval",Verbal Noun
+無意味,むいみ,"meaningless, absurd",Adjectival Noun
+当人,とうにん,the person in question,Noun
+生意気,なまいき,"cheeky, conceited",Adjectival Noun
+面,めん,"surface, aspect",Noun
+文,ぶん,"writings, sentence",Noun
+金額,きんがく,"amount of money, sum",Noun
+確定,かくてい,"decision, confirmation",Verbal Noun
+解答,かいとう,"solution, answer",Verbal Noun
+認可,にんか,"approval, authorization",Verbal Noun
+認める,みとめる,"recognize, acknowledge",Verb
+効率,こうりつ,efficiency,Noun
+確率,かくりつ,"probability, rate",Noun
+軽率,けいそつ,"rash, light-headed",Adjective
+率直,そっちょく,"frank, openhearted",Adjective
+能率,のうりつ,efficiency,Noun
+機会,きかい,"opportunity, occasion",Noun
+親しむ,したしむ,"get close to, get familiar with",Verb
+時機,じき,"opportunity, chance",Noun
+持ち込む,もちこむ,"bring in, carry on",Verb
+要するに,ようするに,"in a word, in short",Adverb
+制御,せいぎょ,"control, command",Verbal Noun
+内部,ないぶ,"interior, inner parts",Noun
+分解,ぶんかい,taking apart,Verbal Noun
+楽器,がっき,musical instrument,Noun
+食器,しょっき,"tableware, dinner set",Noun
+器用,きよう,"skillful, clever",Adjectival Noun
+受話器,じゅわき,receiver,Noun
+器,うつわ,"vessel, dish",Noun
+器械,きかい,"instrument, apparatus",Noun
+取材,しゅざい,"collection of data, gathering of news",Verbal Noun
+具合,ぐあい,"condition, health",Noun
+家具,かぐ,furniture,Noun
+雨具,あまぐ,"rain gear, rainwear",Noun
+乗客,じょうきゃく,passenger,Noun
+論理,ろんり,logic,Noun
+準急,じゅんきゅう,local express,Noun
+設立,せつりつ,"establishment, foundation",Verbal Noun
+器具,きぐ,"utensil, implement",Noun
+使用,しよう,usage,Verbal Noun
+社説,しゃせつ,editorial,Noun
+実物,じつぶつ,"real thing, actual object",Noun
+学説,がくせつ,theory,Noun
+手元,てもと,at hand,Noun
+一通り,ひととおり,"briefly, once over",Adverb
+公立,こうりつ,public,Noun
+モデル,モデル,model,Noun
+不公平,ふこうへい,"unfair, unjust",Adjectival Noun
+やっつける,やっつける,"beat, let someone have it",Verb
+死体,したい,"corpse, body",Noun
+遠足,えんそく,"excursion, hike",Noun
+遊園地,ゆうえんち,amusement park,Noun
+ベンチ,ベンチ,bench,Noun
+人出,ひとで,"turnout, crowd",Noun
+打ち上げる,うちあげる,shoot up,Verb
+祭日,さいじつ,"national holiday, festival day",Noun
+国際的,こくさいてき,international,Adjective
+国際化,こくさいか,internationalization,Verbal Noun
+交際,こうさい,"association, friendship",Verbal Noun
+際,さい,"occasion, time",Noun
+座席,ざせき,seat,Noun
+飛び出す,とびだす,"fly out, dash out",Verb
+ヘリコプター,ヘリコプター,helicopter,Noun
+飛ばす,とばす,"fly, shoot",Verb
+飛び上がる,とびあがる,"fly up, jump up",Verb
+つばめ,つばめ,swallow,Noun
+はえ,はえ,fly,Noun
+飛行,ひこう,"flight, aviation",Verbal Noun
+よける,よける,"avoid, evade",Verb
+ぴょんと,ぴょんと,jump,Adverb
+航空,こうくう,aviation,Noun
+航空機,こうくうき,"aircraft, airplane",Noun
+航空券,こうくうけん,airline ticket,Noun
+材木,ざいもく,"timber, wood",Noun
+乗り出す,のりだす,"lean forward, embark on",Verb
+船長,せんちょう,captain,Noun
+水力,すいりょく,"waterpower, hydraulic power",Noun
+半島,はんとう,peninsula,Noun
+島,とう,island,Noun
+完全,かんぜん,"perfect, complete",Adjectival Noun
+不完全,ふかんぜん,"imperfection, incompleteness",Adjectival Noun
+結成,けっせい,"organization, formation",Verbal Noun
+賛成,さんせい,"approval, agreement",Verbal Noun
+成人,せいじん,"adult, grownup",Verbal Noun
+反映,はんえい,reflection,Verbal Noun
+要する,ようする,"require, need",Verb
+無論,むろん,"of course, no doubt",Adverb
+未成年,みせいねん,"minor, underage",Noun
+確信,かくしん,"firm belief, conviction",Verbal Noun
+率,りつ,"ratio, proportion",Noun
+違いない,ちがいない,"no mistaking it, for certain",Adjective
+森林,しんりん,"forest, woodland",Noun
+失敗,しっぱい,"failure, mistake",Verbal Noun
+せい,せい,"cause, fault",Noun
+勝敗,しょうはい,victory or defeat,Noun
+事業,じぎょう,"business, achievement",Noun
+立ち直る,たちなおる,"recover, regain one's footing",Verb
+原則,げんそく,"principle, general rule",Noun
+過ごす,すごす,"pass, let pass",Verb
+スライド,スライド,slide,Verbal Noun
+原理,げんり,"principle, theory",Noun
+原子力,げんしりょく,"atomic energy, nuclear power",Noun
+初夏,しょか,early summer,Noun
+返る,かえる,"be restored to, return to",Verb
+野原,のはら,"field, plain",Noun
+原,はら,"plain, field",Noun
+間接,かんせつ,indirect,Noun
+要因,よういん,"primary factor, main cause",Noun
+不明,ふめい,unknown,Adjectival Noun
+証券,しょうけん,"bill, bond",Noun
+資料,しりょう,"materials, data",Noun
+資格,しかく,"qualifications, competence",Noun
+資本主義,しほんしゅぎ,capitalism,Noun
+ミスプリント,ミスプリント,"misprint, error",Noun
+限り,かぎり,"limit, as far as possible",Noun
+無限,むげん,"infinite, endless",Adjectival Noun
+現金,げんきん,cash,Adjectival Noun
+一生,いっしょう,a lifetime,Noun
+願書,がんしょ,application form,Noun
+何とか,なんとか,"somehow or other, one way or another",Adverb
+願い,ねがい,"wish, request",Noun
+手数,てすう,"trouble, bother",Noun
+一言,ひとこと,single word,Noun
+説,せつ,"theory, opinion",Noun
+後者,こうしゃ,the latter,Noun
+正面,しょうめん,"front, face",Noun
+正午,しょうご,"noon, noontime",Noun
+正義,せいぎ,"justice, righteousness",Noun
+正門,せいもん,"main gate, main entrance",Noun
+正解,せいかい,"right answer, correct solution",Verbal Noun
+正方形,せいほうけい,square,Noun
+正座,せいざ,sitting upright with legs folded under one,Verbal Noun
+正当,せいとう,"just, legal",Adjectival Noun
+不正,ふせい,"fraud, impropriety",Adjectival Noun
+同性,どうせい,of the same sex,Noun
+異常,いじょう,"extraordinary, exceptional",Adjectival Noun
+日常,にちじょう,"daily, everyday",Noun
+意識,いしき,"consciousness, awareness",Verbal Noun
+常識,じょうしき,"common sense, common knowledge",Noun
+異性,いせい,opposite sex,Noun
+等しい,ひとしい,"equal, same",Adjective
+非常識,ひじょうしき,lack of common sense,Adjectival Noun
+非常口,ひじょうぐち,emergency exit,Noun
+もてる,もてる,be popular with the opposite sex,Verb
+エンジン,エンジン,engine,Noun
+好調,こうちょう,favorable condition,Adjectival Noun
+下調べ,したしらべ,"preliminary investigation, preparation",Verbal Noun
+ネットワーク,ネットワーク,network,Noun
+どうも,どうも,"for some reason, somehow",Adverb
+調子,ちょうし,"tone, condition",Noun
+不安定,ふあんてい,instability,Adjectival Noun
+体調,たいちょう,health condition,Noun
+単調,たんちょう,"monotonous, dull",Adjectival Noun
+メーター,メーター,"meter, taximeter",Noun
+整備,せいび,"maintenance, servicing",Verbal Noun
+整理,せいり,"disposition, arrangement",Verbal Noun
+調整,ちょうせい,"regulation, adjustment",Verbal Noun
+整う,ととのう,"be in order, be adjusted",Verb
+経費,けいひ,expense,Noun
+節約,せつやく,"economizing, saving",Verbal Noun
+行楽,こうらく,"excursion, outing",Noun
+調節,ちょうせつ,"adjustment, regulation",Verbal Noun
+田,た,"rice field, rice paddy",Noun
+検査,けんさ,"inspection, examination",Verbal Noun
+不安,ふあん,"uneasiness, anxiety",Adjectival Noun
+大便,だいべん,"stool, feces",Verbal Noun
+提出,ていしゅつ,submittal,Verbal Noun
+案,あん,"plan, proposal",Noun
+案外,あんがい,unexpectedly,Adverb
+うなずく,うなずく,nod,Verb
+反応,はんのう,"reaction, response",Verbal Noun
+投票,とうひょう,"vote, ballot",Verbal Noun
+役所,やくしょ,public office,Noun
+目標,もくひょう,"target, goal",Noun
+標準,ひょうじゅん,"standard, norm",Noun
+達成,たっせい,"attain, achieve",Verbal Noun
+明確,めいかく,"clear, precise",Adjectival Noun
+本年,ほんねん,this year,Noun
+国連,こくれん,United Nations,Noun
+連休,れんきゅう,consecutive holidays,Noun
+連れ,つれ,companion,Noun
+次第,しだい,as soon as,Noun
+連絡,れんらく,"connection, communication",Verbal Noun
+方々,ほうぼう,"everyone, all people",Noun
+前もって,まえもって,in advance,Adverb
+父母,ふぼ,"father and mother, parents",Noun
+接続,せつぞく,"connection, joining",Verbal Noun
+前回,ぜんかい,last time,Noun
+更に,さらに,"furthermore, still more",Adverb
+市,し,city,Noun
+地価,ちか,price of land,Noun
+手続き,てつづき,"procedure, formalities",Noun
+続々,ぞくぞく,"in rapid succession, one after another",Adverb
+続き,つづき,"continuation, sequel",Noun
+長続き,ながつづき,lasting for a long time,Verbal Noun
+相変わらず,あいかわらず,"as usual, as before",Adverb
+相当,そうとう,"correspondence, suitability",Verbal Noun
+前半,ぜんはん,first half,Noun
+思い切って,おもいきって,"boldly, decisively",Adverb
+部長,ぶちょう,"section chief, department head",Noun
+日ソ,にっそ,Japanese-Soviet,Noun
+記号,きごう,"symbol, mark",Noun
+記入,きにゅう,"entry, record",Verbal Noun
+生年月日,せいねんがっぴ,date of birth,Noun
+暗記,あんき,memorization,Verbal Noun
+月日,がっぴ,date,Noun
+経る,へる,"pass, pass through",Verb
+必死に,ひっしに,desperately,Adverb
+記憶,きおく,"memory, recollection",Verbal Noun
+不確か,ふたしか,"unreliable, uncertain",Adjectival Noun
+最低,さいてい,lowest,Noun
+録音テープ,ろくおんテープ,tape,Noun
+マスコミ,マスコミ,mass communication,Noun
+登山,とざん,"climbing, mountaineer",Verbal Noun
+登校,とうこう,attending school,Verbal Noun
+山登り,やまのぼり,mountain climbing,Verbal Noun
+定める,さだめる,"fix, determine",Verb
+社会科学,しゃかいかがく,social sciences,Noun
+機関,きかん,"engine, agency",Noun
+一切,いっさい,"not at all, not one bit",Adverb
+係,かかり,person in charge,Noun
+現状,げんじょう,present condition,Noun
+ますます,ますます,increasingly,Adverb
+実態,じったい,"the actual situation, the realities",Noun
+態度,たいど,"attitude, manner",Noun
+非常,ひじょう,"emergency, calamity",Adjectival Noun
+不自然,ふしぜん,"unnatural, artificial",Adjectival Noun
+行政,ぎょうせい,administration,Noun
+関心,かんしん,"concern, interest",Noun
+政治家,せいじか,politician,Noun
+主体,しゅたい,"agent, main constituent",Noun
+人民,じんみん,"the people, populace",Noun
+体制,たいせい,"system, structure",Noun
+無関心,むかんしん,"apathy, indifference",Adjectival Noun
+無知,むち,ignorance,Adjectival Noun
+外交,がいこう,"diplomacy, foreign relations",Noun
+府立,ふりつ,prefectural,Noun
+手段,しゅだん,"means, way",Noun
+市長,しちょう,mayor,Noun
+シーズン,シーズン,season,Noun
+自主,じしゅ,"independence, autonomy",Noun
+種目,しゅもく,"item, event",Noun
+ラグビー,ラグビー,rugby,Noun
+入場,にゅうじょう,"entrance, admission",Verbal Noun
+反則,はんそく,"foul, rule violation",Verbal Noun
+入選,にゅうせん,"acceptance, selection",Verbal Noun
+式,しき,ceremony,Noun
+当選,とうせん,election to office,Verbal Noun
+選択,せんたく,"selection, choice",Verbal Noun
+気候,きこう,climate,Noun
+補う,おぎなう,"supplement, replenish",Verb
+有力,ゆうりょく,"powerful, influential",Adjectival Noun
+国家,こっか,"state, country",Noun
+関節,かんせつ,joint,Noun
+使用人,しようにん,servant,Noun
+足首,あしくび,ankle,Noun
+手首,てくび,wrist,Noun
+ぶら下げる,ぶらさげる,"hang, suspend",Verb
+首脳,しゅのう,"head, leader",Noun
+打ち明ける,うちあける,"confide in, reveal",Verb
+それほど,それほど,"so much, that much",Adverb
+悩む,なやむ,"be troubled, suffer",Verb
+頭,かしら,"head, chief",Noun
+頭痛,ずつう,headache,Noun
+先頭,せんとう,"forefront, head",Noun
+たまらない,たまらない,"can't stand, can't put up with",Adjective
+自信,じしん,self-confidence,Noun
+顔色,かおいろ,"complexion, countenance",Noun
+一同,いちどう,"everybody, all",Noun
+青白い,あおじろい,"pale, pallid",Adjective
+ずるがしこい,ずるがしこい,"sly, cunning",Adjective
+平気,へいき,"nonchalant, calm",Adjective
+改正,かいせい,"revision, amendment",Verbal Noun
+改める,あらためる,"reform, change",Verb
+改めて,あらためて,once again,Adverb
+改まる,あらたまる,"be renewed, change",Verb
+生命,せいめい,life,Noun
+命,いのち,life,Noun
+領事館,りょうじかん,consulate,Noun
+領収書,りょうしゅうしょ,"receipt, voucher",Noun
+仕組み,しくみ,"construction, arrangement",Noun
+組,くみ,school class,Noun
+組む,くむ,"pair up, partner with",Verb
+組み合わせる,くみあわせる,"assort, join together",Verb
+組み込む,くみこむ,"incorporate, integrate",Verb
+クイズ,クイズ,"quiz, quiz show",Noun
+取り組む,とりくむ,"grapple, pursue",Verb
+録画,ろくが,videotaping,Verbal Noun
+リクエスト,リクエスト,request,Verbal Noun
+織物,おりもの,"cloth, textile",Noun
+新た,あらた,"new, fresh",Adjective
+進出,しんしゅつ,advancement,Verbal Noun
+進行,しんこう,advancement,Verbal Noun
+進歩,しんぽ,"progress, advancement",Verbal Noun
+国道,こくどう,national highway,Noun
+行進,こうしん,"march, parade",Verbal Noun
+どんどん,どんどん,steadily,Adverb
+北西,ほくせい,northwest,Noun
+南西,なんせい,southwest,Noun
+何となく,なんとなく,"in some way, somehow",Adverb
+推進,すいしん,promotion,Verbal Noun
+市場,しじょう,"market, exchange",Noun
+家計,かけい,family finances,Noun
+主任,しゅにん,"person in charge, head",Noun
+支える,ささえる,"support, maintain",Verb
+果たす,はたす,"accomplish, realize",Verb
+担任,たんにん,supervisor,Verbal Noun
+辞任,じにん,resignation,Verbal Noun
+お世辞,おせじ,"compliment, flattery",Noun
+英和,えいわ,English-Japanese,Noun
+電子,でんし,"electron, electronic",Noun
+和英,わえい,Japanese-English,Noun
+協議,きょうぎ,"conference, deliberation",Verbal Noun
+委員会,いいんかい,committee,Noun
+委員,いいん,"committee member, delegate",Noun
+大手,おおて,major companies,Noun
+国鉄,こくてつ,Japan National Railways,Noun
+支店,してん,branch,Noun
+おばさん,おばさん,middle-aged woman,Noun
+商社,しょうしゃ,trading firm,Noun
+出勤,しゅっきん,"to go to work, attendance at work",Verbal Noun
+運送,うんそう,"shipping, transportation",Verbal Noun
+勤勉,きんべん,"diligence, hard work",Adjectival Noun
+ＪＲ,じぇいあーる,"JR, Japan Railways",Noun
+日数,にっすう,number of days,Noun
+勤め先,つとめさき,employment,Noun
+勤め,つとめ,"service, duties",Noun
+もしかしたら,もしかしたら,"possibly, perhaps",Adverb
+勤務,きんむ,"duty, service",Verbal Noun
+事務,じむ,"office duty, clerical work",Noun
+公務員,こうむいん,"public officer, government worker",Noun
+事務員,じむいん,"clerk, clerical staff",Noun
+任務,にんむ,"duty, mission",Noun
+従業員,じゅうぎょういん,"employee, worker",Noun
+ストライキ,ストライキ,strike,Noun
+良心,りょうしん,conscience,Noun
+法,ほう,"law, rule",Noun
+雇う,やとう,"employ, hire",Verb
+実績,じっせき,"achievement, performance",Noun
+当たり前,あたりまえ,"of course, obvious",Adjectival Noun
+下,げ,"low class, inferiority, below",Noun
+トップ,トップ,top,Noun
+次ぐ,つぐ,"rank next to, come next",Verb
+水準,すいじゅん,"level, standard",Noun
+応募,おうぼ,application,Verbal Noun
+多数,たすう,"large number, multitude",Noun
+大小,だいしょう,size,Noun
+有する,ゆうする,"have, possess",Verb
+集中,しゅうちゅう,"concentration, convergence",Verbal Noun
+集合,しゅうごう,"gathering, assembly",Verbal Noun
+組合,くみあい,"union, guild",Noun
+高度,こうど,high degree,Adjectival Noun
+国々,くにぐに,"nations, countries",Noun
+集まり,あつまり,"gathering, assembly",Noun
+様々,さまざま,"various, diverse",Adjective
+募集,ぼしゅう,"recruitment, collection",Verbal Noun
+早める,はやめる,"move forward (in time), expedite",Verb
+答案,とうあん,"examination paper, answer",Noun
+採算,さいさん,profit,Noun
+採点,さいてん,"marking, grading",Verbal Noun
+採る,とる,"gather, pick",Verb
+供給,きょうきゅう,"supply, provision",Verbal Noun
+月給,げっきゅう,monthly salary,Noun
+時給,じきゅう,hourly wage,Noun
+一昨年,いっさくねん,the year before last,Noun
+見込み,みこみ,"hope, prospect",Noun
+論文,ろんぶん,"thesis, paper",Noun
+短大,たんだい,junior college,Noun
+花束,はなたば,bunch of flowers,Noun
+就任,しゅうにん,"inauguration, appointment",Verbal Noun
+就く,つく,"set about a task, enter upon",Verb
+職員,しょくいん,"staff, employee",Noun
+職業,しょくぎょう,"occupation, vocation",Noun
+私鉄,してつ,private railway,Noun
+名,な,"name, reputation",Noun
+都内,とない,in the metropolitan area of Tokyo,Noun
+有利,ゆうり,"advantageous, profitable",Adjectival Noun
+都,と,metropolis of Tokyo,Noun
+不平等,ふびょうどう,"unequal, unfair",Adjectival Noun
+退職,たいしょく,"retirement, resignation",Verbal Noun
+退学,たいがく,withdrawal from school,Verbal Noun
+早退,そうたい,early departure,Verbal Noun
+理屈,りくつ,"reason, logic",Noun
+退屈,たいくつ,"boring, tedious",Verbal Noun
+成立,せいりつ,formation,Verbal Noun
+雇用,こよう,employment,Verbal Noun
+自ら,みずから,oneself,Adverb
+前提,ぜんてい,"assumption, premise",Noun
+条約,じょうやく,treaty,Noun
+次第に,しだいに,"gradually, by degrees",Adverb
+真相,しんそう,the truth,Noun
+先日,せんじつ,"the other day, a few days ago",Noun
+悪質,あくしつ,"bad, malignant",Adjectival Noun
+当局,とうきょく,the authorities concerned,Noun
+認識,にんしき,"recognition, acknowledgment",Verbal Noun
+満たす,みたす,"fill, satisfy",Verb
+無関係,むかんけい,"irrelevant, unrelated",Adjectival Noun
+投書,とうしょ,"contribution, letter",Verbal Noun
+未定,みてい,"undecided, pending",Noun
+用件,ようけん,"matter, things to be done",Noun
+参考,さんこう,"reference, consultation",Noun
+参議院,さんぎいん,"House of Councilors, Upper House",Noun
+お参り,おまいり,visiting a shrine or temple,Verbal Noun
+参考書,さんこうしょ,reference book,Noun
+参る,まいる,"go, come",Verb
+惨め,みじめ,"miserable, pitiable",Adjective
+加わる,くわわる,join in,Verb
+クラブ,クラブ,club,Noun
+さぞ,さぞ,"no doubt, must",Adverb
+いい加減,いいかげん,"irresponsible, half-baked",Adjectival Noun
+デモ,デモ,demonstration,Noun
+保険,ほけん,insurance,Noun
+申し出る,もうしでる,"offer, propose",Verb
+人数,にんずう,number of people,Noun
+レクリエーション,レクリエーション,"recreation, games",Noun
+去る,さる,"go away, leave",Verb
+追い出す,おいだす,"turn out, kick out",Verb
+追い掛ける,おいかける,"chase, run after",Verb
+追加,ついか,addition,Verbal Noun
+前年,ぜんねん,the year before,Noun
+比率,ひりつ,"ratio, percentage",Noun
+見比べる,みくらべる,"look from one to another, compare",Verb
+比較,ひかく,comparison,Verbal Noun
+受け取り,うけとり,receipt,Noun
+判決,はんけつ,"judicial decision, judgment",Noun
+判子,はんこ,"seal, stamp",Noun
+評判,ひょうばん,"fame, reputation",Noun
+感じ,かんじ,"feeling, impression",Noun
+感情,かんじょう,"feeling, emotion",Noun
+感動,かんどう,"emotion, impression",Verbal Noun
+実感,じっかん,"true sense, realization",Verbal Noun
+込める,こめる,"put in, concentrate on",Verb
+思想,しそう,"thought, conception",Noun
+感想,かんそう,"thought, impression",Noun
+空想,くうそう,"fantasy, daydreams",Verbal Noun
+当たり,あたり,"hit, success",Noun
+予想,よそう,"prospect, expectation",Verbal Noun
+理想,りそう,ideal,Noun
+生ずる,しょうずる,"arise, occur",Verb
+合成,ごうせい,"composition, synthesis",Verbal Noun
+現像,げんぞう,developing a film,Verbal Noun
+想像,そうぞう,imagination,Verbal Noun
+気象,きしょう,weather condition,Noun
+象,ぞう,elephant,Noun
+抽象的,ちゅうしょうてき,abstract,Adjective
+製品,せいひん,manufactured goods,Noun
+回路,かいろ,circuit,Noun
+ハードウェア,ハードウェア,hardware,Noun
+保障,ほしょう,"guarantee, security",Verbal Noun
+モーター,モーター,"motor, engine",Noun
+悪化,あっか,"worsening, aggravation",Verbal Noun
+傷,きず,"wound, scar",Noun
+負傷,ふしょう,"hurt, injury",Verbal Noun
+無意識,むいしき,"unconsciously, without thinking",Adverb
+交換,こうかん,"exchange, bartering",Verbal Noun
+シーツ,シーツ,sheet,Noun
+消火器,しょうかき,fire extinguisher,Noun
+変換,へんかん,"change, conversion",Verbal Noun
+タイヤ,タイヤ,tire,Noun
+交替,こうたい,"alternation, shift",Verbal Noun
+部品,ぶひん,"parts, accessories",Noun
+水着,みずぎ,bathing suit,Noun
+取り替える,とりかえる,"change, replace",Verb
+立て替える,たてかえる,"pay for another, pay in advance",Verb
+災難,さいなん,"calamity, misfortune",Noun
+水害,すいがい,flood damage,Noun
+有害,ゆうがい,"harmful, hazardous",Adjectival Noun
+飲料水,いんりょうすい,drinking water,Noun
+被せる,かぶせる,cover,Verb
+被害,ひがい,"damage, harm",Noun
+物資,ぶっし,"commodities, goods",Noun
+所々,ところどころ,"here and there, at places",Noun
+破壊,はかい,"breaking, destruction",Verbal Noun
+くだらない,くだらない,"worthless, trifling",Adjective
+体温計,たいおんけい,thermometer,Noun
+救う,すくう,"save, relieve",Verb
+救い,すくい,"rescue, relief",Noun
+救助,きゅうじょ,"rescue, relief",Verbal Noun
+有り難い,ありがたい,"welcome, grateful",Adjective
+もはや,もはや,"already, no longer",Adverb
+助かる,たすかる,"be helped, be rescued",Verb
+支援,しえん,"support, backing",Verbal Noun
+援助,えんじょ,"aid, assistance",Verbal Noun
+要請,ようせい,"request, demand",Verbal Noun
+派手,はで,"showy, flashy",Adjective
+派出所,はしゅつじょ,"branch office, police box",Noun
+小遣い,こづかい,"pocket money, spending money",Noun
+派遣,はけん,"dispatch, sending",Verbal Noun
+センター,センター,center,Noun
+犯す,おかす,"offend against, rape",Verb
+特定,とくてい,"specific, particular",Noun
+犯人,はんにん,"criminal, offender",Noun
+ピストル,ピストル,pistol,Noun
+明白,めいはく,"clear, plain",Adjectival Noun
+犯罪,はんざい,"offense, crime",Noun
+罪,つみ,"crime, sin",Noun
+強盗,ごうとう,robbery,Noun
+盗難,とうなん,"robbery, burglary",Noun
+奪う,うばう,"rob, take by force",Verb
+自殺,じさつ,suicide,Verbal Noun
+捕まる,つかまる,"be caught, be arrested",Verb
+国外,こくがい,"abroad, outside the country",Noun
+逃げ出す,にげだす,"make a break for, run off",Verb
+逃げ道,にげみち,escape route,Noun
+作戦,さくせん,"tactic, strategy",Noun
+主題,しゅだい,"subject, theme",Noun
+戦前,せんぜん,prewar period,Noun
+勝ち,かち,"win, victory",Noun
+戦う,たたかう,"wage war, fight",Verb
+挑戦,ちょうせん,challenge,Verbal Noun
+敗戦,はいせん,"lost battle, defeat",Verbal Noun
+戦い,たたかい,"war, match",Noun
+敗れる,やぶれる,"be defeated, be beaten",Verb
+大戦,たいせん,world war,Noun
+政党,せいとう,political party,Noun
+争う,あらそう,"compete, fight",Verb
+競技,きょうぎ,"match, sporting event",Verbal Noun
+高速道路,こうそくどうろ,"freeway, highway",Noun
+混雑,こんざつ,"confusion, disorder",Verbal Noun
+割合,わりあい,"rate, proportion",Adverb
+混ぜる,まぜる,"blend, mix by stirring",Verb
+戦後,せんご,postwar period,Noun
+リズム,リズム,rhythm,Noun
+統一,とういつ,"unity, coordination",Verbal Noun
+統計,とうけい,statistics,Verbal Noun
+総会,そうかい,general meeting,Noun
+総合,そうごう,"synthesis, integration",Verbal Noun
+総数,そうすう,total,Noun
+捜す,さがす,"look for, search for",Verb
+捜査,そうさ,"criminal investigation, search",Verbal Noun
+小数,しょうすう,decimal,Noun
+残らず,のこらず,"entirely, without exception",Adverb
+索引,さくいん,index,Noun
+人工,じんこう,artificial,Noun
+ツル,ツル,"crane, stork",Noun
+湖,みずうみ,lake,Noun
+飛び込む,とびこむ,dive into,Verb
+深める,ふかめる,"deepen, intensify",Verb
+物事,ものごと,"things, everything",Noun
+注意深い,ちゅういぶかい,"careful, discreet",Adjective
+落ち着く,おちつく,"calm down, settle in",Verb
+スピード,スピード,speed,Noun
+落ち着き,おちつき,"presence of mind, composure",Noun
+がっかり,がっかり,feel disappointed,Adverb
+がくんと,がくんと,sharply,Adverb
+段落,だんらく,end of paragraph,Noun
+見落とす,みおとす,"miss, fail to notice",Verb
+落第,らくだい,failing an exam,Verbal Noun
+まあまあ,まあまあ,now now,Adverb
+日中,にっちゅう,during the day,Noun
+水面,すいめん,surface of the water,Noun
+交流,こうりゅう,"interaction, contact",Verbal Noun
+一流,いちりゅう,"top-ranked, world-class",Noun
+海流,かいりゅう,ocean current,Noun
+三流,さんりゅう,third-rate,Noun
+小川,おがわ,"brook, stream",Noun
+流れ,ながれ,"flow, stream",Noun
+流通,りゅうつう,"circulation, distribution",Verbal Noun
+中間,ちゅうかん,"middle, between",Noun
+中流,ちゅうりゅう,"mid-stream, middle reaches",Noun
+二流,にりゅう,second-rate,Noun
+流行,はやり,"fashion, trend",Noun
+流行,りゅうこう,"fashion, trend",Verbal Noun
+洪水,こうずい,"flood, inundation",Noun
+崩す,くずす,"destroy, break",Verb
+水洗,すいせん,"flushing, washing",Verbal Noun
+クリーム,クリーム,cream,Noun
+洗い物,あらいもの,dishes to be washed,Noun
+じゃぶじゃぶ,じゃぶじゃぶ,vigorously,Adverb
+洗面,せんめん,washing one's face,Noun
+洗面器,せんめんき,"washbowl, sink",Noun
+原料,げんりょう,raw material,Noun
+代わり,かわり,substitution,Noun
+さす,さす,pour,Verb
+混ざる,まざる,"be mixed, be stirred",Verb
+沈める,しずめる,"sink, submerge",Verb
+引き上げる,ひきあげる,"pull up, salvage",Verb
+地平線,ちへいせん,horizon,Noun
+夕日,ゆうひ,setting sun,Noun
+沈没,ちんぼつ,sinking,Verbal Noun
+将来,しょうらい,"future, in the future",Noun
+確実,かくじつ,"certain, secure",Adjective
+カメラマン,カメラマン,"photographer, cameraman",Noun
+気楽,きらく,"easygoing, comfortable",Adjectival Noun
+永遠,えいえん,eternity,Adjectival Noun
+永久,えいきゅう,"permanence, eternity",Adjectival Noun
+全速力,ぜんそくりょく,"full speed, full steam",Noun
+浮く,うく,float,Verb
+上がる,あがる,"eat, drink",Verb
+感覚,かんかく,"sense, sensation",Noun
+世間,せけん,"world, the public",Noun
+北風,きたかぜ,north wind,Noun
+冷ます,さます,"cool, let cool",Verb
+冷え込む,ひえこむ,get colder,Verb
+冷やかす,ひやかす,"tease, jeer",Verb
+かちかち,かちかち,"hard, solid",Adjective
+冷凍,れいとう,"freezing, cold storage",Verbal Noun
+車庫,しゃこ,"car shed, garage",Noun
+内臓,ないぞう,internal organs,Noun
+快晴,かいせい,fair and clear weather,Noun
+適用,てきよう,application,Verbal Noun
+適する,てきする,"suit, be suitable",Verb
+適当,てきとう,"suitable, appropriate",Adjectival Noun
+指摘,してき,"identification, pointing out",Verbal Noun
+湿度,しつど,humidity,Noun
+湿っぽい,しめっぽい,"damp, gloomy",Adjective
+湿気,しっけ,"moisture, dampness",Noun
+汚染,おせん,"pollution, contamination",Verbal Noun
+頬,ほお,cheek,Noun
+廃止,はいし,"abolishment, abandonment",Verbal Noun
+一面,いちめん,whole surface,Noun
+比較的,ひかくてき,"comparatively, relatively",Adverb
+風景,ふうけい,"scenery, landscape",Noun
+不景気,ふけいき,"business depression, slump",Adjectival Noun
+影,かげ,"shadow, shade",Noun
+円高,えんだか,appreciation of the yen,Noun
+インフレーション,インフレーション,inflation,Noun
+不況,ふきょう,"depression, slump",Noun
+記事,きじ,"article, story",Noun
+最適,さいてき,optimum,Adjectival Noun
+国境,こっきょう,national border,Noun
+境,さかい,"boundary, border",Noun
+適応,てきおう,"adaptation, adjustment",Verbal Noun
+観察,かんさつ,"observation, supervision",Verbal Noun
+客観的,きゃっかんてき,objective,Adjective
+主観,しゅかん,"subjectivity, subject",Noun
+主観的,しゅかんてき,subjective,Adjective
+市内,しない,in the city,Noun
+観光,かんこう,sightseeing,Noun
+きらりと,きらりと,sparkle,Adverb
+成り立つ,なりたつ,"consist of, be built on",Verb
+日光,にっこう,"sunshine, sunlight",Noun
+推測,すいそく,"conjecture, guess",Verbal Noun
+測る,はかる,"measure, gauge",Verb
+体重,たいじゅう,body weight,Noun
+河口,かこう,"river mouth, estuary",Noun
+ウエスト,ウエスト,the waist,Noun
+水平線,すいへいせん,horizon,Noun
+発電,はつでん,generation of electricity,Verbal Noun
+陽気,ようき,"cheerful, bright",Adjectival Noun
+有限,ゆうげん,"limited, finite",Adjectival Noun
+観測,かんそく,observation,Verbal Noun
+無数,むすう,"countless, innumerable",Adjectival Noun
+衛星,えいせい,"satellite, moon",Noun
+衛生的,えいせいてき,"sanitary, hygienic",Adjective
+一員,いちいん,member,Noun
+グラウンド,グラウンド,sports field,Noun
+球,きゅう,"globe, ball",Noun
+日米,にちべい,Japan and U.S.,Noun
+プロ野球,プロやきゅう,professional baseball,Noun
+電球,でんきゅう,light bulb,Noun
+現れる,あらわれる,"appear, emerge",Verb
+青空,あおぞら,blue sky,Noun
+たちまち,たちまち,"in a moment, instantly",Adverb
+失う,うしなう,"lose, miss",Verb
+混乱,こんらん,"disorder, confusion",Verbal Noun
+災害,さいがい,"calamity, disaster",Noun
+震度,しんど,seismic intensity,Noun
+ぶるぶる,ぶるぶる,shiver,Adverb
+脱線,だっせん,derailment,Verbal Noun
+人生,じんせい,"human life, life",Noun
+大雪,おおゆき,heavy snow,Noun
+窓口,まどぐち,window,Noun
+振り,ふり,"swing, shake",Noun
+電線,でんせん,electric wire,Noun
+作用,さよう,"action, effect",Verbal Noun
+神様,かみさま,"god, the divine",Noun
+神道,しんとう,Shinto,Noun
+外部,がいぶ,"outside, outer",Noun
+安定,あんてい,"stability, composure",Verbal Noun
+精神,せいしん,"mind, spirit",Noun
+精算,せいさん,"settlement of accounts, adjustment",Verbal Noun
+現実,げんじつ,"actuality, reality",Noun
+教え,おしえ,"lesson, teachings",Noun
+残暑,ざんしょ,lingering summer heat,Noun
+貴重,きちょう,"precious, valuable",Adjectival Noun
+貴重品,きちょうひん,"article of value, valuables",Noun
+金庫,きんこ,"strong box, safe",Noun
+貴い,とうとい,"precious, valuable",Adjective
+跡,あと,"trace, track",Noun
+足跡,あしあと,"footprint, footmark",Noun
+追跡,ついせき,"pursuit, chase",Verbal Noun
+好奇心,こうきしん,curiosity,Noun
+奇跡,きせき,"miracle, wonder",Noun
+奇数,きすう,odd number,Noun
+空ける,あける,"empty, clear out",Verb
+近寄る,ちかよる,"go near, approach",Verb
+寄り道,よりみち,"dropping by, going out of the way",Verbal Noun
+寄り集まる,よりあつまる,"gather, assemble",Verb
+何千,なんぜん,"several thousand, thousands",Noun
+経歴,けいれき,"personal history, resume",Noun
+学歴,がくれき,educational history,Noun
+革命,かくめい,revolution,Noun
+古代,こだい,"ancient times, antiquity",Noun
+歴史的,れきしてき,historical,Adjective
+乱す,みだす,"put into disorder, disrupt",Verb
+高価,こうか,high-priced,Adjectival Noun
+宝石,ほうせき,"gem, jewel",Noun
+外観,がいかん,external appearance,Noun
+モダン,モダン,modern,Adjectival Noun
+建て前,たてまえ,"a front, polite face",Noun
+年月,ねんげつ,"years, time",Noun
+建築,けんちく,"construction, architecture",Verbal Noun
+新築,しんちく,new building,Verbal Noun
+基準,きじゅん,"standard, criterion",Noun
+むしろ,むしろ,rather,Adverb
+構想,こうそう,"conception, design",Verbal Noun
+構える,かまえる,set up (shop),Verb
+結構,けっこう,quite,Adverb
+構う,かまう,"mind, care for",Verb
+位,くらい,"rank, dignity",Noun
+収入,しゅうにゅう,"income, earnings",Noun
+運動会,うんどうかい,"sports festival, athletic meet",Noun
+悪用,あくよう,"abuse, misuse",Noun
+単位,たんい,"unit, credit",Noun
+地位,ちい,"position, status",Noun
+重点,じゅうてん,"important point, emphasis",Noun
+ずれる,ずれる,"off track, out of line",Verb
+本部,ほんぶ,"head office, headquarters",Noun
+間,ま,"interval, duration of time, chamber",Noun
+距離,きょり,"distance, interval",Noun
+分離,ぶんり,"separation, split",Verbal Noun
+離れる,はなれる,"separate, leave",Verb
+離す,はなす,"separate, detach",Verb
+停電,ていでん,"power cut, power failure",Verbal Noun
+出入り口,でいりぐち,"doorway, gateway",Noun
+不通,ふつう,interruption of service,Noun
+回り・周り,まわり・まわり,"vicinity, whereabouts",Noun
+辺り,あたり,"vicinity, around",Noun
+相場,そうば,"market price, speculation",Noun
+書物,しょもつ,"book, volume",Noun
+範囲,はんい,"range, scope",Noun
+境界,きょうかい,"boundary, border",Noun
+おじさん,おじさん,"Mister, middle-aged man",Noun
+領土,りょうど,"territory, domain",Noun
+村,むら,"village, hamlet",Noun
+隣り合う,となりあう,"adjoin, be next door to each other",Verb
+木造,もくぞう,wooden,Noun
+合わす,あわす,"match, add",Verb
+横断,おうだん,"crossing, traversing",Verbal Noun
+左右,さゆう,right and left,Noun
+中断,ちゅうだん,"interruption, discontinuance",Verbal Noun
+断水,だんすい,water stoppage,Verbal Noun
+油断,ゆだん,"inattention, carelessness",Verbal Noun
+断定,だんてい,"decision, conclusion",Verbal Noun
+継ぐ,つぐ,"succeed, inherit",Verb
+幅広い,はばひろい,"wide, broad",Adjective
+欧米,おうべい,Europe and America,Noun
+確立,かくりつ,establishment,Verbal Noun
+今日,こんにち,"today, these days",Noun
+大陸,たいりく,continent,Noun
+着陸,ちゃくりく,landing,Verbal Noun
+離陸,りりく,takeoff,Verbal Noun
+内陸,ないりく,"inland, interior",Noun
+陸上,りくじょう,"land, shore",Noun
+間も無く,まもなく,"soon, in a short time",Adverb
+陸,りく,"land, shore",Noun
+極めて,きわめて,"extremely, very",Adverb
+消極的,しょうきょくてき,"negative, passive",Adjective
+南極,なんきょく,South Pole,Noun
+北極,ほっきょく,North Pole,Noun
+極端,きょくたん,extreme,Adjectival Noun
+最先端,さいせんたん,"cutting edge, forefront",Noun
+しゃがむ,しゃがむ,squat down,Verb
+外相,がいしょう,Minister of Foreign Affairs,Noun
+総理,そうり,"president, prime minister",Noun
+女房,にょうぼう,wife,Noun
+一緒,いっしょ,together,Verbal Noun
+心強い,こころづよい,"reassuring, heartening",Adjective
+内緒,ないしょ,"secrecy, privacy",Noun
+男女,だんじょ,"men and women, both sexes",Noun
+貨物,かもつ,"freight, cargo",Noun
+百貨店,ひゃっかてん,department store,Noun
+石油,せきゆ,"petroleum, oil",Noun
+規制,きせい,"regulation, control",Verbal Noun
+輸送,ゆそう,"transport, ship",Verbal Noun
+薬指,くすりゆび,"third finger, ring finger",Noun
+はめる,はめる,"put on, wear",Verb
+景気,けいき,economic climate,Noun
+回復,かいふく,"recovery, rehabilitation",Verbal Noun
+過ち,あやまち,"fault, mistake",Noun
+体操,たいそう,"gymnastics, physical exercise",Noun
+操縦,そうじゅう,"steering, piloting",Verbal Noun
+縦書き,たてがき,vertical writing,Noun
+渋滞,じゅうたい,"delay, traffic jam",Verbal Noun
+長期,ちょうき,long period,Noun
+滞在,たいざい,stay,Verbal Noun
+帯,おび,"belt, sash",Noun
+温帯,おんたい,temperate zone,Noun
+地帯,ちたい,"zone, area",Noun
+熱帯,ねったい,tropics,Noun
+操作,そうさ,"operation, manipulation",Verbal Noun
+国費,こくひ,national expenditure,Noun
+私費,しひ,private expense,Noun
+入国,にゅうこく,"entry into a country, immigration",Verbal Noun
+形式,けいしき,"form, model",Noun
+消費者,しょうひしゃ,consumer,Noun
+資源,しげん,resources,Noun
+決まり,きまり,"settlement, rule",Noun
+エチケット,エチケット,etiquette,Noun
+マナー,マナー,manners,Noun
+務め,つとめ,"duty, task",Noun
+留守番,るすばん,"caretaking, caretaker",Noun
+職場,しょくば,"place of work, office",Noun
+帰宅,きたく,return home,Verbal Noun
+住宅地,じゅうたくち,residential district,Noun
+ばらばら,ばらばら,separately,Adverb
+立て込む,たてこむ,"full of, crowded with",Verb
+夕立,ゆうだち,sudden evening shower,Noun
+宛名,あてな,"name of recipient, addressee",Noun
+宛先,あてさき,"recipient, addressee",Noun
+直ちに,ただちに,"at once, immediately",Adverb
+戻す,もどす,"return, give back",Verb
+取り戻す,とりもどす,"take back, recover",Verb
+払い戻す,はらいもどす,"pay back, reimburse",Verb
+現象,げんしょう,phenomenon,Noun
+殺人,さつじん,"murder, homicide",Noun
+消化,しょうか,"digestion, consumption",Verbal Noun
+起き上がる,おきあがる,"get up, rise",Verb
+不運,ふうん,"misfortune, bad luck",Adjectival Noun
+不注意,ふちゅうい,"carelessness, inattention",Adjectival Noun
+直後,ちょくご,immediately after,Noun
+ろくに,ろくに,"hardly, barely",Adverb
+寝かす,ねかす,put to sleep,Verb
+寝過ごす,ねすごす,oversleep,Verb
+寝かせる,ねかせる,"put to bed, lay down",Verb
+寝転ぶ,ねころぶ,lie down,Verb
+しわ,しわ,wrinkle,Noun
+静まる,しずまる,"become quiet, calm down",Verb
+冷静,れいせい,"cool, calm",Adjectival Noun
+休暇,きゅうか,"holiday, vacation",Noun
+問答,もんどう,"questions and answers, argument",Verbal Noun
+共通,きょうつう,commonality,Verbal Noun
+収集,しゅうしゅう,"collection, gathering",Verbal Noun
+金もうけ,かねもうけ,making money,Verbal Noun
+読書,どくしょ,reading a book,Verbal Noun
+合意,ごうい,mutual agreement,Verbal Noun
+外貨,がいか,foreign currency,Noun
+教わる,おそわる,"be taught, learn",Verb
+専用,せんよう,"exclusive use, private use",Noun
+両者,りょうしゃ,both,Noun
+見合い,みあい,meeting with a view to marriage,Verbal Noun
+両立,りょうりつ,"managing two things, having it both ways",Verbal Noun
+両面,りょうめん,both sides,Noun
+片手,かたて,one hand,Noun
+片方,かたほう,one side,Noun
+片側,かたがわ,one side,Noun
+側面,そくめん,"side, flank",Noun
+両側,りょうがわ,both sides,Noun
+歩行者,ほこうしゃ,pedestrian,Noun
+白線,はくせん,"white line, warning line",Noun
+通路,つうろ,"passage, alley",Noun
+裏口,うらぐち,"back door, kitchen door",Noun
+裏返し,うらがえし,"turn over, turn inside out",Verbal Noun
+裏表,うらおもて,"inside-out, front and back",Noun
+くすぐる,くすぐる,tickle,Verb
+夜間,やかん,"night, nighttime",Noun
+項目,こうもく,"item, clause",Noun
+要項,ようこう,important points,Noun
+印象,いんしょう,impression,Noun
+組み合わせ,くみあわせ,"combination, assortment",Noun
+週刊,しゅうかん,published weekly,Noun
+月刊,げっかん,published monthly,Noun
+古本,ふるほん,secondhand book,Noun
+出版,しゅっぱん,"publishing, publication",Verbal Noun
+出版社,しゅっぱんしゃ,publishing company,Noun
+地理,ちり,geography,Noun
+注,ちゅう,"annotation, explanatory note",Noun
+神経,しんけい,"sensitivity, nerves",Noun
+詳細,しょうさい,"details, particulars",Adjectival Noun
+心細い,こころぼそい,"helpless, lonely",Adjective
+通知,つうち,notification,Verbal Noun
+ちぎる,ちぎる,"tear, tear off",Verb
+ファックス,ファックス,"facsimile, fax",Noun
+掲示,けいじ,"notice, bulletin",Verbal Noun
+載る,のる,appear in print,Verb
+積極的,せっきょくてき,"positive, active",Adjective
+三角形,さんかくけい,triangle,Noun
+積む,つむ,"pile up, accumulate",Verb
+面積,めんせき,"area, square measure",Noun
+ちり,ちり,dust,Noun
+平方,へいほう,square,Noun
+言い訳,いいわけ,"apology, excuse",Verbal Noun
+どうしても,どうしても,"by any means, really",Adverb
+翻訳,ほんやく,translation,Verbal Noun
+通訳,つうやく,interpreting,Verbal Noun
+申し訳ない,もうしわけない,"sorry, inexcusable",Adjective
+訳,わけ,"reason, cause",Noun
+申し訳,もうしわけ,"excuse, apology",Noun
+誤り,あやまり,"error, mistake",Noun
+誤る,あやまる,make a mistake,Verb
+誤解,ごかい,misunderstanding,Verbal Noun
+訂正,ていせい,"correction, amendment",Verbal Noun
+修正,しゅうせい,"correction, revision",Verbal Noun
+討論,とうろん,"debate, discussion",Verbal Noun
+前向き,まえむき,"facing forward, positively",Adjectival Noun
+キャベツ,キャベツ,cabbage,Noun
+添う,そう,"accompany, go along with",Verb
+需要,じゅよう,demand,Noun
+成果,せいか,"result, fruit",Noun
+以後,いご,"from now on, after that",Noun
+気付く,きづく,"notice, become aware of",Verb
+衛生,えいせい,"hygiene, sanitation",Noun
+エアコン,エアコン,"air-conditioning, air conditioner",Noun
+学力,がくりょく,"scholastic performance, academic ability",Noun
+印,しるし,"mark, symbol",Noun
+ガード,ガード,guard rail,Noun
+イントネーション,イントネーション,intonation,Noun
+追い付く,おいつく,"overtake, catch up with",Verb
+思い付く,おもいつく,"think of, hit upon",Verb
+足下,あしもと,"step, under foot",Noun
+傷付ける,きずつける,"wound, hurt",Verb
+これから,これから,"from now on, after this",Noun
+付き合い,つきあい,"friendship, association",Noun
+付け加える,つけくわえる,add,Verb
+付き合う,つきあう,"socialize with, see someone",Verb
+付録,ふろく,"appendix, supplement",Noun
+近付ける,ちかづける,bring close,Verb
+付け足す,つけたす,"add on, append",Verb
+日付け,ひづけ,date,Noun
+金属,きんぞく,metal,Noun
+所属,しょぞく,"belonging, attachment",Verbal Noun
+付属,ふぞく,"attachment, belonging",Verbal Noun
+バット,バット,bat,Noun
+属する,ぞくする,"belong to, be one of",Verb
+ポスター,ポスター,poster,Noun
+大蔵省,おおくらしょう,Ministry of Finance,Noun
+外務省,がいむしょう,Ministry of Foreign Affairs,Noun
+帰省,きせい,homecoming,Verbal Noun
+反省,はんせい,"reflection, repentance",Verbal Noun
+省く,はぶく,"omit, dispense with",Verb
+省略,しょうりゃく,"omission, abbreviation",Verbal Noun
+略す,りゃくす,"abbreviate, omit",Verb
+略,りゃく,abbreviation,Noun
+概念,がいねん,"general idea, concept",Noun
+記念,きねん,"commemoration, memory",Verbal Noun
+信念,しんねん,"belief, conviction",Noun
+不合格,ふごうかく,"failure, disqualification",Noun
+規定,きてい,"regulation, provision",Verbal Noun
+物質,ぶっしつ,"matter, substance",Noun
+含める,ふくめる,include,Verb
+含む,ふくむ,"contain, include",Verb
+順調,じゅんちょう,"favorable condition, smooth progress",Adjectival Noun
+経過,けいか,"progression, lapse",Verbal Noun
+順,じゅん,"order, sequence",Noun
+順番,じゅんばん,"order, turn",Noun
+順位,じゅんい,"order, rank",Noun
+五十音,ごじゅうおん,Japanese syllabary,Noun
+道順,みちじゅん,"route, itinerary",Noun
+順序,じゅんじょ,order,Noun
+逆,ぎゃく,"reverse, inverse",Adjectival Noun
+運命,うんめい,"fate, fortune",Noun
+逆らう,さからう,"disobey, go against",Verb
+逆さ,さかさ,"reverse, inversion",Adjectival Noun
+逆さま,さかさま,"upside-down, reverse",Adjectival Noun
+前進,ぜんしん,advancement,Verbal Noun
+行列,ぎょうれつ,"queue, line",Verbal Noun
+整列,せいれつ,"row, line",Verbal Noun
+列車,れっしゃ,train,Noun
+縦,たて,"lengthways, vertical",Noun
+列島,れっとう,archipelago,Noun
+何十,なんじゅう,several tens,Noun
+列,れつ,"row, line",Noun
+実例,じつれい,"example, instance",Noun
+例外,れいがい,exception,Noun
+用例,ようれい,"example, illustration",Noun
+例える,たとえる,"compare, liken",Verb
+例題,れいだい,"example, exercise",Noun
+例年,れいねん,"normal year, average year",Noun
+例え,たとえ,"metaphor, simile",Noun
+余り,あまり,"remainder, leftover",Adverb
+かっと,かっと,"lose one's temper, fly into a rage",Adverb
+きれ,きれ,a cut of cloth,Noun
+余地,よち,"room, space",Noun
+余計,よけい,"excess, needless",Adjectival Noun
+余分,よぶん,"excess, extra",Adjectival Noun
+あいにく,あいにく,unfortunately,Adverb
+後戻り,あともどり,"turning back, retreat",Verbal Noun
+下車,げしゃ,"get off, stopover",Verbal Noun
+途中,とちゅう,"on the way, half way",Noun
+用途,ようと,"use, service",Noun
+中途,ちゅうと,halfway,Noun
+障害,しょうがい,"obstacle, disorder",Noun
+削除,さくじょ,"deletion, elimination",Verbal Noun
+不必要,ふひつよう,"unnecessary, superfluous",Adjectival Noun
+既に,すでに,"already, previously",Adverb
+既製,きせい,"ready-made, ready-to-wear",Noun
+事態,じたい,"situation, state of affairs",Noun
+深刻,しんこく,"serious, grave",Adjective
+時刻,じこく,"time, hour",Noun
+しょっちゅう,しょっちゅう,"frequently, repeatedly",Adverb
+案の定,あんのじょう,"as feared, sure enough",Adverb
+締め切り,しめきり,"deadline, time limit",Noun
+締め切る,しめきる,"close, fix a deadline",Verb
+締まる,しまる,"tighten, be compact",Verb
+どうにか,どうにか,somehow,Adverb
+取り締まる,とりしまる,"control, crack down",Verb
+緩める,ゆるめる,"loosen, unloose",Verb
+緩む,ゆるむ,"slacken, be loose",Verb
+栄える,さかえる,"flourish, thrive",Verb
+教養,きょうよう,"culture, education",Noun
+休養,きゅうよう,"rest, recreation",Verbal Noun
+バランス,バランス,balance,Noun
+養う,やしなう,"foster, support",Verb
+表情,ひょうじょう,"expression, look",Noun
+豊か,ゆたか,"abundant, ample",Adjective
+富む,とむ,"be rich, abound in",Verb
+豊富,ほうふ,"abundant, plentiful",Adjectival Noun
+正,せい,"right, positiveness",Noun
+苦しむ,くるしむ,"suffer, be troubled",Verb
+苦情,くじょう,"complaint, grievance",Noun
+苦痛,くつう,"pain, agony",Noun
+苦しめる,くるしめる,"torment, trouble",Verb
+ああ,ああ,that kind of,Adverb
+西洋人,せいようじん,Westerner,Noun
+不器用,ぶきよう,"clumsy, unskillful",Adjectival Noun
+目茶苦茶,めちゃくちゃ,"in a mess, terrible",Adjectival Noun
+苦労,くろう,"difficulty, hardship",Verbal Noun
+義務,ぎむ,"duty, obligation",Noun
+強制,きょうせい,"compulsion, force",Verbal Noun
+勤労,きんろう,"labor, work",Verbal Noun
+労働者,ろうどうしゃ,"laborer, worker",Noun
+連続,れんぞく,"continuation, succession",Verbal Noun
+労働,ろうどう,"labor, toil",Verbal Noun
+労力,ろうりょく,"labor, work",Noun
+因る,よる,"be caused by, be due to",Verb
+困難,こんなん,"difficulty, hardship",Verbal Noun
+せっかち,せっかち,impatient,Adjectival Noun
+格差,かくさ,"gap, disparity",Noun
+昔,むかし,"old times, the old days",Noun
+乏しい,とぼしい,"scarce, short of",Adjective
+貧乏人,びんぼうにん,"poor person, the poor",Noun
+守備,しゅび,"defense, fielding",Verbal Noun
+甘える,あまえる,"depend on, take advantage of",Verb
+甘やかす,あまやかす,"be indulgent to, spoil",Verb
+とうもろこし,とうもろこし,"corn, maize",Noun
+こしょう,こしょう,pepper,Noun
+辛い,つらい,"difficult, harsh",Adjective
+幸運,こううん,"good fortune, good luck",Adjectival Noun
+何だか,なんだか,"somehow, what's what",Adverb
+不幸せ,ふしあわせ,"unhappiness, misfortune",Adjectival Noun
+幸福,こうふく,"happiness, good fortune",Adjectival Noun
+削減,さくげん,"curtailment, reduction",Verbal Noun
+福祉,ふくし,welfare,Noun
+海水,かいすい,seawater,Noun
+調味料,ちょうみりょう,"seasoning, flavoring",Noun
+砂漠,さばく,desert,Noun
+模範,もはん,"model, role model",Noun
+農民,のうみん,"peasants, farmers",Noun
+農家,のうか,farmhouse,Noun
+農村,のうそん,"farm village, agricultural community",Noun
+無害,むがい,harmless,Adjectival Noun
+漁業,ぎょぎょう,fishing industry,Noun
+薄暗い,うすぐらい,"gloomy, dim",Adjective
+薄める,うすめる,"thin, dilute",Verb
+薄着,うすぎ,light clothing,Verbal Noun
+ぺらぺら,ぺらぺら,"floppy, flimsy",Adjective
+厚着,あつぎ,heavy clothing,Verbal Noun
+気圧,きあつ,atmospheric pressure,Noun
+高気圧,こうきあつ,high pressure,Noun
+低気圧,ていきあつ,"low pressure, atmospheric depression",Noun
+縮小,しゅくしょう,"reduction, curtailment",Verbal Noun
+縮める,ちぢめる,"contract, shorten",Verb
+縮む,ちぢむ,"shrink, contract",Verb
+縮み,ちぢみ,shrinkage,Noun
+引き伸ばす,ひきのばす,"stretch out, enlarge",Verb
+追伸,ついしん,P.S.,Noun
+売り上げ,うりあげ,"sales, proceeds",Noun
+倍,ばい,double,Noun
+超過,ちょうか,excess,Verbal Noun
+州,しゅう,state,Noun
+環境,かんきょう,"environment, surroundings",Noun
+とうとう,とうとう,"at last, after all",Adverb
+届け,とどけ,"report, delivery",Noun
+乗り越し,のりこし,riding past one's stop,Verbal Noun
+追い抜く,おいぬく,"pass, overtake",Verb
+抜ける,ぬける,"come out, leave",Verb
+トンネル,トンネル,tunnel,Noun
+抜く,ぬく,pull out,Verb
+課長,かちょう,section chief,Noun
+朝日,あさひ,morning sun,Noun
+一段と,いちだんと,"greater, further",Adverb
+昇る,のぼる,"rise,",Verb
+風船,ふうせん,balloon,Noun
+全員,ぜんいん,"all members, entire staff",Noun
+札,さつ,"bill, paper money",Noun
+改札,かいさつ,ticket gate,Verbal Noun
+札,ふだ,"sign, billboard",Noun
+名札,なふだ,"name badge, tag",Noun
+場,ば,"opportunity, occasion",Noun
+礼,れい,"bow, courtesy",Noun
+感謝,かんしゃ,"gratitude, thanks",Verbal Noun
+月謝,げっしゃ,monthly fee,Noun
+射す,さす,shine on,Verb
+反射,はんしゃ,reflection,Verbal Noun
+過程,かてい,"process, course",Noun
+行程,こうてい,"distance, journey",Noun
+日程,にってい,"program, schedule",Noun
+確保,かくほ,securement,Verbal Noun
+優れる,すぐれる,"be superior to, be fine",Verb
+前者,ぜんしゃ,the former,Noun
+コンテスト,コンテスト,contest,Noun
+優勝,ゆうしょう,"victory, championship",Verbal Noun
+対談,たいだん,interview,Verbal Noun
+目下,めした,one's inferiors,Noun
+見かけ,みかけ,"looks, appearance",Noun
+優秀,ゆうしゅう,"excellent, exceptional",Adjectival Noun
+秘書,ひしょ,secretary,Noun
+部下,ぶか,subordinate,Noun
+透き通る,すきとおる,be transparent,Verb
+強引,ごういん,"overbearing, coercive",Adjective
+指導,しどう,"guide, lead",Verbal Noun
+コーチ,コーチ,coach,Verbal Noun
+半導体,はんどうたい,semiconductor,Noun
+導く,みちびく,"guide, lead",Verb
+応じる,おうじる,"answer, comply with",Verb
+希望,きぼう,"hope, wish",Verbal Noun
+失望,しつぼう,"disappointment, loss of hope",Verbal Noun
+望む,のぞむ,"desire, hope",Verb
+望ましい,のぞましい,"desirable, welcome",Adjective
+要望,ようぼう,"demand, request",Verbal Noun
+有望,ゆうぼう,"promising, hopeful",Adjectival Noun
+欲望,よくぼう,"desire, craving",Noun
+待ち望む,まちのぞむ,"expect, look forward to",Verb
+意志,いし,"will, volition",Noun
+志す,こころざす,"have an ambition for, aspire",Verb
+受かる,うかる,pass,Verb
+向上,こうじょう,improvement,Verbal Noun
+公害,こうがい,environmental pollution,Noun
+努める,つとめる,"endeavor, make efforts, try hard",Verb
+比例,ひれい,"proportion, ratio",Verbal Noun
+不十分,ふじゅうぶん,"insufficiency, lack",Adjectival Noun
+実る,みのる,"bear fruit, ripen",Verb
+日々,ひび,"daily, every day",Noun
+かんかん,かんかん,furious,Adverb
+一種,いっしゅ,"a kind of, of sorts",Adverb
+独立,どくりつ,"independence, self-reliance",Verbal Noun
+独特,どくとく,"peculiarity, uniqueness",Adjective
+ぶつぶつ,ぶつぶつ,grumble,Adverb
+独り言,ひとりごと,"soliloquy, monologue",Noun
+論,ろん,"argument, opinion",Noun
+調べ,しらべ,"investigation, inquiry",Noun
+出身,しゅっしん,"come from, origin",Noun
+企画,きかく,"plan, project",Verbal Noun
+意外,いがい,"unexpected, unforeseen",Adjectival Noun
+身長,しんちょう,"stature, height",Noun
+心身,しんしん,mind and body,Noun
+身,み,"body, one's own person",Noun
+測定,そくてい,"measure, gauge",Verbal Noun
+中身,なかみ,"content, interior",Noun
+身近,みぢか,"near oneself, close to one",Adjectival Noun
+身の回り,みのまわり,"one's person, one's appearance",Noun
+身なり,みなり,"dress, one's appearance",Noun
+中,ちゅう,"middle, medium size",Noun
+身振り,みぶり,"gesture, gesticulation",Noun
+縮まる,ちぢまる,"be shortened, be contracted",Verb
+私,わたくし,"I, myself",Noun
+独占,どくせん,"exclusive possession, monopoly",Verbal Noun
+証拠,しょうこ,"proof, evidence",Noun
+不要,ふよう,"unnecessary, waste",Adjectival Noun
+一家,いっか,"household, family",Noun
+裏切る,うらぎる,betray,Verb
+論じる,ろんじる,"argue, discuss",Verb
+仲良し,なかよし,"good friend, chum",Noun
+仲直り,なかなおり,"reconciliation, making up",Verbal Noun
+仲,なか,personal relationship,Noun
+仲間,なかま,"comrade, peer",Noun
+正式,せいしき,"formal, regular",Adjectival Noun
+照明,しょうめい,"illumination, lighting",Verbal Noun
+照る,てる,"shine, be fine",Verb
+工夫,くふう,"contrivance, scheme",Verbal Noun
+夫人,ふじん,"wife, married lady",Noun
+主婦,しゅふ,housewife,Noun
+新婚,しんこん,newlywed,Noun
+産婦人科,さんふじんか,obstetrics and gynecology,Noun
+婦人,ふじん,"woman, lady",Noun
+分担,ぶんたん,"assigning tasks, sharing burden",Verbal Noun
+仲人,なこうど,"go-between, matchmaker",Noun
+訪問,ほうもん,visit,Verbal Noun
+夫妻,ふさい,"husband and wife, Mr. and Mrs.",Noun
+不在,ふざい,absence,Noun
+奥様,おくさま,"married woman, someone's wife",Noun
+実力,じつりょく,"real ability, capability",Noun
+お互い,おたがい,each other,Noun
+交互,こうご,"by turns, alternatively",Noun
+相互,そうご,"mutual, reciprocal",Noun
+互い,たがい,each other,Noun
+策,さく,"scheme, policy",Noun
+一度に,いちどに,"at a time, at once",Adverb
+見守る,みまもる,"watch, keep watch over",Verb
+我が国,わがくに,"our country, Japan",Noun
+我が家,わがや,one's home,Noun
+作者,さくしゃ,"author, writer",Noun
+公共,こうきょう,"public society, community",Noun
+苦しみ,くるしみ,"distress, suffering",Noun
+作曲,さっきょく,composition,Verbal Noun
+親しみ,したしみ,"intimacy, familiarity",Noun
+がらがら,がらがら,gargle,Adverb
+ミス,ミス,mistake,Verbal Noun
+持ち主,もちぬし,"owner, proprietor",Noun
+送別,そうべつ,"farewell, send-off",Verbal Noun
+区分,くぶん,"division, section",Verbal Noun
+高齢,こうれい,"advanced age, elderly",Noun
+問う,とう,"ask, question",Verb
+年齢,ねんれい,"age, years",Noun
+芸術,げいじゅつ,"art, arts and crafts",Noun
+愛情,あいじょう,"love, affection",Noun
+可愛らしい,かわいらしい,"lovely, charming",Adjective
+深まる,ふかまる,"deepen, become deeper",Verb
+マーク,マーク,logo,Verbal Noun
+むなしい,むなしい,"empty, vain",Adjective
+求める,もとめる,"seek, wish for",Verb
+恋,こい,"love, romance",Noun
+失恋,しつれん,broken heart,Verbal Noun
+恋する,こいする,"love, fall in love with",Verb
+引きずる,ひきずる,"drag along, trail",Verb
+恋愛,れんあい,love,Verbal Noun
+初恋,はつこい,first love,Noun
+統合,とうごう,"integration, combination",Verbal Noun
+誕生,たんじょう,birth,Verbal Noun
+密か,ひそか,"secret, private",Adjective
+延長,えんちょう,"extension, prolongation",Verbal Noun
+延期,えんき,"postponement, deferment",Verbal Noun
+明々後日,しあさって,three days from today,Noun
+延びる,のびる,"extend, be postponed",Verb
+延ばす,のばす,"extend, postpone",Verb
+祝う,いわう,"celebrate, congratulate",Verb
+代わる代わる,かわるがわる,"by turns, alternately",Adverb
+単純,たんじゅん,"simple, uncomplicated",Adjectival Noun
+純粋,じゅんすい,"pure, unmixed",Adjectival Noun
+女優,じょゆう,actress,Noun
+おしゃべり,おしゃべり,"chatter, idle talk",Noun
+夢中,むちゅう,be absorbed,Adjectival Noun
+慎重,しんちょう,"prudence, discretion",Adjectival Noun
+泣き顔,なきがお,tear-stained face,Noun
+流す,ながす,"let flow, set adrift",Verb
+笑顔,えがお,"smiling face, smile",Noun
+からから,からから,"roar, laugh loudly",Adverb
+げらげら,げらげら,out loud,Adverb
+天才,てんさい,genius,Noun
+必ずしも,かならずしも,"not always, not necessarily",Adverb
+表す,あらわす,"express, represent",Verb
+大喜び,おおよろこび,"great joy, delight",Verbal Noun
+喜ばす,よろこばす,"please, gladden",Verb
+皆,みな,"all, everybody",Noun
+恥,はじ,"shame, disgrace",Noun
+弁論,べんろん,"discussion, oral proceedings",Verbal Noun
+保護,ほご,"protection, safeguard",Verbal Noun
+弁護,べんご,defense,Verbal Noun
+保護者,ほごしゃ,"guardian, protector",Noun
+運用,うんよう,"operation, management",Verbal Noun
+屋上,おくじょう,"housetop, roof",Noun
+ついに,ついに,"at last, finally",Adverb
+同士,どうし,"fellow, to each other",Noun
+弁護士,べんごし,"lawyer, attorney",Noun
+バッジ,バッジ,badge,Noun
+看護,かんご,nursing,Verbal Noun
+看病,かんびょう,"nursing, nursing care",Verbal Noun
+否定,ひてい,"denial, negation",Verbal Noun
+記述,きじゅつ,description,Verbal Noun
+裁判,さいばん,"trial, judgment",Verbal Noun
+裁判所,さいばんしょ,courthouse,Noun
+総裁,そうさい,"president, governor",Noun
+訴え,うったえ,"lawsuit, appeal",Noun
+進路,しんろ,"course, route",Noun
+あれこれ,あれこれ,"this and that, one thing or another",Noun
+サークル,サークル,"circle, club",Noun
+迷信,めいしん,superstition,Noun
+迷子,まいご,"lost child, lost person",Noun
+しつこい,しつこい,persistent,Adjective
+区域,くいき,zone,Noun
+大水,おおみず,"flood, inundation",Noun
+未知,みち,unknown,Noun
+自身,じしん,self,Noun
+疑い,うたがい,"doubt, suspicion",Noun
+疑う,うたがう,"doubt, be suspicious",Verb
+疑わしい,うたがわしい,"doubtful, questionable",Adjective
+宇宙,うちゅう,"universe, space",Noun
+物体,ぶったい,"object, physical body",Noun
+謎,なぞ,"puzzle, mystery",Noun
+著しい,いちじるしい,"remarkable, conspicuous",Adjective
+著す,あらわす,"write, compose",Verb
+著者,ちょしゃ,"author, writer",Noun
+著書,ちょしょ,"literary work, book",Noun
+権利,けんり,"right, privilege",Noun
+権力,けんりょく,"power, authority",Noun
+人権,じんけん,human rights,Noun
+支配,しはい,"control, management",Verbal Noun
+言論,げんろん,"speech, discussion",Noun
+棄権,きけん,"dropping out, renouncing rights",Verbal Noun
+侵す,おかす,"invade, violate",Verb
+偽物,にせもの,"sham, imitation",Noun
+行為,こうい,"act, conduct",Noun
+添える,そえる,"add to, attach to",Verb
+ばら,ばら,rose,Noun
+賞,しょう,"prize, award",Noun
+当てる,あてる,"guess, hit the jackpot",Verb
+公平,こうへい,"impartiality, fairness",Adjectival Noun
+賞品,しょうひん,"prize, trophy",Noun
+部門,ぶもん,"division, department",Noun
+ノーベル賞,ノーベルしょう,Nobel Prize,Noun
+野党,やとう,opposition party,Noun
+楽,らく,"comfort, relief",Adjectival Noun
+財政,ざいせい,"public finance, financial affairs",Noun
+財産,ざいさん,"fortune, asset",Noun
+文化財,ぶんかざい,cultural assets,Noun
+助手,じょしゅ,"assistant, helper",Noun
+利息,りそく,interest,Noun
+預金,よきん,"deposit, bank account",Verbal Noun
+金融,きんゆう,finance,Noun
+間隔,かんかく,"interval, space",Noun
+終了,しゅうりょう,"end, expiry",Verbal Noun
+完了,かんりょう,completion,Verbal Noun
+課程,かてい,"course, curriculum",Noun
+修了,しゅうりょう,completion,Verbal Noun
+承認,しょうにん,"approval, recognition",Verbal Noun
+承知,しょうち,"consent, knowledge",Verbal Noun
+納める,おさめる,pay a tax or fee,Verb
+株式,かぶしき,stock,Noun
+説得,せっとく,persuasion,Verbal Noun
+所得,しょとく,"income, earnings",Noun
+支持,しじ,"support, maintenance",Verbal Noun
+学科,がっか,"subject, department",Noun
+得る,える,"obtain, gain",Verb
+知識,ちしき,knowledge,Noun
+納得,なっとく,"acceptance, persuasion",Verbal Noun
+批評,ひひょう,"criticism, comment",Verbal Noun
+不得意,ふとくい,one's weak point,Adjectival Noun
+得する,とくする,"profit, gain",Verb
+得,とく,"gain, advantage",Adjectival Noun
+損,そん,"loss, damage",Verbal Noun
+損害,そんがい,"damage, harm",Noun
+損する,そんする,"lose, suffer loss",Verb
+意欲,いよく,"volition, motivation",Noun
+燃料,ねんりょう,fuel,Noun
+燃やす,もやす,burn,Verb
+日焼け,ひやけ,suntan,Verbal Noun
+焼き肉,やきにく,"grilled meat, barbequed meat",Noun
+夕焼け,ゆうやけ,sunset glow,Noun
+焼きそば,やきそば,pan-fried noodles,Noun
+乾燥,かんそう,"drying up, desiccation",Verbal Noun
+幹部,かんぶ,executive,Noun
+時速,じそく,speed per hour,Noun
+速度,そくど,"speed, velocity",Noun
+幹,みき,tree trunk,Noun
+業績,ぎょうせき,"achievement, performance",Noun
+酸素,さんそ,oxygen,Noun
+素直,すなお,"honest, straightforward",Adjective
+水素,すいそ,hydrogen,Noun
+素早い,すばやい,"nimble, quick",Adjective
+スピーチ,スピーチ,speech,Noun
+効き目,ききめ,"effect, efficacy",Noun
+心,こころ,"heart, mind",Noun
+実に,じつに,"truly, surely",Adverb
+対応,たいおう,"correspondence, equivalence",Verbal Noun
+働き,はたらき,"work, function",Noun
+チャンス,チャンス,chance,Noun
+石炭,せきたん,coal,Noun
+岩,いわ,"rock, crag",Noun
+もろい,もろい,"weak, brittle",Adjective
+無生物,むせいぶつ,inanimate object,Noun
+岸,きし,"shore, bank",Noun
+キス,キス,kiss,Verbal Noun
+成長,せいちょう,growth,Verbal Noun
+校庭,こうてい,"schoolyard, campus",Noun
+一周,いっしゅう,"circle, around",Verbal Noun
+昨晩,さくばん,"last night, last evening",Noun
+貧しい,まずしい,"poor, needy",Adjective
+照らす,てらす,"illuminate, shine on",Verb
+手入れ,ていれ,"care, repairs",Verbal Noun
+まく,まく,"sow, scatter",Verb
+実,み,"fruit, nut",Noun
+膨らむ,ふくらむ,"expand, swell",Verb
+名所,めいしょ,"noted place, sights",Noun
+高原,こうげん,"plateau, highland",Noun
+分散,ぶんさん,dispersion,Verbal Noun
+散る,ちる,"scatter, fall",Verb
+散らかる,ちらかる,"lie scattered about, be in disorder",Verb
+散らかす,ちらかす,"scatter, disarrange",Verb
+月夜,つきよ,moonlit night,Noun
+植物,しょくぶつ,"plant, vegetation",Noun
+植民地,しょくみんち,"colony, settlement",Noun
+植木,うえき,"garden plant, shrub",Noun
+全般,ぜんぱん,"whole, general",Noun
+どく,どく,move out of the way,Verb
+田植え,たうえ,rice planting,Verbal Noun
+継続,けいぞく,"continuation, succession",Verbal Noun
+根拠,こんきょ,"grounds, basis",Noun
+根本,こんぽん,"basis, root",Noun
+金色,きんいろ,golden color,Noun
+平ら,たいら,"flat, level",Adjective
+目印,めじるし,"landmark, sign",Noun
+根,ね,"root, source",Noun
+大根,だいこん,"daikon radish, oriental radish",Noun
+はしご,はしご,ladder,Noun
+板,いた,"board, plank",Noun
+看板,かんばん,"signboard, sign",Noun
+まな板,まないた,chopping board,Noun
+草花,くさばな,plants and flowers,Noun
+ほうれん草,ほうれんそう,spinach,Noun
+疑問,ぎもん,"question, doubt",Noun
+言葉遣い,ことばづかい,"wording, language",Noun
+落ち葉,おちば,fallen leaves,Noun
+言い換える,いいかえる,"express in different words, paraphrase",Verb
+木の葉,このは,tree leaves,Noun
+書き言葉,かきことば,written language,Noun
+傷付く,きずつく,"get injured, be hurt",Verb
+女性的,じょせいてき,"feminine, womanly",Adjective
+適切,てきせつ,"appropriate, adequate",Adjective
+和語,わご,native Japanese word,Noun
+話し言葉,はなしことば,spoken language,Noun
+ひらひら,ひらひら,"lightly, floating",Adverb
+葉っぱ,はっぱ,leaf,Noun
+警官,けいかん,"police officer, policeman",Noun
+ついで,ついで,on the way,Noun
+呼び出す,よびだす,"call, page",Verb
+吸収,きゅうしゅう,"absorption, merger",Verbal Noun
+息,いき,breath,Noun
+呼吸,こきゅう,"breathing, respiration",Verbal Noun
+正常,せいじょう,"normality, normalcy",Adjectival Noun
+吸い込む,すいこむ,"inhale, suck in",Verb
+及ぶ,およぶ,"reach to, come up to",Verb
+取り扱う,とりあつかう,"handle, deal in",Verb
+平等,びょうどう,"equality, impartiality",Adjectival Noun
+取り扱い,とりあつかい,"handling, manipulation",Noun
+高級,こうきゅう,"high rank, high class",Adjectival Noun
+級,きゅう,"grade, class",Noun
+上級,じょうきゅう,"higher grade, advanced class",Noun
+初級,しょきゅう,"beginner class, elementary level",Noun
+同級生,どうきゅうせい,classmate,Noun
+中級,ちゅうきゅう,"middle-class, intermediate",Noun
+すっと,すっと,clear,Adverb
+食う,くう,"eat, live on",Verb
+結構,けっこう,"all right, no thank you",Adjective
+腹,はら,belly,Noun
+引っ込む,ひっこむ,"draw back, pull in",Verb
+腹一杯,はらいっぱい,full stomach,Adverb
+肺,はい,"lung, lungs",Noun
+平たい,ひらたい,"flat, level",Adjective
+番,ばん,"one's turn, watch",Noun
+出血,しゅっけつ,"bleeding, hemorrhage",Verbal Noun
+血液,けつえき,blood,Noun
+高温,こうおん,high temperature,Noun
+溶ける,とける,"be dissolved, be melted",Verb
+溶かす,とかす,"dissolve, melt",Verb
+証明,しょうめい,"proof, evidence",Verbal Noun
+液,えき,"liquid, fluid",Noun
+容易,ようい,"easy, simple",Adjectival Noun
+容器,ようき,"receptacle, container",Noun
+好む,このむ,"like, be fond of",Verb
+背中,せなか,back,Noun
+背広,せびろ,business suit,Noun
+痛み,いたみ,"pain, ache",Noun
+形成,けいせい,formation,Verbal Noun
+外科,げか,surgery,Noun
+骨折,こっせつ,"fracture, broken bone",Verbal Noun
+分析,ぶんせき,analysis,Verbal Noun
+健全,けんぜん,"healthy, sound",Adjective
+保健,ほけん,"health, health care",Noun
+健康,けんこう,health,Noun
+害,がい,"harm, damage",Verbal Noun
+ブーム,ブーム,boom,Noun
+適度,てきど,"moderate, proper",Adjectival Noun
+早寝,はやね,going to bed early,Verbal Noun
+診察,しんさつ,medical examination,Verbal Noun
+内科,ないか,internal medicine,Noun
+診る,みる,examine,Verb
+植物園,しょくぶつえん,botanical garden,Noun
+体験,たいけん,experience,Verbal Noun
+日本酒,にほんしゅ,"sake, rice wine",Noun
+医療,いりょう,"medical service, healthcare",Noun
+治療,ちりょう,medical treatment,Verbal Noun
+気の毒,きのどく,"pitiable, regrettable",Adjectival Noun
+消毒,しょうどく,"disinfection, sterilization",Verbal Noun
+毒,どく,"poison, harm",Noun
+中毒,ちゅうどく,poisoning,Verbal Noun
+有毒,ゆうどく,"poisonous, noxious",Adjectival Noun
+ばい菌,ばいきん,"bacterium, germ",Noun
+症状,しょうじょう,symptom,Noun
+中年,ちゅうねん,middle age,Noun
+清書,せいしょ,clean copy,Verbal Noun
+イメージ,イメージ,image,Verbal Noun
+清潔,せいけつ,"cleanliness, neatness",Adjectival Noun
+不潔,ふけつ,"dirty, filthy",Adjectival Noun
+監督,かんとく,"supervisor, film director",Verbal Noun
+撮影,さつえい,"photographing, shoot",Verbal Noun
+アップ,アップ,close-up,Verbal Noun
+水中,すいちゅう,"in the water, underwater",Noun
+プリント,プリント,print,Verbal Noun
+レントゲン,レントゲン,X-rays,Noun
+描く,えがく,"depict, describe",Verb
+図,ず,"figure, map",Noun
+画家,がか,"artist, painter",Noun
+地面,じめん,"surface, ground",Noun
+曲線,きょくせん,"curve, curved line",Noun
+苦心,くしん,"pains, efforts",Verbal Noun
+油絵,あぶらえ,oil painting,Noun
+直線,ちょくせん,straight line,Noun
+活躍,かつやく,"activity, action",Verbal Noun
+再開,さいかい,"reopening, restart",Verbal Noun
+再生,さいせい,playback,Verbal Noun
+再会,さいかい,reunion,Verbal Noun
+交わす,かわす,exchange,Verb
+編む,あむ,knit,Verb
+編集,へんしゅう,"editing, compilation",Verbal Noun
+後半,こうはん,"latter half, second half",Noun
+火災,かさい,"fire, conflagration",Noun
+解放,かいほう,"release, setting free",Verbal Noun
+機長,きちょう,airplane captain,Noun
+開放,かいほう,opening,Verbal Noun
+本来,ほんらい,"originally, essentially",Adverb
+追放,ついほう,"banishment, deportation",Verbal Noun
+中継,ちゅうけい,"relay, broadcasting",Verbal Noun
+放射能,ほうしゃのう,radioactivity,Noun
+放る,ほうる,"fling, hurl",Verb
+重視,じゅうし,"importance, value",Verbal Noun
+視点,してん,viewpoint,Noun
+近視,きんし,"nearsightedness, shortsightedness",Noun
+無視,むし,"ignoring, disregarding",Verbal Noun
+他方,たほう,other side,Noun
+ジャズ,ジャズ,jazz,Noun
+衣類,いるい,"clothes, garments",Noun
+衣服,いふく,"clothes, dress",Noun
+衣料,いりょう,"clothing, garments",Noun
+衣食住,いしょくじゅう,clothing and food and housing,Noun
+地味,じみ,"plain, sober",Adjectival Noun
+整える,ととのえる,"arrange, adjust",Verb
+相応しい,ふさわしい,"suitable, appropriate",Adjective
+仮に,かりに,"supposing that, even if",Adverb
+仮定,かてい,"assumption, supposition",Verbal Noun
+仮,かり,"provisional, temporary",Noun
+振り仮名,ふりがな,reading aid in kana characters,Noun
+演説,えんぜつ,"speech, address",Verbal Noun
+公演,こうえん,public performance,Verbal Noun
+出演,しゅつえん,"appearance on stage, performance",Verbal Noun
+力強い,ちからづよい,"powerful, vigorous",Adjective
+役,やく,"role, part",Noun
+劇,げき,"drama, play",Noun
+主役,しゅやく,"leading part, starring role",Noun
+劇場,げきじょう,theater,Noun
+演劇,えんげき,"drama, play",Noun
+喜劇,きげき,comedy,Noun
+国立,こくりつ,national,Noun
+昨夜,さくや,last night,Noun
+始まり,はじまり,beginning,Noun
+別れ,わかれ,"separation, parting",Noun
+乗り越える,のりこえる,"overcome, get over",Verb
+悲劇,ひげき,"tragedy, tragic drama",Noun
+まして,まして,much more,Adverb
+集団,しゅうだん,"group, mass",Noun
+団体,だんたい,"group, corporation",Noun
+団地,だんち,"housing estate, housing complex",Noun
+固める,かためる,"harden, strengthen",Verb
+固まる,かたまる,"harden, solidify",Verb
+固体,こたい,"solid, solid matter",Noun
+我々,われわれ,we,Noun
+インテリ,インテリ,intelligent,Noun
+かぼちゃ,かぼちゃ,pumpkin,Noun
+かじる,かじる,"nibble, bite",Verb
+ぎょうざ,ぎょうざ,Chinese dumpling,Noun
+対比,たいひ,"contrast, comparison",Verbal Noun
+はっと,はっと,taken aback,Adverb
+定義,ていぎ,definition,Verbal Noun
+何百,なんびゃく,"several hundred, hundreds",Noun
+博士,はくし,Ph.D.,Noun
+博士,はかせ,"expert, doctor",Noun
+急速,きゅうそく,"rapid, swift",Adjective
+近代,きんだい,modern times,Noun
+展開,てんかい,"unfolding, development",Verbal Noun
+発展,はってん,"expansion, prosperity",Verbal Noun
+主催,しゅさい,"sponsorship, promotion",Verbal Noun
+オリンピック,オリンピック,the Olympics,Noun
+催し,もよおし,"event, function",Noun
+促す,うながす,"hasten, urge",Verb
+催促,さいそく,"demand, urging",Verbal Noun
+古典,こてん,classics,Noun
+辞典,じてん,dictionary,Noun
+漢和,かんわ,Chinese and Japanese,Noun
+典型的,てんけいてき,"typical, representative",Adjective
+典型,てんけい,"type, model",Noun
+殊に,ことに,"especially, exceptionally",Adverb
+ダウン,ダウン,"down, malfunction",Verbal Noun
+特殊,とくしゅ,"special, unique",Adjective
+微か,かすか,"faint, dim",Adjective
+微妙,びみょう,"subtle, delicate",Adjectival Noun
+ご免,ごめん,sorry,Noun
+免税,めんぜい,tax exemption,Verbal Noun
+許可,きょか,"permission, approval",Verbal Noun
+有効,ゆうこう,"effective, valid",Adjectival Noun
+どうか,どうか,please,Adverb
+免許,めんきょ,"license, permit",Noun
+無責任,むせきにん,irresponsibility,Adjectival Noun
+取消し,とりけし,"cancellation, annulment",Verbal Noun
+訓読み,くんよみ,Japanese pronunciation,Verbal Noun
+訓,くん,Japanese reading of kanji,Noun
+助詞,じょし,"particle, postposition",Noun
+形容詞,けいようし,adjective,Noun
+動詞,どうし,verb,Noun
+名詞,めいし,noun,Noun
+副詞,ふくし,adverb,Noun
+代名詞,だいめいし,pronoun,Noun
+従う,したがう,"follow, obey",Verb
+上司,じょうし,boss,Noun
+厳重,げんじゅう,"strict, secure",Adjective
+司会,しかい,"master of ceremonies, host",Verbal Noun
+先程,さきほど,"some time ago, a little while ago",Noun
+務める,つとめる,"perform a duty, play a role",Verb
+向ける,むける,"turn toward, point at",Verb
+引き延ばす,ひきのばす,"extend, prolong",Verb
+ぺこぺこ,ぺこぺこ,"bow, kowtow",Adverb
+購入,こうにゅう,purchase,Verbal Noun
+講演,こうえん,lecture,Verbal Noun
+講義,こうぎ,lecture,Verbal Noun
+夏季,かき,"summer, summer season",Noun
+休講,きゅうこう,cancellation of lecture,Verbal Noun
+テーマ,テーマ,"the theme, the subject",Noun
+講師,こうし,"speaker, lecturer",Noun
+診断,しんだん,diagnosis,Verbal Noun
+技師,ぎし,"engineer, technician",Noun
+歯科,しか,dentistry,Noun
+関わる,かかわる,"involve, concern",Verb
+師走,しわす,December,Noun
+化学,かがく,chemistry,Noun
+後期,こうき,latter period,Noun
+工学部,こうがくぶ,department of engineering,Noun
+雑談,ざつだん,"chat, idle talk",Verbal Noun
+時間割り,じかんわり,time table,Noun
+レベル,レベル,level,Noun
+専門家,せんもんか,"specialist, expert",Noun
+短縮,たんしゅく,"shortening, contraction",Verbal Noun
+登録,とうろく,registration,Verbal Noun
+必死,ひっし,desperation,Adjectival Noun
+体育,たいいく,"physical training, physical education",Noun
+レポート,レポート,"report, paper",Verbal Noun
+払い込む,はらいこむ,"pay in, pay up",Verb
+下,もと,under the supervision,Noun
+全て,すべて,"all, entirely",Adverb
+お手伝い,おてつだい,"helper, assistant",Verbal Noun
+後片付け,あとかたづけ,cleaning up,Verbal Noun
+言付ける,ことづける,leave a message,Verb
+保守,ほしゅ,"conservation, maintenance",Verbal Noun
+伝統,でんとう,"tradition, convention",Noun
+伝わる,つたわる,"be transmitted, be handed down",Verb
+伝説,でんせつ,"legend, folk tale",Noun
+手伝い,てつだい,"help, assistant",Noun
+真っ先,まっさき,"first thing, forefront",Noun
+伝言,でんごん,verbal message,Verbal Noun
+固有,こゆう,"peculiar to, characteristic",Adjectival Noun
+小鳥,ことり,small bird,Noun
+焼き鳥,やきとり,"yakitori, grilled chicken",Noun
+からす,からす,"crow, raven",Noun
+悲鳴,ひめい,"shriek, scream",Noun
+周囲,しゅうい,"circumference, surroundings",Noun
+雑音,ざつおん,"noise, interference",Noun
+大声,おおごえ,loud voice,Noun
+高まる,たかまる,"rise, increase",Verb
+響く,ひびく,"reverberate, vibrate",Verb
+笑い声,わらいごえ,laughter,Noun
+泣き声,なきごえ,"tearful voice, crying",Noun
+話し声,はなしごえ,"voice, whisper",Noun
+混じる,まじる,"be blended, get mixed",Verb
+世話,せわ,"take care of, provide service",Verbal Noun
+ぐるぐる,ぐるぐる,round and round,Adverb
+くすぐったい,くすぐったい,ticklish,Adjective
+日課,にっか,daily routine,Noun
+放す,はなす,"release, free",Verb
+利口,りこう,"clever, bright",Adjectival Noun
+なめる,なめる,"lick, lap",Verb
+禁止,きんし,"prohibition, forbiddance",Verbal Noun
+警告,けいこく,"warning, admonition",Verbal Noun
+後ろ向き,うしろむき,facing backward,Noun
+取り締まり,とりしまり,"regulation, crackdown",Noun
+駐車,ちゅうしゃ,parking,Verbal Noun
+騒ぎ,さわぎ,"clamor, commotion",Noun
+騒がしい,さわがしい,noisy,Adjective
+がやがや,がやがや,chatter loudly,Adverb
+騒音,そうおん,noise,Noun
+騒動,そうどう,"disturbance, confusion",Noun
+騒々しい,そうぞうしい,"noisy, rowdy",Adjective
+飼う,かう,"raise, keep",Verb
+いか,いか,squid,Noun
+名刺,めいし,"business card, calling card",Noun
+まぐろ,まぐろ,tuna,Noun
+わさび,わさび,"wasabi, Japanese horseradish",Noun
+急激,きゅうげき,"sudden, abrupt",Adjectival Noun
+刺激,しげき,"stimulus, stimulation",Verbal Noun
+感激,かんげき,"deep emotion, moving",Verbal Noun
+日中,にっちゅう,Sino-Japanese,Noun
+天候,てんこう,"weather, climate",Noun
+人通り,ひとどおり,traffic,Noun
+脳,のう,brain,Noun
+興味,きょうみ,interest,Noun
+西洋,せいよう,"the West, the Occident",Noun
+起源,きげん,"origin, beginning",Noun
+一向に,いっこうに,"absolutely, at all",Adverb
+民族,みんぞく,"race, people",Noun
+パターン,パターン,pattern,Noun
+文学,ぶんがく,literature,Noun
+興奮,こうふん,"excitement, agitation",Verbal Noun
+観客,かんきゃく,"audience, spectator",Noun
+現代,げんだい,"present age, modern times",Noun
+驚かす,おどろかす,"surprise, amaze",Verb
+至る,いたる,"come to, reach",Verb
+至る所,いたるところ,"everywhere, all over",Noun
+至急,しきゅう,"urgent, pressing",Noun
+末,すえ,(after) the end,Noun
+出荷,しゅっか,"shipping, dispatch",Verbal Noun
+一致,いっち,"accord, agreement",Verbal Noun
+致す,いたす,humbly do,Verb
+遅れ,おくれ,"delay, being late",Noun
+到着,とうちゃく,arrival,Verbal Noun
+地点,ちてん,"spot, point",Noun
+過労,かろう,overwork,Noun
+急病,きゅうびょう,sudden illness,Noun
+倒産,とうさん,insolvency,Verbal Noun
+面倒,めんどう,"troublesome, difficult",Adjectival Noun
+疲労,ひろう,fatigue,Verbal Noun
+並木,なみき,"row of trees, roadside trees",Noun
+斜め,ななめ,"diagonal, slant",Adjectival Noun
+たっぷり,たっぷり,"fully, amply",Adverb
+傾く,かたむく,"decline, go down",Verb
+傾ける,かたむける,"lean, cock (one's head)",Verb
+坂,さか,"slope, incline",Noun
+緩やか,ゆるやか,"slack, loose",Adjective
+チェンジ,チェンジ,"change, exchange",Verbal Noun
+狭まる,せばまる,"become narrow, contract",Verb
+狭める,せばめる,"narrow, contract",Verb
+空間,くうかん,"space, room",Noun
+幅,はば,"width, breadth",Noun
+徐行,じょこう,slow speed,Verbal Noun
+血管,けっかん,blood vessel,Noun
+硬さ,かたさ,hardness,Noun
+自然に,しぜんに,"naturally, instinctively",Adverb
+柔軟,じゅうなん,"pliable, flexible",Adjective
+傷める,いためる,"damage, spoil",Verb
+柔らかい,やわらかい,"soft, gentle",Adjective
+緊急,きんきゅう,"urgent, pressing",Adjectival Noun
+緊張,きんちょう,"tension, strain",Verbal Noun
+しばしば,しばしば,"often, frequently",Adverb
+出張,しゅっちょう,business trip,Verbal Noun
+命じる,めいじる,"order, give orders",Verb
+人前,ひとまえ,in front of other people,Noun
+張り切る,はりきる,"go all out, make efforts",Verb
+欲張り,よくばり,"greed, greedy",Adjectival Noun
+衝突,しょうとつ,"collision, conflict",Verbal Noun
+失業,しつぎょう,"unemployment, loss of job",Verbal Noun
+煙突,えんとつ,"chimney, smokestack",Noun
+十字路,じゅうじろ,crossroads,Noun
+海上,かいじょう,maritime,Noun
+言い出す,いいだす,begin to speak,Verb
+煙,けむり,"smoke, fumes",Noun
+突然,とつぜん,"abruptly, suddenly",Adverb
+突く,つく,"thrust, poke",Verb
+発熱,はつねつ,"generation of heat, get a fever",Verbal Noun
+追突,ついとつ,collision,Verbal Noun
+どきっと,どきっと,"surprised, shocked",Adverb
+停止,ていし,"stop, suspension",Verbal Noun
+滑らか,なめらか,"smooth, glassy",Adjective
+触れる,ふれる,"touch, come in contact with",Verb
+寝室,しんしつ,bedroom,Noun
+くっ付ける,くっつける,"join, paste",Verb
+ぶつける,ぶつける,bump,Verb
+はげる,はげる,"come off, peel off",Verb
+避ける,さける,"avoid, evade",Verb
+訓練,くんれん,"training, drill",Verbal Noun
+最悪,さいあく,the worst,Adjectival Noun
+避難,ひなん,"refuge, shelter",Verbal Noun
+基地,きち,"base, military base",Noun
+軍事,ぐんじ,military affairs,Noun
+自衛隊,じえいたい,Self Defense Forces,Noun
+軍隊,ぐんたい,"army, troops",Noun
+墜落,ついらく,"fall, crash",Verbal Noun
+旅客機,りょかくき,passenger plane,Noun
+兵器,へいき,"arms, weapon",Noun
+結核,けっかく,tuberculosis,Noun
+武器,ぶき,"weapon, arms",Noun
+兵隊,へいたい,"soldier, troops",Noun
+弾,たま,"bullet, shot",Noun
+弾む,はずむ,"spring back, bounce",Verb
+試し,ためし,"trial, test",Noun
+シャッター,シャッター,shutter,Noun
+くしゃくしゃ,くしゃくしゃ,"messy, scrunch",Adverb
+真ん丸,まんまる,perfect circle,Adjectival Noun
+専攻,せんこう,"major, specialization",Verbal Noun
+攻める,せめる,"attack, take the offensive",Verb
+ジャーナリズム,ジャーナリズム,journalism,Noun
+人文科学,じんぶんかがく,humanities,Noun
+美術,びじゅつ,"art, fine arts",Noun
+物理,ぶつり,"physics, natural law",Noun
+怒り,いかり,"anger, rage",Noun
+管,かん,"pipe, tube",Noun
+兵士,へいし,soldier,Noun
+爆発,ばくはつ,"explosion, eruption",Verbal Noun
+爆弾,ばくだん,bomb,Noun
+起こす,おこす,"bring about, cause",Verb
+暴れる,あばれる,"act violently, rage about",Verb
+暴落,ぼうらく,"slump, crash",Verbal Noun
+説く,とく,"explain, preach",Verb
+暴力,ぼうりょく,"violence, force",Noun
+乱暴,らんぼう,violence,Verbal Noun
+悲しみ,かなしみ,"grief, sadness",Noun
+改良,かいりょう,"improvement, reform",Verbal Noun
+争い,あらそい,"conflict, battle",Noun
+絶対,ぜったい,absolutely,Adverb
+気絶,きぜつ,fainting,Verbal Noun
+絶えず,たえず,"constantly, always",Adverb
+笑い,わらい,laughter,Noun
+肉体,にくたい,"body, flesh",Noun
+滅びる,ほろびる,"go to ruin, fall",Verb
+設置,せっち,establishment,Verbal Noun
+核,かく,"core, atomic nucleus",Noun
+防衛,ぼうえい,"defense, protection",Verbal Noun
+防止,ぼうし,"prevention, determent",Verbal Noun
+防火,ぼうか,"fire prevention, fireproof",Noun
+天災,てんさい,natural disaster,Noun
+妨害,ぼうがい,"hindrance, obstruction",Verbal Noun
+嫌う,きらう,dislike,Verb
+嫌がる,いやがる,"dislike, hate",Verb
+機嫌,きげん,"mood, health",Noun
+好き嫌い,すききらい,"likes and dislikes, taste",Noun
+徹夜,てつや,staying up all night,Noun
+生物,せいぶつ,"living creature, lifeform",Noun
+徹底的,てっていてき,"thorough, exhaustive",Adjective
+到底,とうてい,"after all, in the long run",Adverb
+抗議,こうぎ,"protest, remonstrance",Verbal Noun
+抵抗,ていこう,"resistance, opposition",Verbal Noun
+グリーン,グリーン,green,Noun
+素敵,すてき,"lovely, nice",Adjective
+男性,だんせい,"male, man",Noun
+デザイン,デザイン,design,Verbal Noun
+破る,やぶる,defeat,Verb
+ドレス,ドレス,dress,Noun
+横顔,よこがお,"profile, face seen from side",Noun
+敵,てき,"enemy, foe",Noun
+脅かす,おどかす,"threaten, intimidate",Verb
+権威,けんい,"authority, power",Noun
+威張る,いばる,"put on airs, be arrogant",Verb
+情勢,じょうせい,"state of things, situation",Noun
+勢い,いきおい,"vigor, momentum",Noun
+方々,かたがた,people,Noun
+見物人,けんぶつにん,"spectator, sightseer",Noun
+態勢,たいせい,"state, preparedness",Noun
+映す,うつす,"reflect, project",Verb
+書道,しょどう,Japanese calligraphy,Noun
+受け身,うけみ,"passiveness, passive voice",Noun
+現す,あらわす,"show, reveal",Verb
+常に,つねに,"always, at all times",Adverb
+死,し,death,Noun
+恐れる,おそれる,"fear, apprehend",Verb
+恐らく,おそらく,probably,Adverb
+顔付き,かおつき,"face, expression",Noun
+怖がる,こわがる,"be afraid of, fear",Verb
+巨大,きょだい,"huge, gigantic",Adjectival Noun
+拒否,きょひ,"denial, rejection",Verbal Noun
+系列,けいれつ,affiliation,Noun
+系統,けいとう,"system, lineage",Noun
+体系,たいけい,"system, organization",Noun
+理系,りけい,science,Noun
+文系,ぶんけい,"liberal arts, humanities",Noun
+子孫,しそん,"descendant, offspring",Noun
+絹,きぬ,"silk, silk fabrics",Noun
+綿,めん,cotton,Noun
+維持,いじ,"maintenance, upkeep",Verbal Noun
+紳士,しんし,gentleman,Noun
+繁栄,はんえい,"prosperity, thriving",Verbal Noun
+偉大,いだい,"great, mighty",Adjective
+発明,はつめい,invention,Verbal Noun
+日韓,にっかん,Japan and Korea,Noun
+刀,かたな,"sword, blade",Noun
+かみそり,かみそり,razor,Noun
+耐える,たえる,"withstand, endure",Verb
+矢印,やじるし,arrow,Noun
+孤独,こどく,"solitary, lonely",Adjectival Noun
+爪切り,つめきり,nail clipper,Noun
+ざらざら,ざらざら,"rough, gritty",Noun
+散らばる,ちらばる,be scattered,Verb
+枠,わく,"frame, limits",Noun
+水平,すいへい,"horizontal, level",Adjectival Noun
+振動,しんどう,vibration,Verbal Noun
+端,はし,"end, edge",Noun
+固定,こてい,"fixing, stability",Verbal Noun
+先端,せんたん,"edge, vanguard",Noun
+棒,ぼう,"rod, stick",Noun
+細長い,ほそながい,"long and thin, slender",Adjective
+事柄,ことがら,"matter, affair",Noun
+柄,がら,"pattern, design",Noun
+人柄,ひとがら,"character, personality",Noun
+武士,ぶし,"samurai, warrior",Noun
+重み,おもみ,"weight, importance",Noun
+枝,えだ,"branch, twig",Noun
+草木,くさき,plants and trees,Noun
+木枯らし,こがらし,cold wintry wind,Noun
+詩,し,poetry,Noun
+詩人,しじん,poet,Noun
+着替え,きがえ,change of clothes,Verbal Noun
+パイプ,パイプ,pipe,Noun
+詰める,つめる,"stuff, fill",Verb
+詰まる,つまる,"be stuffed, be stopped up",Verb
+無理やり,むりやり,"by force, against one's will",Adverb
+譲る,ゆずる,"transfer, concede",Verb
+年配,ねんぱい,"age, elderly age",Noun
+欠く,かく,lack,Verb
+誠実,せいじつ,"sincerity, honesty",Adjectival Noun
+誠に,まことに,"truly, very",Adverb
+盛ん,さかん,"prosperous, active",Adjective
+登場,とうじょう,"appearance on stage, appearance",Verbal Noun
+盛り上げる,もりあげる,build up excitement,Verb
+地方,ちほう,"district, region",Noun
+盛り上がる,もりあがる,"become lively, get fired up",Verb
+盛る,もる,"heap up, fill",Verb
+謙遜,けんそん,"humility, modesty",Verbal Noun
+兼ねる,かねる,"serve two functions, combine",Verb
+公式,こうしき,"formal, official",Adjectival Noun
+通す,とおす,"let pass, run through",Verb
+針,はり,"needle, needle-shaped object",Noun
+ペンチ,ペンチ,pliers,Noun
+確かめる,たしかめる,"make sure of, confirm",Verb
+名人,めいじん,"master, master hand",Noun
+釣り,つり,angling,Noun
+逃がす,にがす,let go,Verb
+釣り合い,つりあい,"balance, proportion",Noun
+釣り合う,つりあう,"balance, match",Verb
+鈍い,にぶい,"dull, sluggish",Adjective
+鈍感,どんかん,thick-headedness,Adjectival Noun
+鎖,くさり,"chain, tether",Noun
+申す,もうす,"speak humbly, state humbly",Verb
+作製,さくせい,"manufacture, production",Verbal Noun
+鑑賞,かんしょう,"viewing, enjoyment (of art)",Verbal Noun
+印鑑,いんかん,personal seal,Noun
+鐘,かね,"bell, gong",Noun
+観賞,かんしょう,ornamental,Verbal Noun
+アルミニウム,アルミニウム,aluminum,Noun
+鉄,てつ,iron,Noun
+出前,でまえ,home delivery of food,Noun
+谷,たに,"valley, ravine",Noun
+余裕,よゆう,"room, leeway",Noun
+海水浴,かいすいよく,sea bathing,Verbal Noun
+入浴,にゅうよく,bathing,Verbal Noun
+赤道,せきどう,equator,Noun
+沿う,そう,"lie along, follow along",Verb
+砂浜,すなはま,"sandy beach, sands",Noun
+浜,はま,"beach, seashore",Noun
+はだし,はだし,"barefoot, bare feet",Noun
+浮かぶ,うかぶ,float,Verb
+沖,おき,offshore,Noun
+湾,わん,"bay, gulf",Noun
+泉,いずみ,"spring, fountain",Noun
+温泉,おんせん,hot spring,Noun
+天然,てんねん,nature,Noun
+上流,じょうりゅう,upstream,Noun
+下流,かりゅう,downstream,Noun
+広場,ひろば,"square, open space",Noun
+慣らす,ならす,accustom,Verb
+潜る,もぐる,dive into,Verb
+冷淡,れいたん,"cool, indifferent",Adjectival Noun
+濁る,にごる,get cloudy,Verb
+澄む,すむ,"clear, become clear",Verb
+あふれる,あふれる,"over flow, flood",Verb
+ポット,ポット,"pot, thermos",Noun
+湯気,ゆげ,"steam, vapor",Noun
+喜び,よろこび,"joy, happiness",Noun
+湿る,しめる,"get damp, get wet",Verb
+多量,たりょう,"large quantity, great deal",Noun
+漏れる,もれる,"leak, be disclosed",Verb
+漏らす,もらす,"give away, let leak",Verb
+底,そこ,"bottom, depths",Noun
+大部分,だいぶぶん,"most, greater part",Noun
+濡らす,ぬらす,"wet, moisten",Verb
+溝,みぞ,"ditch, groove",Noun
+ねぎ,ねぎ,"Welsh onion, green onion",Noun
+危機,きき,"crisis, emergency",Noun
+叫び,さけび,"shout, cry",Noun
+叫ぶ,さけぶ,"shout, cry out",Verb
+吐く,はく,"holler, spew",Verb
+嘆く,なげく,"sigh, grieve",Verb
+喫煙,きつえん,smoking,Verbal Noun
+痛む,いたむ,"feel pain, hurt",Verb
+音,ね,"sound, note",Noun
+予防,よぼう,"prevention, protection",Verbal Noun
+虫歯,むしば,"decayed tooth, cavity",Noun
+虫,むし,"insect, worm",Noun
+忠実,ちゅうじつ,"faithfulness, devotion",Adjectival Noun
+忠告,ちゅうこく,"advice, admonishment",Verbal Noun
+いけない,いけない,"wrong, must not",Adjective
+懸ける,かける,stake,Verb
+一まず,ひとまず,first of all,Adverb
+恩,おん,"debt of gratitude, kindness",Noun
+恵まれる,めぐまれる,"be blessed, be privileged",Verb
+天,てん,"sky, Heaven",Noun
+道徳,どうとく,"morality, morals",Noun
+知り合い,しりあい,acquaintance,Noun
+市街,しがい,"the streets, downtown",Noun
+問屋,とんや,"wholesale store, wholesaler",Noun
+直径,ちょっけい,diameter,Noun
+半径,はんけい,radius,Noun
+和室,わしつ,Japanese style room,Noun
+漏る,もる,"leak, be leaky",Verb
+丼,どんぶり,bowl,Noun
+小量,しょうりょう,small amount,Noun
+転がす,ころがす,"roll, roll over",Verb
+粉,こな,"powder, flour",Noun
+粒,つぶ,"grain, drop",Noun
+小麦,こむぎ,wheat,Noun
+小麦粉,こむぎこ,flour,Noun
+大麦,おおむぎ,barley,Noun
+量る,はかる,"measure, weigh",Verb
+一帯,いったい,"area, vicinity",Noun
+取れる,とれる,"be harvested, be cultivated",Verb
+麦,むぎ,wheat,Noun
+田畑,たはた,fields and rice paddies,Noun
+炊事,すいじ,cooking,Verbal Noun
+灯油,とうゆ,"kerosene, lamp oil",Noun
+電灯,でんとう,"lamp, electric light",Noun
+炎,ほのお,"flame, blaze",Noun
+スモッグ,スモッグ,smog,Noun
+暦,こよみ,"calendar, almanac",Noun
+年月日,ねんがっぴ,date,Noun
+皮,かわ,"peel, fur",Noun
+皮肉,ひにく,"cynicism, irony",Adjectival Noun
+むける,むける,"come off, peel",Verb
+むく,むく,"peel, pare",Verb
+皮膚,ひふ,skin,Noun
+毛皮,けがわ,fur,Noun
+税関,ぜいかん,"custom house, customs",Noun
+毛糸,けいと,"woolen yarn, wool",Noun
+ブラシ,ブラシ,brush,Noun
+尾,お,tail,Noun
+結ぶ,むすぶ,"tie, join",Verb
+乱れる,みだれる,"be disordered, be disturbed",Verb
+そっと,そっと,"softly, gently",Adverb
+ピン,ピン,"hairpin, pin",Noun
+染める,そめる,"dye, color",Verb
+いきなり,いきなり,"all of a sudden, without warning",Adverb
+張る,はる,"strain, be stretched",Verb
+もむ,もむ,"rub, massage",Verb
+耳鼻科,じびか,"otorhinology, ENT",Noun
+唇,くちびる,"lip, lips",Noun
+臭い,におい,"smell, odor",Noun
+生臭い,なまぐさい,smelling of fish,Adjective
+臭う,におう,stink (unpleasant),Verb
+面倒臭い,めんどうくさい,"troublesome, tiresome",Adjective
+匂う,におう,smell (pleasant),Verb
+ベスト,ベスト,best,Noun
+解釈,かいしゃく,"interpretation, explanation",Verbal Noun
+居間,いま,living room,Noun
+居る,おる,"be present, stay (humble)",Verb
+間,かん,"interval, duration of time",Noun
+まあ,まあ,well,Interjection
+同居,どうきょ,living together,Verbal Noun
+土,つち,"soil, ground",Noun
+寄せる,よせる,"draw near, draw up, gather",Verb
+一層,いっそう,"more, even more",Adverb
+高層,こうそう,"high altitude, high-rise",Noun
+そびえる,そびえる,tower,Verb
+大層,たいそう,"very, highly",Adverb
+履歴,りれき,"history, personal history",Noun
+履歴書,りれきしょ,"resume, bio",Noun
+覆う,おおう,"cover, hide",Verb
+戸籍,こせき,family register,Noun
+ガラス戸,がらすど,glass door,Noun
+成年,せいねん,"majority, adult",Noun
+薬品,やくひん,"medicine, drug",Noun
+戸棚,とだな,"closet, cupboard",Noun
+扉,とびら,door,Noun
+うちわ,うちわ,round paper fan,Noun
+羽根,はね,feather,Noun
+翌日,よくじつ,the following day,Noun
+翌朝,よくあさ,the following morning,Noun
+翌年,よくねん,the following year,Noun
+陸,おか,"land, shore",Noun
+新鮮,しんせん,fresh,Adjective
+市場,いちば,"market, marketplace",Noun
+鮮やか,あざやか,vivid,Adjective
+あり,あり,ant,Noun
+群集,ぐんしゅう,crowd,Verbal Noun
+群れ,むれ,"crowd, herd",Noun
+郡,ぐん,county,Noun
+スケジュール,スケジュール,schedule,Noun
+君,きみ,you,Noun
+連れる,つれる,"take along, bring along",Verb
+任せる,まかせる,"entrust to, leave it to",Verb
+長所,ちょうしょ,"strong point, merit",Noun
+殴る,なぐる,"hit, strike",Verb
+要旨,ようし,"gist, overview",Noun
+脂,あぶら,"fat, grease",Noun
+脂肪,しぼう,"fat, grease",Noun
+すべすべ,すべすべ,smooth,Adverb
+肌,はだ,"skin, surface",Noun
+肌着,はだぎ,underwear,Noun
+肌色,はだいろ,flesh color,Noun
+コック,コック,"cook, chef",Noun
+領域,りょういき,"territory, domain",Noun
+胃腸,いちょう,stomach and intestines,Noun
+腸,ちょう,"intestines, entrails",Noun
+肝心,かんじん,"vital, essential",Adjectival Noun
+大胆,だいたん,"boldness, daring",Adjectival Noun
+幕,まく,curtain,Noun
+暮らす,くらす,"live, earn one's livelihood",Verb
+暮らし,くらし,"living, livelihood",Noun
+暮れ,くれ,"dusk, the end (of a season or a year)",Noun
+暮れる,くれる,grow dark,Verb
+温暖,おんだん,"warm, mild",Adjectival Noun
+お歳暮,おせいぼ,year-end gift,Noun
+ぜいたく,ぜいたく,"luxury, extravagance",Verbal Noun
+わずか,わずか,"few, little",Adjectival Noun
+不自由,ふじゆう,"inconvenience, discomfort",Verbal Noun
+調和,ちょうわ,"harmony, agreement",Verbal Noun
+望み,のぞみ,"desire, hope",Noun
+夕暮れ,ゆうぐれ,"evening, twilight",Noun
+仲良く,なかよく,"harmoniously, amicably",Adverb
+王,おう,king,Noun
+墓地,ぼち,"graveyard, cemetery",Noun
+墓参り,はかまいり,visit to a grave,Verbal Noun
+芝生,しばふ,"lawn, turf",Noun
+芽,め,"bud, sprout",Noun
+茎,くき,stem,Noun
+順々に,じゅんじゅんに,"by turns, in order",Adverb
+つまむ,つまむ,munch on,Verb
+推薦,すいせん,"recommendation, nomination",Verbal Noun
+沿岸,えんがん,"coast, shore",Noun
+荒れる,あれる,"be wild, run waste",Verb
+荒い,あらい,"wild, reckless",Adjective
+荒い,あらい,"harsh, rough",Adjective
+荒す,あらす,"damage, ransack",Verb
+慌ただしい,あわただしい,busy,Adjective
+慌てる,あわてる,"be flurried, hurry",Verb
+葬式,そうしき,funeral ceremony,Noun
+儀式,ぎしき,"ceremony, ritual",Noun
+行儀,ぎょうぎ,"manners, behavior",Noun
+礼儀,れいぎ,"good manners, courtesy",Noun
+犠牲,ぎせい,sacrifice,Noun
+悪,あく,"evil, badness",Noun
+憎む,にくむ,"hate, detest",Verb
+憎しみ,にくしみ,"hatred, enmity",Noun
+憎らしい,にくらしい,"hateful, horrible",Adjective
+憎い,にくい,"hateful, abominable",Adjective
+仏,ほとけ,"buddha, Buddhist image",Noun
+仏教,ぶっきょう,Buddhism,Noun
+日,にち,Japan,Noun
+お坊さん,おぼうさん,"monk, priest",Noun
+鳴らす,ならす,"ring, sound",Verb
+題名,だいめい,title,Noun
+坊さん,ぼうさん,Buddhist priest,Noun
+乗り遅れる,のりおくれる,miss,Verb
+ホット,ホット,hot,Noun
+国旗,こっき,national flag,Noun
+日の丸,ひのまる,"Rising Sun Flag, Japanese flag",Noun
+筆者,ひっしゃ,writer,Noun
+筆記試験,ひっきしけん,written examination,Noun
+とがる,とがる,be sharp,Verb
+筆記用具,ひっきようぐ,"writing materials, pens and pencils",Noun
+筆,ふで,"writing brush, penmanship",Noun
+竹,たけ,bamboo,Noun
+笛,ふえ,"flute, whistle",Noun
+名簿,めいぼ,"registry, name list",Noun
+全身,ぜんしん,the whole body,Noun
+筋肉,きんにく,"muscle, sinews",Noun
+筋道,すじみち,"method, logic",Noun
+筋,すじ,muscle,Noun
+伸ばす,のばす,"stretch, straighten",Verb
+光,ひかり,"light, flash",Noun
+ぎっしり,ぎっしり,tightly,Adverb
+小,しょう,"smallness, small size",Noun
+食料,しょくりょう,food supplies,Noun
+ふた,ふた,"lid, cover",Noun
+水色,みずいろ,"sky blue, turquoise",Noun
+透明,とうめい,transparent,Adjectival Noun
+座布団,ざぶとん,cushion,Noun
+まし,まし,"more, better",Adjective
+すり,すり,pickpocket,Noun
+落とし物,おとしもの,lost property,Noun
+突っ込む,つっこむ,"thrust in, dash into",Verb
+たった,たった,"only, merely",Adverb
+ふわふわ,ふわふわ,soft,Adjective
+取り出す,とりだす,"take out, pull out",Verb
+布,ぬの,cloth,Noun
+自己,じこ,"oneself, self",Noun
+切れ,きれ,sharpness,Noun
+包丁,ほうちょう,"kitchen knife, carving knife",Noun
+包み,つつみ,"package, parcel",Noun
+包み紙,つつみがみ,wrapping paper,Noun
+抱える,かかえる,hold in one's arms,Verb
+抱く,いだく,"embrace, hug",Verb
+悩み,なやみ,"troubles, worries",Noun
+少量,しょうりょう,small quantity,Noun
+句,く,"phrase, clause",Noun
+慣用句,かんようく,"idiom, common phrase",Noun
+文句,もんく,complaint,Noun
+下旬,げじゅん,end of the month,Noun
+上旬,じょうじゅん,beginning of the month,Noun
+中旬,ちゅうじゅん,middle ten days of a month,Noun
+飽きる,あきる,be fed up,Verb
+額,がく,picture frame,Noun
+飾り,かざり,"ornament, decoration",Noun
+餌,えさ,"bait, feed",Noun
+平凡,へいぼん,"common, ordinary",Adjectival Noun
+通帳,つうちょう,"bankbook, passbook",Noun
+旧,きゅう,"old, former",Noun
+育児,いくじ,"childcare, child-raising",Noun
+小児科,しょうにか,pediatrics,Noun
+妊娠,にんしん,"pregnancy, conception",Verbal Noun
+姓名,せいめい,full name,Noun
+姓,せい,"surname, family name",Noun
+同姓,どうせい,same surname,Noun
+嫁,よめ,"bride, daughter-in-law",Noun
+花嫁,はなよめ,bride,Noun
+花婿,はなむこ,bridegroom,Noun
+品切れ,しなぎれ,"run out, sell out",Noun
+親類,しんるい,"relatives, kin",Noun
+幼い,おさない,"young, childish",Adjective
+幼児,ようじ,"young child, infant",Noun
+がさがさ,がさがさ,rustle,Adverb
+着ける,つける,"pull up, park (a vehicle)",Verb
+眼科,がんか,ophthalmology,Noun
+近眼,きんがん,"nearsightedness, shortsightedness",Noun
+レンズ,レンズ,lens,Noun
+快い,こころよい,"pleasant, agreeable",Adjective
+すっきり,すっきり,refreshed,Adverb
+すやすや,すやすや,peaceful and content,Adverb
+居眠り,いねむり,"doze, nap",Verbal Noun
+単に,たんに,"merely, simply",Adverb
+催す,もよおす,"feel, experience",Verb
+膨れる,ふくれる,"expand, fill up",Verb
+乗り越す,のりこす,ride past,Verb
+眠たい,ねむたい,sleepy,Adjective
+眠り,ねむり,"sleep, slumber",Noun
+まぶた,まぶた,eyelid,Noun
+眺め,ながめ,"view, prospect",Noun
+一瞬,いっしゅん,"instant, moment",Noun
+睡眠,すいみん,"sleep, slumber",Verbal Noun
+垂直,すいちょく,"vertical, perpendicular",Adjectival Noun
+同封,どうふう,enclosure,Verbal Noun
+封,ふう,"seal, sealing",Noun
+圧力,あつりょく,pressure,Noun
+回転,かいてん,"revolution, rotation",Verbal Noun
+カバー,カバー,"cover, covering",Verbal Noun
+心掛ける,こころがける,"bear in mind, try",Verb
+腰掛ける,こしかける,sit down,Verb
+男らしい,おとこらしい,"manly, masculine",Adjective
+寒暖計,かんだんけい,thermometer,Noun
+腰掛け,こしかけ,"stool, seat",Noun
+じゃんじゃん,じゃんじゃん,"many times, repeatedly",Adverb
+呼び掛ける,よびかける,"call to, appeal to",Verb
+引っ掛かる,ひっかかる,"be caught, be trapped",Verb
+話し掛ける,はなしかける,"address someone, speak to someone",Verb
+通り掛かる,とおりかかる,happen to pass by,Verb
+引っ掛ける,ひっかける,hook on,Verb
+寄り掛かる,よりかかる,lean against something,Verb
+措置,そち,"measure, step",Verbal Noun
+拝む,おがむ,"bow in veneration, worship",Verb
+拝見,はいけん,humbly look at or see,Verbal Noun
+控える,ひかえる,"hold back, show moderation",Verb
+控え室,ひかえしつ,waiting room,Noun
+コンセント,コンセント,"outlet, wall socket",Noun
+当番,とうばん,"being on duty, person on duty",Noun
+見違える,みちがえる,"mistake, fail to recognize",Verb
+ほうき,ほうき,broom,Noun
+差し出す,さしだす,"submit, stretch out",Verb
+少女,しょうじょ,girl,Noun
+上,じょう,"upper, best",Noun
+弱み,よわみ,"weakness, shortcoming",Noun
+握り締める,にぎりしめる,"squeeze, grip",Verb
+両手,りょうて,both hands,Noun
+設備,せつび,"equipment, facilities",Verbal Noun
+各種,かくしゅ,"each kind, various",Noun
+揃う,そろう,be (all) together,Verb
+道具,どうぐ,tool,Noun
+括弧,かっこ,"parentheses, brackets",Verbal Noun
+マーケット,マーケット,market,Noun
+オーケストラ,オーケストラ,"orchestra, orchestral music",Noun
+指揮,しき,"command, initiative",Verbal Noun
+輝く,かがやく,"shine brilliantly, glitter",Verb
+抑える,おさえる,"suppress, bring under control",Verb
+欲求,よっきゅう,"want, desire",Verbal Noun
+信仰,しんこう,"faith, religious belief",Verbal Noun
+定年,ていねん,mandatory retirement age,Noun
+出迎え,でむかえ,"meeting, receiving",Noun
+保育園,ほいくえん,"day-care center, nursery school",Noun
+迎え,むかえ,"greeting, meeting",Noun
+遂げる,とげる,"accomplish, achieve",Verb
+目覚ましい,めざましい,"striking, marvelous",Adjective
+巡る,めぐる,"go round, circulate",Verb
+偶然,ぐうぜん,"chance, accident",Adjectival Noun
+偶数,ぐうすう,even number,Noun
+隅,すみ,"nook, corner",Noun
+城,しろ,"castle, fort",Noun
+栽培,さいばい,"cultivation, raising",Verbal Noun
+警戒,けいかい,"vigilance, precaution",Verbal Noun
+挙げる,あげる,"cite, give (an example)",Verb
+幾ら,いくら,no matter how much,Adverb
+伺う,うかがう,politely ask,Verb
+俳句,はいく,haiku,Noun
+俳優,はいゆう,"actor, actress",Noun
+動作,どうさ,"movements, actions",Noun
+敏感,びんかん,sensitive,Adjectival Noun
+後悔,こうかい,regret,Verbal Noun
+悔しい,くやしい,"vexing, frustrating",Adjective
+今更,いまさら,"now, too late",Adverb
+倣う,ならう,"copy, follow an example",Verb
+俺,おれ,"I, me",Noun
+ロック,ロック,rock (music),Noun
+反感,はんかん,"ill feeling, antipathy",Noun
+振り向く,ふりむく,"turn around, look back",Verb
+性格,せいかく,"character, personality",Noun
+一部分,いちぶぶん,"part, portion",Noun
+肯定,こうてい,affirmation,Verbal Noun
+空っぽ,からっぽ,empty,Adjectival Noun
+オルガン,オルガン,"organ, pipe organ",Noun
+辛い,からい,"strict, severe",Adjective
+書き取り,かきとり,dictation,Noun
+本気,ほんき,"seriousness, earnestness",Adjectival Noun
+つかむ,つかむ,"grip, grab",Verb
+相撲,すもう,sumo wrestling,Noun
+入門,にゅうもん,initiation,Noun
+不平,ふへい,"discontent, dissatisfaction",Adjectival Noun
+寮,りょう,"dormitory, lodging house",Noun
+偏る,かたよる,"be one-sided, deviate",Verb
+偏見,へんけん,"prejudice, biased view",Noun
+一遍に,いっぺんに,all at once,Adverb
+何遍,なんべん,how many times,Noun
+程,ほど,"extent, limit",Noun
+掘る,ほる,"dig, unearth",Verb
+宗教,しゅうきょう,religion,Noun
+宣伝,せんでん,"publicity, advertisement",Verbal Noun
+審議,しんぎ,"deliberation, consideration",Verbal Noun
+憲法,けんぽう,"constitution, constitutional law",Noun
+扱う,あつかう,"handle, deal with",Verb
+展覧会,てんらんかい,exhibition,Noun
+資産,しさん,"property, assets",Noun
+非難,ひなん,"criticism, blame",Verbal Noun
+総理大臣,そうりだいじん,prime minister,Noun
+大臣,だいじん,minister,Noun
+休業,きゅうぎょう,"suspension of business, closure",Verbal Noun
+臨む,のぞむ,be present at,Verb
+臨時,りんじ,"temporary, provisional",Noun
+改造,かいぞう,"remodeling, reorganization",Verbal Noun
+内閣,ないかく,cabinet,Noun
+闘う,たたかう,fight,Verb
+派閥,はばつ,"clique, faction",Noun
+分裂,ぶんれつ,"division, split",Verbal Noun
+衰える,おとろえる,"weaken, decline",Verb
+振り返る,ふりかえる,"turn one's head, turn round",Verb
+懐かしい,なつかしい,"longed-for, old",Adjective
+惜しむ,おしむ,"grudge, regret",Verb
+惜しい,おしい,"almost, close",Adjective
+火山,かざん,volcano,Noun
+噴火,ふんか,"eruption, volcanic activity",Verbal Noun
+噴水,ふんすい,"jet, fountain",Noun
+恨み,うらみ,"grudge, hatred",Noun
+恨む,うらむ,"hold a grudge, feel resentment",Verb
+不愉快,ふゆかい,"unpleasant, disagreeable",Adjectival Noun
+愉快,ゆかい,"pleasant, delightful",Adjectival Noun
+覚悟,かくご,"readiness, resolution",Noun
+追う,おう,"chase, pursue",Verb
+親指,おやゆび,thumb,Noun
+怪しい,あやしい,"suspicious, dubious",Adjective
+怪しむ,あやしむ,suspect,Verb
+軍,ぐん,"army, troops",Noun
+鋭い,するどい,"pointed, acute",Adjective
+防ぐ,ふせぐ,"prevent, defend",Verb
+復活,ふっかつ,"revival, rebirth",Verbal Noun
+付近,ふきん,"neighborhood, environs",Noun
+手当て,てあて,"allowance, medical care",Verbal Noun
+人差し指,ひとさしゆび,index finger,Noun
+限界,げんかい,"boundary, limit",Noun
+自慢,じまん,showing off,Verbal Noun
+感心,かんしん,admiration,Verbal Noun
+少々,しょうしょう,"a little, a few",Noun
+下品,げひん,"vulgar, low",Adjective
+漫画,まんが,"manga, comics",Noun
+囲む,かこむ,"enclose, encircle",Verb
+食卓,しょくたく,dining table,Noun
+元,もと,"origin, source",Noun
+電卓,でんたく,pocket calculator,Noun
+歓迎,かんげい,welcome,Verbal Noun
+医師,いし,"doctor, physician",Noun
+勧める,すすめる,"suggest, recommend",Verb
+焦る,あせる,"feel pressured, feel hurried",Verb
+焦げる,こげる,"scorch, burn",Verb
+英雄,えいゆう,hero,Noun
+山脈,さんみゃく,mountain range,Noun
+雄大,ゆうだい,"grand, magnificent",Adjective
+正に,まさに,"just, surely",Adverb
+獲得,かくとく,acquisition,Verbal Noun
+収穫,しゅうかく,"harvest, harvesting",Verbal Noun
+幼稚,ようち,"childish, infantile",Adjectival Noun
+稲,いね,rice plant,Noun
+稼ぐ,かせぐ,"earn, make money",Verb
+学費,がくひ,"school expenses, tuition",Noun
+名称,めいしょう,name,Noun
+秩序,ちつじょ,"order, method",Noun
+原稿用紙,げんこうようし,"manuscript paper, writing pad",Noun
+性質,せいしつ,"nature, property",Noun
+穏やか,おだやか,"calm, mild",Adjective
+波,なみ,"wave, fluctuations",Noun
+隠す,かくす,"hide, conceal",Verb
+驚き,おどろき,"surprise, amazement",Noun
+お陰,おかげ,"help, thanks to",Noun
+陰,かげ,"shade, behind the scenes",Noun
+物陰,ものかげ,place behind something,Noun
+魅力,みりょく,"charm, attraction",Noun
+塊,かたまり,"lump, ingot",Noun
+醜い,みにくい,"ugly, bad-looking",Adjective
+卑しい,いやしい,"mean, greedy",Adjective
+砕く,くだく,"crush, smash",Verb
+砕ける,くだける,"be crushed, break down",Verb
+基礎,きそ,"basis, foundation",Noun
+貝,かい,"shellfish, shell",Noun
+ぬるぬる,ぬるぬる,slimy,Adverb
+浜辺,はまべ,"beach, seashore",Noun
+賢い,かしこい,"wise, smart",Adjective
+王様,おうさま,king,Noun
+悪賢い,わるがしこい,"cunning, sly",Adjective
+頻りに,しきりに,"frequently, repeatedly",Adverb
+心理,しんり,"mental state, psychology",Noun
+決勝,けっしょう,"final, final game",Noun
+頑固,がんこ,"stubborn, obstinate",Adjectival Noun
+ぴょんぴょん,ぴょんぴょん,"jump, hop",Adverb
+あきれる,あきれる,be stunned in disappointment or disbelief,Verb
+せいぜい,せいぜい,at most,Adverb
+祝い,いわい,"celebration, congratulation",Noun
+頂く,いただく,"receive, eat",Verb
+到達,とうたつ,"arrival, attainment",Verbal Noun
+頂上,ちょうじょう,"summit, climax",Noun
+見下ろす,みおろす,"look down, overlook",Verb
+マヨネーズ,マヨネーズ,mayonnaise,Noun
+勢力,せいりょく,"influence, power",Noun
+学問,がくもん,"learning, scholarship",Verbal Noun
+青春,せいしゅん,youth,Noun
+赤ん坊,あかんぼう,baby,Noun
+秋分,しゅうぶん,autumnal equinox,Noun
+春分,しゅんぶん,vernal equinox,Noun
+不機嫌,ふきげん,"bad mood, displeasure",Adjectival Noun
+近頃,ちかごろ,"recently, nowadays",Noun
+矛盾,むじゅん,contradiction,Verbal Noun
+倉庫,そうこ,"warehouse, storehouse",Noun
+創立,そうりつ,"establishment, organization",Verbal Noun
+一斉に,いっせいに,"all together, all at once",Adverb
+強力,きょうりょく,powerful,Adjectival Noun
+液体,えきたい,"liquid, fluid",Noun
+真剣,しんけん,"serious, sincere",Adjective
+演じる,えんじる,"perform, play",Verb
+刑務所,けいむしょ,prison,Noun
+刑事,けいじ,detective,Noun
+罰金,ばっきん,"fine, penalty",Noun
+罰する,ばっする,punish,Verb
+罰,ばつ,"punishment, penalty",Noun
+一般に,いっぱんに,"generally, in general",Adverb
+老人,ろうじん,"old person, elderly",Noun
+楽しみ,たのしみ,"pleasure, something looked forward to",Noun
+物知り,ものしり,"knowledgeable person, know-it-all",Noun
+豆,まめ,"bean, peas",Noun
+煮る,にる,"boil, cook",Verb
+煮える,にえる,"boil, be boiled",Verb
+蒸し暑い,むしあつい,humid,Adjective
+強烈,きょうれつ,"intense, severe",Adjective
+黙る,だまる,"become silent, shut one's mouth",Verb
+獣,けもの,"beast, brute",Noun
+税金,ぜいきん,tax,Noun
+無駄,むだ,"no good, pointless",Adjectival Noun
+無駄遣い,むだづかい,wasting money,Verbal Noun
+応援,おうえん,"support, cheering",Verbal Noun
+駆ける,かける,"gallop, run quickly",Verb
+駆け足,かけあし,"gallop, run",Verbal Noun
+気体,きたい,"gas, vapor",Noun
+沸騰,ふっとう,boiling,Verbal Noun
+丘,おか,"hill, slope",Noun
+見渡す,みわたす,look out over,Verb
+民間,みんかん,"citizens, civilians",Noun
+返却,へんきゃく,return,Verbal Noun
+官庁,かんちょう,government office,Noun
+県庁,けんちょう,prefectural office,Noun
+庁,ちょう,"public office, agency",Noun
+都庁,とちょう,Tokyo Metropolitan City Hall,Noun
+府庁,ふちょう,urban prefectural office,Noun
+栄養,えいよう,"nutrition, nourishment",Noun
+洗剤,せんざい,"detergent, cleanser",Noun
+ペンキ,ペンキ,paint,Noun
+つるつる,つるつる,"smooth, slippery",Adverb
+生じる,しょうじる,"happen, cause",Verb
+擦る,こする,"rub, strike",Verb
+摩擦,まさつ,"friction, rubbing",Verbal Noun
+汗,あせ,sweat,Noun
+額,ひたい,"forehead, brow",Noun
+びっしょり,びっしょり,soaked,Adverb
+てのひら,てのひら,palm,Noun
+軸,じく,axis,Noun
+後輩,こうはい,one's junior,Noun
+先輩,せんぱい,"senior, superior",Noun
+製作,せいさく,"manufacture, production",Verbal Noun
+香り,かおり,"perfume, fragrance",Noun
+香水,こうすい,perfume,Noun
+あえて,あえて,boldly,Adverb
+冒険,ぼうけん,"adventure, risk",Verbal Noun
+合唱,がっしょう,chorus,Verbal Noun
+かえる,かえる,frog,Noun
+結晶,けっしょう,crystallization,Verbal Noun
+人格,じんかく,"character, personality",Noun
+敬う,うやまう,"respect, honor",Verb
+座敷,ざしき,"drawing room, Japanese-style room",Noun
+敷金,しききん,"deposit, key money",Noun
+取り敢えず,とりあえず,"for now, first of all",Adverb
+消防,しょうぼう,"fire fighting, fire prevention",Noun
+勇気,ゆうき,"courage, nerve",Noun
+勇敢,ゆうかん,"brave, heroic",Adjectival Noun
+劣る,おとる,"be inferior to, be worse than",Verb
+励ます,はげます,"encourage, urge",Verb
+わく,わく,well up,Verb
+実は,じつは,actually,None
+勘定,かんじょう,"check, tab",Verbal Noun
+勘,かん,"sense, intuition",Noun
+勘違い,かんちがい,misunderstanding,Verbal Noun
+ごろごろ,ごろごろ,rumble,Adverb
+霧,きり,"fog, mist",Noun
+開ける,ひらける,"widen, develop",Verb
+霜,しも,frost,Noun
+露,つゆ,"dew, dewdrop",Noun
+零下,れいか,"below zero, sub-zero",Noun
+雰囲気,ふんいき,"atmosphere, mood",Noun
+和らげる,やわらげる,"soften, relieve",Verb
+盆地,ぼんち,"valley, basin",Noun
+盆,ぼん,Bon Festival,Noun
+盆,ぼん,tray,Noun
+解散,かいさん,"breakup, dissolution",Verbal Noun
+公衆,こうしゅう,the public,Noun
+衆議院,しゅうぎいん,"House of Representatives, Lower House",Noun
+観衆,かんしゅう,audience,Noun
+群衆,ぐんしゅう,"the masses, multitude",Noun
+大衆,たいしゅう,"the masses, the populace",Noun
+どっと,どっと,burst (out laughing),Adverb
+暑中見舞い,しょちゅうみまい,summer greeting,Noun
+お仕舞い,おしまい,"finished, over",Noun
+舞台,ぶたい,"stage, setting",Noun
+見舞う,みまう,visit someone,Verb
+見舞い,みまい,personal visit,Noun
+ひらりと,ひらりと,"lightly, delicately",Adverb
+軽快,けいかい,"light, cheerful",Adjective
+リード,リード,"the lead, take a lead",Verbal Noun
+盆踊り,ぼんおどり,Bon Festival dance,Noun
+海洋,かいよう,"ocean, sea",Noun
+ブレーキ,ブレーキ,brake,Noun
+跳ねる,はねる,"leap, hop, bound",Verb
+金銭,きんせん,"money, cash",Noun
+銭湯,せんとう,"public bath, bathhouse",Noun
+古里,ふるさと,"hometown, birthplace",Noun
+児童,じどう,"child, juvenile",Noun
+図書,としょ,books,Noun
+埋める,うめる,"bury, fill up",Verb
+埋める,うずめる,"bury, fill in",Verb
+墨,すみ,black ink,Noun
+講堂,こうどう,"lecture hall, auditorium",Noun
+セルフサービス,セルフサービス,self-service,Noun
+決意,けつい,"resolution, determination",Verbal Noun
+奨学金,しょうがくきん,"scholarship, fellowship",Noun
+狂う,くるう,"become insane, get out of order",Verb
+瞬間,しゅんかん,"instant, moment",Noun
+障子,しょうじ,paper sliding-door,Noun
+転がる,ころがる,"roll over, tumble",Verb
+くるくる,くるくる,"round and round, spin",Adverb
+雄,おす,male,Noun
+可愛がる,かわいがる,"love, cherish",Verb
+眺める,ながめる,"look out, gaze",Verb
+線路,せんろ,"line, track",Noun
+横切る,よこぎる,"cross, go across",Verb
+塀,へい,"fence, wall",Noun
+名付ける,なづける,"name, give a name to",Verb
+百科事典,ひゃっかじてん,encyclopedia,Noun
+飛び下りる,とびおりる,"jump off, jump down",Verb
+雌,めす,female,Noun
+猿,さる,"monkey, ape",Noun
+ジャンプ,ジャンプ,jump,Verbal Noun
+ぶら下がる,ぶらさがる,"hang down, dangle",Verb
+狙う,ねらう,"aim, be after",Verb
+地獄,じごく,"hell, inferno",Noun
+章,しょう,chapter,Noun
+目次,もくじ,table of contents,Noun
+彫る,ほる,"engrave, carve",Verb
+車輪,しゃりん,wheel,Noun
+頑丈,がんじょう,"solid, strong",Adjectival Noun
+生まれつき,うまれつき,"born, by nature",Adverb
+服装,ふくそう,"clothes, garments",Noun
+中央,ちゅうおう,center,Noun
+双子,ふたご,twins,Noun
+恐れ,おそれ,"fear, risk",Noun
+役人,やくにん,government official,Noun
+牧場,ぼくじょう,"stock farm, pasture",Noun
+寄る,よる,"stop by, stop off",Verb
+年中,ねんじゅう,all year,Adverb
+祈る,いのる,"pray, wish for",Verb
+裸,はだか,"naked body, bareness",Noun
+襟,えり,"collar, lapel",Noun
+心臓,しんぞう,heart,Adjectival Noun
+戦場,せんじょう,"battlefield, front",Noun
+戦死,せんし,death in war,Verbal Noun
+先祖,せんぞ,"forefather, ancestor",Noun
+親戚,しんせき,a relative,Noun
+市外,しがい,"city outskirts, suburbs",Noun
+白髪,しらが,"white hair, gray hair",Noun
+仮名遣い,かなづかい,"kana orthography, use of kana",Noun
+がん,がん,cancer,Noun
+抱く,だく,"hug, embrace",Verb
+墓,はか,"grave, gravestone",Noun
+大正,たいしょう,Taisho era,Noun
+明治,めいじ,Meiji era,Noun
+祖先,そせん,"ancestor, forefather",Noun
+粗筋,あらすじ,"outline, plot",Noun
+酢,す,vinegar,Noun
+報酬,ほうしゅう,"remuneration, reward",Noun
+郊外,こうがい,"suburbs, outskirts",Noun
+近郊,きんこう,"suburbs, outskirts",Noun
+学園,がくえん,"educational institution, school",Noun
+初期,しょき,"early days, initial",Noun
+邪魔,じゃま,"hindrance, obstruction",Verbal Noun
+くしゃみ,くしゃみ,sneeze,Noun
+無邪気,むじゃき,"innocence, simplicity",Adjectival Noun
+つかまる,つかまる,"grip, grab",Verb
+だるい,だるい,"be dull, feel dull, weary",Adjective
+大概,たいがい,"generally, probably",Adverb
+手洗い,てあらい,"toilet, washstand",Noun
+刻む,きざむ,cut fine,Verb
+模様,もよう,"pattern, design",Noun
+フライパン,フライパン,frying pan,Noun
+玉ねぎ,たまねぎ,onion,Noun
+玉,たま,"bead, ball",Noun
+銅,どう,copper,Noun
+象徴,しょうちょう,"symbol, symbolize",Verbal Noun
+天皇,てんのう,emperor,Noun
+浮かべる,うかべる,set afloat,Verb
+班,はん,"squad, group",Noun
+召し上がる,めしあがる,"eat, drink",Verb
+学ぶ,まなぶ,"learn, study",Verb
+哲学,てつがく,philosophy,Noun
+改善,かいぜん,"improvement, amelioration",Verbal Noun
+親善,しんぜん,"goodwill, friendly relations",Noun
+待遇,たいぐう,"treatment, pay",Noun
+綱,つな,"rope, line",Noun
+方面,ほうめん,direction,Noun
+縄,なわ,"rope, cord",Noun
+縛る,しばる,"bind, restrict",Verb
+縫う,ぬう,"sew, stitch",Verb
+焦点,しょうてん,"focus, focal point",Noun
+絞る,しぼる,"wring out, squeeze",Verb
+紺,こん,"dark blue, navy blue",Noun
+朝顔,あさがお,morning glory,Noun
+紅葉,こうよう,"autumn leaves, crimson foliage",Verbal Noun
+あちらこちら,あちらこちら,"all over, here and there",Noun
+クッキー,クッキー,"cookie, biscuit",Noun
+口紅,くちべに,"lipstick, rouge",Noun
+虹,にじ,rainbow,Noun
+梅,うめ,plum blossom,Noun
+梅干,うめぼし,pickled plum,Noun
+じめじめ,じめじめ,"feel damp, clammy",Adverb
+梅雨明け,つゆあけ,end of the rainy season,Verbal Noun
+梅雨入り,つゆいり,start of the rainy season,Verbal Noun
+解説,かいせつ,"explanation, commentary",Verbal Noun
+読者,どくしゃ,"reader, subscriber",Noun
+欄,らん,"column, field",Noun
+栓抜き,せんぬき,"bottle opener, corkscrew",Noun
+巣,す,"nest, den",Noun
+囲碁,いご,"game of ""go""",Noun
+嘘つき,うそつき,liar,Noun
+考慮,こうりょ,"consideration, deliberation",Verbal Noun
+癖,くせ,"habit, mannerism",Noun
+下痢,げり,diarrhea,Verbal Noun
+越す,こす,"go over, surmount",Verb
+峠,とうげ,"mountain pass, ridge",Noun
+崩れる,くずれる,"crumble, collapse",Verb
+崖,がけ,cliff,Noun
+ロープ,ロープ,rope,Noun
+幸い,さいわい,"happiness, good fortune",Adjectival Noun
+嵐,あらし,storm,Noun
+たとえ,たとえ,"even if, granting that",Adverb
+海峡,かいきょう,"straits, channel",Noun
+噂,うわさ,"gossip, rumor",Verbal Noun
+広まる,ひろまる,"spread, be in general circulation",Verb
+広める,ひろめる,"spread, extend",Verb
+わがまま,わがまま,"selfishness, willfulness",Adjectival Noun
+田舎,いなか,"country, countryside",Noun
+校舎,こうしゃ,school building,Noun
+歌声,うたごえ,singing voice,Noun
+のどか,のどか,"tranquil, peaceful",Adjective
+小雨,こさめ,drizzle,Noun
+差す,さす,open (an umbrella),Verb
+柄,え,"handle, grip",Noun
+お嬢さん,おじょうさん,"young lady, someone's daughter",Noun
+婆さん,ばあさん,"grandmother, old lady",Noun
+娯楽,ごらく,"amusement, pastime",Noun
+裏門,うらもん,back gate,Noun
+生涯,しょうがい,"for life, lifetime",Noun
+地,ち,"ground, place",Noun
+白菜,はくさい,nappa cabbage,Noun
+漬け物,つけもの,"pickle, pickled vegetable",Noun
+潰す,つぶす,"crush, smash",Verb
+潰れる,つぶれる,crush,Verb
+汽車,きしゃ,train,Noun
+拡張,かくちょう,"expansion, extension",Verbal Noun
+印刷,いんさつ,printing,Verbal Noun
+年賀,ねんが,New Year's card,Noun
+賭ける,かける,"bet, stake",Verb
+連日,れんじつ,"day after day, everyday",Noun
+賑わう,にぎわう,"bustle, enliven",Verb
+ひねる,ひねる,"twist, turn",Verb
+蛇,へび,"snake, serpent",Noun
+蛍光灯,けいこうとう,fluorescent lamp,Noun
+合図,あいず,"signal, sign",Verbal Noun
+車掌,しゃしょう,train conductor,Noun
+芋,いも,"potato, yam",Noun
+菊,きく,chrysanthemum,Noun
+華やか,はなやか,"gorgeous, colorful",Adjective
+軽蔑,けいべつ,"contempt, disdain",Verbal Noun
+さっと,さっと,"quickly, suddenly",Adverb
+議長,ぎちょう,"chairman, president",Noun
+学長,がくちょう,college president,Noun
+にこやか,にこやか,"smiling, beaming",Adjective
+閉会,へいかい,"closing, adjournment",Verbal Noun
+年始,ねんし,beginning of the year,Noun
+中指,なかゆび,middle finger,Noun
+挟む,はさむ,trap,Verb
+揚げる,あげる,deep-fry,Verb
+塔,とう,"tower, pagoda",Noun
+諦める,あきらめる,"abandon, give up",Verb
+誓う,ちかう,"vow, swear",Verb
+演奏,えんそう,musical performance,Verbal Noun
+定期,ていき,"fixed term, regular",Noun
+包帯,ほうたい,"bandage, dressing",Verbal Noun
+撃つ,うつ,"fire, shoot",Verb
+支社,ししゃ,branch office,Noun
+転勤,てんきん,transfer,Verbal Noun
+府,ふ,urban prefecture,Noun
+窮屈,きゅうくつ,"tight, cramped",Adjective
+くっ付く,くっつく,"stick, cling",Verb
+ずらり,ずらり,line up neatly,Adverb
+かかと,かかと,heel,Noun
+砂,すな,"sand, grit",Noun
+メーカー,メーカー,"maker, manufacturer",Noun
+予備,よび,"reserve, spare",Noun
+履物,はきもの,footwear,Noun
+フルーツ,フルーツ,fruit,Noun
+泥,どろ,"mud, dirt",Noun
+ほどく,ほどく,"undo, unfasten",Verb
+貨幣,かへい,"money, currency",Noun
+真珠,しんじゅ,pearl,Noun
+慰める,なぐさめる,"console, comfort",Verb
+風呂場,ふろば,bathroom,Noun
+へそ,へそ,"the navel, the bellybutton",Noun
+足音,あしおと,sound of footsteps,Noun
+故郷,こきょう,"hometown, birthplace",Noun
+べたべた,べたべた,stick together,Adjective
+晩年,ばんねん,late in life,Noun
+朗らか,ほがらか,"cheerful, bright",Adjective
+枯れる,かれる,"wither, die",Verb
+花瓶,かびん,flower vase,Noun
+空,から,"emptiness, hollow",Noun
+向き,むき,"direction, turn",Noun
+揃える,そろえる,"align, make uniform",Verb
+一旦,いったん,"once, for a while",Adverb
+乞食,こじき,beggar,Noun
+空中,くうちゅう,"in the air, in the sky",Noun
+網,あみ,"net, netting",Noun
+捕まえる,つかまえる,"arrest, capture",Verb
+蝶蝶,ちょうちょう,butterfly,Noun
+寿命,じゅみょう,life span,Noun
+亀,かめ,"turtle, tortoise",Noun
+羨ましい,うらやましい,"envious, envy",Adjective
+ぱんだ,ぱんだ,panda,Noun
+漕ぐ,こぐ,row,Verb
+ウナギ,ウナギ,eel,Noun
+鳩,はと,"pigeon, dove",Noun
+襲う,おそう,"raid, attack",Verb
+雛祭り,ひなまつり,Doll Festival,Noun
+稽古,けいこ,"practice, learning",Verbal Noun
+商売,しょうばい,"trade, business",Verbal Noun
+歌舞伎,かぶき,kabuki,Noun
+物凄い,ものすごい,tremendous,Adjective
+囁く,ささやく,whisper,Verb
+咳,せき,cough,Noun
+治まる,おさまる,"settle down, be cured",Verb
+喉,のど,the throat,Noun
+唾,つば,"saliva, spittle",Noun
+吠える,ほえる,"bark, bay",Verb
+吊るす,つるす,hang,Verb
+噛み付く,かみつく,bite at,Verb
+きゅうり,きゅうり,cucumber,Noun
+漬ける,つける,"pickle, marinade",Verb
+味噌,みそ,"miso, soybean paste",Noun
+思わず,おもわず,"unintentionally, unconsciously",Adverb
+思いやり,おもいやり,"thoughtfulness, kindness",Noun
+お目に掛かる,おめにかかる,"meet, have the honor of seeing",Verb
+もしも,もしも,"if, if ever",Adverb
+大して,たいして,"very, greatly",Adverb
+どんなに,どんなに,how much,Adverb
+塞がる,ふさがる,close up,Verb
+塞ぐ,ふさぐ,"close, shut",Verb
+屑,くず,"waste, scraps",Noun
+紙屑,かみくず,wastepaper,Noun
+掻く,かく,scratch,Verb
+掻き回す,かきまわす,"stir up, agitate",Verb
+祈り,いのり,prayer,Noun
+撫でる,なでる,"stroke, pat",Verb
+卑怯,ひきょう,"cowardice, meanness",Adjectival Noun
+憧れ,あこがれ,"yearning, longing",Noun
+憧れる,あこがれる,"yearn after, adore",Verb
+めでたい,めでたい,"happy, fortunate",Adjective
+溺れる,おぼれる,"drown, be drowned",Verb
+御無沙汰,ごぶさた,be out of touch,Verbal Noun
+汲む,くむ,"collect, scoop up",Verb
+バケツ,バケツ,bucket,Noun
+溜め息,ためいき,sigh,Noun
+溜まる,たまる,"accumulate, store up",Verb
+溜める,ためる,"store, collect",Verb
+伝染,でんせん,"contagion, infection",Verbal Noun
+苛め,いじめ,bullying,Noun
+苛める,いじめる,"ill-treat, abuse",Verb
+遥か,はるか,"far, distant",Adjective
+のぞく,のぞく,"look, peep",Verb
+曖昧,あいまい,"ambiguous, vague",Adjective
+大晦日,おおみそか,new year's eve,Noun
+股,また,"crotch, groin",Noun
+臆病,おくびょう,"cowardice, timidity",Adjectival Noun
+車椅子,くるまいす,wheelchair,Noun
+がたがた,がたがた,rattle,Adjective
+よける,よける,move out the way,Verb
+渋い,しぶい,"bitter, astringent",Adjective
+柿,かき,"persimmon, persimmon tree",Noun
+焚く,たく,start a fire,Verb
+明瞭,めいりょう,"clear, plain",Adjectival Noun
+眉,まゆ,eyebrow,Noun
+眉毛,まゆげ,eyebrows,Noun
+湯飲み,ゆのみ,teacup,Noun
+割り箸,わりばし,disposable chopsticks,Noun
+蛋白質,たんぱくしつ,protein,Noun
+蜂,はち,bee,Noun
+頂戴,ちょうだい,"getting, receiving",Verbal Noun
+元日,がんじつ,New Year's Day,Noun
+初詣で,はつもうで,first shrine visit of the new year,Verbal Noun
+お詫び,おわび,apologize,Verbal Noun
+詫びる,わびる,apologize,Verb
+刺さる,ささる,"stick, be stuck",Verb
+裂ける,さける,"split, tear",Verb
+釘,くぎ,"nail, spike",Noun
+錆びる,さびる,"rust, get rusty",Verb
+重たい,おもたい,heavy,Adjective
+餅,もち,rice cake,Noun
+思い込む,おもいこむ,"assume, believe",Verb
+悪女,あくじょ,"wicked woman, villainess",Noun
+騙す,だます,"deceive, cheat",Verb
+親子,おやこ,parent and child,Noun
+爽やか,さわやか,"refreshing, clear",Adjective
+雀,すずめ,sparrow,Noun
+お年玉,おとしだま,New Year's gift,Noun
+甥,おい,nephew,Noun
+便箋,びんせん,"letter paper, stationery",Noun
+嗅ぐ,かぐ,"smell, sniff",Verb
+炒める,いためる,stir-fry,Verb
