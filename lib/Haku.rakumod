@@ -742,12 +742,35 @@ does Comments
 
     token verb-apply-expression {
           <arg-expression-list> <.nominna>? <dake>? 
-          [ <.wo> | <.no> <.comma>? ]　
-        [ <arg-expression-list> 
-         [<.de> <.no>? | <.tame> <.ni>] 
-        ]?
-        <verbal>
+          [ <.wo> | <.no> ] #<.comma>? ]
+        # [ <arg-expression-list> 
+        #  [<.de> <!before 'す'> <.no>? | <.tame> <.ni>] 
+        # ]? # adding a ? allows for 
+        <verbal> 
     }
+
+    token verb-apply-expression-de {
+          <arg-expression-list> <.nominna>? <dake>? 
+          [ <.wo> | <.no> <.comma>? ]
+         <arg-expression-list> 
+         [<.de> <!before 'す'> <.no>? | <.tame> <.ni>]         
+        <verbal> 
+    }
+
+    token apply-expression-dbg {
+        <arg-expression-list>  <.nominna>? <dake>? 
+          [ <.wo> | <.no> <.comma>? ] 
+        [ <arg-expression-list> 
+        #  [<.de> <.no>? | <.tame> <.ni>]
+         [
+            <.de> <.no>? | # this causes a failed match
+
+            <.no>? <.tame> <.ni>
+         ] 
+        ]??
+          <verbal>
+    }
+
     token adjectival-apply-expression {
         [<arg-expression-list> <dake>? <.de> ]? <adjectival>+ <arg-expression> 
     }
@@ -768,7 +791,11 @@ does Comments
          [ <non-verb-apply-expression> <.wo> <verbal> 
          #[ <verb> | [ <keyword> | <lambda-expression>]  [<.shite-kudasai> | <.sura> ]? ]
          ]
-         || [<verb-apply-expression> | <non-verb-apply-expression> ]  
+         || <verb-apply-expression-de>
+         ||
+         [
+             <verb-apply-expression>              
+             | <non-verb-apply-expression> ] 
          || <adjectival-apply-expression>
     }
 
@@ -777,6 +804,8 @@ does Comments
     }
 
     token expression {        
+        # <apply-expression>
+        # ||
         [ <lambda-expression>
         | <let-expression>
         | <apply-expression>
@@ -787,9 +816,10 @@ does Comments
         | <string-interpol>
         ] || 
         [ <parens-expression>  
-        | <range-expression>        
-        | [<cons-list-expression>||<kaku-parens-expression>]
+        | <range-expression>
         | <list-expression>
+        | [<cons-list-expression>||<kaku-parens-expression>]
+        # | <list-expression>
         | <atomic-expression>
         | <chinamini-expression>                       
         ]
@@ -824,13 +854,16 @@ does Comments
 
     token bind-ha { 
         <comment>* 
-        [ [ <cons-list-expression>  | <list-expression> ] || <identifier> ] [ <.de>? <.ha> | <.ga> | <.mo> ]
-     [<expression> <zoi>]? 
-     <expression> [<.desu> | <.de> ]? 
-     [
-        <.delim> 
-         || {$*MSG = ', missing delimiter'}
-     ]
+        [ [ <cons-list-expression>  | <list-expression> ] || <identifier> ] 
+        [ <.de>? <.ha> | <.ga> | <.mo> ]
+        [<expression> <zoi>]? 
+        <expression> 
+        [<.desu> | <.de> ]? 
+        # <.desu>?
+        [
+            <.delim> 
+            || {$*MSG = ', missing delimiter'}
+        ]
     }
 
     token bind-ga { <comment>* [  [ <cons-list-expression>  | <list-expression> ] || <identifier> ] [<.ga> | <.mo> ] 

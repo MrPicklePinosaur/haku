@@ -412,6 +412,18 @@ class HakuActions {
             make FunctionApplyExpr[$function-name, @args, $partial].new;
         } 
     }
+    method verb-apply-expression-de($/) {    
+        my @args =  map({$_.made},$<arg-expression-list>).flat;
+        my $partial = $<dake> ?? True !! False;
+        
+        if $<verbal>.made ~~ LambdaExpr {
+            my $lambda-expr=$<verbal>.made;
+            make LambdaApplyExpr[$lambda-expr, @args, $partial].new;
+        } else {
+            my $function-name=$<verbal>.made;   
+            make FunctionApplyExpr[$function-name, @args, $partial].new;
+        } 
+    }
 
     method adjectival($/) {
              make $/.values[0].made;  
@@ -470,6 +482,8 @@ class HakuActions {
             # make FunctionApplyExpr[$function-name, @args, $partial].new;
         } elsif $<verb-apply-expression> {              
             make $<verb-apply-expression>.made;
+        } elsif $<verb-apply-expression-de> {              
+            make $<verb-apply-expression-de>.made;    
         #     my @args =  map({$_.made},$<arg-expression-list>).flat;
         # #  <verb> | [ <keyword> | <operator-noun> | <noun> | <variable> | <lambda-expression> ] [<.shite-kudasai> | <.sura> ]
         #     if $<verb> {

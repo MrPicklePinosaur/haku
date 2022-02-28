@@ -13,6 +13,8 @@
 註　主プログラム。
 
 本とは
-コタエは［三十四と八］と零を加える、
+# next line breaks if I add で, です or のです
+# all with the same error "missing delimiter after particle で"
+コタエは［三十四と八］と零を加えるのです、
 コタエを見せる
 の事です。
