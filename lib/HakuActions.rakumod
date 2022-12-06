@@ -330,9 +330,9 @@ class HakuActions {
             $op = '=';
         }
         if $<sukunai> {
-            $op = '<'.$op;
+            $op = '<';
         } elsif $<ooi> {
-            $op = '>'.$op;
+            $op = '>';
         } else {
             if $op eq '=' {
                 $op = '==';
