@@ -21,10 +21,10 @@ sub fopen(\fn, $mode?) is export {
 sub read(  $fh, Sub $mode? ) is export {
     if $fh ~~ IO::Handle { 
         if $mode {
-            if $mode.gist eq 'one' {
+            if $mode.gist eq '&one' {
                 $fh.get;
             }
-            elsif $mode.gist eq 'all' {
+            elsif $mode.gist eq '&all' {
                 $fh.lines; 
             }
         } else {
@@ -33,7 +33,6 @@ sub read(  $fh, Sub $mode? ) is export {
     } else { # Assuming failure    
         note 'Failed to open file for reading' && exit 1;
     }
-    1;
 }
 
 sub enter(Sub $mode?) is export {
